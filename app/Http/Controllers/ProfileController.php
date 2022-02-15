@@ -55,7 +55,7 @@ class ProfileController extends Controller
 
         $data = [
             'users' => User::doesntHave('profile')->where('role', 'Surveyor')
-                        ->where('status', '=', '1')->get(),
+                        ->get(),
         ];
         return view('pages.masterData.profile.create', $data);
     }

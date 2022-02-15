@@ -28,6 +28,16 @@ class UserController extends Controller
                         return '-';
                     }
                 })
+                ->addColumn('status_pengguna', function ($row) {  
+                    if($row->status == 1){
+                        // return '<span class="badge badge-primary">Aktif</span>';
+                        return 'Aktif';
+                    }   
+                    else{
+                        // return '<span class="badge badge-primary">Tidak Aktif</span>';
+                        return 'Tidak Aktif';
+                    }
+                })
                 ->addColumn('action', function ($row) {     
                     $actionBtn = '
                     <div class="row text-center justify-content-center">';
@@ -106,6 +116,11 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+
+        $user->delete();
+        $user->profile()->delete();
+        return response()->json([
+            'res' => 'success'
+        ]);
     }
 }
