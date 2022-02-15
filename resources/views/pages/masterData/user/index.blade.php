@@ -38,7 +38,8 @@ Master
                         <th>Nama Profil</th>
                         <th>Nama Pengguna</th>
                         <th>Password</th>                                   
-                        <th>Role</th>                             
+                        <th>Role</th>          
+                        <th>Status</th>                   
                         <th>Aksi</th> 
                     </tr>
                 </thead>                    
@@ -53,11 +54,58 @@ Master
 
 
 <script>
+    function hapus(id) {
+        var _token = "{{csrf_token()}}";
+        swal({
+            title : 'Apakah anda yakin?',
+            text : "Data pengguna yang dipilih akan dihapus beserta profilnya!",
+            type : 'warning',
+            icon : 'warning',
+            buttons: {
+                cancel: {
+                    visible: true,
+                    className: 'btn btn-danger',
+                    text: 'Batal'
+                },
+                confirm: {
+                    visible: true,
+                    className: 'btn btn-success',
+                    text: 'Ya'
+                }
+            }  
+        }).then((result) => {
+            if (result) {
+                $.ajax({
+                    type: "DELETE",
+                    url: "{{url('user')}}" + '/' + id,
+                    data: {
+                        _token: _token
+                    },
+                    success: function (data) {
+                        swal({
+                            title: 'Berhasil!',
+                            text: 'Data pengguna beserta profilnya berhasil dihapus',
+                            type: 'success',
+                            icon: 'success',
+                            button: false
+                        })        
+                        setTimeout(
+                        function () {
+                            location.reload();
+                        }, 2000);   
+                    },
+                })
+            } else {
+                swal.close();
+            }
+        })
+    }
+
     $(function() {
         var table = $('.yajra-datatable').DataTable({
             processing: true,
             serverSide: true,
-            responsive: true,
+            // responsive: true,
             // "autoWidth": true,
 
             ajax: {
@@ -85,6 +133,11 @@ Master
                 {
                     data: 'role',
                     name: 'role'
+                },
+                {
+                    data: 'status_pengguna',
+                    name: 'status_pengguna',
+                    className: 'text-center'
                 },
                 {
                     data: 'action',
