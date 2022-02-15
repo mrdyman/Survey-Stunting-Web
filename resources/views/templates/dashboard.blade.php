@@ -250,6 +250,11 @@
         $('.select2').select2({
             theme: "bootstrap"
         })
+
+        $('.tanggal').mask('00-00-0000');
+        $('.rupiah').mask('000.000.000.000.000', {reverse: true})
+        $('.waktu').mask('00:00');
+        $('.angka').mask('00000000000000000000');
     </script>
     @stack('script')
 </body>

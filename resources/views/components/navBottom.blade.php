@@ -9,7 +9,7 @@
             <li class="nav-item menu">
                 <a class="nav-link" href="{{url('/dashboard')}}">
                     <i class="link-icon icon-screen-desktop text-danger"></i>
-                    <span class="menu-title">Dashboard</span>
+                    <span class="menu-title">Beranda</span>
                 </a>
             </li>
 
@@ -38,7 +38,10 @@
                 <div class="navbar-dropdown animated fadeIn">
                     <ul>
                         <li>
-                            <a href="{{url('negara')}}">Surveyor</a>
+                            <a href="{{url('profile')}}">Profil</a>
+                        </li>
+                        <li>
+                            <a href="{{url('user')}}">Pengguna</a>
                         </li>
                     </ul>
                 </div>
