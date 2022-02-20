@@ -10,8 +10,6 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Validator;
-use App\Http\Requests\StoreProfileRequest;
-use App\Http\Requests\UpdateProfileRequest;
 
 class ProfileController extends Controller
 {
@@ -22,12 +20,22 @@ class ProfileController extends Controller
      */
     public function index(Request $request)
     {
+        $role = User::groupBy('role')->pluck('role')->toArray();
         if ($request->ajax()) {
-            $data = Profile::with('user')->orderBy('created_at', 'DESC')->get();
+            // $data = Profile::with('user')->orderBy('created_at', 'DESC')->get()->sortBy('user.role');
+            $data = Profile::with('user')->orderBy('created_at', 'DESC')->orderBy('created_at', 'DESC');
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('username', function ($row) {     
                     return $row->user->username;
+                })
+                ->addColumn('role', function ($row) {   
+                    if($row->user->role == 'Admin'){
+                        return '<span class="badge badge-primary">Admin</span>';
+                    } else if ($row->user->role == 'Surveyor'){
+                        return '<span class="badge badge-success">Surveyor</span>';
+                    }
+
                 })
                 ->addColumn('action', function ($row) {     
                         $actionBtn = '
@@ -39,9 +47,25 @@ class ProfileController extends Controller
                         </div>';
                     return $actionBtn;
                 })
+
+                ->filter(function ($query) use ($request) {    
+                    if ($request->search != '') {
+                        $query->whereHas('user', function ($query) use ($request) {
+                            $query->where("users.username", "LIKE", "%$request->search%")
+                                    ->orWhere("profiles.nama_lengkap", "LIKE", "%$request->search%");                                
+                        });
+                    }      
+                                    
+                    if (!empty($request->role)) {
+                        $query->whereHas('user', function ($query) use ($request) {
+                            $query->where('users.role', $request->role);                       
+                        });
+                    }
+                })
+                ->rawColumns(['username', 'role', 'action'])
                 ->make(true);
         }
-        return view('pages.masterData.profile.index');
+        return view('pages.masterData.profile.index', compact('role'));
     }
 
 
@@ -54,8 +78,7 @@ class ProfileController extends Controller
     {
 
         $data = [
-            'users' => User::doesntHave('profile')->where('role', 'Surveyor')
-                        ->get(),
+            'users' => User::doesntHave('profile')->get(),
         ];
         return view('pages.masterData.profile.create', $data);
     }
@@ -85,7 +108,7 @@ class ProfileController extends Controller
             ],
             [
                 'user_id.required' => 'Nama Pengguna tidak boleh kosong',
-                'nama_pengguna.unique' => 'Nama Pengguna sudah terdaftar',
+                'user_id.unique' => 'Nama Pengguna sudah terdaftar',
                 'nama_lengkap.required' => 'Nama Lengkap tidak boleh kosong',
                 'jenis_kelamin.required' => 'Jenis Kelamin tidak boleh kosong',
                 'tempat_lahir.required' => 'Tempat Lahir tidak boleh kosong',
@@ -144,8 +167,7 @@ class ProfileController extends Controller
     {
         $data = [
             'profile' => Profile::select('*', DB::raw('DATE_FORMAT(tanggal_lahir, "%d/%m/%Y") AS tanggal_lahir'))->where('id', '=', $profile->id)->first(),
-            'users' => User::where('role', 'Surveyor')
-                        ->where('status', '=', '1')->get(),
+            'users' => User::where('status', '=', '1')->get(),
         ];
         return view('pages.masterData.profile.edit', $data);
     }

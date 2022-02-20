@@ -1,15 +1,15 @@
 
 @extends('templates/dashboard')
 
-@section('title-tab')Tambah Profil
+@section('title-tab')Tambah Pengguna
 @endsection
 
 @section('title')
-Tambah Profil
+Tambah Pengguna
 @endsection
 
 @section('subTitle')
-Profil
+Pengguna
 @endsection
 
 @push('style')
@@ -22,14 +22,12 @@ Profil
         <div class="col">
             <div class="card">
                 <div class="card-body">
-                    @component('components.form.formProfile')
-                        @slot('users', $users)
-                        {{-- @slot('profile', '') --}}
-
-                        @slot('form_id', 'form_add_profile')
-                        @slot('action', route('profile.store'))
-                        @slot('method', 'POST')
-                        @slot('back_url', route('profile.index'))
+                    @component('components.form.formUser')
+                        @slot('user', $user)
+                        @slot('form_id', 'form_edit_user')
+                        @slot('action', route('user.update', $user->id))
+                        @slot('method', 'PUT')
+                        @slot('back_url', route('user.index'))
                     @endcomponent
                 </div>
             </div>

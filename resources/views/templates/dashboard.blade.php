@@ -248,7 +248,8 @@
 
     <script>
         $('.select2').select2({
-            theme: "bootstrap"
+            theme: "bootstrap",
+            placeholder: "- Pilih Salah Satu -",
         })
 
         $('.tanggal').mask('00-00-0000');
