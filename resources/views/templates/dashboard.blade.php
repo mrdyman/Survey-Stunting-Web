@@ -248,13 +248,21 @@
 
     <script>
         $('.select2').select2({
-            theme: "bootstrap"
+            theme: "bootstrap",
+            placeholder: "- Pilih Salah Satu -",
         })
 
         $('.tanggal').mask('00-00-0000');
         $('.rupiah').mask('000.000.000.000.000', {reverse: true})
         $('.waktu').mask('00:00');
         $('.angka').mask('00000000000000000000');
+    </script>
+    <script type="text/javascript">
+        $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
     </script>
     @stack('script')
 </body>

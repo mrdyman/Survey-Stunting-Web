@@ -31,6 +31,9 @@ Master
                 @slot('href')
                     {{route('profile.create')}}
                 @endslot
+                @slot('onClick')
+                    
+                @endslot
             @endcomponent
         </div>
     </div>
@@ -38,22 +41,41 @@ Master
 <section>
     <div class="row">
         <div class="col">
-            <table class="table table-bordered table-striped yajra-datatable p-0 table-responsive">
-                <thead>
-                    <tr class="text-center  ">
-                        <th>No.</th>
-                        <th>Nama Pengguna</th>
-                        <th>Nama Lengkap</th>
-                        <th>Jenis Kelamin</th>
-                        <th>Tempat Lahir</th>
-                        <th>Tanggal Lahir</th>                    
-                        <th>Alamat</th>                                                
-                        <th>Nomor HP</th>                                                
-                        <th>Email</th>                             
-                        <th>Aksi</th> 
-                    </tr>
-                </thead>                    
-            </table>
+            <div class="row">
+                <div class="col-lg-4 col-md-4 px-1">
+                    @component('components.formGroup.select', [
+                        'label' => 'Role',
+                        'name' => 'role_filter',
+                        'id' => 'role-filter',
+                        'class' => 'filter',
+                        ])  
+                        @slot('options')
+                            @foreach ($role as $item)
+                                <option value="{{$item}}">{{$item}}</option>
+                            @endforeach
+                        @endslot
+                    @endcomponent
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped yajra-datatable">
+                    <thead>
+                        <tr class="text-center">
+                            <th>No.</th>
+                            <th>Nama Pengguna</th>
+                            <th>Nama Lengkap</th>
+                            <th>Jenis Kelamin</th>
+                            <th>Tempat Lahir</th>
+                            <th>Tanggal Lahir</th>                    
+                            {{-- <th>Alamat</th>                                                 --}}
+                            <th>Nomor HP</th>                                                
+                            <th>Email</th>       
+                            <th>Role</th>                      
+                            <th>Aksi</th> 
+                        </tr>
+                    </thead>                    
+                </table>
+            </div>
         </div>
     </div>
 </section>
@@ -116,6 +138,10 @@ Master
             responsive: true,
             ajax: {
                 url: "{{ route('profile.index') }}",
+                data: function(d){
+                    d.role = $('#role-filter').val();                    
+                    d.search = $('input[type="search"]').val();
+                }
             },
             columns: [{
                     data: 'DT_RowIndex',
@@ -144,10 +170,10 @@ Master
                     data: 'tanggal_lahir',
                     name: 'tanggal_lahir'
                 },
-                {
-                    data: 'alamat',
-                    name: 'alamat'
-                },
+                // {
+                //     data: 'alamat',
+                //     name: 'alamat'
+                // },
                 {
                     data: 'nomor_hp',
                     name: 'nomor_hp'
@@ -155,6 +181,11 @@ Master
                 {
                     data: 'email',
                     name: 'email'
+                },
+                {
+                    data: 'role',
+                    name: 'role',
+                    className: 'text-center'
                 },
                 {
                     data: 'action',
@@ -173,6 +204,10 @@ Master
                 }
             ],
         });
+
+        $('#role-filter').change(function () {
+            table.draw();            
+        })
     })
 </script>
 @endpush

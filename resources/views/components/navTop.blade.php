@@ -34,15 +34,15 @@
                                         <div class="avatar-lg"><img src="{{asset('assets/dashboard')}}/img/user.png"
                                                 alt="image profile" class="avatar-img rounded"></div>
                                         <div class="u-text">
-                                            {{-- <h4 class="text-truncate" style="width: 150px">{{Auth::user()->nama}}
+                                            <h4 class="text-truncate" style="width: 150px">{{Auth::user()->profile->nama_lengkap ?? Auth::user()->username}}
                                             </h4>
-                                            <p class="text-muted">{{Auth::user()->role}}</p> --}}
+                                            <p class="text-muted">{{Auth::user()->role}}</p>
                                         </div>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="{{url('/profil')}}">Profil</a>
+                                    <a class="dropdown-item" href="{{url('/edit-profile-account')}}">Ubah Profil / Akun</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{{url('/logout')}}">Keluar</a>
                                 </li>

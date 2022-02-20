@@ -1,47 +1,20 @@
 <form id="{{$form_id}}" action="#" method="POST" enctype="multipart/form-data">
     @csrf
-    @if(isset($method) && $method == 'PUT')
+    {{-- @if(isset($method) && $method == 'PUT')
         @method('PUT')
-    @endif
+    @endif --}}
     
     <div class="row">
         <div class="col-lg col-md">
             {{-- Username --}}
             @component('components.formGroup.input', ['label' => 'Nama Pengguna', 'type' => 'text', 'class' => '', 'id' => 'username', 'name' => 'username', 'placeholder' => 'Masukkan', 'value' => $user->username ?? ''])
             @endcomponent
-        </div>
-        <div class="col-lg col-md">
             {{-- Password --}}
             @component('components.formGroup.input', ['label' => 'Kata Sandi', 'type' => 'text', 'class' => '', 'id' => 'password', 'name' => 'password', 'placeholder' => 'Masukkan', 'value' => ''])
             @endcomponent
             <div class="mx-3 text-danger d-none" id="ket-pass">Biarkan kosong apabila tidak ingin mengubah kata sandi</div>
         </div>
     </div>
-    <div class="row {{$user->id == 1 ? 'd-none' : ''}} ">
-        <div class="col-lg col-md">
-            {{-- Role --}}
-            <div class="form-group">
-                <label>Role</label><br>
-                @component('components.formGroup.radio', ['label' => 'Admin', 'id' => 'Admin', 'name' => 'role', 'value' => 'Admin', 'checked' => $user->role ?? null]) 
-                @endcomponent
-                @component('components.formGroup.radio', ['label' => 'Surveyor', 'id' => 'Surveyor', 'name' => 'role', 'value' => 'Surveyor', 'checked' => $user->role ?? null]) 
-                @endcomponent
-                <span class="text-danger d-block error-text role-error"></span>
-            </div>
-        </div>
-        <div class="col-lg col-md">
-            {{-- Status --}}
-            <div class="form-group">
-                <label>Status</label><br>
-                @component('components.formGroup.radio', ['label' => 'Aktif', 'id' => 'Aktif', 'name' => 'status', 'value' => '1', 'checked' => $user->status ?? null]) 
-                @endcomponent
-                @component('components.formGroup.radio', ['label' => 'Tidak Aktif', 'id' => 'Tidak Aktif', 'name' => 'status', 'value' => '2', 'checked' => $user->status ?? null]) 
-                @endcomponent
-                <span class="text-danger d-block error-text status-error"></span>
-            </div>
-        </div>
-    </div>
-    
 
     {{-- Submit --}}
     <div class="form-row mt-2">
@@ -55,7 +28,7 @@
 @push('script')
     <script>
         $(function() {
-            if('{{$form_id}}' == 'form_edit_user'){
+            if('{{$form_id}}' == 'form_edit_user2'){
                 $('#ket-pass').removeClass('d-none');
                 $('#password').attr('type', 'password');
                 $('#password').click(function(){
@@ -79,22 +52,14 @@
                     contentType: false,
                     success: function (data) {
                         $("#overlay").fadeOut(100);
+                        console.log(data)
                         if ($.isEmptyObject(data.error)) {
-                            if('{{$method}}' == 'PUT') {
-                                swal({
-                                    title: "Berhasil!",
-                                    text: "Perubahan berhasil disimpan!",
-                                    icon: "success",
-                                    button: false
-                                })
-                            } else{
-                                swal({
-                                    title: "Berhasil!",
-                                    text: "Data berhasil disimpan!",
-                                    icon: "success",
-                                    button: false
-                                })
-                            }
+                            swal({
+                                title: "Berhasil!",
+                                text: "Perubahan akun berhasil disimpan!",
+                                icon: "success",
+                                button: false
+                            })                        
                             setTimeout(
                             function () {
                                 window.location.href = "{{$back_url}}";
@@ -113,12 +78,10 @@
             })
 
             const printErrorMsg = (msg) => {
-            $.each(msg, function (key, value) {
-                $('.' + key + '-error').text(value);
-            });
-        }
-
-
+                $.each(msg, function (key, value) {
+                    $('.' + key + '-error').text(value);
+                });
+            }
         });
     </script>
 @endpush
