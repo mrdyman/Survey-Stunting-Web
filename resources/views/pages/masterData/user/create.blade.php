@@ -23,10 +23,10 @@ Pengguna
             <div class="card">
                 <div class="card-body">
                     @component('components.form.formUser')
-                        @slot('id', 'form_add_user')
+                        @slot('form_id', 'form_add_user')
                         @slot('action', route('user.store'))
                         @slot('method', 'POST')
-                        @slot('back', route('user.index'))
+                        @slot('back_url', route('user.index'))
                     @endcomponent
                 </div>
             </div>

@@ -1,34 +1,16 @@
 <form id="{{$form_id}}" action="#" method="POST" enctype="multipart/form-data">
     @csrf
-    @if(isset($method) && $method == 'PUT')
+    {{-- @if(isset($method) && $method == 'PUT')
         @method('PUT')
-    @endif
+    @endif --}}
 
     <div class="row">
-        <div class="col-lg col-md">
-            {{-- Nama --}}
-            @component('components.formGroup.select', [
-                'label' => 'Pilih Nama Pengguna',
-                'name' => 'user_id',
-                'id' => 'user-id',
-                'class' => 'select2',
-                ])  
-                @slot('options')
-                    @foreach ($users as $user)
-                        <option value="{{ $user->id }}" {{ (isset($profile) && $profile->user_id == $user->id) ? 'selected' : '' }}>{{ $user->username }}</option>
-                    @endforeach
-                @endslot
-            @endcomponent
-        </div>
         <div class="col-lg col-md">
             {{-- Nama Lengkap--}}
             @component('components.formGroup.input', ['label' => 'Nama Lengkap', 'type' => 'text', 'class' => '', 'id' => 'nama-lengkap', 'name' => 'nama_lengkap', 'placeholder' => 'Masukkan', 'value' => $profile->nama_lengkap ?? null])
             @endcomponent
         </div>
-    </div>
-
-    <div class="row">
-        <div class="col-lg-3">
+        <div class="col-lg-4 col-md-4">
             {{-- Jenis Kelamin --}}
             <div class="form-group">
                 <label>Jenis Kelamin</label><br>
@@ -41,6 +23,8 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="row">
         <div class="col-lg col-md">
             {{-- Tempat Lahir --}}
             @component('components.formGroup.input', ['label' => 'Tempat Lahir', 'type' => 'text', 'class' => '', 'id' => 'tempat-lahir', 'name' => 'tempat_lahir', 'placeholder' => 'Masukkan', 'value' => $profile->tempat_lahir ?? null])
@@ -58,7 +42,7 @@
     @endcomponent
 
     <div class="row">
-        <div class="col-lg-6 col-md-6">
+        <div class="col-lg col-md">
             {{-- Provinsi --}}
             @component('components.formGroup.select', [
                 'label' => 'Provinsi',
@@ -69,7 +53,7 @@
             ])  
             @endcomponent
         </div>
-        <div class="col-lg-6 col-md-6">
+        <div class="col-lg col-md">
             {{-- Kabupaten / Kota --}}
             @component('components.formGroup.select', [
                 'label' => 'Kabupaten / Kota',
@@ -80,7 +64,9 @@
             ])  
             @endcomponent
         </div>
-        <div class="col-lg-6 col-md-6">
+    </div>
+    <div class="row">
+        <div class="col-lg col-md">
             {{-- Kecamatan --}}
             @component('components.formGroup.select', [
                 'label' => 'Kecamatan',
@@ -91,7 +77,7 @@
             ])  
             @endcomponent
         </div>
-        <div class="col-lg-6 col-md-6">
+        <div class="col-lg col-md">
             {{-- Desa / Kelurahan --}}
             @component('components.formGroup.select', [
                 'label' => 'Desa / Kelurahan',
@@ -209,9 +195,6 @@
             $("#overlay").fadeIn(100);
             e.preventDefault();
             $('.error-text').text('');
-            if('{{$method}}' == 'PUT') {
-                $('#user-id').attr('disabled', false);
-            }
             var formData = new FormData(this)
             $.ajax({
                 type: "POST",
@@ -253,9 +236,6 @@
                             icon: "error",
                         });
                         printErrorMsg(data.error);
-                        if('{{$method}}' == 'PUT') {
-                            $('#user-id').attr('disabled', true);
-                        }
                     }
                 },
             })
