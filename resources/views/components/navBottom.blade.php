@@ -13,6 +13,13 @@
                 </a>
             </li>
 
+            <li class="nav-item menu">
+                <a class="nav-link" href="{{url('/namaSurvey')}}">
+                    <i class="link-icon icon-note text-danger"></i>
+                    <span class="menu-title">Soal Survey</span>
+                </a>
+            </li>
+
             <li class="nav-item submenu" id="nav-mou">
                 <a class="nav-link" href="#">
                     <i class="link-icon icon-docs text-danger"></i>

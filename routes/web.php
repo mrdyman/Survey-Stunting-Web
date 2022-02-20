@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\masterSoal\KategoriSoalController;
+use App\Http\Controllers\masterSoal\NamaSurveyController;
+use App\Http\Controllers\masterSoal\SoalController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SurveyorController;
 use App\Http\Controllers\DashboardController;
@@ -39,3 +42,10 @@ Route::get('/lengkapi-profile', function(){
 
 Route::resource('/user', UserController::class);
 Route::resource('/profile', ProfileController::class);
+Route::resource('/namaSurvey', NamaSurveyController::class);
+Route::resource("/kategoriSoal/{namaSurvey}", KategoriSoalController::class)->parameters([
+    '{namaSurvey}' => 'kategoriSoal'
+]);
+Route::resource("/soal/{kategoriSoal}", SoalController::class)->parameters([
+    '{kategoriSoal}' => 'soal'
+]);
