@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateKategoriSoalTable extends Migration
+class CreateRespondensTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,16 @@ class CreateKategoriSoalTable extends Migration
      */
     public function up()
     {
-        Schema::create('kategori_soal', function (Blueprint $table) {
+        Schema::create('responden', function (Blueprint $table) {
             $table->id();
-            $table->integer('urutan');
-            $table->text('nama');
             $table->bigInteger('nama_survey_id');
+            $table->bigInteger('kartu_keluarga')->unique();
+            $table->text('alamat');
+            $table->bigInteger('provinsi');
+            $table->bigInteger('kabupaten_kota');
+            $table->bigInteger('kecamatan');
+            $table->bigInteger('desa_kelurahan');
+            $table->string('nomor_hp')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
@@ -30,6 +35,6 @@ class CreateKategoriSoalTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kategori_soal');
+        Schema::dropIfExists('responden');
     }
 }

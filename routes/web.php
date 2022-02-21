@@ -2,11 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\masterSoal\KategoriSoalController;
 use App\Http\Controllers\masterSoal\NamaSurveyController;
 use App\Http\Controllers\masterSoal\SoalController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\masterData\ProfileController;
+use App\Http\Controllers\masterData\UserController;
+use App\Http\Controllers\masterData\RespondenController;
 use App\Http\Controllers\SurveyorController;
 use App\Http\Controllers\DashboardController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
@@ -46,6 +47,9 @@ Route::resource('/namaSurvey', NamaSurveyController::class);
 Route::resource("/kategoriSoal/{namaSurvey}", KategoriSoalController::class)->parameters([
     '{namaSurvey}' => 'kategoriSoal'
 ]);
+
+Route::resource("/responden", RespondenController::class);
+
 Route::resource("/soal/{kategoriSoal}", SoalController::class)->parameters([
     '{kategoriSoal}' => 'soal'
 ]);
