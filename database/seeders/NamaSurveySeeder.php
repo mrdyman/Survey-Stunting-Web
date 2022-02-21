@@ -23,6 +23,10 @@ class NamaSurveySeeder extends Seeder
                 'nama' => 'Survey Dummy 2',
                 'tipe' => 'Post'
             ],
+            [
+                'nama' => 'Survey Dummy 3',
+                'tipe' => 'Post'
+            ],
         ];
 
         DB::table('nama_survey')->insert($data);
