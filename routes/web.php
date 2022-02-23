@@ -2,15 +2,16 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\masterSoal\KategoriSoalController;
-use App\Http\Controllers\masterSoal\NamaSurveyController;
-use App\Http\Controllers\masterSoal\SoalController;
-use App\Http\Controllers\masterData\ProfileController;
-use App\Http\Controllers\masterData\UserController;
-use App\Http\Controllers\masterData\RespondenController;
+use App\Http\Controllers\ListController;
 use App\Http\Controllers\SurveyorController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\masterData\UserController;
+use App\Http\Controllers\masterSoal\SoalController;
+use App\Http\Controllers\masterData\ProfileController;
+use App\Http\Controllers\masterData\RespondenController;
+use App\Http\Controllers\masterSoal\NamaSurveyController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
+use App\Http\Controllers\masterSoal\KategoriSoalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,8 +49,15 @@ Route::resource("/kategoriSoal/{namaSurvey}", KategoriSoalController::class)->pa
     '{namaSurvey}' => 'kategoriSoal'
 ]);
 
-Route::resource("/responden", RespondenController::class);
+Route::resource("/responden", RespondenController::class)->parameters([
+    'responden' => 'responden'
+]);
+
+
 
 Route::resource("/soal/{kategoriSoal}", SoalController::class)->parameters([
     '{kategoriSoal}' => 'soal'
 ]);
+
+// Pengisian survey yang dilakukan oleh surveyor
+Route::get('/survey/pilih-responden', [RespondenController::class, 'pilihResponden'])->name('pilihResponden');

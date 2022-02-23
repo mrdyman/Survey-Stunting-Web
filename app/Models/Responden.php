@@ -11,11 +11,5 @@ class Responden extends Model
     use HasFactory, SoftDeletes;
     protected $table = 'responden';
     protected $guarded = ['id'];
-    
-    public function namaSurvey(){
-        return $this->belongsTo(NamaSurvey::class);
-    }
-    
-
 
 }

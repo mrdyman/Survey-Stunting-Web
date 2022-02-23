@@ -45,6 +45,9 @@
                 <div class="navbar-dropdown animated fadeIn">
                     <ul>
                         <li>
+                            <a href="{{url('responden')}}">Responden</a>
+                        </li>
+                        <li>
                             <a href="{{url('profile')}}">Profil</a>
                         </li>
                         <li>
