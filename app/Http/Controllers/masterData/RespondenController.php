@@ -6,6 +6,7 @@ use App\Models\Responden;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\ListController;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Validator;
 
@@ -18,36 +19,29 @@ class RespondenController extends Controller
      */
     public function index(Request $request)
     {
-        //set map api url
-        $url = "https://mitrateknologi1.github.io/api-wilayah-indonesia/api/provinces.json";
-
-        $json = json_decode(file_get_contents($url));
-        dd($json);
-
-        // if ($request->ajax()) {
-        //     $data = Responden::orderBy('created_at', 'DESC');
-        //     return DataTables::of($data)
-        //         ->addIndexColumn()
-        //         ->addColumn('action', function ($row) {     
-        //                 $actionBtn = '
-        //                 <div class="row text-center justify-content-center">';
-        //                 $actionBtn .= '
-        //                     <a href="'.route('profile.show', $row->id).'" class="btn btn-info btn-sm mr-1 my-1" data-toggle="tooltip" data-placement="top" title="Lihat"><i class="fas fa-eye"></i></a>
-        //                     <a href="'.route('responden.edit', $row->id).'" id="btn-edit" class="btn btn-warning btn-sm mr-1 my-1" data-toggle="tooltip" data-placement="top" title="Ubah"><i class="fas fa-edit"></i></a>
-        //                     <button id="btn-delete" onclick="hapus(' . $row->id . ')" class="btn btn-danger btn-sm mr-1 my-1" value="' . $row->id . '" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fas fa-trash"></i></button>
-        //                 </div>';
-        //             return $actionBtn;
-        //         })
-        //         ->rawColumns(['action'])
-        //         ->make(true);
-        // }
-        // return view('pages.masterData.responden.index');
+        if ($request->ajax()) {
+            $data = Responden::orderBy('created_at', 'DESC');
+            return DataTables::of($data)
+            ->addIndexColumn()
+            ->addColumn('action', function ($row) {     
+                    $actionBtn = '
+                    <div class="row text-center justify-content-center">';
+                    $actionBtn .= '
+                        <a href="'.route('responden.show', $row->id).'" class="btn btn-info btn-sm mr-1 my-1" data-toggle="tooltip" data-placement="top" title="Lihat"><i class="fas fa-eye"></i></a>
+                        <a href="'.route('responden.edit', $row->id).'" id="btn-edit" class="btn btn-warning btn-sm mr-1 my-1" data-toggle="tooltip" data-placement="top" title="Ubah"><i class="fas fa-edit"></i></a>
+                        <button id="btn-delete" onclick="hapus(' . $row->id . ')" class="btn btn-danger btn-sm mr-1 my-1" value="' . $row->id . '" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fas fa-trash"></i></button>
+                    </div>';
+                return $actionBtn;
+            })
+            ->rawColumns(['provinsi', 'kabupaten_kota', 'action'])
+            ->make(true);
+        }
+        return view('pages.masterData.responden.index');
     }
 
-
+    // Khusus Surveyor
     public function pilihResponden(){
-        $responden = Responden::all();
-
+        $responden = Responden::latest()->get();
         return view('pages.survey.pilihResponden', compact('responden'));
     }
 
@@ -119,7 +113,7 @@ class RespondenController extends Controller
      */
     public function show(Responden $responden)
     {
-        //
+        return view('pages.masterData.responden.show', compact('responden'));
     }
 
     /**

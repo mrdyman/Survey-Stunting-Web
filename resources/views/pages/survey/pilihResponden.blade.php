@@ -89,7 +89,7 @@ Survey
                 <div class="card-body">
                     @component('components.form.formResponden')
                         @slot('form_id', 'form_add_responden')
-                        @slot('action', route('responden.store'))
+                        @slot('action', route('tambahResponden'))
                         @slot('method', 'POST')
                         @slot('back_url', route('pilihResponden'))      
                     @endcomponent

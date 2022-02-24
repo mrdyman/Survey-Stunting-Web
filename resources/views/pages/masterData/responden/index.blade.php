@@ -48,10 +48,10 @@ Master
                             <th>No.</th>
                             <th>Nomor KK</th>
                             <th>Alamat</th>
-                            <th>Desa/Kelurahan</th>
+                            {{-- <th>Desa/Kelurahan</th>
                             <th>Kecamatan</th>
                             <th>Kabupaten/Kota</th>                          
-                            <th>Provinsi</th>                      
+                            <th>Provinsi</th>                       --}}
                             <th>Nomor HP</th>                      
                             <th>Aksi</th> 
                         </tr>
@@ -136,22 +136,22 @@ Master
                     data: 'alamat',
                     name: 'alamat'
                 },
-                {
-                    data: 'desa_kelurahan',
-                    name: 'desa_kelurahan'
-                },
-                {
-                    data: 'kecamatan',
-                    name: 'kecamatan'
-                },
-                {
-                    data: 'kabupaten_kota',
-                    name: 'kabupaten_kota'
-                },
-                {
-                    data: 'provinsi',
-                    name: 'provinsi'
-                },
+                // {
+                //     data: 'desa_kelurahan',
+                //     name: 'desa_kelurahan'
+                // },
+                // {
+                //     data: 'kecamatan',
+                //     name: 'kecamatan'
+                // },
+                // {
+                //     data: 'kabupaten_kota',
+                //     name: 'kabupaten_kota'
+                // },
+                // {
+                //     data: 'provinsi',
+                //     name: 'provinsi'
+                // },
                 {
                     data: 'nomor_hp',
                     name: 'nomor_hp'
