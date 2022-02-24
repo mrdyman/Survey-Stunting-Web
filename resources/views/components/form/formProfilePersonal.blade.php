@@ -112,6 +112,12 @@
     </div>
 </form>
 
+@component('components.wilayah.form', [
+    'provinsi' => $profile->provinsi ?? null, 
+    'kabupaten_kota' => $profile->kabupaten_kota ?? null, 
+    'kecamatan' => $profile->kecamatan ?? null, 
+    'desa_kelurahan' => $profile->desa_kelurahan ?? null])
+@endcomponent
 
 @push('script')
 <script>
@@ -119,77 +125,6 @@
         if('{{$method}}' == 'PUT') {
             $('#user-id').attr('disabled', true);
         }
-        $('#kabupaten-kota').attr('disabled', true);
-        $('#kecamatan').attr('disabled', true);
-        $('#desa-kelurahan').attr('disabled', true);
-
-        fetch(`http://www.emsifa.com/api-wilayah-indonesia/api/provinces.json`)
-        .then(response => response.json())
-            .then(provinces => $.each(provinces, function(key, val) {   
-                if (val.id == '{{ $profile->provinsi ?? null }}' ) {
-                    $('#provinsi').append(`<option value="${val.id}" selected>${val.name}</option>`);
-                    $('#provinsi').trigger('change');
-                } else {
-                    $('#provinsi').append(`<option value="${val.id}">${val.name}</option>`);
-                } 
-            })
-        );
-
-        $("#provinsi").change(function() {
-            if($("#provinsi").val() != ''){
-                $("#kabupaten-kota").html('');
-                $("#kabupaten-kota").append('<option value="">- Pilih Salah Satu -</option>')
-                $('#kabupaten-kota').attr('disabled', false);
-                fetch(`http://www.emsifa.com/api-wilayah-indonesia/api/regencies/`+$("#provinsi").val()+`.json`)
-                .then(response => response.json())
-                    .then(regencies => $.each(regencies, function(key, val) {
-                        if (val.id == '{{ $profile->kabupaten_kota ?? null }}' ) {
-                            $('#kabupaten-kota').append(`<option value="${val.id}" selected>${val.name}</option>`);
-                            $('#kabupaten-kota').trigger('change');
-                        } else {
-                            $('#kabupaten-kota').append(`<option value="${val.id}">${val.name}</option>`);
-                        }
-                    })
-                );
-            }
-        });
-
-        $("#kabupaten-kota").change(function() {
-            if($("#kabupaten-kota").val() != ''){
-                $("#kecamatan").html('');
-                $("#kecamatan").append('<option value="">- Pilih Salah Satu -</option>')
-                $('#kecamatan').attr('disabled', false);
-                fetch(`http://www.emsifa.com/api-wilayah-indonesia/api/districts/`+$("#kabupaten-kota").val()+`.json`)
-                .then(response => response.json())
-                    .then(districts => $.each(districts, function(key, val) {
-                        if(val.id == '{{ $profile->kecamatan ?? null }}' ) {
-                            $('#kecamatan').append(`<option value="${val.id}" selected>${val.name}</option>`);
-                            $('#kecamatan').trigger('change');
-                        } else {
-                            $('#kecamatan').append(`<option value="${val.id}">${val.name}</option>`);
-                        } 
-                    })
-                );
-            }
-        });
-
-        $("#kecamatan").change(function() {
-            if($("#kecamatan").val() != ''){
-                $("#desa-kelurahan").html('');
-                $("#desa-kelurahan").append('<option value="">- Pilih Salah Satu -</option>')
-                $('#desa-kelurahan').attr('disabled', false);
-                fetch(`http://www.emsifa.com/api-wilayah-indonesia/api/villages/`+$("#kecamatan").val()+`.json`)
-                .then(response => response.json())
-                    .then(villages => $.each(villages, function(key, val) {
-                        if(val.id == '{{ $profile->desa_kelurahan ?? null }}' ) {
-                            $('#desa-kelurahan').append(`<option value="${val.id}" selected>${val.name}</option>`);
-                        } else {
-                            $('#desa-kelurahan').append(`<option value="${val.id}">${val.name}</option>`);
-                        }
-                    })
-                );
-            }
-        });
 
         $('#{{$form_id}}').submit(function(e) {
             $("#overlay").fadeIn(100);

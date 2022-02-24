@@ -78,46 +78,13 @@ Profil
 
 @endsection
 
+@component('components.wilayah.show', [
+    'provinsi' => $profile->provinsi, 
+    'kabupaten_kota' => $profile->kabupaten_kota, 
+    'kecamatan' => $profile->kecamatan, 
+    'desa_kelurahan' => $profile->desa_kelurahan])
+@endcomponent
+
 @push('script')
-<script>
-    fetch(`http://www.emsifa.com/api-wilayah-indonesia/api/provinces.json`)
-    .then(response => response.json())
-        .then(provinces => $.each(provinces, function(key, val) {   
-            if (val.id == '{{ $profile->provinsi }}' ) {
-                $('#provinsi').html(val.name);
-                return false;
-            } 
-        })
-    );
 
-    fetch(`http://www.emsifa.com/api-wilayah-indonesia/api/regencies/`+'{{$profile->provinsi}}'+`.json`)
-    .then(response => response.json())
-        .then(regencies => $.each(regencies, function(key, val) {
-            if (val.id == '{{ $profile->kabupaten_kota }}' ) {
-                $('#kabupaten_kota').html(val.name);
-                return false;
-            } 
-        })
-    );
-
-    fetch(`http://www.emsifa.com/api-wilayah-indonesia/api/districts/`+'{{$profile->kabupaten_kota}}'+`.json`)
-    .then(response => response.json())
-        .then(districts => $.each(districts, function(key, val) {
-            if (val.id == '{{ $profile->kecamatan }}' ) {
-                $('#kecamatan').html(val.name);
-                return false;
-            } 
-        })
-    );
-
-    fetch(`http://www.emsifa.com/api-wilayah-indonesia/api/villages/`+'{{$profile->kecamatan}}'+`.json`)
-    .then(response => response.json())
-        .then(villages => $.each(villages, function(key, val) {
-            if (val.id == '{{ $profile->desa_kelurahan }}' ) {
-                $('#desa_kelurahan').html(val.name);
-                return false;
-            } 
-        })
-    );
-</script>
 @endpush

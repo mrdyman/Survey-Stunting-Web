@@ -202,8 +202,7 @@ class UserController extends Controller
             'status' => $request->status,
         ];
 
-        User::where('id', $user->id)->update($data);
-
+        $user->update($data);
 
         return response()->json(['success' => 'Success']);
         // return response()->json($request);

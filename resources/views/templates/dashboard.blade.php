@@ -100,6 +100,14 @@
         .main-header .nav-bottom .page-navigation.page-navigation-info>.nav-item ul li a:hover {
             color: #FF6161;
         }
+
+        .select2-container{
+            width: 100%!important;
+        }
+
+        .select2-search--dropdown .select2-search__field {
+            width: 98%;
+        }
     </style>
 
 </head>

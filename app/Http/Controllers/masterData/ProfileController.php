@@ -22,8 +22,7 @@ class ProfileController extends Controller
     {
         $role = User::groupBy('role')->pluck('role')->toArray();
         if ($request->ajax()) {
-            // $data = Profile::with('user')->orderBy('created_at', 'DESC')->get()->sortBy('user.role');
-            $data = Profile::with('user')->orderBy('created_at', 'DESC')->orderBy('created_at', 'DESC');
+            $data = Profile::with('user')->orderBy('created_at', 'DESC');
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('username', function ($row) {     
@@ -232,7 +231,7 @@ class ProfileController extends Controller
             'email' => $request->email,
         ];
 
-        Profile::where('id', $profile->id)->update($data);
+        $profile->update($data);
 
         return response()->json(['success' => 'Success']);
     }

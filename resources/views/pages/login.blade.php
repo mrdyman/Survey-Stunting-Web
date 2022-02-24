@@ -64,7 +64,7 @@
                         </div>
                     </div>
                     <div class="form-action mb-3 col-lg-12">
-                        <button type="submit" class="btn col-lg-12 btn-danger" style="color: white">Masuk</button>
+                        <button type="submit" class="btn col-lg-12 btn-danger" style="color: white"><i class="fas fa-sign-in-alt"></i> Masuk</button>
                     </div>
                 </div>
             </form>

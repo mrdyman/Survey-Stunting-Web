@@ -12,7 +12,34 @@
                     <span class="menu-title">Beranda</span>
                 </a>
             </li>
-
+            @if (Auth::user()->role == 'Admin')
+                <li class="nav-item menu">
+                    <a class="nav-link" href="{{url('/namaSurvey')}}">
+                        <i class="link-icon icon-note text-danger"></i>
+                        <span class="menu-title">Soal Survey</span>
+                    </a>
+                </li>
+                <li class="nav-item submenu" id="nav-master">
+                    <a class="nav-link" href="#">
+                        <i class="link-icon icon-grid text-danger"></i>
+                        <span class="menu-title">Master</span>
+                    </a>
+                    <div class="navbar-dropdown animated fadeIn">
+                        <ul>
+                            <li>
+                                <a href="{{url('responden')}}">Responden</a>
+                            </li>
+                            <li>
+                                <a href="{{url('profile')}}">Profil</a>
+                            </li>
+                            <li>
+                                <a href="{{url('user')}}">Pengguna</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            @endif
+            
             <li class="nav-item menu">
                 <a class="nav-link" href="{{url('/survey/daftar-survey')}}">
                     <i class="link-icon icon-book-open text-danger"></i>
