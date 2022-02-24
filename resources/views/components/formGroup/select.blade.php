@@ -2,9 +2,9 @@
     <label for="">{{$label}}</label>
     <select name="{{$name}}" class="form-control form-control {{$class}}" id="{{$id}}">
         @if ($class == 'filter')
-            <option value="">Semua</option>        
+        <option value="">Semua</option>
         @else
-            <option value="" selected hidden>- Pilih Salah Satu -</option>        
+        <option value="" selected hidden>- Pilih Salah Satu -</option>
         @endif
         {{$options}}
     </select>

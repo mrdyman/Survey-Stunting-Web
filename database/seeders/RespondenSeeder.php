@@ -18,7 +18,6 @@ class RespondenSeeder extends Seeder
         $data = [
             [
                 'id' => 1,
-                'nama_survey_id' => 1,
                 'kartu_keluarga' => 72060907099700001,
                 'alamat' => 'Laki-laki',
                 'provinsi' => 73,
@@ -30,7 +29,6 @@ class RespondenSeeder extends Seeder
             ],
             [
                 'id' => 2,
-                'nama_survey_id' => 2,
                 'kartu_keluarga' => 88960907099700788,
                 'alamat' => 'Laki-laki',
                 'provinsi' => 72,
@@ -42,7 +40,6 @@ class RespondenSeeder extends Seeder
             ],
             [
                 'id' => 3,
-                'nama_survey_id' => 3,
                 'kartu_keluarga' => 66770907099705432,
                 'alamat' => 'Laki-laki',
                 'provinsi' => 73,

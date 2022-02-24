@@ -14,6 +14,13 @@
             </li>
 
             <li class="nav-item menu">
+                <a class="nav-link" href="{{url('/survey/daftar-survey')}}">
+                    <i class="link-icon icon-book-open text-danger"></i>
+                    <span class="menu-title">Survey</span>
+                </a>
+            </li>
+
+            <li class="nav-item menu">
                 <a class="nav-link" href="{{url('/namaSurvey')}}">
                     <i class="link-icon icon-note text-danger"></i>
                     <span class="menu-title">Soal Survey</span>

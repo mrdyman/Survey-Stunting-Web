@@ -6,19 +6,18 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class KategoriSoal extends Model
+class JawabanSurvey extends Model
 {
     use HasFactory;
-    use SoftDeletes;
-    protected $table = 'kategori_soal';
+    protected $table = 'jawaban_survey';
 
     public function soal()
     {
-        return $this->hasMany(Soal::class);
+        return $this->belongsTo(Soal::class);
     }
 
-    public function jawabanSurvey()
+    public function jawabanSoal()
     {
-        return $this->hasMany(JawabanSurvey::class);
+        return $this->belongsTo(JawabanSoal::class);
     }
 }
