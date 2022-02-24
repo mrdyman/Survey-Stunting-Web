@@ -16,4 +16,14 @@ class Soal extends Model
     {
         return $this->hasMany(JawabanSoal::class);
     }
+
+    public function kategoriSoal()
+    {
+        return $this->belongsTo(KategoriSoal::class);
+    }
+
+    public function jawabanSurvey()
+    {
+        return $this->hasMany(JawabanSurvey::class);
+    }
 }

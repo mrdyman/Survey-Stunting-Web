@@ -7,28 +7,26 @@ use Illuminate\Support\Facades\DB;
 
 class NamaSurveySeeder extends Seeder
 {
+
     /**
-     * Run the database seeds.
+     * Auto generated seed file
      *
      * @return void
      */
     public function run()
     {
-        $data = [
-            [
-                'nama' => 'Survey Dummy 1',
-                'tipe' => 'Pre'
-            ],
-            [
-                'nama' => 'Survey Dummy 2',
-                'tipe' => 'Post'
-            ],
-            [
-                'nama' => 'Survey Dummy 3',
-                'tipe' => 'Post'
-            ],
-        ];
+        DB::table('nama_survey')->delete();
 
-        DB::table('nama_survey')->insert($data);
+        DB::table('nama_survey')->insert(array(
+            0 =>
+            array(
+                'id' => 1,
+                'nama' => 'Survey Develop',
+                'tipe' => 'Pre',
+                'deleted_at' => NULL,
+                'created_at' => '2022-02-22 02:17:42',
+                'updated_at' => '2022-02-22 02:17:42',
+            ),
+        ));
     }
 }

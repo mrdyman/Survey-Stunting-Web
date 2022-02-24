@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\masterData;
 
-use App\Http\Requests\StoreRespondenRequest;
-use App\Http\Requests\UpdateRespondenRequest;
-use App\Http\Controllers\Controller;
 use App\Models\Responden;
+use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 
 class RespondenController extends Controller
 {
@@ -19,6 +20,7 @@ class RespondenController extends Controller
         $responden = Responden::with('namaSurvey')->get();
         dd($responden);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -36,9 +38,46 @@ class RespondenController extends Controller
      * @param  \App\Http\Requests\StoreRespondenRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreRespondenRequest $request)
+    public function store(Request $request)
     {
-        //
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'kartu_keluarga' => ['required', Rule::unique('responden')->withoutTrashed()],
+                'alamat' => 'required',
+                'provinsi' => 'required',
+                'kabupaten_kota' => 'required',
+                'kecamatan' => 'required',
+                'desa_kelurahan' => 'required',
+
+            ],
+            [
+                'kartu_keluarga.required' => 'Kartu keluarga tidak boleh kosong',
+                'kartu_keluarga.unique' => 'Kartu keluarga sudah terdaftar',
+                'alamat.required' => 'Alamat tidak boleh kosong',
+                'provinsi.required' => 'Provinsi tidak boleh kosong',
+                'kabupaten_kota.required' => 'Kabupaten/Kota tidak boleh kosong',
+                'kecamatan.required' => 'Kecamatan tidak boleh kosong',
+                'desa_kelurahan.required' => 'Desa/Kelurahan tidak boleh kosong',
+            ]
+        );
+
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors()]);
+        }
+
+        $data = [
+            'kartu_keluarga' => $request->kartu_keluarga,
+            'alamat' => $request->alamat,
+            'provinsi' => $request->provinsi,
+            'kabupaten_kota' => $request->kabupaten_kota,
+            'kecamatan' => $request->kecamatan,
+            'desa_kelurahan' => $request->desa_kelurahan,
+        ];
+
+        Responden::create($data);
+
+        return response()->json(['success' => 'Success']);
     }
 
     /**
@@ -70,7 +109,7 @@ class RespondenController extends Controller
      * @param  \App\Models\Responden  $responden
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateRespondenRequest $request, Responden $responden)
+    public function update(Request $request, Responden $responden)
     {
         //
     }

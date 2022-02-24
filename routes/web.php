@@ -10,6 +10,7 @@ use App\Http\Controllers\masterData\UserController;
 use App\Http\Controllers\masterData\RespondenController;
 use App\Http\Controllers\SurveyorController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\survey\SurveyController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -31,7 +32,7 @@ Route::post('/update-account', [DashboardController::class, 'updateAccount'])->n
 Route::post('/update-profile', [DashboardController::class, 'updateProfile'])->name('updateProfile');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-Route::get('/lengkapi-profile', function(){
+Route::get('/lengkapi-profile', function () {
     return view('pages.lengkapiProfile');
 })->name('lengkapiProfile');
 
@@ -53,3 +54,14 @@ Route::resource("/responden", RespondenController::class);
 Route::resource("/soal/{kategoriSoal}", SoalController::class)->parameters([
     '{kategoriSoal}' => 'soal'
 ]);
+
+// Survey
+Route::get('/survey/daftar-survey', [SurveyController::class, 'index']);
+Route::get('/survey/pertanyaan-survey/{survey}/{kategori}', [SurveyController::class, 'pertanyaanSurvey']);
+Route::post('/survey/cek-jawaban/{survey}', [SurveyController::class, 'cekJawabanSurvey']);
+Route::get('/survey/lihat-survey/{survey}', [SurveyController::class, 'lihatSurvey']);
+Route::delete('/survey/lihat-survey/{survey}', [SurveyController::class, 'delete']);
+
+Route::get('/survey/pilih-responden', [SurveyController::class, 'pilihResponden'])->name('pilihResponden');
+Route::post('/survey/cek-pilih-responden', [SurveyController::class, 'cekPilihResponden']);
+Route::resource("/responden", RespondenController::class);
