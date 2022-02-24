@@ -140,7 +140,7 @@
 
             <!-- Heading -->
             <h1 class="display-3 text-center text-md-start mb-5">
-              Selamat Datang di Aplikasi Survey <span class="text-danger">STUNTING</span>.
+              Selamat Datang di Aplikasi Survey <span class="text-danger">STUNTING</span>
             </h1>
 
             {{-- <!-- Text -->
