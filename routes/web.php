@@ -10,6 +10,7 @@ use App\Http\Controllers\masterSoal\SoalController;
 use App\Http\Controllers\masterData\ProfileController;
 use App\Http\Controllers\masterData\RespondenController;
 use App\Http\Controllers\masterSoal\NamaSurveyController;
+use App\Http\Controllers\survey\SurveyController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 use App\Http\Controllers\masterSoal\KategoriSoalController;
 
@@ -73,9 +74,13 @@ Route::get('/kabupaten-kota', [ListController::class, 'listKabupatenKota'])->nam
 Route::get('/kecamatan', [ListController::class, 'listKecamatan'])->name('listKecamatan');
 Route::get('/desa-kelurahan', [ListController::class, 'listDesaKelurahan'])->name('listDesaKelurahan');
 
+// Survey
+Route::get('/survey/daftar-survey', [SurveyController::class, 'index']);
+Route::get('/survey/pertanyaan-survey/{survey}/{kategori}', [SurveyController::class, 'pertanyaanSurvey']);
+Route::post('/survey/cek-jawaban/{survey}', [SurveyController::class, 'cekJawabanSurvey']);
+Route::get('/survey/lihat-survey/{survey}', [SurveyController::class, 'lihatSurvey']);
+Route::delete('/survey/lihat-survey/{survey}', [SurveyController::class, 'delete']);
 
-
-// -------------
-
-
-
+Route::get('/survey/pilih-responden', [SurveyController::class, 'pilihResponden'])->name('pilihResponden');
+Route::post('/survey/cek-pilih-responden', [SurveyController::class, 'cekPilihResponden']);
+Route::resource("/responden", RespondenController::class);

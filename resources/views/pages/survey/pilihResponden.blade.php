@@ -98,8 +98,6 @@ Survey
         </div>
     </div>
 </section>
-
-
 @endsection
 
 @push('script')
@@ -111,4 +109,71 @@ $(function() {
     })
 });
 </script>
+@endpush
+    <script>
+        $('#form-tambah').submit(function(e) {
+            e.preventDefault();
+            $.ajax({
+                url: "{{ url('/survey/cek-pilih-responden') }}",
+                type: "POST",
+                data: $(this).serialize(),
+                success: function(response) {
+                    resetError();
+                    if (response.status == "success") {
+                        swal("Berhasil",
+                            "Survey berhasil ditambahkan", {
+                                button: false,
+                                icon: "success",
+                            });
+                        setTimeout(
+                            function() {
+                                $(location).attr('href',
+                                    '{{ url('/survey/pertanyaan-survey') . '/' }}' + response
+                                    .id_survey + "/" + response.id_kategori);
+                            }, 2000);
+                    } else if (response.status == "error") {
+                        swal("Gagal",
+                            response.pesan, {
+                                icon: "error",
+                                buttons: {
+                                    confirm: {
+                                        className: 'btn btn-danger'
+                                    }
+                                },
+                            });
+                    } else {
+                        printErrorMsg(response.error);
+                    }
+                },
+                error: function(response) {
+                    swal("Gagal",
+                        "Nama survey gagal ditambahkan", {
+                            icon: "error",
+                            buttons: {
+                                confirm: {
+                                    className: 'btn btn-danger'
+                                }
+                            },
+                        });
+                }
+            });
+        })
+
+        $(function() {
+            $('#add-responden').on('click', function() {
+                $('#formResponden').removeClass('d-none');
+                $("#form_add_responden").trigger("reset");
+            })
+        });
+
+        function printErrorMsg(msg) {
+            $.each(msg, function(key, value) {
+                $('.' + key + '-error').text(value);
+            });
+        }
+
+        function resetError() {
+            $('.error-text').text('');
+        }
+    </script>
 @endpush
