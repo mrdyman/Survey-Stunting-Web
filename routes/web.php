@@ -43,7 +43,19 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/lengkapi-profile', function(){
         return view('pages.lengkapiProfile');
     })->name('lengkapiProfile');
+
+
+
+    // Survey
+    Route::get('/survey/daftar-survey', [SurveyController::class, 'index']);
+    Route::get('/survey/pertanyaan-survey/{survey}/{kategori}', [SurveyController::class, 'pertanyaanSurvey']);
+    Route::post('/survey/cek-jawaban/{survey}', [SurveyController::class, 'cekJawabanSurvey']);
+    Route::get('/survey/lihat-survey/{survey}', [SurveyController::class, 'lihatSurvey']);
+    Route::delete('/survey/lihat-survey/{survey}', [SurveyController::class, 'delete']);
+    Route::get('/survey/pilih-responden', [SurveyController::class, 'pilihResponden'])->name('pilihResponden');
+    Route::post('/survey/cek-pilih-responden', [SurveyController::class, 'cekPilihResponden']);
 });
+
 
 // Role Admin
 Route::group(['middleware' => ['admin']], function () {
@@ -62,11 +74,13 @@ Route::group(['middleware' => ['admin']], function () {
     ]);
 });
 
+
 // Role Surveyor
 Route::group(['middleware' => ['surveyor']], function () {
     Route::get('/survey/pilih-responden', [RespondenController::class, 'pilihResponden'])->name('pilihResponden');
     Route::post('/survey/tambah-responden', [RespondenController::class, 'store'])->name('tambahResponden');
 });
+
 
 // Wilayah Indonesia
 Route::get('/provinsi', [ListController::class, 'listProvinsi'])->name('listProvinsi');
@@ -74,13 +88,4 @@ Route::get('/kabupaten-kota', [ListController::class, 'listKabupatenKota'])->nam
 Route::get('/kecamatan', [ListController::class, 'listKecamatan'])->name('listKecamatan');
 Route::get('/desa-kelurahan', [ListController::class, 'listDesaKelurahan'])->name('listDesaKelurahan');
 
-// Survey
-Route::get('/survey/daftar-survey', [SurveyController::class, 'index']);
-Route::get('/survey/pertanyaan-survey/{survey}/{kategori}', [SurveyController::class, 'pertanyaanSurvey']);
-Route::post('/survey/cek-jawaban/{survey}', [SurveyController::class, 'cekJawabanSurvey']);
-Route::get('/survey/lihat-survey/{survey}', [SurveyController::class, 'lihatSurvey']);
-Route::delete('/survey/lihat-survey/{survey}', [SurveyController::class, 'delete']);
 
-Route::get('/survey/pilih-responden', [SurveyController::class, 'pilihResponden'])->name('pilihResponden');
-Route::post('/survey/cek-pilih-responden', [SurveyController::class, 'cekPilihResponden']);
-Route::resource("/responden", RespondenController::class);
