@@ -15,7 +15,7 @@ class CreateKategoriSoalTable extends Migration
     {
         Schema::create('kategori_soal', function (Blueprint $table) {
             $table->id();
-            $table->integer('urutan');
+            $table->bigInteger('urutan');
             $table->text('nama');
             $table->bigInteger('nama_survey_id');
             $table->softDeletes();

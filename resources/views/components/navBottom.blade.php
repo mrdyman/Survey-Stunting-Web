@@ -7,14 +7,14 @@
         <ul class="nav page-navigation page-navigation-info bg-white">
 
             <li class="nav-item menu">
-                <a class="nav-link" href="{{url('/dashboard')}}">
+                <a class="nav-link" href="{{ url('/dashboard') }}">
                     <i class="link-icon icon-screen-desktop text-danger"></i>
                     <span class="menu-title">Beranda</span>
                 </a>
             </li>
             @if (Auth::user()->role == 'Admin')
                 <li class="nav-item menu">
-                    <a class="nav-link" href="{{url('/namaSurvey')}}">
+                    <a class="nav-link" href="{{ url('/namaSurvey') }}">
                         <i class="link-icon icon-note text-danger"></i>
                         <span class="menu-title">Soal Survey</span>
                     </a>
@@ -27,25 +27,31 @@
                     <div class="navbar-dropdown animated fadeIn">
                         <ul>
                             <li>
-                                <a href="{{url('responden')}}">Responden</a>
+                                <a href="{{ url('responden') }}">Responden</a>
                             </li>
                             <li>
-                                <a href="{{url('profile')}}">Profil</a>
+                                <a href="{{ url('profile') }}">Profil</a>
                             </li>
                             <li>
-                                <a href="{{url('user')}}">Pengguna</a>
+                                <a href="{{ url('user') }}">Pengguna</a>
                             </li>
                         </ul>
                     </div>
                 </li>
             @else
                 <li class="nav-item menu">
-                    <a class="nav-link" href="{{url('/survey/daftar-survey')}}">
+                    <a class="nav-link" href="{{ url('/survey/daftar-survey') }}">
                         <i class="link-icon icon-book-open text-danger"></i>
                         <span class="menu-title">Survey</span>
                     </a>
                 </li>
             @endif
+            <li class="nav-item menu">
+                <a class="nav-link" href="{{ url('/exportSurvey') }}">
+                    <i class="link-icon icon-docs text-danger"></i>
+                    <span class="menu-title">Export Survey</span>
+                </a>
+            </li>
         </ul>
     </div>
 </div>
