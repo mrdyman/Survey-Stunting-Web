@@ -15,10 +15,10 @@ class CreateJawabanSurveyTable extends Migration
     {
         Schema::create('jawaban_survey', function (Blueprint $table) {
             $table->id();
-            $table->integer('soal_id');
-            $table->integer('survey_id');
-            $table->integer('kategori_soal_id');
-            $table->integer('jawaban_soal_id')->nullable()->default(null);
+            $table->bigInteger('soal_id');
+            $table->bigInteger('survey_id');
+            $table->bigInteger('kategori_soal_id');
+            $table->bigInteger('jawaban_soal_id')->nullable()->default(null);
             $table->text('jawaban_lainnya')->nullable()->default(null);
             $table->timestamps();
         });

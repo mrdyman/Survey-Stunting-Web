@@ -16,8 +16,8 @@ class CreateJawabanSoalTable extends Migration
         Schema::create('jawaban_soal', function (Blueprint $table) {
             $table->id();
             $table->text('jawaban');
-            $table->integer('soal_id');
-            $table->integer('is_lainnya')->default(0);
+            $table->bigInteger('soal_id');
+            $table->bigInteger('is_lainnya')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

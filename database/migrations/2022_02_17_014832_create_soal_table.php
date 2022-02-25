@@ -16,9 +16,9 @@ class CreateSoalTable extends Migration
         Schema::create('soal', function (Blueprint $table) {
             $table->id();
             $table->text('soal');
-            $table->integer('urutan');
+            $table->bigInteger('urutan');
             $table->string('tipe_jawaban', 25);
-            $table->integer('kategori_soal_id');
+            $table->bigInteger('kategori_soal_id');
             $table->softDeletes();
             $table->timestamps();
         });

@@ -13,6 +13,7 @@ use App\Http\Controllers\masterSoal\NamaSurveyController;
 use App\Http\Controllers\survey\SurveyController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 use App\Http\Controllers\masterSoal\KategoriSoalController;
+use App\Http\Controllers\survey\ExportSurveyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,13 +35,13 @@ Route::get('/login', [AuthController::class, 'index'])->name('login')->middlewar
 Route::post('/cekLogin', [AuthController::class, 'cekLogin']);
 
 // Role Admin dan Surveyor
-Route::group(['middleware' => ['auth']], function(){
+Route::group(['middleware' => ['auth']], function () {
     Route::get('/edit-profile-account', [DashboardController::class, 'editProfileAccount'])->name('editProfileAccount');
     Route::post('/update-account', [DashboardController::class, 'updateAccount'])->name('updateAccount');
     Route::post('/update-profile', [DashboardController::class, 'updateProfile'])->name('updateProfile');
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/lengkapi-profile', function(){
+    Route::get('/lengkapi-profile', function () {
         return view('pages.lengkapiProfile');
     })->name('lengkapiProfile');
 
@@ -88,4 +89,5 @@ Route::get('/kabupaten-kota', [ListController::class, 'listKabupatenKota'])->nam
 Route::get('/kecamatan', [ListController::class, 'listKecamatan'])->name('listKecamatan');
 Route::get('/desa-kelurahan', [ListController::class, 'listDesaKelurahan'])->name('listDesaKelurahan');
 
-
+Route::get('/exportSurvey', [ExportSurveyController::class, 'index']);
+Route::post('/exportSurvey/exportExcel', [ExportSurveyController::class, 'exportSurvey']);
