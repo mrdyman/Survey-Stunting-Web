@@ -17,10 +17,10 @@ class CreateRespondensTable extends Migration
             $table->id();
             $table->bigInteger('kartu_keluarga')->unique();
             $table->text('alamat');
-            $table->bigInteger('provinsi');
-            $table->bigInteger('kabupaten_kota');
-            $table->bigInteger('kecamatan');
-            $table->bigInteger('desa_kelurahan');
+            $table->bigInteger('provinsi_id');
+            $table->bigInteger('kabupaten_kota_id');
+            $table->bigInteger('kecamatan_id');
+            $table->bigInteger('desa_kelurahan_id');
             $table->string('nomor_hp')->nullable();
             $table->softDeletes();
             $table->timestamps();

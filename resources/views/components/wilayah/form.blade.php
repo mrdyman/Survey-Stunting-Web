@@ -8,10 +8,10 @@
         $.get("{{ route('listProvinsi') }}", function(result) {
             $.each(result, function(key, val) {
                 if (val.id == '{{ $provinsi }}' ) {
-                    $('#provinsi').append(`<option value="${val.id}" selected>${val.name}</option>`);
+                    $('#provinsi').append(`<option value="${val.id}" selected>${val.nama}</option>`);
                     $('#provinsi').trigger('change');
                 } else {
-                    $('#provinsi').append(`<option value="${val.id}">${val.name}</option>`);
+                    $('#provinsi').append(`<option value="${val.id}">${val.nama}</option>`);
                 } 
             })
         });
@@ -23,10 +23,10 @@
                 $.get("{{ route('listKabupatenKota') }}", {idProvinsi: $("#provinsi").val()}, function(result) {
                     $.each(result, function(key, val) {
                         if (val.id == '{{ $kabupaten_kota }}' ) {
-                            $('#kabupaten-kota').append(`<option value="${val.id}" selected>${val.name}</option>`);
+                            $('#kabupaten-kota').append(`<option value="${val.id}" selected>${val.nama}</option>`);
                             $('#kabupaten-kota').trigger('change');
                         } else {
-                            $('#kabupaten-kota').append(`<option value="${val.id}">${val.name}</option>`);
+                            $('#kabupaten-kota').append(`<option value="${val.id}">${val.nama}</option>`);
                         }
                     })
                     $('#kabupaten-kota').attr('disabled', false);
@@ -41,10 +41,10 @@
                 $.get("{{ route('listKecamatan') }}", {idKabupatenKota: $("#kabupaten-kota").val()}, function(result) {
                     $.each(result, function(key, val) {
                         if (val.id == '{{ $kecamatan }}' ) {
-                            $('#kecamatan').append(`<option value="${val.id}" selected>${val.name}</option>`);
+                            $('#kecamatan').append(`<option value="${val.id}" selected>${val.nama}</option>`);
                             $('#kecamatan').trigger('change');
                         } else {
-                            $('#kecamatan').append(`<option value="${val.id}">${val.name}</option>`);
+                            $('#kecamatan').append(`<option value="${val.id}">${val.nama}</option>`);
                         }
                     })
                     $('#kecamatan').attr('disabled', false); 
@@ -59,9 +59,9 @@
                 $.get("{{ route('listDesaKelurahan') }}", {idKecamatan: $("#kecamatan").val()}, function(result) {
                     $.each(result, function(key, val) {
                         if (val.id == '{{ $desa_kelurahan }}' ) {
-                            $('#desa-kelurahan').append(`<option value="${val.id}" selected>${val.name}</option>`);
+                            $('#desa-kelurahan').append(`<option value="${val.id}" selected>${val.nama}</option>`);
                         } else {
-                            $('#desa-kelurahan').append(`<option value="${val.id}">${val.name}</option>`);
+                            $('#desa-kelurahan').append(`<option value="${val.id}">${val.nama}</option>`);
                         }
                     })
                     $('#desa-kelurahan').attr('disabled', false);     
