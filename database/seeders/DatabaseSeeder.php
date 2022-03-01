@@ -34,64 +34,64 @@ class DatabaseSeeder extends Seeder
         
 
         # Start : Untuk Banyak Data Dummy
-        Responden::factory(1500)->create();
+        // Responden::factory(1500)->create();
 
-        DB::table('nama_survey')->insert(array(
-            0 =>
-            array(
-                'id' => 1,
-                'nama' => 'Survey Develop',
-                'tipe' => 'Pre',
-                'deleted_at' => NULL,
-                // 'created_at' => '2022-02-22 02:17:42',
-                // 'updated_at' => '2022-02-22 02:17:42',
-            ),
-        ));
-        NamaSurvey::factory(50)->create();
+        // DB::table('nama_survey')->insert(array(
+        //     0 =>
+        //     array(
+        //         'id' => 1,
+        //         'nama' => 'Survey Develop',
+        //         'tipe' => 'Pre',
+        //         'deleted_at' => NULL,
+        //         // 'created_at' => '2022-02-22 02:17:42',
+        //         // 'updated_at' => '2022-02-22 02:17:42',
+        //     ),
+        // ));
+        // NamaSurvey::factory(50)->create();
 
-        $data = [
-            [
-                'id' => 1,
-                'username' => 'admin',
-                'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
-                'status' => 1,
-                'role' => 'Admin'
-                ]
-            ];
-        DB::table('users')->insert($data);
+        // $data = [
+        //     [
+        //         'id' => 1,
+        //         'username' => 'admin',
+        //         'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
+        //         'status' => 1,
+        //         'role' => 'Admin'
+        //         ]
+        //     ];
+        // DB::table('users')->insert($data);
 
-        User::factory(50)->create();
+        // User::factory(50)->create();
 
-        $data2 = [
-            [
-                'id' => 1,
-                'user_id' => 1,
-                'nama_lengkap' => 'Administrator',
-                'jenis_kelamin' => 'Laki-laki',
-                'tempat_lahir' => 'Palopo',
-                'tanggal_lahir' => '1997-09-07',
-                'alamat' => 'Jl. Palopo',
-                'provinsi' => 73,
-                'kabupaten_kota' => 7373,
-                'kecamatan' => 7373020,
-                'desa_kelurahan' => 7373020003,
-                'nomor_hp' => '081212121212',
-                'email' => 'admin@gmail.com',
-            ]
-        ];
-        DB::table('profiles')->insert($data2);
-        Profile::factory(50)->create();
+        // $data2 = [
+        //     [
+        //         'id' => 1,
+        //         'user_id' => 1,
+        //         'nama_lengkap' => 'Administrator',
+        //         'jenis_kelamin' => 'Laki-laki',
+        //         'tempat_lahir' => 'Palopo',
+        //         'tanggal_lahir' => '1997-09-07',
+        //         'alamat' => 'Jl. Palopo',
+        //         'provinsi' => 73,
+        //         'kabupaten_kota' => 7373,
+        //         'kecamatan' => 7373020,
+        //         'desa_kelurahan' => 7373020003,
+        //         'nomor_hp' => '081212121212',
+        //         'email' => 'admin@gmail.com',
+        //     ]
+        // ];
+        // DB::table('profiles')->insert($data2);
+        // Profile::factory(50)->create();
 
-        Survey::factory(1000)->create();
+        // Survey::factory(1000)->create();
         # End : Untuk Banyak Data Dummy
 
 
 
 
-        // $this->call(RespondenSeeder::class);
-        // $this->call(NamaSurveySeeder::class);
-        // $this->call(UserSeeder::class);
-        // $this->call(ProfileSeeder::class);
+        $this->call(RespondenSeeder::class);
+        $this->call(NamaSurveySeeder::class);
+        $this->call(UserSeeder::class);
+        $this->call(ProfileSeeder::class);
         $this->call(KategoriSoalSeeder::class);
         $this->call(SoalSeeder::class);
         $this->call(JawabanSoalSeeder::class);
