@@ -4,6 +4,8 @@ namespace App\Http\Controllers\masterSoal;
 
 use App\Http\Controllers\Controller;
 use App\Models\JawabanSoal;
+use App\Models\JawabanSurvey;
+use App\Models\KategoriSoal;
 use App\Models\Soal;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
@@ -19,15 +21,20 @@ class SoalController extends Controller
      */
     public function index(Request $request)
     {
+        $jawabanSurvey = JawabanSurvey::where('kategori_soal_id', $request->kategoriSoal)->first();
         if ($request->ajax()) {
             $data = Soal::orderBy('urutan', 'asc')->where('kategori_soal_id', $request->kategoriSoal)->get();
             return DataTables::of($data)
                 ->addColumn('action', function ($row) use ($request) {
                     $actionBtn = '
                             <button id="btn-preview" class="btn btn-primary btn-sm mr-1 my-1" title="Preview" onclick="preview(' . $row->id . ')"><i class="fas fa-edit"></i> Preview</button>
-                            <a id="btn-edit" class="btn btn-warning btn-sm mr-1 my-1" title="Ubah" href="' . url('/soal' . '/' . $request->kategoriSoal) . '/' . $row->id . '/edit' . '"><i class="fas fa-edit"></i> Ubah</a>
-                            <button id="btn-delete" onclick="hapus(' . $row->id . ')" class="btn btn-danger btn-sm mr-1 my-1" value="' . $row->id . '" title="Hapus"><i class="fas fa-trash"></i> Hapus</button>
-                        </div>';
+                            ';
+                    $soal = JawabanSurvey::where('kategori_soal_id', $row->kategori_soal_id)->first();
+                    if (!$soal) {
+                        $actionBtn .= '<a id="btn-edit" class="btn btn-warning btn-sm mr-1 my-1" title="Ubah" href="' . url('/soal' . '/' . $request->kategoriSoal) . '/' . $row->id . '/edit' . '"><i class="fas fa-edit"></i> Ubah</a>
+                            <button id="btn-delete" onclick="hapus(' . $row->id . ')" class="btn btn-danger btn-sm mr-1 my-1" value="' . $row->id . '" title="Hapus"><i class="fas fa-trash"></i> Hapus</button>';
+                    }
+
                     return $actionBtn;
                 })
                 ->addColumn('tipe_jawaban', function ($row) {
@@ -43,7 +50,8 @@ class SoalController extends Controller
                 ->make(true);
         }
         $kategoriSoal = $request->kategoriSoal;
-        return view('pages.masterSoal.soal.index', compact('kategoriSoal'));
+        $idNamaSurvey = KategoriSoal::where('id', $kategoriSoal)->first()->nama_survey_id;
+        return view('pages.masterSoal.soal.index', compact('kategoriSoal', 'jawabanSurvey', 'idNamaSurvey'));
     }
 
     /**

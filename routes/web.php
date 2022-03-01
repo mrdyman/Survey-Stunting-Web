@@ -45,16 +45,12 @@ Route::group(['middleware' => ['auth']], function () {
         return view('pages.lengkapiProfile');
     })->name('lengkapiProfile');
 
+    Route::get('/exportSurvey', [ExportSurveyController::class, 'index']);
+    Route::post('/exportSurvey/exportExcel', [ExportSurveyController::class, 'exportSurvey']);
 
-
-    // Survey
-    Route::get('/survey/daftar-survey', [SurveyController::class, 'index']);
-    Route::get('/survey/pertanyaan-survey/{survey}/{kategori}', [SurveyController::class, 'pertanyaanSurvey']);
-    Route::post('/survey/cek-jawaban/{survey}', [SurveyController::class, 'cekJawabanSurvey']);
     Route::get('/survey/lihat-survey/{survey}', [SurveyController::class, 'lihatSurvey']);
-    Route::delete('/survey/lihat-survey/{survey}', [SurveyController::class, 'delete']);
-    Route::get('/survey/pilih-responden', [SurveyController::class, 'pilihResponden'])->name('pilihResponden');
     Route::post('/survey/cek-pilih-responden', [SurveyController::class, 'cekPilihResponden']);
+    Route::get('/survey/daftar-survey', [SurveyController::class, 'index']);
 });
 
 
@@ -78,8 +74,13 @@ Route::group(['middleware' => ['admin']], function () {
 
 // Role Surveyor
 Route::group(['middleware' => ['surveyor']], function () {
-    Route::get('/survey/pilih-responden', [RespondenController::class, 'pilihResponden'])->name('pilihResponden');
     Route::post('/survey/tambah-responden', [RespondenController::class, 'store'])->name('tambahResponden');
+
+    // Survey
+    Route::get('/survey/pilih-responden', [SurveyController::class, 'pilihResponden'])->name('pilihResponden');
+    Route::get('/survey/pertanyaan-survey/{survey}/{kategori}', [SurveyController::class, 'pertanyaanSurvey']);
+    Route::post('/survey/cek-jawaban/{survey}', [SurveyController::class, 'cekJawabanSurvey']);
+    Route::delete('/survey/lihat-survey/{survey}', [SurveyController::class, 'delete']);
 });
 
 
@@ -88,6 +89,3 @@ Route::get('/provinsi', [ListController::class, 'listProvinsi'])->name('listProv
 Route::get('/kabupaten-kota', [ListController::class, 'listKabupatenKota'])->name('listKabupatenKota');
 Route::get('/kecamatan', [ListController::class, 'listKecamatan'])->name('listKecamatan');
 Route::get('/desa-kelurahan', [ListController::class, 'listDesaKelurahan'])->name('listDesaKelurahan');
-
-Route::get('/exportSurvey', [ExportSurveyController::class, 'index']);
-Route::post('/exportSurvey/exportExcel', [ExportSurveyController::class, 'exportSurvey']);

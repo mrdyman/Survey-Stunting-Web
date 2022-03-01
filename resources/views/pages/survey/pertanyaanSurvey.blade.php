@@ -42,8 +42,19 @@
                         action="{{ url('/survey/cek-jawaban/' . $idSurvey . '/' . $kategori->id) }}"> --}}
                     @csrf
                     <div class="card">
+                        <div class="card-header fw-bold">
+                            <p class="card-text">Responden : {{ $survey->responden->kartu_keluarga }} <span
+                                    class="float-right">
+                                    {{ \Carbon\Carbon::parse($survey->created_at)->translatedFormat('d F Y') }}</span></p>
+                        </div>
                         <div class="card-header">
-                            <p class="fw-bold my-2">Kategori Soal : {{ $kategori->nama }}</p>
+                            <span> Nama Survey :
+                                {{ $survey->namaSurvey->nama }}
+                                {!! $survey->namaSurvey->tipe == 'Pre'
+    ? ' <span class="badge badge-primary">PRE</span>'
+    : ' <span
+                        class="badge badge-success">POST</span>' !!} </span>
+                            <p class="mt-2 mb-0">Kategori Soal : {{ $kategori->nama }}</p>
                         </div>
                         <div class="card-body">
                             <input type="text" value="{{ $kategori->id }}" name="kategori_soal_id" hidden readonly>
@@ -69,8 +80,12 @@
                                         @if ($jawaban->jawaban != 'Lainnya')
                                             @php
                                                 $selected = '';
-                                                $jawabanSurveyBukanLainnya = $jawabanSurvey->where('jawaban_soal_id', $jawaban->id);
-                                                if (!$jawabanSurveyBukanLainnya->isEmpty()) {
+                                                $jawabanSurvey = \App\Models\JawabanSurvey::with(['jawabanSoal'])
+                                                    ->where('survey_id', $idSurvey)
+                                                    ->where('jawaban_soal_id', $jawaban->id)
+                                                    ->where('soal_id', $soal->id)
+                                                    ->first();
+                                                if ($jawabanSurvey) {
                                                     $selected = 'checked';
                                                 }
                                             @endphp
@@ -89,14 +104,14 @@
                                             @php
                                                 $selected = '';
                                                 $value = '';
-                                                $jawabanSurveyLainnya = $jawabanSurvey
+                                                $jawabanSurvey = \App\Models\JawabanSurvey::with(['jawabanSoal'])
+                                                    ->where('survey_id', $idSurvey)
                                                     ->where('soal_id', $soal->id)
                                                     ->where('jawaban_soal_id', null)
-                                                    ->toArray();
-                                                if (count($jawabanSurveyLainnya) > 0) {
+                                                    ->first();
+                                                if ($jawabanSurvey) {
                                                     $selected = 'checked';
-                                                    $value = reset($jawabanSurveyLainnya);
-                                                    $value = $value['jawaban_lainnya'];
+                                                    $value = $jawabanSurvey->jawaban_lainnya;
                                                 }
                                             @endphp
                                             <div class='input-group'>
@@ -116,11 +131,14 @@
                                     @php
                                         $selected = '';
                                         $value = '';
-                                        $jawabanSurveyLainnya = $jawabanSurvey->where('soal_id', $soal->id)->toArray();
-                                        if (count($jawabanSurvey) > 0) {
+                                        $jawabanSurvey = \App\Models\JawabanSurvey::with(['jawabanSoal'])
+                                            ->where('survey_id', $idSurvey)
+                                            ->where('soal_id', $soal->id)
+                                            ->where('jawaban_soal_id', null)
+                                            ->first();
+                                        if ($jawabanSurvey) {
                                             $selected = 'checked';
-                                            $value = reset($jawabanSurveyLainnya);
-                                            $value = $value['jawaban_lainnya'];
+                                            $value = $jawabanSurvey->jawaban_lainnya;
                                         }
                                     @endphp
                                     <input type='text' class='form-control text-jawaban text-kotak-centang'
@@ -192,7 +210,7 @@
                             success: function(response) {
                                 if (response.status == "success") {
                                     swal("Berhasil",
-                                        "Jawban Pertanyaan Berhasil Disimpan", {
+                                        "Jawaban Pertanyaan Berhasil Disimpan", {
                                             button: false,
                                             icon: "success",
                                         });
