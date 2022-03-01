@@ -45,9 +45,11 @@
                     'class' => 'select2 filter',
                     ])
                     @slot('options')
-                        @foreach ($namaSurvey as $row)
-                            <option value="{{ $row->id }}">{{ $row->nama }}</option>
-                        @endforeach
+                        @if (count($namaSurvey) > 0)
+                            @foreach ($namaSurvey as $row)
+                                <option value="{{ $row->id }}">{{ $row->nama }} | {{ $row->tipe }}</option>
+                            @endforeach
+                        @endif
                     @endslot
                 @endcomponent
             </div>
@@ -57,12 +59,15 @@
                         'label' => 'Pilih Surveyor',
                         'name' => 'surveyor_id',
                         'id' => 'surveyor_id',
-                        'class' => 'select2 filter',
+                        'class' => 'filter select2',
                         ])
                         @slot('options')
-                            @foreach ($surveyor as $row)
-                                <option value="{{ $row->id }}">{{ $row->nama_lengkap }}</option>
-                            @endforeach
+                            <option value="semua">Semua</option>
+                            @if (count($surveyor) > 0)
+                                @foreach ($surveyor as $row)
+                                    <option value="{{ $row->id }}">{{ $row->nama_lengkap }}</option>
+                                @endforeach
+                            @endif
                         @endslot
                     @endcomponent
                 </div>
@@ -74,6 +79,11 @@
                             <span class="text-danger error-text">{{ $error }}</span>
                         </p>
                     @endforeach
+                @endif
+                @if (session('error'))
+                    <p class='my-0'>
+                        <span class="text-danger error-text">{{ session('error') }}</span>
+                    </p>
                 @endif
             </div>
             <div class="col-lg-12 mt-3 d-flex justify-content-end">
@@ -145,6 +155,10 @@
 
         $('.filter').change(function() {
             table.draw();
+        })
+
+        $('.select2').change(function() {
+            $('.error-text').text('');
         })
     </script>
 @endpush

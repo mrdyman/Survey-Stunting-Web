@@ -5,7 +5,6 @@
             <div class="close-menu"> <i class="flaticon-cross"></i></div>
         </h3>
         <ul class="nav page-navigation page-navigation-info bg-white">
-
             <li class="nav-item menu">
                 <a class="nav-link" href="{{ url('/dashboard') }}">
                     <i class="link-icon icon-screen-desktop text-danger"></i>
@@ -38,14 +37,13 @@
                         </ul>
                     </div>
                 </li>
-            @else
-                <li class="nav-item menu">
-                    <a class="nav-link" href="{{ url('/survey/daftar-survey') }}">
-                        <i class="link-icon icon-book-open text-danger"></i>
-                        <span class="menu-title">Survey</span>
-                    </a>
-                </li>
             @endif
+            <li class="nav-item menu">
+                <a class="nav-link" href="{{ url('/survey/daftar-survey') }}">
+                    <i class="link-icon icon-book-open text-danger"></i>
+                    <span class="menu-title">Survey</span>
+                </a>
+            </li>
             <li class="nav-item menu">
                 <a class="nav-link" href="{{ url('/exportSurvey') }}">
                     <i class="link-icon icon-docs text-danger"></i>
