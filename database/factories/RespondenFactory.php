@@ -14,7 +14,13 @@ class RespondenFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'kartu_keluarga' => $this->faker->nik(),
+            'alamat' => $this->faker->address(),
+            'provinsi_id' => 72,
+            'kabupaten_kota_id' => 7203,
+            'kecamatan_id' => 7203041,
+            'desa_kelurahan_id' => 7203041003,
+            'nomor_hp' => '082299078787',
         ];
     }
 }

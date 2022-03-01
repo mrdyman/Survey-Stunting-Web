@@ -41,12 +41,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/update-profile', [DashboardController::class, 'updateProfile'])->name('updateProfile');
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard/statistik', [DashboardController::class, 'statistikSurvey'])->name('dashboardStatistik');
+    Route::get('/dashboard/survey-belum-selesai', [DashboardController::class, 'surveyBelumSelesai'])->name('surveyBelumSelesai');
+
+
     Route::get('/lengkapi-profile', function () {
         return view('pages.lengkapiProfile');
     })->name('lengkapiProfile');
-
-
-
+    
     // Survey
     Route::get('/survey/daftar-survey', [SurveyController::class, 'index']);
     Route::get('/survey/pertanyaan-survey/{survey}/{kategori}', [SurveyController::class, 'pertanyaanSurvey']);
@@ -56,6 +58,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/survey/pilih-responden', [SurveyController::class, 'pilihResponden'])->name('pilihResponden');
     Route::post('/survey/cek-pilih-responden', [SurveyController::class, 'cekPilihResponden']);
 });
+
+
 
 
 // Role Admin
@@ -78,7 +82,6 @@ Route::group(['middleware' => ['admin']], function () {
 
 // Role Surveyor
 Route::group(['middleware' => ['surveyor']], function () {
-    Route::get('/survey/pilih-responden', [RespondenController::class, 'pilihResponden'])->name('pilihResponden');
     Route::post('/survey/tambah-responden', [RespondenController::class, 'store'])->name('tambahResponden');
 });
 

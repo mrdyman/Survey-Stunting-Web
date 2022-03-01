@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Responden;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -15,11 +16,13 @@ class RespondenSeeder extends Seeder
      */
     public function run()
     {
+        // Responden::factory(15);
+        // die;
         $data = [
             [
                 'id' => 1,
                 'kartu_keluarga' => 72060907099700001,
-                'alamat' => 'Laki-laki',
+                'alamat' => 'Jl. Pertama',
                 'provinsi_id' => 73,
                 'kabupaten_kota_id' => 7373,
                 'kecamatan_id' => 7373020,
@@ -30,7 +33,7 @@ class RespondenSeeder extends Seeder
             [
                 'id' => 2,
                 'kartu_keluarga' => 88960907099700788,
-                'alamat' => 'Laki-laki',
+                'alamat' => 'Jl. Kedua',
                 'provinsi_id' => 72,
                 'kabupaten_kota_id' => 7203,
                 'kecamatan_id' => 7203041,
@@ -41,7 +44,7 @@ class RespondenSeeder extends Seeder
             [
                 'id' => 3,
                 'kartu_keluarga' => 66770907099705432,
-                'alamat' => 'Laki-laki',
+                'alamat' => 'Jl. Ketiga',
                 'provinsi_id' => 73,
                 'kabupaten_kota_id' => 7313,
                 'kecamatan_id' => 7313120,
