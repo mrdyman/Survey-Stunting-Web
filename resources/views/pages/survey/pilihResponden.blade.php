@@ -131,9 +131,7 @@
                             });
                         setTimeout(
                             function() {
-                                $(location).attr('href',
-                                    '{{ url('/survey/pertanyaan-survey') . '/' }}' + response
-                                    .id_survey + "/" + response.id_kategori);
+                                $(location).attr('href', response.url);
                             }, 2000);
                     } else if (response.status == "error") {
                         swal("Gagal",

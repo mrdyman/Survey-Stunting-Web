@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\KategoriSoal;
 use App\Models\NamaSurvey;
 use App\Models\Soal;
+use App\Models\Survey;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Validator;
@@ -34,10 +35,14 @@ class NamaSurveyController extends Controller
                 })
                 ->addColumn('action', function ($row) {
                     $actionBtn = '
-                            <a id="btn-edit" href="' . url('/kategoriSoal') . "/" . $row->id . '" class="btn btn-primary btn-sm mr-1 my-1" title="Ubah"><i class="fas fa-eye"></i> Lihat Kategori Soal</a>
-                            <button id="btn-edit" class="btn btn-warning btn-sm mr-1 my-1" title="Ubah" onclick="edit(' . $row->id . ')"><i class="fas fa-edit"></i> Ubah</button>
-                            <button id="btn-delete" onclick="hapus(' . $row->id . ')" class="btn btn-danger btn-sm mr-1 my-1" value="' . $row->id . '" title="Hapus"><i class="fas fa-trash"></i> Hapus</button>
-                        </div>';
+                            <a id="btn-edit" href="' . url('/kategoriSoal') . "/" . $row->id . '" class="btn btn-primary btn-sm mr-1 my-1" ><i class="fas fa-eye"></i> Lihat Kategori Soal</a>
+                            ';
+
+                    $survey = Survey::where('nama_survey_id', $row->id)->first();
+                    if (!$survey) {
+                        $actionBtn .= '<button id="btn-edit" class="btn btn-warning btn-sm mr-1 my-1"  onclick="edit(' . $row->id . ')"><i class="fas fa-edit"></i> Ubah</button>
+                            <button id="btn-delete" onclick="hapus(' . $row->id . ')" class="btn btn-danger btn-sm mr-1 my-1" value="' . $row->id . '" title="Hapus"><i class="fas fa-trash"></i> Hapus</button>';
+                    }
                     return $actionBtn;
                 })
                 ->rawColumns(['action', 'tipe'])

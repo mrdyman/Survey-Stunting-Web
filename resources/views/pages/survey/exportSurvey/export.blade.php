@@ -1,12 +1,28 @@
-    <table align="center" style="vertical-align: center;border: 1px solid black;font-weight : bold">
-        <thead align="center" style="vertical-align: center;border: 1px solid black;font-weight : bold">
+    <table style="vertical-align: center;border: 1px solid black;font-weight : bold">
+        <tr>
+            <th width="5"></th>
+        </tr>
+        <tr>
+            <th></th>
+            <th colspan="2">Nama Survey : </th>
+            <th colspan="8">{{ $daftarSurvey[0]->namaSurvey->nama }}</th>
+        </tr>
+        @if ($surveyor)
             <tr>
                 <th></th>
+                <th colspan="2">Surveyor : </th>
+                <th colspan="8">{{ $surveyor->nama_lengkap }}</th>
             </tr>
+        @endif
+
+    </table>
+
+    <table align="center" style="vertical-align: center;border: 1px solid black;font-weight : bold">
+        <thead align="center" style="vertical-align: center;border: 1px solid black;font-weight : bold">
             <tr align="center" style="vertical-align: center;border: 1px solid black;font-weight : bold">
                 <th></th>
                 <th rowspan="2" align="center"
-                    style="vertical-align: center;border: 1px solid black;font-weight : bold">No. Responden</th>
+                    style="vertical-align: center;border: 1px solid black;font-weight : bold">No.</th>
                 <th rowspan="2" align="center"
                     style="vertical-align: center;border: 1px solid black;font-weight : bold">Tanggal</th>
                 <th rowspan="2" align="center"
@@ -44,27 +60,26 @@
                     <td align="center" style="vertical-align: center;border: 1px solid black;">
                         {{ \Carbon\Carbon::parse($survey->created_at)->translatedFormat('d F Y') }}</td>
                     <td align="center" style="vertical-align: center;border: 1px solid black;">
-                        {{ $survey->responden->desa_kelurahan }}</td>
+                        {{ $survey->responden->desa_kelurahan->nama }}</td>
                     <td align="center" style="vertical-align: center;border: 1px solid black;">
-                        {{ $survey->responden->kecamatan }}</td>
+                        {{ $survey->responden->kecamatan->nama }}</td>
                     <td align="center" style="vertical-align: center;border: 1px solid black;">
-                        {{ $survey->responden->kabupaten_kota }}</td>
+                        {{ $survey->responden->kabupaten_kota->nama }}</td>
                     <td align="center" style="vertical-align: center;border: 1px solid black;">
                         {{ $survey->responden->kartu_keluarga }} &nbsp;</td>
                     @foreach ($daftarKategori as $kategori)
                         @foreach ($kategori->soal as $soal)
                             @php
-                                $jawaban = \App\Models\JawabanSurvey::with(['jawabanSoal'])
+                                $daftarJawaban = \App\Models\JawabanSurvey::with(['jawabanSoal'])
                                     ->where('survey_id', $survey->id)
                                     ->where('kategori_soal_id', $kategori->id)
                                     ->where('soal_id', $soal->id)
                                     ->get();
                             @endphp
-                            <th align="center"
-                                style="vertical-align: center;border: 1px solid black;font-weight : bold">
-                                @foreach ($jawaban as $jwb)
+                            <th align="center" style="vertical-align: center;border: 1px solid black;">
+                                @foreach ($daftarJawaban as $jawaban)
                                     <p>
-                                        {{ $jwb->jawaban_soal_id == null ? $jwb->jawaban_lainnya : $jwb->jawabanSoal->jawaban }}
+                                        {{ $jawaban->jawaban_soal_id == null ? $jawaban->jawaban_lainnya : $jawaban->jawabanSoal->jawaban }}
                                     </p>
                                 @endforeach
                             </th>

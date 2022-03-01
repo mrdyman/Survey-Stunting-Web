@@ -35,7 +35,9 @@ class ExportSurveyController extends Controller
                 if (Auth::user()->role == "Surveyor") {
                     $query->where('profile_id', Auth::user()->profile->id);
                 } else {
-                    $query->where('profile_id', $surveyor_id);
+                    if ($surveyor_id != 'semua' && $surveyor_id != null) {
+                        $query->where('profile_id', $surveyor_id);
+                    }
                 }
             })->where('nama_survey_id', $nama_survey_id)->orderBy('id', 'DESC')->get();
             return DataTables::of($data)
@@ -47,9 +49,9 @@ class ExportSurveyController extends Controller
                 })
                 ->addColumn('tipe', function ($row) {
                     if ($row->namaSurvey->tipe == "Pre") {
-                        return '<span class="text-warning">PRE</span>';
+                        return '<span class="badge badge-primary">PRE</span>';
                     } else {
-                        return '<span class="text-danger">POST</span>';
+                        return '<span class="badge badge-success">POST</span>';
                     }
                 })
                 ->addColumn('tanggal', function ($row) {
@@ -63,30 +65,44 @@ class ExportSurveyController extends Controller
 
     public function exportSurvey(Request $request)
     {
+        $surveyor_id = $request->surveyor_id;
         $this->validate(
             $request,
             [
-                'surveyor_id' => Auth::user()->role == "Admin" ? 'required' : 'nullable',
+                'surveyor_id' => 'nullable',
                 'nama_survey_id' => 'required'
             ],
             [
-                'surveyor_id.required' => "Surveyor Tidak Boleh Dikosongkan",
                 'nama_survey_id.required' => "Nama Survey Tidak Boleh Dikosongkan",
             ]
         );
 
-        $survey = Survey::with(['responden', 'namaSurvey', 'profile'])->where('is_selesai', 1)->where(function ($query) use ($request) {
+        $survey = Survey::with(['responden', 'namaSurvey', 'profile'])->where('is_selesai', 1)->where(function ($query) use ($surveyor_id) {
             if (Auth::user()->role == "Surveyor") {
                 $query->where('profile_id', Auth::user()->profile->id);
             } else {
-                $query->where('profile_id', $request->surveyor_id);
+                if ($surveyor_id != 'semua' && $surveyor_id != null) {
+                    $query->where('profile_id', $surveyor_id);
+                }
             }
         })->where('nama_survey_id', $request->nama_survey_id)->orderBy('id', 'DESC')->get();
 
-        // $jawabanSurvey = JawabanSurvey::with(['jawabanSoal']);
+        if (count($survey) == 0) {
+            return back()->with('error', 'Data Tidak Ditemukan');
+        }
+
+        $surveyor = Profile::with(['user'])->whereHas('user', function ($user) {
+            $user->where('role', '=', 'surveyor');
+        })->where('id', $surveyor_id)->orderBy('nama_lengkap')->first();
+
+        if (!$surveyor) {
+            $surveyor = '';
+        }
 
         $kategori = KategoriSoal::with(['soal'])->where('nama_survey_id', $request->nama_survey_id)->get();
 
-        return Excel::download(new SurveyExport($kategori, $survey), 'survey.xlsx');
+        $tanggal = Carbon::parse(Carbon::now())->translatedFormat('d F Y');
+
+        return Excel::download(new SurveyExport($kategori, $survey, $surveyor), $survey[0]->namaSurvey->nama . "-" . $tanggal . "-" . rand(1, 9999) . '.xlsx');
     }
 }

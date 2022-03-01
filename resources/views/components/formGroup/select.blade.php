@@ -2,11 +2,11 @@
     <label for="">{{$label}}</label>
     <select name="{{$name}}" class="form-control {{$class}}" id="{{$id}}">
         @if ($class == 'filter')
-        <option value="">Semua</option>
+            <option value="">Semua</option>
         @else
-        <option value="" selected hidden>- Pilih Salah Satu -</option>
+            <option value="" selected hidden>- Pilih Salah Satu -</option>
         @endif
-        {{$options}}
+        {{ $options }}
     </select>
-    <span class="text-danger error-text {{$name}}-error"></span>
+    <span class="text-danger error-text {{ $name }}-error"></span>
 </div>
