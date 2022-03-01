@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\masterSoal;
 
 use App\Http\Controllers\Controller;
+use App\Models\JawabanSoal;
+use App\Models\JawabanSurvey;
 use App\Models\KategoriSoal;
 use App\Models\Soal;
+use App\Models\Survey;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Validation\Rule;
@@ -19,22 +22,27 @@ class KategoriSoalController extends Controller
      */
     public function index(Request $request)
     {
+        $survey = Survey::where('nama_survey_id', $request->namaSurvey)->first();
         if ($request->ajax()) {
             $data = KategoriSoal::orderBy('urutan', 'asc')->where('nama_survey_id', $request->namaSurvey)->get();
             return DataTables::of($data)
                 ->addColumn('action', function ($row) {
                     $actionBtn = '
                             <a id="btn-edit" href="' . url('/soal') . "/" . $row->id . '" class="btn btn-primary btn-sm mr-1 my-1" title="Ubah"><i class="fas fa-eye"></i> Lihat Daftar Soal</a>
-                            <button id="btn-edit" class="btn btn-warning btn-sm mr-1 my-1" title="Ubah" onclick="edit(' . $row->id . ')"><i class="fas fa-edit"></i> Ubah</button>
-                            <button id="btn-delete" onclick="hapus(' . $row->id . ')" class="btn btn-danger btn-sm mr-1 my-1" value="' . $row->id . '" title="Hapus"><i class="fas fa-trash"></i> Hapus</button>
-                        </div>';
+                            ';
+
+                    $jawabanSurvey = JawabanSurvey::where('kategori_soal_id', $row->id)->first();
+                    if (!$jawabanSurvey) {
+                        $actionBtn .= '<button id="btn-edit" class="btn btn-warning btn-sm mr-1 my-1" title="Ubah" onclick="edit(' . $row->id . ')"><i class="fas fa-edit"></i> Ubah</button>
+                            <button id="btn-delete" onclick="hapus(' . $row->id . ')" class="btn btn-danger btn-sm mr-1 my-1" value="' . $row->id . '" title="Hapus"><i class="fas fa-trash"></i> Hapus</button>';
+                    }
                     return $actionBtn;
                 })
                 ->rawColumns(['action'])
                 ->make(true);
         }
         $namaSurvey = $request->namaSurvey;
-        return view('pages.masterSoal.kategoriSoal', compact('namaSurvey'));
+        return view('pages.masterSoal.kategoriSoal', compact('namaSurvey', 'survey'));
     }
 
     /**

@@ -68,6 +68,13 @@
                         </div>
                         <div class="card-body">
                             @foreach ($kategori->soal as $soal)
+                                @php
+                                    $daftarJawaban = \App\Models\JawabanSurvey::with(['jawabanSoal'])
+                                        ->where('survey_id', $survey->id)
+                                        ->where('kategori_soal_id', $kategori->id)
+                                        ->where('soal_id', $soal->id)
+                                        ->get();
+                                @endphp
                                 <p class="{{ $loop->first ? '' : 'mt-4' }}">{{ $loop->iteration }} . {{ $soal->soal }}
                                 </p>
                                 @if ($soal->tipe_jawaban != 'Jawaban Singkat')
@@ -78,40 +85,36 @@
                                             $tipe = 'checkbox';
                                         }
                                     @endphp
-                                    @foreach ($kategori->jawabanSurvey as $jawaban)
+                                    @foreach ($daftarJawaban as $jawaban)
                                         @if ($jawaban->jawaban_soal_id != null)
-                                            @if ($soal->id == $jawaban->soal_id)
-                                                <div class='input-group my-2'>
-                                                    <div class='input-group-text'><input class='form-check-input mt-0'
-                                                            type='{{ $tipe }}'
-                                                            aria-label='Radio button for following text input' checked
-                                                            disabled readonly />
-                                                    </div>
-                                                    <input type='text' class='form-control text-jawaban'
-                                                        aria-label='Text input with radio button'
-                                                        placeholder='{{ $jawaban->jawaban }}' disabled readonly
-                                                        value="{{ $jawaban->jawabanSoal->jawaban }}" />
+                                            <div class='input-group my-2'>
+                                                <div class='input-group-text'><input class='form-check-input mt-0'
+                                                        type='{{ $tipe }}'
+                                                        aria-label='Radio button for following text input' checked disabled
+                                                        readonly />
                                                 </div>
-                                            @endif
+                                                <input type='text' class='form-control text-jawaban'
+                                                    aria-label='Text input with radio button'
+                                                    placeholder='{{ $jawaban->jawaban }}' disabled readonly
+                                                    value="{{ $jawaban->jawabanSoal->jawaban }}" />
+                                            </div>
                                         @else
-                                            @if ($soal->id == $jawaban->soal_id)
-                                                <div class='input-group my-2'>
-                                                    <div class='input-group-text'><input class='form-check-input mt-0'
-                                                            type='{{ $tipe }}'
-                                                            aria-label='Radio button for following text input' checked
-                                                            disabled readonly />
-                                                    </div>
-                                                    <input type='text' class='form-control text-jawaban'
-                                                        aria-label='Text input with radio button'
-                                                        placeholder='{{ $jawaban->jawaban }}' disabled readonly
-                                                        value="{{ $jawaban->jawaban_lainnya }}" />
+                                            <div class='input-group my-2'>
+                                                <div class='input-group-text'><input class='form-check-input mt-0'
+                                                        type='{{ $tipe }}'
+                                                        aria-label='Radio button for following text input' checked disabled
+                                                        readonly />
                                                 </div>
-                                            @endif
+                                                <input type='text' class='form-control text-jawaban'
+                                                    aria-label='Text input with radio button'
+                                                    placeholder='{{ $jawaban->jawaban }}' disabled readonly
+                                                    value="{{ $jawaban->jawaban_lainnya }}" />
+                                            </div>
                                         @endif
                                     @endforeach
                                 @else
                                     <input type='text' class='form-control text-jawaban text-kotak-centang' disabled
-                                        value='{{ $soal->jawabanSurvey[0]->jawaban_lainnya }}' />
+                                        value='{{ $daftarJawaban[0]->jawaban_lainnya }}' />
                                 @endif
                             @endforeach
                         </div>

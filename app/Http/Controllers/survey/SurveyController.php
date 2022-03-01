@@ -11,6 +11,7 @@ use App\Models\Soal;
 use App\Models\Survey;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Yajra\DataTables\Facades\DataTables;
@@ -19,8 +20,47 @@ class SurveyController extends Controller
 {
     public function index(Request $request)
     {
+        $namaSurveyId = $request->nama_survey_id;
+        $status = $request->status;
+        $search = $request->search;
+
+        $namaSurvey = NamaSurvey::all();
         if ($request->ajax()) {
-            $data = Survey::with(['responden', 'namaSurvey', 'profile'])->orderBy('id', 'DESC')->get();
+            $data = Survey::with(['responden', 'namaSurvey', 'profile'])->whereHas('namaSurvey', function ($namaSurvey) use ($namaSurveyId) {
+                if ($namaSurveyId != 'semua' && $namaSurveyId != null) {
+                    $namaSurvey->where('nama_survey_id', $namaSurveyId);
+                }
+            })->where(function ($query) {
+                if (Auth::user()->role == "Surveyor") {
+                    $query->where('profile_id', Auth::user()->profile->id);
+                }
+            })->where(function ($query) use ($status) {
+                if (Auth::user()->role == "Surveyor") {
+                    if ($status != 'semua' && $status != null) {
+                        if ($status == 'selesai') {
+                            $query->where('is_selesai', 1);
+                        } else {
+                            $query->where('is_selesai', 0);
+                        }
+                    }
+                } else {
+                    $query->where('is_selesai', 1);
+                }
+            })->where(function ($query) use ($search) {
+                if ($search) {
+                    $query->whereHas('responden', function ($query) use ($search) {
+                        $query->where('kartu_keluarga', 'like', '%' . $search . '%');
+                    });
+
+                    $query->orWhereHas('namaSurvey', function ($query) use ($search) {
+                        $query->where('nama', 'like', '%' . $search . '%');
+                    });
+
+                    $query->orWhereHas('profile', function ($query) use ($search) {
+                        $query->where('nama_lengkap', 'like', '%' . $search . '%');
+                    });
+                }
+            })->orderBy('id', 'DESC')->get();
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('nama', function ($row) {
@@ -30,9 +70,9 @@ class SurveyController extends Controller
                 })
                 ->addColumn('tipe', function ($row) {
                     if ($row->namaSurvey->tipe == "Pre") {
-                        return '<span class="text-warning">PRE</span>';
+                        return '<span class="badge badge-primary">PRE</span>';
                     } else {
-                        return '<span class="text-danger">POST</span>';
+                        return '<span class="badge badge-success">POST</span>';
                     }
                 })
                 ->addColumn('status', function ($row) {
@@ -52,18 +92,22 @@ class SurveyController extends Controller
                         </div>';
                     } else {
                         $kategori = KategoriSoal::where('nama_survey_id', $row->nama_survey_id)->orderBy('id', 'asc')->first();
-                        $actionBtn = '
-                            <a href="' . url('/survey/lihat-survey') . "/" . $row->id . '" class="btn btn-primary btn-sm mr-1 my-1" title="Ubah" target="_blank"><i class="fas fa-eye"></i> Lihat</a>
+
+                        $actionBtn = '<a href="' . url('/survey/lihat-survey') . "/" . $row->id . '" class="btn btn-primary btn-sm mr-1 my-1" title="Ubah" target="_blank"><i class="fas fa-eye"></i> Lihat</a>';
+
+                        if (Auth::user()->role == "Surveyor") {
+                            $actionBtn .= '
                              <a href="' . url('/survey/pertanyaan-survey') . "/" . $row->id . "/" . $kategori->id . '" class="btn btn-warning btn-sm mr-1 my-1" title="Ubah" ><i class="fas fa-edit"></i> Ubah</a>
                              <button id="btn-delete" onclick="hapus(' . $row->id . ')" class="btn btn-danger btn-sm mr-1 my-1" value="' . $row->id . '" title="Hapus"><i class="fas fa-trash"></i> Hapus</button>
                         </div>';
+                        }
                     }
                     return $actionBtn;
                 })
                 ->rawColumns(['action', 'nama', 'tipe', 'status'])
                 ->make(true);
         }
-        return view('pages.survey.index');
+        return view('pages.survey.index', compact('namaSurvey'));
     }
 
     public function pilihResponden()
@@ -129,11 +173,11 @@ class SurveyController extends Controller
         $survey->save();
 
         $kategori = KategoriSoal::where('nama_survey_id', $request->nama_survey_id)->orderBy('id', 'asc')->first();
+        $url = url('/survey/pertanyaan-survey' . "/" . $survey->id . "/" . $kategori->id);
 
         return response()->json([
             'status' => 'success',
-            'id_survey' => $survey->id,
-            'id_kategori' => $kategori->id
+            'url' => $url
         ]);
     }
 
@@ -144,11 +188,13 @@ class SurveyController extends Controller
 
         $survey = Survey::with(['responden', 'namaSurvey', 'profile'])->where('id', $idSurvey)->first();
 
+        if ($survey->profile_id != auth()->user()->profile->id) {
+            return redirect('/survey/daftar-survey');
+        }
+
         $semuaKategori = KategoriSoal::where('nama_survey_id', $survey->nama_survey_id)->get();
         $kategori = KategoriSoal::with(['soal'])->where('nama_survey_id', $survey->nama_survey_id)->where('id', $idKategori)->orderBy('urutan', 'asc')->get();
         $indexKategori = array_search($idKategori, $semuaKategori->pluck('id')->toArray());
-
-        $jawabanSurvey = JawabanSurvey::with(['jawabanSoal'])->where('survey_id', $idSurvey)->where('kategori_soal_id', $idKategori)->get();
 
         if (($indexKategori + 1) == count($semuaKategori)) {
             $tombolSelanjutnya = 'Simpan';
@@ -166,7 +212,7 @@ class SurveyController extends Controller
 
 
         $kategori = $kategori[0];
-        return view('pages.survey.pertanyaanSurvey', compact('kategori', 'tombolSelanjutnya', 'tombolSebelumnya', 'urlSebelumnya', 'idSurvey', 'jawabanSurvey'));
+        return view('pages.survey.pertanyaanSurvey', compact('kategori', 'tombolSelanjutnya', 'tombolSebelumnya', 'urlSebelumnya', 'idSurvey', 'survey'));
     }
 
     public function cekJawabanSurvey($survey, Request $request)
@@ -264,9 +310,13 @@ class SurveyController extends Controller
     {
         $idSurvey = $id;
         $survey = Survey::with(['responden', 'namaSurvey', 'profile'])->where('id', $id)->first();
-        $daftarKategori = KategoriSoal::with(['soal', 'jawabanSurvey' => function ($jawabanSurvey) use ($idSurvey) {
-            $jawabanSurvey->where('survey_id', $idSurvey);
-        }])->where('nama_survey_id', $survey->nama_survey_id)->orderBy('urutan', 'asc')->get();
+        if (Auth::user()->role == "Surveyor") {
+            if ($survey->profile_id != auth()->user()->profile->id) {
+                return redirect('/survey/daftar-survey');
+            }
+        }
+
+        $daftarKategori = KategoriSoal::with(['soal'])->where('nama_survey_id', $survey->nama_survey_id)->get();
 
         return view('pages.survey.lihatSurvey', compact('survey', 'daftarKategori', 'idSurvey'));
     }

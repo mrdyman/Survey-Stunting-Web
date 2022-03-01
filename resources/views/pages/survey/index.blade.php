@@ -35,18 +35,60 @@
 
 @section('content')
     <section>
-        <div class="row mb-3">
-            <div class="col">
-                @component('components.buttons.add')
-                    @slot('href')
-                        {{ url('/survey/pilih-responden') }}
-                    @endslot
-                    @slot('onClick')
+        <div class="row">
+            <div class="col-lg">
+                @component('components.formGroup.select', [
+                    'label' => 'Pilih Nama Survey',
+                    'name' => 'nama_survey_id',
+                    'id' => 'nama_survey_id',
+                    'class' => 'select2 filter',
+                    ])
+                    @slot('options')
+                        <option value="semua">Semua</option>
+                        @if (count($namaSurvey) > 0)
+                            @foreach ($namaSurvey as $row)
+                                <option value="{{ $row->id }}">{{ $row->nama }} | {{ $row->tipe }}</option>
+                            @endforeach
+                        @endif
                     @endslot
                 @endcomponent
             </div>
+            @if (Auth::user()->role == 'Surveyor')
+                <div class="col-lg">
+                    @component('components.formGroup.select', [
+                        'label' => 'Pilih Status',
+                        'name' => 'status',
+                        'id' => 'status',
+                        'class' => 'select2 filter',
+                        ])
+                        @slot('options')
+                            <option value="semua">Semua</option>
+                            <option value="selesai">Selesai</option>
+                            <option value="belum_selesai">Belum Selesai</option>
+                        @endslot
+                    @endcomponent
+                </div>
+            @endif
+
         </div>
     </section>
+
+    @if (Auth::user()->role == 'Surveyor')
+        <section class="mt-3">
+            <div class="row mb-3">
+                <div class="col">
+                    @component('components.buttons.add')
+                        @slot('href')
+                            {{ url('/survey/pilih-responden') }}
+                        @endslot
+                        @slot('onClick')
+                        @endslot
+                    @endcomponent
+                </div>
+            </div>
+        </section>
+    @endif
+
 
     <div class="row">
         <table class="table table-bordered yajra-datatable">
@@ -136,6 +178,11 @@
             responsive: true,
             ajax: {
                 url: "{{ url('/survey/daftar-survey') }}",
+                data: function(d) {
+                    d.nama_survey_id = $('#nama_survey_id').val();
+                    d.status = $('#status').val();
+                    d.search = $('input[type="search"]').val();
+                }
             },
             columns: [{
                     data: 'DT_RowIndex',
@@ -172,5 +219,9 @@
                 },
             ],
         });
+
+        $('.filter').change(function() {
+            table.draw();
+        })
     </script>
 @endpush

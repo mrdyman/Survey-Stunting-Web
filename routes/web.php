@@ -41,21 +41,22 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/update-profile', [DashboardController::class, 'updateProfile'])->name('updateProfile');
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard/statistik', [DashboardController::class, 'statistikSurvey'])->name('dashboardStatistik');
+    Route::get('/dashboard/survey-belum-selesai', [DashboardController::class, 'surveyBelumSelesai'])->name('surveyBelumSelesai');
+
+
     Route::get('/lengkapi-profile', function () {
         return view('pages.lengkapiProfile');
     })->name('lengkapiProfile');
-
-
-
-    // Survey
-    Route::get('/survey/daftar-survey', [SurveyController::class, 'index']);
-    Route::get('/survey/pertanyaan-survey/{survey}/{kategori}', [SurveyController::class, 'pertanyaanSurvey']);
-    Route::post('/survey/cek-jawaban/{survey}', [SurveyController::class, 'cekJawabanSurvey']);
+  
+    Route::get('/exportSurvey', [ExportSurveyController::class, 'index']);
+    Route::post('/exportSurvey/exportExcel', [ExportSurveyController::class, 'exportSurvey']);
     Route::get('/survey/lihat-survey/{survey}', [SurveyController::class, 'lihatSurvey']);
-    Route::delete('/survey/lihat-survey/{survey}', [SurveyController::class, 'delete']);
-    Route::get('/survey/pilih-responden', [SurveyController::class, 'pilihResponden'])->name('pilihResponden');
     Route::post('/survey/cek-pilih-responden', [SurveyController::class, 'cekPilihResponden']);
+    Route::get('/survey/daftar-survey', [SurveyController::class, 'index']);
 });
+
+
 
 
 // Role Admin
@@ -78,8 +79,11 @@ Route::group(['middleware' => ['admin']], function () {
 
 // Role Surveyor
 Route::group(['middleware' => ['surveyor']], function () {
-    Route::get('/survey/pilih-responden', [RespondenController::class, 'pilihResponden'])->name('pilihResponden');
     Route::post('/survey/tambah-responden', [RespondenController::class, 'store'])->name('tambahResponden');
+    Route::get('/survey/pilih-responden', [SurveyController::class, 'pilihResponden'])->name('pilihResponden');
+    Route::get('/survey/pertanyaan-survey/{survey}/{kategori}', [SurveyController::class, 'pertanyaanSurvey']);
+    Route::post('/survey/cek-jawaban/{survey}', [SurveyController::class, 'cekJawabanSurvey']);
+    Route::delete('/survey/lihat-survey/{survey}', [SurveyController::class, 'delete']);
 });
 
 
@@ -88,6 +92,3 @@ Route::get('/provinsi', [ListController::class, 'listProvinsi'])->name('listProv
 Route::get('/kabupaten-kota', [ListController::class, 'listKabupatenKota'])->name('listKabupatenKota');
 Route::get('/kecamatan', [ListController::class, 'listKecamatan'])->name('listKecamatan');
 Route::get('/desa-kelurahan', [ListController::class, 'listDesaKelurahan'])->name('listDesaKelurahan');
-
-Route::get('/exportSurvey', [ExportSurveyController::class, 'index']);
-Route::post('/exportSurvey/exportExcel', [ExportSurveyController::class, 'exportSurvey']);
