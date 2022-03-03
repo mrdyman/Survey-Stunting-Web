@@ -91,20 +91,22 @@
 
 
     <div class="row">
-        <table class="table table-bordered yajra-datatable">
-            <thead>
-                <tr class="text-center  ">
-                    <th>No</th>
-                    <th>Nama</th>
-                    <th>Tipe</th>
-                    <th>Status</th>
-                    <th>Tanggal</th>
-                    <th>Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
+        <div class="table-responsive">
+            <table class="table table-bordered yajra-datatable">
+                <thead>
+                    <tr class="text-center  ">
+                        <th>No</th>
+                        <th>Nama</th>
+                        <th>Tipe</th>
+                        <th>Status</th>
+                        <th>Tanggal</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
     </div>
 @endsection
 

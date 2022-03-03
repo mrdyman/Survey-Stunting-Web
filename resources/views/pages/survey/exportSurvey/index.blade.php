@@ -99,18 +99,20 @@
     </form>
 
     <div class="row mt-4">
-        <table class="table table-bordered yajra-datatable">
-            <thead>
-                <tr class="text-center  ">
-                    <th>No</th>
-                    <th>Nama</th>
-                    <th>Tipe</th>
-                    <th>Tanggal</th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
+        <div class="table-responsive">
+            <table class="table table-bordered yajra-datatable">
+                <thead>
+                    <tr class="text-center  ">
+                        <th>No</th>
+                        <th>Nama</th>
+                        <th>Tipe</th>
+                        <th>Tanggal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
     </div>
 @endsection
 

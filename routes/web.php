@@ -79,7 +79,7 @@ Route::group(['middleware' => ['admin']], function () {
 
 // Role Surveyor
 Route::group(['middleware' => ['surveyor']], function () {
-    Route::post('/survey/tambah-responden', [RespondenController::class, 'store'])->name('tambahResponden');
+    Route::post('/survey/tambah-responden', [RespondenController::class, 'insertResponden'])->name('tambahResponden');
     Route::get('/survey/pilih-responden', [SurveyController::class, 'pilihResponden'])->name('pilihResponden');
     Route::get('/survey/pertanyaan-survey/{survey}/{kategori}', [SurveyController::class, 'pertanyaanSurvey']);
     Route::post('/survey/cek-jawaban/{survey}', [SurveyController::class, 'cekJawabanSurvey']);

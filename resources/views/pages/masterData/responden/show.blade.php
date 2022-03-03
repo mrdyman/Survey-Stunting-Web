@@ -64,9 +64,10 @@ Responden
 @endsection
 
 @component('components.wilayah.show', [
-    'provinsi' => $responden->provinsi, 
-    'kabupaten_kota' => $responden->kabupaten_kota, 'kecamatan' => $responden->kecamatan, 
-    'desa_kelurahan' => $responden->desa_kelurahan])
+    'provinsi' => $responden->provinsi_id, 
+    'kabupaten_kota' => $responden->kabupaten_kota_id, 
+    'kecamatan' => $responden->kecamatan_id, 
+    'desa_kelurahan' => $responden->desa_kelurahan_id])
 @endcomponent
 
 @push('script')

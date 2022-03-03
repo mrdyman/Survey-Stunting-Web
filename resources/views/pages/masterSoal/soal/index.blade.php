@@ -59,18 +59,20 @@
 
 
     <div class="row">
-        <table class="table table-bordered yajra-datatable">
-            <thead>
-                <tr class="text-center  ">
-                    <th>Urutan</th>
-                    <th>Soal</th>
-                    <th>Tipe Jawaban</th>
-                    <th>Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
+        <div class="table-responsive">
+            <table class="table table-bordered yajra-datatable">
+                <thead>
+                    <tr class="text-center">
+                        <th>Urutan</th>
+                        <th>Soal</th>
+                        <th>Tipe Jawaban</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <div class="modal" tabindex="-1" role="dialog" id="modal-preview">
