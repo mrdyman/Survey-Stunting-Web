@@ -85,10 +85,10 @@
 </form>
 
 @component('components.wilayah.form', [
-    'provinsi' => $responden->provinsi ?? null, 
-    'kabupaten_kota' => $responden->kabupaten_kota ?? null, 
-    'kecamatan' => $responden->kecamatan ?? null, 
-    'desa_kelurahan' => $responden->desa_kelurahan ?? null])
+    'provinsi' => $responden->provinsi_id ?? null, 
+    'kabupaten_kota' => $responden->kabupaten_kota_id ?? null, 
+    'kecamatan' => $responden->kecamatan_id ?? null, 
+    'desa_kelurahan' => $responden->desa_kelurahan_id ?? null])
 @endcomponent
 
 
