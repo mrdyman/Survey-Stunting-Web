@@ -26,13 +26,12 @@ class KategoriSoalController extends Controller
         if ($request->ajax()) {
             $data = KategoriSoal::orderBy('urutan', 'asc')->where('nama_survey_id', $request->namaSurvey)->get();
             return DataTables::of($data)
-                ->addColumn('action', function ($row) {
+                ->addColumn('action', function ($row) use ($survey) {
                     $actionBtn = '
                             <a id="btn-edit" href="' . url('/soal') . "/" . $row->id . '" class="btn btn-primary btn-sm mr-1 my-1" title="Ubah"><i class="fas fa-eye"></i> Lihat Daftar Soal</a>
                             ';
 
-                    $jawabanSurvey = JawabanSurvey::where('kategori_soal_id', $row->id)->first();
-                    if (!$jawabanSurvey) {
+                    if (!$survey) {
                         $actionBtn .= '<button id="btn-edit" class="btn btn-warning btn-sm mr-1 my-1" title="Ubah" onclick="edit(' . $row->id . ')"><i class="fas fa-edit"></i> Ubah</button>
                             <button id="btn-delete" onclick="hapus(' . $row->id . ')" class="btn btn-danger btn-sm mr-1 my-1" value="' . $row->id . '" title="Hapus"><i class="fas fa-trash"></i> Hapus</button>';
                     }

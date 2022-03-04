@@ -7,6 +7,7 @@ use App\Models\JawabanSoal;
 use App\Models\JawabanSurvey;
 use App\Models\KategoriSoal;
 use App\Models\Soal;
+use App\Models\Survey;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Validation\Rule;
@@ -22,15 +23,17 @@ class SoalController extends Controller
     public function index(Request $request)
     {
         $jawabanSurvey = JawabanSurvey::where('kategori_soal_id', $request->kategoriSoal)->first();
+        $kategoriSoal = KategoriSoal::find($request->kategoriSoal);
+        $survey = Survey::where('nama_survey_id', $kategoriSoal->nama_survey_id)->first();
         if ($request->ajax()) {
             $data = Soal::orderBy('urutan', 'asc')->where('kategori_soal_id', $request->kategoriSoal)->get();
             return DataTables::of($data)
-                ->addColumn('action', function ($row) use ($request) {
+                ->addColumn('action', function ($row) use ($request, $survey) {
                     $actionBtn = '
                             <button id="btn-preview" class="btn btn-primary btn-sm mr-1 my-1" title="Preview" onclick="preview(' . $row->id . ')"><i class="fas fa-edit"></i> Preview</button>
                             ';
-                    $soal = JawabanSurvey::where('kategori_soal_id', $row->kategori_soal_id)->first();
-                    if (!$soal) {
+
+                    if (!$survey) {
                         $actionBtn .= '<a id="btn-edit" class="btn btn-warning btn-sm mr-1 my-1" title="Ubah" href="' . url('/soal' . '/' . $request->kategoriSoal) . '/' . $row->id . '/edit' . '"><i class="fas fa-edit"></i> Ubah</a>
                             <button id="btn-delete" onclick="hapus(' . $row->id . ')" class="btn btn-danger btn-sm mr-1 my-1" value="' . $row->id . '" title="Hapus"><i class="fas fa-trash"></i> Hapus</button>';
                     }

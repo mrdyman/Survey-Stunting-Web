@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class NamaSurveySeeder extends Seeder
+class NamaSurveyTableSeeder extends Seeder
 {
 
     /**
@@ -15,17 +15,15 @@ class NamaSurveySeeder extends Seeder
      */
     public function run()
     {
-        DB::table('nama_survey')->delete();
-
         DB::table('nama_survey')->insert(array(
             0 =>
             array(
-                'id' => 1,
-                'nama' => 'Survey Develop',
+                'id' => 2,
+                'nama' => 'Stunting',
                 'tipe' => 'Pre',
                 'deleted_at' => NULL,
-                'created_at' => '2022-02-22 02:17:42',
-                'updated_at' => '2022-02-22 02:17:42',
+                'created_at' => '2022-03-01 16:21:07',
+                'updated_at' => '2022-03-01 16:21:07',
             ),
         ));
     }
