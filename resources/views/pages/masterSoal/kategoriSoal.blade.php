@@ -161,6 +161,7 @@
         });
 
         $('#form-tambah').submit(function(e) {
+            $("#overlay").fadeIn(100);
             e.preventDefault();
             $.ajax({
                 url: "{{ url('/kategoriSoal/' . $namaSurvey) }}",
@@ -168,6 +169,7 @@
                 data: $(this).serialize(),
                 success: function(response) {
                     resetError();
+                    $("#overlay").fadeOut(100);
                     if (response.status == "success") {
                         swal("Berhasil",
                             "Kategori Soal berhasil ditambahkan", {
@@ -186,6 +188,7 @@
                     }
                 },
                 error: function(response) {
+                    $("#overlay").fadeOut(100);
                     swal("Gagal",
                         "Kategori Soal gagal ditambahkan", {
                             icon: "error",
@@ -201,12 +204,14 @@
 
         $('#form-edit').submit(function(e) {
             e.preventDefault();
+            $("#overlay").fadeIn(100);
             $.ajax({
                 url: "{{ url('kategoriSoal/' . $namaSurvey) . '/' }}" + idEdit,
                 type: "PUT",
                 data: $(this).serialize(),
                 success: function(response) {
                     resetError();
+                    $("#overlay").fadeOut(100);
                     if (response.status == "success") {
                         swal("Berhasil",
                             "Kategori Soal berhasil diubah", {
@@ -225,6 +230,7 @@
                     }
                 },
                 error: function(response) {
+                    $("#overlay").fadeOut(100);
                     swal("Gagal",
                         "Kategori Soal gagal diubah", {
                             icon: "error",
@@ -239,17 +245,19 @@
         })
 
         function edit(id) {
+            $("#overlay").fadeIn(100);
             idEdit = id;
             $.ajax({
                 url: "{{ url('kategoriSoal/' . $namaSurvey) . '/' }}" + id + "/edit",
                 type: "GET",
                 success: function(response) {
-                    console.log(response);
+                    $("#overlay").fadeOut(100);
                     $('#nama_edit').val(response.data.nama);
                     $('#urutan_edit').val(response.data.urutan);
                     $('#modal-edit').modal('show');
                 },
                 error: function(response) {
+                    $("#overlay").fadeOut(100);
                     swal("Gagal",
                         "Kategori Soal gagal diedit", {
                             icon: "error",
@@ -282,10 +290,12 @@
                 dangerMode: true,
             }).then((willDelete) => {
                 if (willDelete) {
+                    $("#overlay").fadeIn(100);
                     $.ajax({
                         url: "{{ url('kategoriSoal/' . $namaSurvey) . '/' }}" + id,
                         type: "DELETE",
                         success: function(response) {
+                            $("#overlay").fadeOut(100);
                             if (response.status == "success") {
                                 swal("Berhasil",
                                     "Kategori Soal berhasil dihapus", {
@@ -310,6 +320,7 @@
                             }
                         },
                         error: function(response) {
+                            $("#overlay").fadeOut(100);
                             swal("Gagal",
                                 "Kategori Soal gagal dihapus", {
                                     icon: "error",

@@ -9,8 +9,8 @@
         <button class="topbar-toggler more"><i class="icon-options-vertical"></i></button>
         <!-- Logo Header -->
         <a href="{{ url('/') }}" class="logo d-flex align-self-center d-inline float-left">
-            <img src="{{asset('assets/landingPage')}}/img/logoo.png" alt="navbar brand"
-                class="navbar-brand" width="230px">
+            <img src="{{ asset('assets/landingPage') }}/img/logo-header.png" alt="navbar brand" class="navbar-brand"
+                width="230px">
         </a>
 
         <!-- End Logo Header -->

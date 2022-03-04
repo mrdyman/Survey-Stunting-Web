@@ -31,7 +31,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         # Start : Untuk Banyak Data Dummy
         // Responden::factory(1500)->create();
@@ -89,16 +89,16 @@ class DatabaseSeeder extends Seeder
 
 
         $this->call(RespondenSeeder::class);
-        $this->call(NamaSurveySeeder::class);
         $this->call(UserSeeder::class);
         $this->call(ProfileSeeder::class);
-        $this->call(KategoriSoalSeeder::class);
-        $this->call(SoalSeeder::class);
-        $this->call(JawabanSoalSeeder::class);
         $this->call(SurveySeeder::class);
         $this->call(ProvinsiTableSeeder::class);
         $this->call(KabupatenKotaTableSeeder::class);
         $this->call(KecamatanTableSeeder::class);
         $this->call(DesaKelurahanTableSeeder::class);
+        $this->call(NamaSurveyTableSeeder::class);
+        $this->call(KategoriSoalTableSeeder::class);
+        $this->call(SoalTableSeeder::class);
+        $this->call(JawabanSoalTableSeeder::class);
     }
 }

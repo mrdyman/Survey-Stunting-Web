@@ -184,7 +184,6 @@
             $('#form-tambah').submit(function(e) {
                 e.preventDefault();
                 resetError();
-                // create swal with confirmation
                 swal({
                     title: "Apakah anda yakin?",
                     text: "Jawaban Pertanyaan Akan Disimpan",
@@ -203,11 +202,13 @@
                     dangerMode: true,
                 }).then((willDelete) => {
                     if (willDelete) {
+                        $("#overlay").fadeIn(100);
                         $.ajax({
                             url: "{{ url('/survey/cek-jawaban' . '/' . $idSurvey) }}",
                             type: "POST",
                             data: $(this).serialize(),
                             success: function(response) {
+                                $("#overlay").fadeOut(100);
                                 if (response.status == "success") {
                                     swal("Berhasil",
                                         "Jawaban Pertanyaan Berhasil Disimpan", {
@@ -222,6 +223,15 @@
                                         }, 2000);
                                 } else {
                                     printErrorMsg(response.error);
+                                    swal("Terjadi Kesalahan",
+                                        "Pastikan Seluruh Soal Harus Memiliki Jawaban", {
+                                            icon: "warning",
+                                            buttons: {
+                                                confirm: {
+                                                    className: 'btn btn-danger'
+                                                }
+                                            },
+                                        });
                                 }
                             },
                             error: function(response) {

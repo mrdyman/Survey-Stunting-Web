@@ -96,15 +96,18 @@
 @push('script')
     <script>
         function preview(id) {
+            $("#overlay").fadeIn(100);
             $.ajax({
                 url: "{{ url('/soal') . '/' . $kategoriSoal . '/' }}" + id,
                 type: "GET",
                 dataType: "JSON",
                 success: function(response) {
+                    $("#overlay").fadeOut(100);
                     $('#preview-body').html(response.html);
                     $('#modal-preview').modal('show');
                 },
                 error: function(response) {
+                    $("#overlay").fadeOut(100);
                     alert('Error get data from ajax');
                 }
             });
@@ -129,10 +132,12 @@
                 dangerMode: true,
             }).then((willDelete) => {
                 if (willDelete) {
+                    $("#overlay").fadeIn(100);
                     $.ajax({
                         url: "{{ url('soal') . '/' . $kategoriSoal . '/' }}" + id,
                         type: "DELETE",
                         success: function(response) {
+                            $("#overlay").fadeOut(100);
                             if (response.status == "success") {
                                 swal("Berhasil",
                                     "Soal berhasil dihapus", {
@@ -157,6 +162,7 @@
                             }
                         },
                         error: function(response) {
+                            $("#overlay").fadeOut(100);
                             swal("Gagal",
                                 "Soal gagal dihapus", {
                                     icon: "error",
