@@ -137,11 +137,58 @@
             </div>
         </div>
     </div>
+
+    {{-- NOTE: Modal Duplikat --}}
+    <div class="modal" tabindex="-1" role="dialog" id="modal-duplikat">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Duplikat Nama Survey</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="form-duplikat">
+                        {{-- Input Nama Survey --}}
+                        @component('components.formGroup.input', [
+                            'label' => 'Nama Survey',
+                            'type' => 'text',
+                            'class' => '',
+                            'id' => 'nama',
+                            'name' => 'nama',
+                            'placeholder' => 'Masukkan',
+                            'value' => '',
+                            ])
+                        @endcomponent
+
+                        {{-- Input Tipe Survey --}}
+                        @component('components.formGroup.select', [
+                            'label' => 'Tipe Survey',
+                            'name' => 'tipe',
+                            'id' => 'tipe',
+                            'class' => 'tipe',
+                            ])
+                            @slot('options')
+                                <option value="Pre">Pre</option>
+                                <option value="Post">Post</option>
+                            @endslot
+                        @endcomponent
+                </div>
+                <div class="modal-footer">
+                    @component('components.buttons.submit', ['label' => 'Simpan'])
+                    @endcomponent
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @push('script')
     <script>
         var idEdit = 0;
+        var idDuplikat = 0;
 
         function tambah() {
             resetForm();
@@ -232,6 +279,48 @@
             });
         })
 
+        $('#form-duplikat').submit(function(e) {
+            e.preventDefault();
+            $("#overlay").fadeIn(100);
+            $.ajax({
+                url: "{{ url('namaSurvey') . '/' }}" + idDuplikat + "/duplikat",
+                type: "POST",
+                data: $(this).serialize(),
+                success: function(response) {
+                    resetError();
+                    $("#overlay").fadeOut(100);
+                    if (response.status == "success") {
+                        swal("Berhasil",
+                            "Nama survey berhasil di duplikat", {
+                                icon: "success",
+                                buttons: {
+                                    confirm: {
+                                        className: 'btn btn-success'
+                                    }
+                                },
+                            });
+                        $('#modal-duplikat').modal('hide');
+                        table.draw();
+                        resetForm();
+                    } else {
+                        printErrorMsg(response.error);
+                    }
+                },
+                error: function(response) {
+                    $("#overlay").fadeOut(100);
+                    swal("Gagal",
+                        "Nama survey gagal diduplikat", {
+                            icon: "error",
+                            buttons: {
+                                confirm: {
+                                    className: 'btn btn-danger'
+                                }
+                            },
+                        });
+                }
+            });
+        })
+
         function edit(id) {
             $("#overlay").fadeIn(100);
             idEdit = id;
@@ -257,6 +346,12 @@
                         });
                 }
             });
+        }
+
+        function duplikat(id) {
+            resetForm();
+            idDuplikat = id;
+            $('#modal-duplikat').modal('show');
         }
 
         function hapus(id) {
@@ -370,6 +465,7 @@
 
         function resetForm() {
             $('#form-tambah')[0].reset();
+            $('#form-duplikat')[0].reset();
         }
     </script>
 @endpush

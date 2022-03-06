@@ -97,10 +97,10 @@ class SurveyController extends Controller
 
                         if (Auth::user()->role == "Surveyor") {
                             $actionBtn .= '
-                             <a href="' . url('/survey/pertanyaan-survey') . "/" . $row->id . "/" . $kategori->id . '" class="btn btn-warning btn-sm mr-1 my-1" title="Ubah" ><i class="fas fa-edit"></i> Ubah</a>
-                             <button id="btn-delete" onclick="hapus(' . $row->id . ')" class="btn btn-danger btn-sm mr-1 my-1" value="' . $row->id . '" title="Hapus"><i class="fas fa-trash"></i> Hapus</button>
-                        </div>';
+                             <a href="' . url('/survey/pertanyaan-survey') . "/" . $row->id . "/" . $kategori->id . '" class="btn btn-warning btn-sm mr-1 my-1" title="Ubah" ><i class="fas fa-edit"></i> Ubah</a>';
                         }
+
+                        $actionBtn .= '<button id="btn-delete" onclick="hapus(' . $row->id . ')" class="btn btn-danger btn-sm mr-1 my-1" value="' . $row->id . '" title="Hapus"><i class="fas fa-trash"></i> Hapus</button></div>';
                     }
                     return $actionBtn;
                 })

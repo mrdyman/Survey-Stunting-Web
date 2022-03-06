@@ -50,10 +50,7 @@
                         <div class="card-header">
                             <span> Nama Survey :
                                 {{ $survey->namaSurvey->nama }}
-                                {!! $survey->namaSurvey->tipe == 'Pre'
-    ? ' <span class="badge badge-primary">PRE</span>'
-    : ' <span
-                        class="badge badge-success">POST</span>' !!} </span>
+                                {!! $survey->namaSurvey->tipe == 'Pre' ? ' <span class="badge badge-primary">PRE</span>' : ' <span class="badge badge-success">POST</span>' !!} </span>
                             <p class="mt-2 mb-0">Kategori Soal : {{ $kategori->nama }}</p>
                         </div>
                         <div class="card-body">
@@ -141,9 +138,10 @@
                                             $value = $jawabanSurvey->jawaban_lainnya;
                                         }
                                     @endphp
-                                    <input type='text' class='form-control text-jawaban text-kotak-centang'
-                                        placeholder='Masukkan Jawaban Anda' name="jawaban-{{ $index }}"
-                                        value="{{ $value }}" />
+                                    <input type='text'
+                                        class='form-control text-jawaban text-kotak-centang {{ $soal->is_numerik ? 'numerik' : '' }}'
+                                        placeholder='{{ $soal->is_numerik == 1 ? 'Masukkan Jawaban Anda (Angka)' : 'Masukkan Jawaban Anda' }}'
+                                        name="jawaban-{{ $index }}" value="{{ $value }}" />
                                 @endif
                                 <div class="mt-3"><span
                                         class='text-danger error-text jawaban-{{ $index }}-error'></span></div>
@@ -260,5 +258,9 @@
         function resetError() {
             $('.error-text').text('');
         }
+
+        $('.numerik').on('input', function(e) {
+            this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');
+        });
     </script>
 @endpush
