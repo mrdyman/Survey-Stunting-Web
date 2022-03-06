@@ -18,6 +18,7 @@ class CreateSoalTable extends Migration
             $table->text('soal');
             $table->bigInteger('urutan');
             $table->string('tipe_jawaban', 25);
+            $table->integer('is_numerik')->default(0);
             $table->bigInteger('kategori_soal_id');
             $table->softDeletes();
             $table->timestamps();

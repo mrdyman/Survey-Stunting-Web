@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\masterSoal;
 
 use App\Http\Controllers\Controller;
+use App\Models\JawabanSoal;
 use App\Models\KategoriSoal;
 use App\Models\NamaSurvey;
 use App\Models\Soal;
@@ -38,11 +39,14 @@ class NamaSurveyController extends Controller
                             <a id="btn-edit" href="' . url('/kategoriSoal') . "/" . $row->id . '" class="btn btn-primary btn-sm mr-1 my-1" ><i class="fas fa-eye"></i> Lihat Kategori Soal</a>
                             ';
 
+                    $actionBtn .= '<button id="btn-duplikat" class="btn btn-success btn-sm mr-1 my-1"  onclick="duplikat(' . $row->id . ')"><i class="fas fa-copy"></i> Duplikat</button>';
+
                     $survey = Survey::where('nama_survey_id', $row->id)->first();
                     if (!$survey) {
                         $actionBtn .= '<button id="btn-edit" class="btn btn-warning btn-sm mr-1 my-1"  onclick="edit(' . $row->id . ')"><i class="fas fa-edit"></i> Ubah</button>
                             <button id="btn-delete" onclick="hapus(' . $row->id . ')" class="btn btn-danger btn-sm mr-1 my-1" value="' . $row->id . '" title="Hapus"><i class="fas fa-trash"></i> Hapus</button>';
                     }
+
                     return $actionBtn;
                 })
                 ->rawColumns(['action', 'tipe'])
@@ -172,6 +176,71 @@ class NamaSurveyController extends Controller
                 }
             }
         }
+        return response()->json(['status' => 'success']);
+    }
+
+    public function duplikat(Request $request, $id)
+    {
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'nama' => 'required',
+                'tipe' => 'required'
+            ],
+            [
+                'nama.required' => "Nama Survey Tidak Boleh Dikosongkan",
+                'tipe.required' => "Tipe Survey Tidak Boleh Dikosongkan",
+            ]
+        );
+
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors()]);
+        }
+
+        $namaSurveyLama = NamaSurvey::find($id);
+
+        // Insert Nama Survey Baru
+        $nama_survey = new NamaSurvey();
+        $nama_survey->nama = $request->nama;
+        $nama_survey->tipe = $request->tipe;
+        $nama_survey->save();
+
+        // Insert Kategori Berdasarkan Survey Yang Diduplikasi
+        if ($namaSurveyLama->kategoriSoal) {
+            foreach ($namaSurveyLama->kategoriSoal as $kategori) {
+                $kategoriSoal = new KategoriSoal();
+                $kategoriSoal->urutan = $kategori->urutan;
+                $kategoriSoal->nama = $kategori->nama;
+                $kategoriSoal->nama_survey_id = $nama_survey->id;
+                $kategoriSoal->save();
+
+                // Insert Soal Berdasarkan Kategori
+                if ($kategori->soal) {
+                    foreach ($kategori->soal as $soal) {
+                        $soalDuplikat = new Soal();
+                        $soalDuplikat->kategori_soal_id = $kategoriSoal->id;
+                        $soalDuplikat->urutan = $soal->urutan;
+                        $soalDuplikat->soal = $soal->soal;
+                        $soalDuplikat->is_numerik = $soal->is_numerik ? $soal->is_numerik : 0;
+                        $soalDuplikat->tipe_jawaban = $soal->tipe_jawaban;
+                        $soalDuplikat->save();
+
+                        // Insert Jawaban Soal Berdasarkan Soal
+                        if (count($soal->jawabanSoal) > 0) {
+                            foreach ($soal->jawabanSoal as $jawaban) {
+                                $jawabanDuplikat = new JawabanSoal();
+                                $jawabanDuplikat->jawaban = $jawaban->jawaban;
+                                $jawabanDuplikat->soal_id = $soalDuplikat->id;
+                                $jawabanDuplikat->is_lainnya = $jawaban->is_lainnya;
+                                $jawabanDuplikat->save();
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
         return response()->json(['status' => 'success']);
     }
 }

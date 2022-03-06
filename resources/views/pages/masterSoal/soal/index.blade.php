@@ -178,6 +178,13 @@
             });
         }
 
+        $(document).ready(function() {
+            $("#modal-preview").on("input", ".numerik", function() {
+                this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');
+            });
+        })
+
+
         var table = $('.yajra-datatable').DataTable({
             processing: true,
             serverSide: true,

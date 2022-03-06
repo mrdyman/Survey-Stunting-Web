@@ -108,6 +108,7 @@ class SoalController extends Controller
         $soal->kategori_soal_id = $request->kategoriSoal;
         $soal->urutan = $request->urutan;
         $soal->soal = $request->soal;
+        $soal->is_numerik = $request->is_numerik ? $request->is_numerik : 0;
         $soal->tipe_jawaban = $request->tipe_jawaban;
         $soal->save();
 
@@ -128,7 +129,10 @@ class SoalController extends Controller
             }
         }
 
-        return response()->json(['status' => 'success']);
+        return response()->json([
+            'status' => 'success',
+            'url' => url('/soal' . '/' . $request->kategoriSoal)
+        ]);
     }
 
     /**
@@ -173,9 +177,10 @@ class SoalController extends Controller
                 }
             }
         } else {
+            $is_numerik = $soal->is_numerik == 1 ? 'numerik' : '';
             $html .= "<p>" . $soal->urutan . ". " . $soal->soal . "</p>";
 
-            $html .= "<input type='text' id='jawaban' class='form-control text-jawaban text-kotak-centang' placeholder='Masukkan Jawaban Anda' />";
+            $html .= "<input type='text' id='jawaban' class='form-control text-jawaban text-kotak-centang " . $is_numerik . "' placeholder='Masukkan Jawaban Anda' />";
         }
         return response()->json(
             [
@@ -243,6 +248,7 @@ class SoalController extends Controller
 
         $soal->soal = $request->soal_ubah;
         $soal->urutan = $request->urutan;
+        $soal->is_numerik = $request->is_numerik ? 1 : 0;
         $soal->save();
 
         // Hapus Jawaban Yang Dihapus Ketika Update
