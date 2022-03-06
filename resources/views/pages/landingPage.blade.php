@@ -74,17 +74,12 @@
           <div class="col-12 col-md-7 col-lg-6 order-md-2 px-6" data-aos="fade-left">
 
             <!-- Heading -->
-            <h1 class="display-3 text-center text-md-start mb-5">
-              Selamat Datang di Aplikasi Survey <span class="text-danger">STUNTING</span>
+            <h1 class="display-3 text-center text-md-start mb-2">
+              Selamat Datang di Aplikasi Survey E-Gercep Persunting 
             </h1>
+            <span class="text-danger mb-5" style="font-size: 22px">(Gerakan Cepat Penurunan Stunting Berbasis Elektonik)</span>
 
-            {{-- <!-- Text -->
-            <p class="lead text-center text-md-start text-muted mb-6 mb-lg-8">
-              Build a beautiful, modern website with flexible Bootstrap components built from scratch.
-            </p> --}}
-
-            <!-- Buttons -->
-            <div class="text-center text-md-start">
+            <div class="text-center text-md-start mt-4">
               @auth
                 <a href="{{ route('dashboard') }}" class="btn btn-danger shadow lift me-1">
                   <span class="fe fe-monitor d-none d-md-inline p-0 m-0"></span> Beranda 
@@ -121,7 +116,7 @@
             </h3>
 
             <!-- Text -->
-            <p class="text-muted mb-6 mb-md-0">
+            <p class="text-muted mb-0 mb-md-0">
               <ul class="list-unstyled text-muted mb-6 mb-md-8 mb-lg-0">
                 <li class="mb-1">
                   <span class="fe fe-mail"></span> p2kb@sultengprov.go.id
