@@ -10,6 +10,7 @@ class JawabanSurvey extends Model
 {
     use HasFactory;
     protected $table = 'jawaban_survey';
+    protected $guarded = [];
 
     public function soal()
     {
