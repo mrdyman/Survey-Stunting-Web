@@ -283,8 +283,16 @@ class ApiSurveyController extends Controller
     public function destroy(Request $request)
     {
         $id = $request->id;
-        $data = JawabanSurvey::destroy($id);
-        if($data > 0){
+
+        $survey = Survey::find($id);
+        $survey->delete();
+
+        $jawabanSurvey = JawabanSurvey::where('survey_id', $id)->get();
+        if ($jawabanSurvey->count() > 0) {
+            $jawabanSurvey = JawabanSurvey::where('survey_id', $id)->delete();
+        }
+
+        if($survey){
             return response([
                 'message' => 'Data deleted.'
             ], 200);
