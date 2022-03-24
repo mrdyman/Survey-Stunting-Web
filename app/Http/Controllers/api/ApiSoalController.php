@@ -16,35 +16,30 @@ class ApiSoalController extends Controller
      */
     public function index(Request $request)
     {
-        $kategori = $request->kategori;
+        $id = $request->id;
+        $kategori = $request->kategori_id;
         
-        if($kategori != null){
-            // Get soal by kategori soal
-            $data = Soal::where('kategori_soal_id', $kategori)->orderBy('urutan', 'asc')->get();
-            
-            if(count($data) > 0){
-                return response([
-                    'message' => 'OK',
-                    'data' => $data
-                ], 200);
-            } else {
-                return response([
-                    'message' => 'data not found.'
-                ], 404);
-            }
+        if($id != null){
+            $data = Soal::where('id', $id)->orderBy('urutan', 'asc')->get();
         } else {
-            // Get all soal
-            $data = Soal::all();
-            if($data){
-                return response([
-                    'message' => 'OK',
-                    'data' => $data
-                ], 200);
+            if($kategori != null){
+                // Get soal by kategori soal
+                $data = Soal::where('kategori_soal_id', $kategori)->orderBy('urutan', 'asc')->get();
             } else {
-                return response([
-                    'message' => 'data not found.'
-                ], 404);
+                // Get all soal
+                $data = Soal::all();
             }
+        }
+
+        if($data){
+            return response([
+                'message' => 'OK',
+                'data' => $data
+            ], 200);
+        } else {
+            return response([
+                'message' => 'data not found.'
+            ], 404);
         }
     }
 
