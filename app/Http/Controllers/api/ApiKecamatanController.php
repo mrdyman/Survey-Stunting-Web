@@ -13,9 +13,14 @@ class ApiKecamatanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = Kecamatan::all();
+        $id = $request->kabupaten_id;
+        if($id != null){
+            $data = Kecamatan::where('kabupaten_kota_id', $id)->orderBy('id', 'asc')->get();
+        } else {
+            $data = Kecamatan::all();
+        }
         if($data){
             return response([
                 'message' => 'OK',

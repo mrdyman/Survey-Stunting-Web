@@ -15,7 +15,7 @@ class ApiKabupatenKotaController extends Controller
      */
     public function index(Request $request)
     {
-        $id = $request->id;
+        $id = $request->provinsi_id;
         
         if($id != null){
             // get kabupaten by provinsi id
