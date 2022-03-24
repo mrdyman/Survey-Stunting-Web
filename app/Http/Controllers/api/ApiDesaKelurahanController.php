@@ -13,9 +13,14 @@ class ApiDesaKelurahanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = Desa_kelurahan::all();
+        $id = $request->kecamatan_id;
+        if($id != null){
+            $data = Desa_kelurahan::where('kecamatan_id', $id)->orderBy('id', 'asc')->get();
+        } else {
+            $data = Desa_kelurahan::all();
+        }
         if($data){
             return response([
                 'message' => 'OK',
