@@ -13,9 +13,16 @@ class ApiKategoriSoalController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = KategoriSoal::all();
+        $id = $request->id;
+        if($id != null){
+            // get kategori soal by id
+            $data = KategoriSoal::where('id', $id)->orderBy('id', 'asc')->get();
+        }else{
+            // get all data kategori soal
+            $data = KategoriSoal::all();
+        }
         if(count($data) > 0){
             return response([
                 'message' => 'OK',
