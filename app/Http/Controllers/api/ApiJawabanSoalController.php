@@ -3,33 +3,48 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Desa_kelurahan;
+use App\Models\JawabanSoal;
 use Illuminate\Http\Request;
 
-class ApiDesaKelurahanController extends Controller
+class ApiJawabanSoalController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
+     * @param $Id
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
     {
-        $id = $request->kecamatan_id;
+        $id = $request->id;
+        
         if($id != null){
-            $data = Desa_kelurahan::where('kecamatan_id', $id)->orderBy('id', 'asc')->get();
+            // Get jawaban soal by id
+            $data = JawabanSoal::where('id', $id)->orderBy('id', 'asc')->get();
+            
+            if(count($data) > 0){
+                return response([
+                    'message' => 'OK',
+                    'data' => $data
+                ], 200);
+            } else {
+                return response([
+                    'message' => 'data not found.'
+                ], 404);
+            }
         } else {
-            $data = Desa_kelurahan::all();
-        }
-        if($data){
-            return response([
-                'message' => 'OK',
-                'data' => $data
-            ], 200);
-        } else {
-            return response([
-                'message' => 'data not found.'
-            ], 404);
+            // Get all soal
+            $data = JawabanSoal::all();
+            if($data){
+                return response([
+                    'message' => 'OK',
+                    'data' => $data
+                ], 200);
+            } else {
+                return response([
+                    'message' => 'data not found.'
+                ], 404);
+            }
         }
     }
 

@@ -13,9 +13,17 @@ class ApiKabupatenKotaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = Kabupaten_kota::all();
+        $id = $request->provinsi_id;
+        
+        if($id != null){
+            // get kabupaten by provinsi id
+            $data = Kabupaten_kota::where('provinsi_id', $id)->orderBy('id', 'asc')->get();
+        } else {
+            // get all kabupaten
+            $data = Kabupaten_kota::all();
+        }
         if($data){
             return response([
                 'message' => 'OK',
