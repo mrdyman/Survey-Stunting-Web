@@ -3,29 +3,36 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
-use App\Models\KategoriSoal;
+use App\Models\JawabanSurvey;
 use Illuminate\Http\Request;
 
-class ApiKategoriSoalController extends Controller
+class ApiJawabanSurveyController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
+     * @param $Id
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
     {
         $id = $request->id;
-        $namaSurveyId = $request->nama_survey_id;
+        $soalId = $request->soal_id;
+        $surveyId = $request->survey_id;
+        
         if($id != null){
-            // get kategori soal by id
-            $data = KategoriSoal::where('id', $id)->orderBy('id', 'asc')->get();
-        } else if($namaSurveyId != null){
-            $data = KategoriSoal::where('nama_survey_id', $namaSurveyId)->orderBy('id', 'asc')->get();
-        }
-        else{
-            // get all data kategori soal
-            $data = KategoriSoal::all();
+            // Get jawaban soal by id
+            $data = JawabanSurvey::where('id', $id)->orderBy('id', 'asc')->get();
+        } else {
+            if($soalId != null){
+                $data = JawabanSurvey::where('soal_id', $soalId)->orderBy('id', 'asc')->get();
+            } else if($surveyId != null){
+                $data = JawabanSurvey::where('survey_id', $surveyId)->orderBy('id', 'asc')->get();
+            } 
+            else {
+                // Get all soal
+                $data = JawabanSurvey::all();
+            }
         }
         if(count($data) > 0){
             return response([

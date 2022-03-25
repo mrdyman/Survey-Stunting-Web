@@ -11,6 +11,7 @@ use App\Http\Controllers\api\ApiKecamatanController;
 use App\Http\Controllers\api\ApiDesaKelurahanController;
 use App\Http\Controllers\api\ApiSoalController;
 use App\Http\Controllers\api\ApiJawabanSoalController;
+use App\Http\Controllers\api\ApiJawabanSurveyController;
 use App\Http\Controllers\api\ApiKategoriSoalController;
 use App\Http\Controllers\api\ApiProfileController;
 use App\Http\Controllers\api\ApiAkunController;
@@ -64,6 +65,9 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
 
     // JawabanSoal
     Route::get('/jawaban_soal', [ApiJawabanSoalController::class, 'index']);
+    
+    // JawabanSurvey
+    Route::get('/jawaban_survey', [ApiJawabanSurveyController::class, 'index']);
     
     // Kategori_soal
     Route::get('/kategori_soal', [ApiKategoriSoalController::class, 'index']);
