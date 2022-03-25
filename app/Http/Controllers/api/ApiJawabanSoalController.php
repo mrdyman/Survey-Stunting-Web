@@ -17,34 +17,28 @@ class ApiJawabanSoalController extends Controller
     public function index(Request $request)
     {
         $id = $request->id;
+        $soalId = $request->soal_id;
         
         if($id != null){
             // Get jawaban soal by id
             $data = JawabanSoal::where('id', $id)->orderBy('id', 'asc')->get();
-            
-            if(count($data) > 0){
-                return response([
-                    'message' => 'OK',
-                    'data' => $data
-                ], 200);
-            } else {
-                return response([
-                    'message' => 'data not found.'
-                ], 404);
-            }
         } else {
-            // Get all soal
-            $data = JawabanSoal::all();
-            if($data){
-                return response([
-                    'message' => 'OK',
-                    'data' => $data
-                ], 200);
+            if($soalId != null){
+                $data = JawabanSoal::where('soal_id', $soalId)->orderBy('id', 'asc')->get();
             } else {
-                return response([
-                    'message' => 'data not found.'
-                ], 404);
+                // Get all soal
+                $data = JawabanSoal::all();
             }
+        }
+        if($data){
+            return response([
+                'message' => 'OK',
+                'data' => $data
+            ], 200);
+        } else {
+            return response([
+                'message' => 'data not found.'
+            ], 404);
         }
     }
 

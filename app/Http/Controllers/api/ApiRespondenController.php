@@ -49,6 +49,7 @@ class ApiRespondenController extends Controller
         $data = Responden::create($request->all());
         if($data){
             return response([
+                'data' => $data,
                 'message' => 'data created.'
             ], 201);
         }
