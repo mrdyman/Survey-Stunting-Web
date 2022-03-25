@@ -16,10 +16,14 @@ class ApiKategoriSoalController extends Controller
     public function index(Request $request)
     {
         $id = $request->id;
+        $namaSurveyId = $request->nama_survey_id;
         if($id != null){
             // get kategori soal by id
             $data = KategoriSoal::where('id', $id)->orderBy('id', 'asc')->get();
-        }else{
+        } else if($namaSurveyId != null){
+            $data = KategoriSoal::where('nama_survey_id', $namaSurveyId)->orderBy('id', 'asc')->get();
+        }
+        else{
             // get all data kategori soal
             $data = KategoriSoal::all();
         }
