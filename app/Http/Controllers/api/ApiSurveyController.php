@@ -25,7 +25,7 @@ class ApiSurveyController extends Controller
     public function index(Request $request)
     {
         $id = $request->id;
-        $typeSurveyId = $request->typeSurveyId;
+        $namaSurveyId = $request->namaSurveyId;
         $status = $request->status;
         $search = $request->search;
 
@@ -33,10 +33,10 @@ class ApiSurveyController extends Controller
            return $this->show($id);
         }
 
-        $data = Survey::with(['responden', 'namaSurvey', 'profile'])->whereHas('namaSurvey', function ($namaSurvey) use ($typeSurveyId) {
-            if ($typeSurveyId != 'semua' && $typeSurveyId != null) {
+        $data = Survey::with(['responden', 'namaSurvey', 'profile'])->whereHas('namaSurvey', function ($namaSurvey) use ($namaSurveyId) {
+            if ($namaSurveyId != 'semua' && $namaSurveyId != null) {
                 // Get all survey
-                $namaSurvey->where('nama_survey_id', $typeSurveyId);
+                $namaSurvey->where('nama_survey_id', $namaSurveyId);
             }
         })->where(function ($query) {
             if (Auth::user()->role == "Surveyor") {
