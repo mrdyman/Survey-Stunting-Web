@@ -254,18 +254,26 @@ class ApiSurveyController extends Controller
     public function update(Request $request)
     {
         $id = $request->id;
+
+        if($id == null){
+            return response([
+                'message' => 'please provide an id'
+            ], 400);
+        }
+
         $request->validate([
-            'soal_id' => 'required|numeric',
-            'survey_id' => 'required|numeric',
-            'kategori_soal_id' => 'required|numeric',
-            'jawaban_soal_id' => 'numeric'
+            'responden_id' => 'required|numeric',
+            'nama_survey_id' => 'required|numeric',
+            'profile_id' => 'required|numeric',
+            'is_selesai' => 'required|numeric'
         ]);
 
-        $data = JawabanSurvey::find($id);
+        $data = Survey::find($id);
         $data->update($request->all());
         
         if($data){
             return response([
+                'data' => $data,
                 'message' => 'data updated.'
             ], 201);
         } else {

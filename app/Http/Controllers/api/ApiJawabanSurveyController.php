@@ -75,9 +75,28 @@ class ApiJawabanSurveyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $id = $request->id;
+        $request->validate([
+            'soal_id' => 'required|numeric',
+            'survey_id' => 'required|numeric',
+            'kategori_soal_id' => 'required|numeric',
+            'jawaban_soal_id' => 'numeric'
+        ]);
+
+        $data = JawabanSurvey::find($id);
+        $data->update($request->all());
+        
+        if($data){
+            return response([
+                'message' => 'data updated.'
+            ], 201);
+        } else {
+            return response([
+                'message' => 'failed to update data.'
+            ], 500);
+        }
     }
 
     /**
