@@ -127,24 +127,7 @@ class ApiSurveyController extends Controller
      */
     public function storeJawaban(Request $request)
     {
-        $request->validate([
-            'soal_id' => 'required|numeric',
-            'survey_id' => 'required|numeric',
-            'kategori_soal_id' => 'required|numeric',
-            'jawaban_soal_id' => 'numeric'
-        ]);
-
-        $data = JawabanSurvey::create($request->all());
-        
-        if($data){
-            return response([
-                'message' => 'data created.'
-            ], 201);
-        } else {
-            return response([
-                'message' => 'failed to create data.'
-            ], 500);
-        }
+        //
     }
 
     /**
