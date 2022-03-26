@@ -311,23 +311,4 @@ class ApiSurveyController extends Controller
             ], 500);
         }
     }
-
-    /**
-     * Get List of Nama Survey resource from storage.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function namaSurvey(){
-        $data = NamaSurvey::all();
-        if($data){
-            return response([
-                'message' => 'OK',
-                'data' => $data
-            ], 200);
-        } else {
-            return response([
-                'message' => 'data not found.'
-            ], 404);
-        }
-    }
 }

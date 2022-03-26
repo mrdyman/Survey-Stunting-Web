@@ -10,6 +10,7 @@ use App\Http\Controllers\api\ApiKabupatenKotaController;
 use App\Http\Controllers\api\ApiKecamatanController;
 use App\Http\Controllers\api\ApiDesaKelurahanController;
 use App\Http\Controllers\api\ApiSoalController;
+use App\Http\Controllers\api\ApiNamaSurveyController;
 use App\Http\Controllers\api\ApiJawabanSoalController;
 use App\Http\Controllers\api\ApiJawabanSurveyController;
 use App\Http\Controllers\api\ApiKategoriSoalController;
@@ -41,7 +42,6 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::put('/surveyor/survey', [ApiSurveyController::class, 'update']);
     Route::delete('/surveyor/survey', [ApiSurveyController::class, 'destroy']);
     Route::post('/surveyor/survey/jawaban', [ApiSurveyController::class, 'storeJawaban']);
-    Route::get('/surveyor/survey/nama', [ApiSurveyController::class, 'namaSurvey']);
     Route::get('/surveyor/survey/count', [ApiSurveyController::class, 'count']);
     
     // Responden
@@ -72,6 +72,9 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     
     // Kategori_soal
     Route::get('/kategori_soal', [ApiKategoriSoalController::class, 'index']);
+    
+    // nama_survey
+    Route::get('/nama_survey', [ApiNamaSurveyController::class, 'index']);
 
     // Dashboard
         // Profile
