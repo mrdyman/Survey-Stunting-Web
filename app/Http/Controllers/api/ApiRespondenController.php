@@ -42,8 +42,7 @@ class ApiRespondenController extends Controller
             'provinsi_id' => 'required|numeric',
             'kabupaten_kota_id' => 'required|numeric',
             'kecamatan_id' => 'required|numeric',
-            'desa_kelurahan_id' => 'required|numeric',
-            'nomor_hp' => 'numeric'
+            'desa_kelurahan_id' => 'required|numeric'
         ]);
 
         $data = Responden::create($request->all());

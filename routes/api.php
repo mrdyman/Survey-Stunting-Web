@@ -68,6 +68,7 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     
     // JawabanSurvey
     Route::get('/jawaban_survey', [ApiJawabanSurveyController::class, 'index']);
+    Route::put('/jawaban_survey', [ApiJawabanSurveyController::class, 'update']);
     
     // Kategori_soal
     Route::get('/kategori_soal', [ApiKategoriSoalController::class, 'index']);
