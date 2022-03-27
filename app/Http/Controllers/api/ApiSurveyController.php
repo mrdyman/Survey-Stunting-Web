@@ -184,8 +184,8 @@ class ApiSurveyController extends Controller
         $survey->save();
 
         return response([
-            'data' => $survey,
-            'message' => 'data created.'
+            'message' => 'data created.',
+            'data' => $survey
         ], 201);
     }
 
