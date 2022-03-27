@@ -177,8 +177,8 @@ class ApiSurveyController extends Controller
         }
 
         $survey = new Survey();
-        $survey->responden_id = $request->responden_id;
-        $survey->nama_survey_id = $request->nama_survey_id;
+        $survey->responden_id = intval($request->responden_id);
+        $survey->nama_survey_id = intval($request->nama_survey_id);
         $survey->kategori_selanjutnya = $kategoriAwal;
         $survey->profile_id = auth()->user()->profile->id;
         $survey->save();
