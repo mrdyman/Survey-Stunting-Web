@@ -17,7 +17,7 @@ class ApiSoalController extends Controller
     public function index(Request $request)
     {
         $id = $request->id;
-        $kategori = $request->kategori_id;
+        $kategori = $request->kategori_soal_id;
         
         if($id != null){
             $data = Soal::where('id', $id)->orderBy('urutan', 'asc')->get();
