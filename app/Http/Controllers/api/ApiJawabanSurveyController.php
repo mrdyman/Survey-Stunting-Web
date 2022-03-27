@@ -25,12 +25,15 @@ class ApiJawabanSurveyController extends Controller
             $data = JawabanSurvey::where('id', $id)->orderBy('id', 'asc')->get();
         } else {
             if($soalId != null){
-                $data = JawabanSurvey::where('soal_id', $soalId)->orderBy('id', 'asc')->get();
-            } else if($surveyId != null){
-                $data = JawabanSurvey::where('survey_id', $surveyId)->orderBy('id', 'asc')->get();
-            } 
-            else {
+                if($surveyId != null){
+                    $data = JawabanSurvey::where('soal_id', $soalId)->where('survey_id', $surveyId)->orderBy('id', 'asc')->get();
+                } else {
+                    $data = JawabanSurvey::where('soal_id', $soalId)->orderBy('id', 'asc')->get();
+                }
+            } else if($surveyId != null) {
                 // Get all soal
+                $data = JawabanSurvey::where('survey_id', $surveyId)->orderBy('id', 'asc')->get();
+            } else {
                 $data = JawabanSurvey::all();
             }
         }
