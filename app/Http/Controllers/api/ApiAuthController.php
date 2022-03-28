@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Profile;
 
 class ApiAuthController extends Controller
 {
@@ -25,10 +26,14 @@ class ApiAuthController extends Controller
                 // Generate token
                 $token = $user->createToken('userToken')->plainTextToken;
 
+                // get profile data
+                $profile = Profile::where('user_id', '=', Auth::user()->id)->first();
+
                 return response([
                     'message' => 'OK',
                     'data' => $user,
-                    'token' => $token
+                    'token' => $token,
+                    'profileData' => $profile
                 ], 201);
             } else{
                 //account is disabled

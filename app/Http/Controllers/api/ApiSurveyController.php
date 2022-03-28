@@ -25,7 +25,7 @@ class ApiSurveyController extends Controller
     public function index(Request $request)
     {
         $id = $request->id;
-        $typeSurveyId = $request->typeSurveyId;
+        $namaSurveyId = $request->namaSurveyId;
         $status = $request->status;
         $search = $request->search;
 
@@ -33,10 +33,10 @@ class ApiSurveyController extends Controller
            return $this->show($id);
         }
 
-        $data = Survey::with(['responden', 'namaSurvey', 'profile'])->whereHas('namaSurvey', function ($namaSurvey) use ($typeSurveyId) {
-            if ($typeSurveyId != 'semua' && $typeSurveyId != null) {
+        $data = Survey::with(['responden', 'namaSurvey', 'profile'])->whereHas('namaSurvey', function ($namaSurvey) use ($namaSurveyId) {
+            if ($namaSurveyId != 'semua' && $namaSurveyId != null) {
                 // Get all survey
-                $namaSurvey->where('nama_survey_id', $typeSurveyId);
+                $namaSurvey->where('nama_survey_id', $namaSurveyId);
             }
         })->where(function ($query) {
             if (Auth::user()->role == "Surveyor") {
@@ -127,24 +127,7 @@ class ApiSurveyController extends Controller
      */
     public function storeJawaban(Request $request)
     {
-        $request->validate([
-            'soal_id' => 'required|numeric',
-            'survey_id' => 'required|numeric',
-            'kategori_soal_id' => 'required|numeric',
-            'jawaban_soal_id' => 'numeric'
-        ]);
-
-        $data = JawabanSurvey::create($request->all());
-        
-        if($data){
-            return response([
-                'message' => 'data created.'
-            ], 201);
-        } else {
-            return response([
-                'message' => 'failed to create data.'
-            ], 500);
-        }
+        //
     }
 
     /**
@@ -194,15 +177,26 @@ class ApiSurveyController extends Controller
         }
 
         $survey = new Survey();
-        $survey->responden_id = $request->responden_id;
-        $survey->nama_survey_id = $request->nama_survey_id;
+        $survey->responden_id = intval($request->responden_id);
+        $survey->nama_survey_id = intval($request->nama_survey_id);
         $survey->kategori_selanjutnya = $kategoriAwal;
         $survey->profile_id = auth()->user()->profile->id;
         $survey->save();
 
+        $respondenId = $request->responden_id;
+        $namaSurveyId = $request->nama_survey_id;
+
+        $data = Survey::with(['responden', 'namaSurvey', 'profile'])->whereHas('namaSurvey', function ($namaSurvey) use ($namaSurveyId) {
+                        $namaSurvey->where('nama_survey_id', $namaSurveyId);
+                        })->whereHas('responden', function($responden) use ($respondenId){
+                                $responden->where('responden_id', $respondenId);
+                        })->where(function ($query) {
+                            $query->where('profile_id', Auth::user()->profile->id);
+                        })->orderBy('id', 'DESC')->get();
+
         return response([
-            'data' => $survey,
-            'message' => 'data created.'
+            'message' => 'data created.',
+            'data' => $data
         ], 201);
     }
 
@@ -309,25 +303,6 @@ class ApiSurveyController extends Controller
             return response([
                 'message' => 'failed to delete data.'
             ], 500);
-        }
-    }
-
-    /**
-     * Get List of Nama Survey resource from storage.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function namaSurvey(){
-        $data = NamaSurvey::all();
-        if($data){
-            return response([
-                'message' => 'OK',
-                'data' => $data
-            ], 200);
-        } else {
-            return response([
-                'message' => 'data not found.'
-            ], 404);
         }
     }
 }

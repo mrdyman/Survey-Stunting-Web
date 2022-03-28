@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Soal;
+use App\Models\NamaSurvey;
 use Illuminate\Http\Request;
 
-class ApiSoalController extends Controller
+class ApiNamaSurveyController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,21 +17,15 @@ class ApiSoalController extends Controller
     public function index(Request $request)
     {
         $id = $request->id;
-        $kategori = $request->kategori_soal_id;
         
         if($id != null){
-            $data = Soal::where('id', $id)->orderBy('urutan', 'asc')->get();
+            $data = NamaSurvey::where('id', $id)->orderBy('id', 'asc')->get();
         } else {
-            if($kategori != null){
-                // Get soal by kategori soal
-                $data = Soal::where('kategori_soal_id', $kategori)->orderBy('urutan', 'asc')->get();
-            } else {
                 // Get all soal
-                $data = Soal::all();
+                $data = NamaSurvey::all();
             }
-        }
 
-        if($data){
+        if(count($data) > 0){
             return response([
                 'message' => 'OK',
                 'data' => $data

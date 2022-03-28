@@ -25,12 +25,15 @@ class ApiJawabanSurveyController extends Controller
             $data = JawabanSurvey::where('id', $id)->orderBy('id', 'asc')->get();
         } else {
             if($soalId != null){
-                $data = JawabanSurvey::where('soal_id', $soalId)->orderBy('id', 'asc')->get();
-            } else if($surveyId != null){
-                $data = JawabanSurvey::where('survey_id', $surveyId)->orderBy('id', 'asc')->get();
-            } 
-            else {
+                if($surveyId != null){
+                    $data = JawabanSurvey::where('soal_id', $soalId)->where('survey_id', $surveyId)->orderBy('id', 'asc')->get();
+                } else {
+                    $data = JawabanSurvey::where('soal_id', $soalId)->orderBy('id', 'asc')->get();
+                }
+            } else if($surveyId != null) {
                 // Get all soal
+                $data = JawabanSurvey::where('survey_id', $surveyId)->orderBy('id', 'asc')->get();
+            } else {
                 $data = JawabanSurvey::all();
             }
         }
@@ -54,7 +57,25 @@ class ApiJawabanSurveyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'soal_id' => 'required|numeric',
+            'survey_id' => 'required|numeric',
+            'kategori_soal_id' => 'required|numeric',
+            'jawaban_soal_id' => 'numeric'
+        ]);
+
+        $data = JawabanSurvey::create($request->all());
+        
+        if(count($data) > 0){
+            return response([
+                'message' => 'data created.',
+                'data' => $data
+            ], 201);
+        } else {
+            return response([
+                'message' => 'failed to create data.'
+            ], 500);
+        }
     }
 
     /**
