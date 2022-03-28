@@ -267,8 +267,8 @@ class ApiSurveyController extends Controller
         
         if($data){
             return response([
-                'data' => $data,
-                'message' => 'data updated.'
+                'message' => 'data updated.',
+                'data' => $data
             ], 201);
         } else {
             return response([
