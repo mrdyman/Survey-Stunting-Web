@@ -70,7 +70,7 @@
                             @foreach ($kategori->soal as $soal)
                                 @php
                                     $daftarJawaban = \App\Models\JawabanSurvey::with(['jawabanSoal'])
-                                        ->where('survey_id', $survey->id)
+                                        ->where('kode_unik_survey', $kodeUnik)
                                         ->where('kategori_soal_id', $kategori->id)
                                         ->where('soal_id', $soal->id)
                                         ->get();

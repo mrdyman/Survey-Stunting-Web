@@ -22,6 +22,7 @@ class CreateRespondensTable extends Migration
             $table->bigInteger('kecamatan_id');
             $table->bigInteger('desa_kelurahan_id');
             $table->string('nomor_hp')->nullable();
+            $table->integer('kode_unik');
             $table->softDeletes();
             $table->timestamps();
         });

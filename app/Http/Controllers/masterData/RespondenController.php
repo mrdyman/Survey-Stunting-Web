@@ -22,41 +22,42 @@ class RespondenController extends Controller
 
         // $data = Responden::with('provinsi', 'kabupaten_kota', 'kecamatan', 'desa_kelurahan')->get();
         // dd($data);
-      
+
         if ($request->ajax()) {
             $data = Responden::with('provinsi', 'kabupaten_kota', 'kecamatan', 'desa_kelurahan')->orderBy('created_at', 'DESC');
             return DataTables::of($data)
-            ->addIndexColumn()
-            ->addColumn('provinsi', function ($row) {
-                return $row->provinsi->nama;
-            })
-            ->addColumn('kabupaten_kota', function ($row) {
-                return $row->kabupaten_kota->nama;
-            })
-            ->addColumn('kecamatan', function ($row) {
-                return $row->kecamatan->nama;
-            })
-            ->addColumn('desa_kelurahan', function ($row) {
-                return $row->desa_kelurahan->nama;
-            })
-            ->addColumn('action', function ($row) {     
-                $actionBtn = '
+                ->addIndexColumn()
+                ->addColumn('provinsi', function ($row) {
+                    return $row->provinsi->nama;
+                })
+                ->addColumn('kabupaten_kota', function ($row) {
+                    return $row->kabupaten_kota->nama;
+                })
+                ->addColumn('kecamatan', function ($row) {
+                    return $row->kecamatan->nama;
+                })
+                ->addColumn('desa_kelurahan', function ($row) {
+                    return $row->desa_kelurahan->nama;
+                })
+                ->addColumn('action', function ($row) {
+                    $actionBtn = '
                 <div class="row text-center justify-content-center">';
-                $actionBtn .= '
-                    <a href="'.route('responden.show', $row->id).'" class="btn btn-info btn-sm mr-1 my-1" data-toggle="tooltip" data-placement="top" title="Lihat"><i class="fas fa-eye"></i></a>
-                    <a href="'.route('responden.edit', $row->id).'" id="btn-edit" class="btn btn-warning btn-sm mr-1 my-1" data-toggle="tooltip" data-placement="top" title="Ubah"><i class="fas fa-edit"></i></a>
+                    $actionBtn .= '
+                    <a href="' . route('responden.show', $row->id) . '" class="btn btn-info btn-sm mr-1 my-1" data-toggle="tooltip" data-placement="top" title="Lihat"><i class="fas fa-eye"></i></a>
+                    <a href="' . route('responden.edit', $row->id) . '" id="btn-edit" class="btn btn-warning btn-sm mr-1 my-1" data-toggle="tooltip" data-placement="top" title="Ubah"><i class="fas fa-edit"></i></a>
                     <button id="btn-delete" onclick="hapus(' . $row->id . ')" class="btn btn-danger btn-sm mr-1 my-1" value="' . $row->id . '" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fas fa-trash"></i></button>
                 </div>';
-                return $actionBtn;
-            })
-            ->rawColumns(['provinsi', 'kabupaten_kota', 'kecamatan', 'desa_kelurahan', 'action'])
-            ->make(true);
+                    return $actionBtn;
+                })
+                ->rawColumns(['provinsi', 'kabupaten_kota', 'kecamatan', 'desa_kelurahan', 'action'])
+                ->make(true);
         }
         return view('pages.masterData.responden.index');
     }
 
     // Khusus Surveyor
-    public function pilihResponden(){
+    public function pilihResponden()
+    {
         $responden = Responden::latest()->get();
         return view('pages.survey.pilihResponden', compact('responden'));
     }
@@ -121,7 +122,8 @@ class RespondenController extends Controller
         return response()->json(['success' => 'Success']);
     }
 
-    public function insertResponden(Request $request){
+    public function insertResponden(Request $request)
+    {
         $validator = Validator::make(
             $request->all(),
             [
@@ -156,6 +158,7 @@ class RespondenController extends Controller
             'kecamatan_id' => $request->kecamatan,
             'desa_kelurahan_id' => $request->desa_kelurahan,
             'nomor_hp' => $request->nomor_hp,
+            'kode_unik' => $this->generateKodeUnik(),
         ];
 
         Responden::create($data);
@@ -182,7 +185,7 @@ class RespondenController extends Controller
      */
     public function edit(Responden $responden)
     {
-       return view('pages.masterData.responden.edit', compact('responden'));    
+        return view('pages.masterData.responden.edit', compact('responden'));
     }
 
     /**
@@ -246,5 +249,15 @@ class RespondenController extends Controller
         $responden->delete();
 
         return response()->json(['success' => 'Success']);
+    }
+
+    //
+    public function generateKodeUnik()
+    {
+        do {
+            $code = random_int(10000000, 99999999);
+        } while (Responden::where("kode_unik", "=", $code)->first());
+
+        return $code;
     }
 }

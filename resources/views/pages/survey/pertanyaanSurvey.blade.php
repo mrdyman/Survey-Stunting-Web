@@ -78,7 +78,7 @@
                                             @php
                                                 $selected = '';
                                                 $jawabanSurvey = \App\Models\JawabanSurvey::with(['jawabanSoal'])
-                                                    ->where('survey_id', $idSurvey)
+                                                    ->where('kode_unik_survey', $kodeUnik)
                                                     ->where('jawaban_soal_id', $jawaban->id)
                                                     ->where('soal_id', $soal->id)
                                                     ->first();
@@ -102,7 +102,7 @@
                                                 $selected = '';
                                                 $value = '';
                                                 $jawabanSurvey = \App\Models\JawabanSurvey::with(['jawabanSoal'])
-                                                    ->where('survey_id', $idSurvey)
+                                                    ->where('kode_unik_survey', $kodeUnik)
                                                     ->where('soal_id', $soal->id)
                                                     ->where('jawaban_soal_id', null)
                                                     ->first();
@@ -129,7 +129,7 @@
                                         $selected = '';
                                         $value = '';
                                         $jawabanSurvey = \App\Models\JawabanSurvey::with(['jawabanSoal'])
-                                            ->where('survey_id', $idSurvey)
+                                            ->where('kode_unik_survey', $kodeUnik)
                                             ->where('soal_id', $soal->id)
                                             ->where('jawaban_soal_id', null)
                                             ->first();
@@ -202,7 +202,7 @@
                     if (willDelete) {
                         $("#overlay").fadeIn(100);
                         $.ajax({
-                            url: "{{ url('/survey/cek-jawaban' . '/' . $idSurvey) }}",
+                            url: "{{ url('/survey/cek-jawaban' . '/' . $kodeUnik) }}",
                             type: "POST",
                             data: $(this).serialize(),
                             success: function(response) {

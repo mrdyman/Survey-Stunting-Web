@@ -14,7 +14,7 @@ class Survey extends Model
 
     public function responden()
     {
-        return $this->belongsTo(Responden::class);
+        return $this->belongsTo(Responden::class, 'kode_unik_responden', 'kode_unik');
     }
 
     public function namaSurvey()
