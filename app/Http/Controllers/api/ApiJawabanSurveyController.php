@@ -22,17 +22,17 @@ class ApiJawabanSurveyController extends Controller
         
         if($id != null){
             // Get jawaban soal by id
-            $data = JawabanSurvey::where('id', $id)->orderBy('id', 'asc')->get();
+            $data = JawabanSurvey::where('id', $id)->orderBy('soal_id', 'asc')->get();
         } else {
             if($soalId != null){
                 if($surveyId != null){
-                    $data = JawabanSurvey::where('soal_id', $soalId)->where('survey_id', $surveyId)->orderBy('id', 'asc')->get();
+                    $data = JawabanSurvey::where('soal_id', $soalId)->where('survey_id', $surveyId)->orderBy('soal_id', 'asc')->get();
                 } else {
-                    $data = JawabanSurvey::where('soal_id', $soalId)->orderBy('id', 'asc')->get();
+                    $data = JawabanSurvey::where('soal_id', $soalId)->orderBy('soal_id', 'asc')->get();
                 }
             } else if($surveyId != null) {
                 // Get all soal
-                $data = JawabanSurvey::where('survey_id', $surveyId)->orderBy('id', 'asc')->get();
+                $data = JawabanSurvey::where('survey_id', $surveyId)->orderBy('soal_id', 'asc')->get();
             } else {
                 $data = JawabanSurvey::all();
             }
