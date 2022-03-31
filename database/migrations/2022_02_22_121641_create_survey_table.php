@@ -15,11 +15,12 @@ class CreateSurveyTable extends Migration
     {
         Schema::create('survey', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('responden_id');
+            $table->bigInteger('kode_unik_responden');
             $table->bigInteger('nama_survey_id');
             $table->bigInteger('profile_id');
             $table->bigInteger('kategori_selanjutnya')->default(null)->nullable();
             $table->bigInteger('is_selesai')->default(0);
+            $table->integer('kode_unik');
             $table->timestamps();
         });
     }

@@ -88,19 +88,19 @@ class SurveyController extends Controller
                 ->addColumn('action', function ($row) {
                     if ($row->is_selesai == "0") {
                         $actionBtn = '
-                            <a href="' . url('/survey/pertanyaan-survey') . "/" . $row->id . "/" . $row->kategori_selanjutnya . '" class="btn btn-warning btn-sm mr-1 my-1" title="Ubah"><i class="far fa-play-circle"></i> Lanjutkan</a>
+                            <a href="' . url('/survey/pertanyaan-survey') . "/" . $row->kode_unik . "/" . $row->kategori_selanjutnya . '" class="btn btn-warning btn-sm mr-1 my-1" title="Ubah"><i class="far fa-play-circle"></i> Lanjutkan</a>
                         </div>';
                     } else {
                         $kategori = KategoriSoal::where('nama_survey_id', $row->nama_survey_id)->orderBy('id', 'asc')->first();
 
-                        $actionBtn = '<a href="' . url('/survey/lihat-survey') . "/" . $row->id . '" class="btn btn-primary btn-sm mr-1 my-1" title="Ubah" target="_blank"><i class="fas fa-eye"></i> Lihat</a>';
+                        $actionBtn = '<a href="' . url('/survey/lihat-survey') . "/" . $row->kode_unik . '" class="btn btn-primary btn-sm mr-1 my-1" title="Ubah" target="_blank"><i class="fas fa-eye"></i> Lihat</a>';
 
                         if (Auth::user()->role == "Surveyor") {
                             $actionBtn .= '
-                             <a href="' . url('/survey/pertanyaan-survey') . "/" . $row->id . "/" . $kategori->id . '" class="btn btn-warning btn-sm mr-1 my-1" title="Ubah" ><i class="fas fa-edit"></i> Ubah</a>';
+                             <a href="' . url('/survey/pertanyaan-survey') . "/" . $row->kode_unik . "/" . $kategori->id . '" class="btn btn-warning btn-sm mr-1 my-1" title="Ubah" ><i class="fas fa-edit"></i> Ubah</a>';
                         }
 
-                        $actionBtn .= '<button id="btn-delete" onclick="hapus(' . $row->id . ')" class="btn btn-danger btn-sm mr-1 my-1" value="' . $row->id . '" title="Hapus"><i class="fas fa-trash"></i> Hapus</button></div>';
+                        $actionBtn .= '<button id="btn-delete" onclick="hapus(' . $row->kode_unik . ')" class="btn btn-danger btn-sm mr-1 my-1" value="' . $row->kode_unik . '" title="Hapus"><i class="fas fa-trash"></i> Hapus</button></div>';
                     }
                     return $actionBtn;
                 })
@@ -122,24 +122,24 @@ class SurveyController extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'responden_id' => ['required', Rule::unique('survey')->where(function ($query) use ($request) {
+                'kode_unik_responden' => ['required', Rule::unique('survey')->where(function ($query) use ($request) {
                     $query->where([
-                        ['responden_id', $request->responden_id],
+                        ['kode_unik_responden', $request->kode_unik_responden],
                         ['nama_survey_id', $request->nama_survey_id]
                     ]);
                 })],
                 'nama_survey_id' => ['required', Rule::unique('survey')->where(function ($query) use ($request) {
                     $query->where([
-                        ['responden_id', $request->responden_id],
+                        ['kode_unik_responden', $request->kode_unik_responden],
                         ['nama_survey_id', $request->nama_survey_id]
                     ]);
                 })],
             ],
             [
-                'responden_id.required' => "Responden Tidak Boleh Dikosongkan",
+                'kode_unik_responden.required' => "Responden Tidak Boleh Dikosongkan",
                 'nama_survey_id.required' => "Nama Survey Tidak Boleh Dikosongkan",
                 'nama_survey_id.unique' => "Survey Sudah Ada",
-                'responden_id.unique' => "Survey Sudah Ada",
+                'kode_unik_responden.unique' => "Survey Sudah Ada",
             ]
         );
 
@@ -166,14 +166,15 @@ class SurveyController extends Controller
         }
 
         $survey = new Survey();
-        $survey->responden_id = $request->responden_id;
+        $survey->kode_unik_responden = $request->kode_unik_responden;
         $survey->nama_survey_id = $request->nama_survey_id;
         $survey->kategori_selanjutnya = $kategoriAwal;
         $survey->profile_id = auth()->user()->profile->id;
+        $survey->kode_unik = $this->generateKodeUnik();
         $survey->save();
 
         $kategori = KategoriSoal::where('nama_survey_id', $request->nama_survey_id)->orderBy('id', 'asc')->first();
-        $url = url('/survey/pertanyaan-survey' . "/" . $survey->id . "/" . $kategori->id);
+        $url = url('/survey/pertanyaan-survey' . "/" . $survey->kode_unik . "/" . $kategori->id);
 
         return response()->json([
             'status' => 'success',
@@ -183,10 +184,10 @@ class SurveyController extends Controller
 
     public function pertanyaanSurvey($survey, $kategori, Request $request)
     {
-        $idSurvey = $survey;
+        $kodeUnik = $survey;
         $idKategori = $kategori;
 
-        $survey = Survey::with(['responden', 'namaSurvey', 'profile'])->where('id', $idSurvey)->first();
+        $survey = Survey::with(['responden', 'namaSurvey', 'profile'])->where('kode_unik', $kodeUnik)->first();
 
         if ($survey->profile_id != auth()->user()->profile->id) {
             return redirect('/survey/daftar-survey');
@@ -207,17 +208,17 @@ class SurveyController extends Controller
             $urlSebelumnya = '';
         } else {
             $tombolSebelumnya = 'Sebelumnya';
-            $urlSebelumnya = url('/survey/pertanyaan-survey/') . "/" . $idSurvey . "/" . $semuaKategori[$indexKategori - 1]->id;
+            $urlSebelumnya = url('/survey/pertanyaan-survey/') . "/" . $kodeUnik . "/" . $semuaKategori[$indexKategori - 1]->id;
         }
 
 
         $kategori = $kategori[0];
-        return view('pages.survey.pertanyaanSurvey', compact('kategori', 'tombolSelanjutnya', 'tombolSebelumnya', 'urlSebelumnya', 'idSurvey', 'survey'));
+        return view('pages.survey.pertanyaanSurvey', compact('kategori', 'tombolSelanjutnya', 'tombolSebelumnya', 'urlSebelumnya', 'kodeUnik', 'survey'));
     }
 
     public function cekJawabanSurvey($survey, Request $request)
     {
-        $survey_id = $survey; //Ganti Nanti
+        $kodeUnik = $survey;
         $kategori_soal_id = $request->kategori_soal_id;
 
         // Validasi Data
@@ -250,9 +251,9 @@ class SurveyController extends Controller
             ]);
         }
 
-        $jawabanSurvey = JawabanSurvey::where('survey_id', $survey_id)->where('kategori_soal_id', $kategori_soal_id)->get();
+        $jawabanSurvey = JawabanSurvey::where('kode_unik_survey', $kodeUnik)->where('kategori_soal_id', $kategori_soal_id)->get();
         if ($jawabanSurvey->count() > 0) {
-            $jawabanSurvey = JawabanSurvey::where('survey_id', $survey_id)->where('kategori_soal_id', $kategori_soal_id)->delete();
+            $jawabanSurvey = JawabanSurvey::where('kode_unik_survey', $kodeUnik)->where('kategori_soal_id', $kategori_soal_id)->delete();
         }
 
         for ($i = 0; $i < count($request->id); $i++) {
@@ -261,7 +262,7 @@ class SurveyController extends Controller
             $jawabanLainnya = "jawaban-lainnya-" . ($i + 1);
             if ($request->tipe_jawaban[$i] == 'Jawaban Singkat') {
                 $jawabanSurvey->soal_id = $request->id[$i];
-                $jawabanSurvey->survey_id = $survey_id;
+                $jawabanSurvey->kode_unik_survey = $kodeUnik;
                 $jawabanSurvey->jawaban_lainnya = $request->$jawaban;
                 $jawabanSurvey->kategori_soal_id = $kategori_soal_id;
                 $jawabanSurvey->save();
@@ -269,7 +270,7 @@ class SurveyController extends Controller
                 for ($j = 0; $j < count($request->$jawaban); $j++) {
                     $jawabanSurvey = new JawabanSurvey();
                     $jawabanSurvey->soal_id = $request->id[$i];
-                    $jawabanSurvey->survey_id = $survey_id;
+                    $jawabanSurvey->kode_unik_survey = $kodeUnik;
                     if ($request->$jawaban[$j] == 'Lainnya') {
                         $jawabanSurvey->jawaban_lainnya = $request->$jawabanLainnya;
                     } else {
@@ -281,7 +282,7 @@ class SurveyController extends Controller
             }
         }
 
-        $survey = Survey::with(['responden', 'namaSurvey', 'profile'])->where('id', $survey_id)->first();
+        $survey = Survey::with(['responden', 'namaSurvey', 'profile'])->where('kode_unik', $kodeUnik)->first();
 
         $kategori = KategoriSoal::with(['soal'])->where('nama_survey_id', $survey->nama_survey_id)->orderBy('urutan', 'asc')->get();
         $indexKategori = array_search($kategori_soal_id, $kategori->pluck('id')->toArray());
@@ -295,7 +296,7 @@ class SurveyController extends Controller
                 $survey->kategori_selanjutnya = $kategori[$indexKategori + 1]->id;
             }
             $survey->save();
-            $url = url('/survey/pertanyaan-survey/') . "/" . $survey_id . "/" . $kategori[$indexKategori + 1]->id;
+            $url = url('/survey/pertanyaan-survey/') . "/" . $kodeUnik . "/" . $kategori[$indexKategori + 1]->id;
         }
 
         return response()->json(
@@ -306,10 +307,10 @@ class SurveyController extends Controller
         );
     }
 
-    public function lihatSurvey($id)
+    public function lihatSurvey($kodeUnik)
     {
-        $idSurvey = $id;
-        $survey = Survey::with(['responden', 'namaSurvey', 'profile'])->where('id', $id)->first();
+        $kodeUnik = $kodeUnik;
+        $survey = Survey::with(['responden', 'namaSurvey', 'profile'])->where('kode_unik', $kodeUnik)->first();
         if (Auth::user()->role == "Surveyor") {
             if ($survey->profile_id != auth()->user()->profile->id) {
                 return redirect('/survey/daftar-survey');
@@ -318,18 +319,28 @@ class SurveyController extends Controller
 
         $daftarKategori = KategoriSoal::with(['soal'])->where('nama_survey_id', $survey->nama_survey_id)->get();
 
-        return view('pages.survey.lihatSurvey', compact('survey', 'daftarKategori', 'idSurvey'));
+        return view('pages.survey.lihatSurvey', compact('survey', 'daftarKategori', 'kodeUnik'));
     }
 
-    public function delete($id)
+    public function delete($kodeUnik)
     {
-        $survey = Survey::find($id);
+        $survey = Survey::where('kode_unik', $kodeUnik)->first();
         $survey->delete();
 
-        $jawabanSurvey = JawabanSurvey::where('survey_id', $id)->get();
+        $jawabanSurvey = JawabanSurvey::where('kode_unik_survey', $kodeUnik)->get();
         if ($jawabanSurvey->count() > 0) {
-            $jawabanSurvey = JawabanSurvey::where('survey_id', $id)->delete();
+            $jawabanSurvey = JawabanSurvey::where('kode_unik_survey', $kodeUnik)->delete();
         }
         return response()->json(['status' => 'success']);
+    }
+
+    //
+    public function generateKodeUnik()
+    {
+        do {
+            $code = random_int(10000000, 99999999);
+        } while (Survey::where("kode_unik", "=", $code)->first());
+
+        return $code;
     }
 }
