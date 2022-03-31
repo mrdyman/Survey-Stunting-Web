@@ -28,6 +28,7 @@ class RespondenSeeder extends Seeder
                 'kecamatan_id' => 7373020,
                 'desa_kelurahan_id' => 7373020003,
                 'nomor_hp' => '082298979292',
+                'kode_unik' => '11223344',
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             ],
             [
@@ -39,6 +40,7 @@ class RespondenSeeder extends Seeder
                 'kecamatan_id' => 7203041,
                 'desa_kelurahan_id' => 7203041003,
                 'nomor_hp' => '082299078787',
+                'kode_unik' => '22334411',
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             ],
             [
@@ -50,11 +52,12 @@ class RespondenSeeder extends Seeder
                 'kecamatan_id' => 7313120,
                 'desa_kelurahan_id' => 7313120006,
                 'nomor_hp' => '082299078787',
+                'kode_unik' => '33221188',
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             ],
-            
+
         ];
-        
+
         DB::table('responden')->insert($data);
     }
 }
