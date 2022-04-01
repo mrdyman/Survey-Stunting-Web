@@ -45,7 +45,18 @@ class ApiRespondenController extends Controller
             'desa_kelurahan_id' => 'required|numeric'
         ]);
 
-        $data = Responden::create($request->all());
+        $data = [
+            'kartu_keluarga' => $request->kartu_keluarga,
+            'alamat' => $request->alamat,
+            'provinsi_id' => $request->provinsi_id,
+            'kabupaten_kota_id' => $request->kabupaten_kota_id,
+            'kecamatan_id' => $request->kecamatan_id,
+            'desa_kelurahan_id' => $request->desa_kelurahan_id,
+            'nomor_hp' => $request->nomor_hp,
+            'kode_unik' => $this->generateKodeUnik(),
+        ];
+
+        $data = Responden::create($data);
         if($data){
             return response([
                 'data' => $data,
@@ -86,5 +97,14 @@ class ApiRespondenController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function generateKodeUnik()
+    {
+        do {
+            $code = random_int(10000000, 99999999);
+        } while (Responden::where("kode_unik", "=", $code)->first());
+
+        return $code;
     }
 }
