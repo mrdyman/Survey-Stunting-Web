@@ -24,13 +24,13 @@ class ApiSurveyController extends Controller
      */
     public function index(Request $request)
     {
-        $id = $request->id;
+        $kodeUnik = $request->kode_unik;
         $namaSurveyId = $request->namaSurveyId;
         $status = $request->status;
         $search = $request->search;
 
-        if($id != null){
-           return $this->show($id);
+        if($kodeUnik != null){
+           return $this->show($kodeUnik);
         }
 
         $data = Survey::with(['responden', 'namaSurvey', 'profile'])->whereHas('namaSurvey', function ($namaSurvey) use ($namaSurveyId) {
@@ -138,24 +138,24 @@ class ApiSurveyController extends Controller
      */
     public function store(Request $request){
         $request->validate([
-                'responden_id' => ['required', Rule::unique('survey')->where(function ($query) use ($request) {
+                'kode_unik_responden' => ['required', Rule::unique('survey')->where(function ($query) use ($request) {
                     $query->where([
-                        ['responden_id', $request->responden_id],
+                        ['kode_unik_responden', $request->kode_unik_responden],
                         ['nama_survey_id', $request->nama_survey_id]
                     ]);
                 })],
                 'nama_survey_id' => ['required', Rule::unique('survey')->where(function ($query) use ($request) {
                     $query->where([
-                        ['responden_id', $request->responden_id],
+                        ['kode_unik_responden', $request->kode_unik_responden],
                         ['nama_survey_id', $request->nama_survey_id]
                     ]);
                 })],
             ],
             [
-                'responden_id.required' => "Responden Tidak Boleh Dikosongkan",
+                'kode_unik_responden.required' => "Responden Tidak Boleh Dikosongkan",
                 'nama_survey_id.required' => "Nama Survey Tidak Boleh Dikosongkan",
                 'nama_survey_id.unique' => "Survey Sudah Ada",
-                'responden_id.unique' => "Survey Sudah Ada",
+                'kode_unik_responden.unique' => "Survey Sudah Ada",
             ]);
 
         $namaSurvey = NamaSurvey::find($request->nama_survey_id);
@@ -177,19 +177,20 @@ class ApiSurveyController extends Controller
         }
 
         $survey = new Survey();
-        $survey->responden_id = intval($request->responden_id);
+        $survey->kode_unik_responden = intval($request->kode_unik_responden);
         $survey->nama_survey_id = intval($request->nama_survey_id);
         $survey->kategori_selanjutnya = $kategoriAwal;
         $survey->profile_id = auth()->user()->profile->id;
+        $survey->kode_unik = $this->generateKodeUnik();
         $survey->save();
 
-        $respondenId = $request->responden_id;
+        $kodeUnikResponden = $request->kode_unik_responden;
         $namaSurveyId = $request->nama_survey_id;
 
         $data = Survey::with(['responden', 'namaSurvey', 'profile'])->whereHas('namaSurvey', function ($namaSurvey) use ($namaSurveyId) {
                         $namaSurvey->where('nama_survey_id', $namaSurveyId);
-                        })->whereHas('responden', function($responden) use ($respondenId){
-                                $responden->where('responden_id', $respondenId);
+                        })->whereHas('responden', function($responden) use ($kodeUnikResponden){
+                                $responden->where('kode_unik_responden', $kodeUnikResponden);
                         })->where(function ($query) {
                             $query->where('profile_id', Auth::user()->profile->id);
                         })->orderBy('id', 'DESC')->get();
@@ -206,9 +207,9 @@ class ApiSurveyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($kodeUnik)
     {
-        $survey = Survey::with(['responden', 'namaSurvey', 'profile'])->where('id', $id)->first();
+        $survey = Survey::with(['responden', 'namaSurvey', 'profile'])->where('kode_unik', $kodeUnik)->first();
 
         if(!$survey){
             return response([
@@ -222,7 +223,7 @@ class ApiSurveyController extends Controller
             array_push($response, $kategori);
             foreach($kategori->soal as $soal){
                 $daftarJawaban = JawabanSurvey::with(['jawabanSoal'])
-                                                ->where('survey_id', $survey->id)
+                                                ->where('kode_unik_survey', $survey->kode_unik)
                                                 ->where('kategori_soal_id', $kategori->id)
                                                 ->where('soal_id', $soal->id)
                                                 ->get();
@@ -247,22 +248,22 @@ class ApiSurveyController extends Controller
      */
     public function update(Request $request)
     {
-        $id = $request->id;
+        $kodeUnik = $request->kode_unik;
 
-        if($id == null){
+        if($kodeUnik == null){
             return response([
-                'message' => 'please provide an id'
+                'message' => 'please provide an kode_unik survey'
             ], 400);
         }
 
         $request->validate([
-            'responden_id' => 'required|numeric',
+            'kode_unik_responden' => 'required|numeric',
             'nama_survey_id' => 'required|numeric',
             'profile_id' => 'required|numeric',
             'is_selesai' => 'required|numeric'
         ]);
 
-        $data = Survey::find($id);
+        $data = Survey::where('kode_unik', $kodeUnik)->first();
         $data->update($request->all());
         
         if($data){
@@ -285,14 +286,14 @@ class ApiSurveyController extends Controller
      */
     public function destroy(Request $request)
     {
-        $id = $request->id;
+        $kodeUnik = $request->kode_unik;
 
-        $survey = Survey::find($id);
+        $survey = Survey::where('kode_unik', $kodeUnik)->first();
         $survey->delete();
 
-        $jawabanSurvey = JawabanSurvey::where('survey_id', $id)->get();
+        $jawabanSurvey = JawabanSurvey::where('kode_unik_survey', $kodeUnik)->get();
         if ($jawabanSurvey->count() > 0) {
-            $jawabanSurvey = JawabanSurvey::where('survey_id', $id)->delete();
+            $jawabanSurvey = JawabanSurvey::where('kode_unik_survey', $kodeUnik)->delete();
         }
 
         if($survey){
@@ -304,5 +305,14 @@ class ApiSurveyController extends Controller
                 'message' => 'failed to delete data.'
             ], 500);
         }
+    }
+
+    public function generateKodeUnik()
+    {
+        do {
+            $code = random_int(10000000, 99999999);
+        } while (Survey::where("kode_unik", "=", $code)->first());
+
+        return $code;
     }
 }

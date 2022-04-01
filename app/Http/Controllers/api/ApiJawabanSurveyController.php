@@ -18,21 +18,21 @@ class ApiJawabanSurveyController extends Controller
     {
         $id = $request->id;
         $soalId = $request->soal_id;
-        $surveyId = $request->survey_id;
+        $kodeUnikSurvey = $request->kode_unik_survey;
         
         if($id != null){
             // Get jawaban soal by id
             $data = JawabanSurvey::where('id', $id)->orderBy('soal_id', 'asc')->get();
         } else {
             if($soalId != null){
-                if($surveyId != null){
-                    $data = JawabanSurvey::where('soal_id', $soalId)->where('survey_id', $surveyId)->orderBy('soal_id', 'asc')->get();
+                if($kodeUnikSurvey != null){
+                    $data = JawabanSurvey::where('soal_id', $soalId)->where('kode_unik_survey', $kodeUnikSurvey)->orderBy('soal_id', 'asc')->get();
                 } else {
                     $data = JawabanSurvey::where('soal_id', $soalId)->orderBy('soal_id', 'asc')->get();
                 }
-            } else if($surveyId != null) {
+            } else if($kodeUnikSurvey != null) {
                 // Get all soal
-                $data = JawabanSurvey::where('survey_id', $surveyId)->orderBy('soal_id', 'asc')->get();
+                $data = JawabanSurvey::where('kode_unik_survey', $kodeUnikSurvey)->orderBy('soal_id', 'asc')->get();
             } else {
                 $data = JawabanSurvey::all();
             }
@@ -59,14 +59,14 @@ class ApiJawabanSurveyController extends Controller
     {
         $request->validate([
             'soal_id' => 'required|numeric',
-            'survey_id' => 'required|numeric',
+            'kode_unik_survey' => 'required|numeric',
             'kategori_soal_id' => 'required|numeric',
             'jawaban_soal_id' => 'numeric'
         ]);
 
         $data = JawabanSurvey::create($request->all());
         
-        if(count($data) > 0){
+        if($data){
             return response([
                 'message' => 'data created.',
                 'data' => $data
@@ -101,7 +101,7 @@ class ApiJawabanSurveyController extends Controller
         $id = $request->id;
         $request->validate([
             'soal_id' => 'required|numeric',
-            'survey_id' => 'required|numeric',
+            'kode_unik_survey' => 'required|numeric',
             'kategori_soal_id' => 'required|numeric',
             'jawaban_soal_id' => 'numeric'
         ]);
