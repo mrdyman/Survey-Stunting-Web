@@ -96,16 +96,16 @@ $('#import-survey').submit(function(e) {
             console.log(data);
             $("#overlay").fadeOut(100);
             if ($.isEmptyObject(data.error)) {
-                // swal({
-                //     title: "Berhasil!",
-                //     text: "Data berhasil disimpan!",
-                //     icon: "success",
-                //     button: false
-                // })
-                // setTimeout(
-                // function () {
-                //     window.location.href = "{{ url('importSurvey') }}";
-                // }, 2000);
+                swal({
+                    title: "Berhasil!",
+                    text: "Data berhasil disimpan!",
+                    icon: "success",
+                    button: false
+                })
+                setTimeout(
+                function () {
+                    window.location.href = "{{ url('importSurvey') }}";
+                }, 2000);
             
             }
             else{

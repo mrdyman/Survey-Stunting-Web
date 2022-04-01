@@ -4,8 +4,13 @@ namespace App\Http\Controllers\survey;
 
 
 use Illuminate\Http\Request;
+use App\Imports\SurveyImport;
+use App\Imports\RespondenImport;
 use App\Http\Controllers\Controller;
+use App\Imports\JawabanSurveyImport;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Validator;
+
 
 
 class ImportSurveyController extends Controller
@@ -34,16 +39,21 @@ class ImportSurveyController extends Controller
         }
         
         // return name request file
-        $file_survey = $request->file('file_survey');
-        $file_jawaban_survey = $request->file('file_jawaban_survey');
-        $file_responden = $request->file('file_responden');
-        $data = [
-            'file_survey' => $file_survey->getClientOriginalName(),
-            'file_jawaban_survey' => $file_jawaban_survey->getClientOriginalName(),
-            'file_responden' => $file_responden->getClientOriginalName(),
-        ];
+        // $file_survey = $request->file('file_survey');
+        // $file_jawaban_survey = $request->file('file_jawaban_survey');
+        // $file_responden = $request->file('file_responden');
+        // $data = [
+        //     'file_survey' => $file_survey->getClientOriginalName(),
+        //     'file_jawaban_survey' => $file_jawaban_survey->getClientOriginalName(),
+        //     'file_responden' => $file_responden->getClientOriginalName(),
+        // ];
+
+        Excel::import(new SurveyImport, $request->file('file_survey'));
+        Excel::import(new JawabanSurveyImport, $request->file('file_jawaban_survey'));
+        Excel::import(new RespondenImport, $request->file('file_responden'));
+        return response()->json(['success' => 'Data Berhasil Diimport']);
+
         
-        return $data;
 
     }
 }
