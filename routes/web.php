@@ -3,17 +3,19 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ListController;
+use App\Http\Controllers\ImportController;
 use App\Http\Controllers\SurveyorController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\survey\SurveyController;
 use App\Http\Controllers\masterData\UserController;
 use App\Http\Controllers\masterSoal\SoalController;
 use App\Http\Controllers\masterData\ProfileController;
+use App\Http\Controllers\survey\ExportSurveyController;
+use App\Http\Controllers\survey\ImportSurveyController;
 use App\Http\Controllers\masterData\RespondenController;
 use App\Http\Controllers\masterSoal\NamaSurveyController;
-use App\Http\Controllers\survey\SurveyController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 use App\Http\Controllers\masterSoal\KategoriSoalController;
-use App\Http\Controllers\survey\ExportSurveyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,6 +53,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/exportSurvey', [ExportSurveyController::class, 'index']);
     Route::post('/exportSurvey/exportExcel', [ExportSurveyController::class, 'exportSurvey']);
+    Route::get('/importSurvey', [ImportSurveyController::class, 'index']);
+    Route::post('/importSurvey/store', [ImportSurveyController::class, 'store']);
     Route::get('/survey/lihat-survey/{survey}', [SurveyController::class, 'lihatSurvey']);
     Route::post('/survey/cek-pilih-responden', [SurveyController::class, 'cekPilihResponden']);
     Route::get('/survey/daftar-survey', [SurveyController::class, 'index']);
