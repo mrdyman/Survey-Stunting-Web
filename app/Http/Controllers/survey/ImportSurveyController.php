@@ -48,9 +48,9 @@ class ImportSurveyController extends Controller
         //     'file_responden' => $file_responden->getClientOriginalName(),
         // ];
 
-        Excel::import(new SurveyImport, $request->file('file_survey'));
-        Excel::import(new JawabanSurveyImport, $request->file('file_jawaban_survey'));
+        Excel::import(new SurveyImport, $request->file('file_survey'), $request->file('file_jawaban_survey'));
         Excel::import(new RespondenImport, $request->file('file_responden'));
+        Excel::import(new JawabanSurveyImport, $request->file('file_jawaban_survey'));
         return response()->json(['success' => 'Data Berhasil Diimport']);
 
         
