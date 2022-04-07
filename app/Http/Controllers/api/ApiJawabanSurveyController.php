@@ -60,8 +60,7 @@ class ApiJawabanSurveyController extends Controller
         $request->validate([
             'soal_id' => 'required|numeric',
             'kode_unik_survey' => 'required|numeric',
-            'kategori_soal_id' => 'required|numeric',
-            'jawaban_soal_id' => 'numeric'
+            'kategori_soal_id' => 'required|numeric'
         ]);
 
         $data = JawabanSurvey::create($request->all());
@@ -102,8 +101,7 @@ class ApiJawabanSurveyController extends Controller
         $request->validate([
             'soal_id' => 'required|numeric',
             'kode_unik_survey' => 'required|numeric',
-            'kategori_soal_id' => 'required|numeric',
-            'jawaban_soal_id' => 'numeric'
+            'kategori_soal_id' => 'required|numeric'
         ]);
 
         $data = JawabanSurvey::find($id);
