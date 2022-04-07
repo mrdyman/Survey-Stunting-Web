@@ -17,7 +17,7 @@
             <div class="mx-3 text-danger d-none" id="ket-pass">Biarkan kosong apabila tidak ingin mengubah kata sandi</div>
         </div>
     </div>
-    <div class="row {{$user->id == 1 ? 'd-none' : ''}} ">
+    <div class="row {{ isset($user) && $user->id == 1 ? 'd-none' : ''}} ">
         <div class="col-lg col-md">
             {{-- Role --}}
             <div class="form-group">
