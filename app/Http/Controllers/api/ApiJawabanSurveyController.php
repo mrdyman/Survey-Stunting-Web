@@ -124,8 +124,24 @@ class ApiJawabanSurveyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $request->validate([
+            'id' => 'required'
+        ]);
+
+        $id = $request->id;
+        $jawabanSurvey = JawabanSurvey::where('id', $id)->first();
+        $jawabanSurvey->delete();
+
+        if($jawabanSurvey){
+            return response([
+                'message' => 'Data deleted.'
+            ], 200);
+        } else {
+            return response([
+                'message' => 'failed to delete data.'
+            ], 500);
+        }
     }
 }
