@@ -249,6 +249,8 @@ class ApiSurveyController extends Controller
     public function update(Request $request)
     {
         $kodeUnik = $request->kode_unik;
+        $kodeUnikResponden = $request->kode_unik_responden;
+        $namaSurveyId = $request->nama_survey_id;
 
         if($kodeUnik == null){
             return response([
@@ -265,11 +267,17 @@ class ApiSurveyController extends Controller
 
         $data = Survey::where('kode_unik', $kodeUnik)->first();
         $data->update($request->all());
+
+        $data1 = Survey::with(['responden', 'namaSurvey', 'profile'])->whereHas('namaSurvey', function ($namaSurvey) use ($namaSurveyId) {
+            $namaSurvey->where('nama_survey_id', $namaSurveyId);
+        })->where(function ($query) {
+            $query->where('profile_id', Auth::user()->profile->id);
+        })->orderBy('id', 'DESC')->get();
         
         if($data){
             return response([
                 'message' => 'data updated.',
-                'data' => $data
+                'data' => $data1
             ], 201);
         } else {
             return response([
