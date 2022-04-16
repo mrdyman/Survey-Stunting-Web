@@ -270,9 +270,15 @@ class ApiSurveyController extends Controller
 
         $data1 = Survey::with(['responden', 'namaSurvey', 'profile'])->whereHas('namaSurvey', function ($namaSurvey) use ($namaSurveyId) {
             $namaSurvey->where('nama_survey_id', $namaSurveyId);
+        })->whereHas('responden', function($responden) use ($kodeUnikResponden){
+            $responden->where('kode_unik_responden', $kodeUnikResponden);
         })->where(function ($query) {
             $query->where('profile_id', Auth::user()->profile->id);
         })->orderBy('id', 'DESC')->get();
+        
+        // ->where(function ($query) {
+        //     $query->where('profile_id', Auth::user()->profile->id);
+        // })->orderBy('id', 'DESC')->get();
         
         if($data){
             return response([

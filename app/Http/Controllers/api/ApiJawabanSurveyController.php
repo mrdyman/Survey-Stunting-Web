@@ -19,6 +19,7 @@ class ApiJawabanSurveyController extends Controller
         $id = $request->id;
         $soalId = $request->soal_id;
         $kodeUnikSurvey = $request->kode_unik_survey;
+        $kategoriSoalId = $request->kategori_soal_id;
         
         if($id != null){
             // Get jawaban soal by id
@@ -33,6 +34,9 @@ class ApiJawabanSurveyController extends Controller
             } else if($kodeUnikSurvey != null) {
                 // Get all soal
                 $data = JawabanSurvey::where('kode_unik_survey', $kodeUnikSurvey)->orderBy('soal_id', 'asc')->get();
+            } else if($kategoriSoalId != null) {
+                // Get jawabanSurvey by kanagoriSoalId
+                $data = JawabanSurvey::where('kategori_soal_id', $kategoriSoalId)->orderBy('soal_id', 'asc')->get();
             } else {
                 $data = JawabanSurvey::all();
             }
