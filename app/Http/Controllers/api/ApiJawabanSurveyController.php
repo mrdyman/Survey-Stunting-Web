@@ -32,8 +32,11 @@ class ApiJawabanSurveyController extends Controller
                     $data = JawabanSurvey::where('soal_id', $soalId)->orderBy('soal_id', 'asc')->get();
                 }
             } else if($kodeUnikSurvey != null) {
-                // Get all soal
-                $data = JawabanSurvey::where('kode_unik_survey', $kodeUnikSurvey)->orderBy('soal_id', 'asc')->get();
+                if($kategoriSoalId != null){
+                    $data = JawabanSurvey::where('kategori_soal_id', $kategoriSoalId)->where('kode_unik_survey', $kodeUnikSurvey)->orderBy('soal_id', 'asc')->get();
+                } else {
+                    $data = JawabanSurvey::where('kode_unik_survey', $kodeUnikSurvey)->orderBy('soal_id', 'asc')->get();
+                }
             } else if($kategoriSoalId != null) {
                 // Get jawabanSurvey by kanagoriSoalId
                 $data = JawabanSurvey::where('kategori_soal_id', $kategoriSoalId)->orderBy('soal_id', 'asc')->get();
