@@ -321,6 +321,12 @@ class ApiSurveyController extends Controller
         }
     }
 
+    public function testConnection(){
+        return response([
+            'message' => 'OK',
+        ], 200);
+    }
+
     public function generateKodeUnik()
     {
         do {

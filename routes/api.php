@@ -42,6 +42,7 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::put('/surveyor/survey', [ApiSurveyController::class, 'update']);
     Route::delete('/surveyor/survey', [ApiSurveyController::class, 'destroy']);
     Route::get('/surveyor/survey/count', [ApiSurveyController::class, 'count']);
+    Route::get('/connection', [ApiSurveyController::class, 'testConnection']);
     
     // Responden
     Route::get('/responden', [ApiRespondenController::class, 'index']);
