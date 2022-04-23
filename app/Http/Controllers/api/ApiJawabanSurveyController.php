@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use App\Models\JawabanSurvey;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Concerns\ToArray;
 
 class ApiJawabanSurveyController extends Controller
 {
@@ -64,18 +65,12 @@ class ApiJawabanSurveyController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'soal_id' => 'required|numeric',
-            'kode_unik_survey' => 'required|numeric',
-            'kategori_soal_id' => 'required|numeric'
-        ]);
-
-        $data = JawabanSurvey::create($request->all());
+        $data = JawabanSurvey::insert($request->all());
         
         if($data){
             return response([
                 'message' => 'data created.',
-                'data' => $data
+                'data' => $request->all()
             ], 201);
         } else {
             return response([
