@@ -128,12 +128,24 @@ class ApiJawabanSurveyController extends Controller
      */
     public function destroy(Request $request)
     {
-        $request->validate([
-            'id' => 'required'
-        ]);
-
         $id = $request->id;
-        $jawabanSurvey = JawabanSurvey::where('id', $id)->first();
+        $soalId = $request->soal_id;
+        $kodeUnikSurvey = $request->kode_unik_survey;
+        $kategoriSoalId = $request->kategori_soal_id;
+
+        if($id != null){
+            $jawabanSurvey = JawabanSurvey::where('id', $id)->first();
+        } else if($soalId != null){
+            $jawabanSurvey = JawabanSurvey::where('soal_id', $soalId);
+        } else if($kodeUnikSurvey != null){
+            $jawabanSurvey = JawabanSurvey::where('kode_unik_survey', $kodeUnikSurvey);
+        } else if($kategoriSoalId != null){
+            $jawabanSurvey = JawabanSurvey::where('kategori_soal_id', $kategoriSoalId);
+        } else {
+            return response([
+                'message' => 'failed to delete data.'
+            ], 500);
+        }
         $jawabanSurvey->delete();
 
         if($jawabanSurvey){
