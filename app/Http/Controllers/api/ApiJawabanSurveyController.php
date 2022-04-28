@@ -138,7 +138,11 @@ class ApiJawabanSurveyController extends Controller
         } else if($soalId != null){
             $jawabanSurvey = JawabanSurvey::where('soal_id', $soalId);
         } else if($kodeUnikSurvey != null){
-            $jawabanSurvey = JawabanSurvey::where('kode_unik_survey', $kodeUnikSurvey);
+            if($kategoriSoalId != null){
+                $jawabanSurvey = JawabanSurvey::where('kode_unik_survey', $kodeUnikSurvey)->where('kategori_soal_id', $kategoriSoalId);
+            } else {
+                $jawabanSurvey = JawabanSurvey::where('kode_unik_survey', $kodeUnikSurvey);
+            }
         } else if($kategoriSoalId != null){
             $jawabanSurvey = JawabanSurvey::where('kategori_soal_id', $kategoriSoalId);
         } else {
