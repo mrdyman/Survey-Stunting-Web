@@ -137,7 +137,11 @@ class ApiSurveyController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request){
-        $request->validate([
+        $incomingKodeUnik = $request->kode_unik;
+        $currentKodeUnik = Survey::where('kode_unik', $incomingKodeUnik)->first();
+       
+        if($currentKodeUnik == null){
+            $request->validate([
                 'kode_unik_responden' => ['required', Rule::unique('survey')->where(function ($query) use ($request) {
                     $query->where([
                         ['kode_unik_responden', $request->kode_unik_responden],
@@ -157,33 +161,40 @@ class ApiSurveyController extends Controller
                 'nama_survey_id.unique' => "Survey Sudah Ada",
                 'kode_unik_responden.unique' => "Survey Sudah Ada",
             ]);
+        }
 
         $namaSurvey = NamaSurvey::find($request->nama_survey_id);
-        $kategoriAwal = $namaSurvey->kategoriSoal[0]->id;
+        if($request->kategori_selanjutnya == null){
+            $kategoriSelanjutnya = $namaSurvey->kategoriSoal[0]->id;
+        } else {
+            $kategoriSelanjutnya = $request->kategori_selanjutnya;
+        }
+
         if ($namaSurvey->kategoriSoal->count() == 0) {
-            return response()->json([
-                'status' => 'error',
-                'pesan' => 'Survey Belum Memiliki Kategori Soal'
-            ]);
+            return response([
+                'status' => 'error.',
+                'message' => 'Survey Belum Memiliki Kategori Soal'
+            ], 404);
         } else {
             foreach ($namaSurvey->kategoriSoal as $kategoriSoal) {
                 if ($kategoriSoal->soal->count() == 0) {
-                    return response()->json([
+                    return response([
                         'status' => 'error',
-                        'pesan' => 'Pastikan Setiap Kategori Memiliki Minimal 1 Soal'
-                    ]);
+                        'message' => 'Pastikan Setiap Kategori Memiliki Minimal 1 Soal'
+                    ], 201);
                 }
             }
         }
 
-        $survey = new Survey();
-        $survey->kode_unik_responden = intval($request->kode_unik_responden);
-        $survey->nama_survey_id = intval($request->nama_survey_id);
-        $survey->kategori_selanjutnya = $kategoriAwal;
-        $survey->profile_id = auth()->user()->profile->id;
-        $survey->kode_unik = $this->generateKodeUnik();
-        $survey->save();
-
+        Survey::updateOrCreate(['kode_unik' => $request->kode_unik], [
+            'kode_unik_responden' => $request->kode_unik_responden,
+            'nama_survey_id' => $request->nama_survey_id,
+            'profile_id' => $request->profile_id,
+            'kategori_selanjutnya' => $kategoriSelanjutnya,
+            'is_selesai' => $request->is_selesai,
+            'kode_unik' => $request->kode_unik
+        ]);
+        
         $kodeUnikResponden = $request->kode_unik_responden;
         $namaSurveyId = $request->nama_survey_id;
 
