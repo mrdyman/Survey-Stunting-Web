@@ -186,14 +186,27 @@ class ApiSurveyController extends Controller
             }
         }
 
-        Survey::updateOrCreate(['kode_unik' => $request->kode_unik], [
-            'kode_unik_responden' => $request->kode_unik_responden,
-            'nama_survey_id' => $request->nama_survey_id,
-            'profile_id' => $request->profile_id,
-            'kategori_selanjutnya' => $kategoriSelanjutnya,
-            'is_selesai' => $request->is_selesai,
-            'kode_unik' => $request->kode_unik
-        ]);
+        if($incomingKodeUnik == null){
+            $data = [
+                'kode_unik_responden' => $request->kode_unik_responden,
+                'nama_survey_id' => $request->nama_survey_id,
+                'profile_id' => $request->profile_id,
+                'kategori_selanjutnya' => $kategoriSelanjutnya,
+                'is_selesai' => $request->is_selesai,
+                'kode_unik' => $this->generateKodeUnik()
+            ];
+        } else {
+            $data = [
+                'kode_unik_responden' => $request->kode_unik_responden,
+                'nama_survey_id' => $request->nama_survey_id,
+                'profile_id' => $request->profile_id,
+                'kategori_selanjutnya' => $kategoriSelanjutnya,
+                'is_selesai' => $request->is_selesai,
+                'kode_unik' => $request->kode_unik
+            ];
+        }
+
+        Survey::updateOrCreate(['kode_unik' => $request->kode_unik], $data);
         
         $kodeUnikResponden = $request->kode_unik_responden;
         $namaSurveyId = $request->nama_survey_id;
