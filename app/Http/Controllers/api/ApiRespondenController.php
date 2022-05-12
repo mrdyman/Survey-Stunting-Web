@@ -45,6 +45,12 @@ class ApiRespondenController extends Controller
             'desa_kelurahan_id' => 'required|numeric'
         ]);
 
+        if($request->kode_unik != null) {
+            $kodeUnikResponden = $request->kode_unik;
+        } else {
+            $kodeUnikResponden = $this->generateKodeUnik();
+        }
+
         $data = [
             'kartu_keluarga' => $request->kartu_keluarga,
             'alamat' => $request->alamat,
@@ -53,7 +59,7 @@ class ApiRespondenController extends Controller
             'kecamatan_id' => $request->kecamatan_id,
             'desa_kelurahan_id' => $request->desa_kelurahan_id,
             'nomor_hp' => $request->nomor_hp,
-            'kode_unik' => $this->generateKodeUnik(),
+            'kode_unik' => $kodeUnikResponden
         ];
 
         $data = Responden::create($data);
