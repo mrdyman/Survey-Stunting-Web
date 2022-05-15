@@ -1,6 +1,6 @@
 <div class="form-group">
-    <label for="">{{$label}}</label>
-    <select name="{{$name}}" class="form-control {{$class}}" id="{{$id}}">
+    <label for="">{{ $label }}</label> {!! $button_add ?? '' !!}
+    <select name="{{ $name }}" class="form-control {{ $class }}" id="{{ $id }}">
         @if ($class == 'filter')
             <option value="">Semua</option>
         @else

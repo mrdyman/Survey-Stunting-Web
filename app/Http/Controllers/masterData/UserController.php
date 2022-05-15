@@ -8,6 +8,7 @@ use App\Models\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Validator;
 
@@ -29,52 +30,57 @@ class UserController extends Controller
             $data = User::with('profile')->orderBy('role', 'ASC')->orderBy('created_at', 'DESC');
             return DataTables::of($data)
                 ->addIndexColumn()
-                ->addColumn('nama_profil', function ($row) {  
-                    if($row->profile){
+                ->addColumn('nama_profil', function ($row) {
+                    if ($row->profile) {
                         return $row->profile->nama_lengkap;
-                    }   
-                    else{
+                    } else {
                         return '<span class="badge badge-danger">Belum Ada Profil</span>';
                     }
                 })
-                ->addColumn('password_pengguna', function ($row) {  
-                    $output_password = str_repeat ('*', strlen ($row->password));
+                ->addColumn('password_pengguna', function ($row) {
+                    $output_password = str_repeat('*', strlen($row->password));
                     return $output_password;
-
                 })
-                ->addColumn('status_pengguna', function ($row) {  
-                    if($row->status == 1){
+                ->addColumn('status_pengguna', function ($row) {
+                    if ($row->status == 1) {
                         return '<span class="badge badge-success">Aktif</span>';
-                    }   
-                    else{
+                    } else {
                         return '<span class="badge badge-danger">Tidak Aktif</span>';
                     }
                 })
-                ->addColumn('action', function ($row) {     
+                ->addColumn('action', function ($row) {
                     $actionBtn = '
                     <div class="row text-center justify-content-center">';
-                    $actionBtn .= '
-                        <a href="'.route('user.edit', $row->id).'" id="btn-edit" class="btn btn-warning btn-sm mr-1 my-1" data-toggle="tooltip" data-placement="top" title="Ubah"><i class="fas fa-edit"></i></a>';
-                    if($row->id != 1){
-                        $actionBtn .= '<button id="btn-delete" onclick="hapus(' . $row->id . ')" class="btn btn-danger btn-sm mr-1 my-1" value="' . $row->id . '" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fas fa-trash"></i></button>';
+                    if (Auth::user()->id == 1) {
+                        if ($row->id != 1) {
+                            $actionBtn .= '<button id="btn-delete" onclick="hapus(' . $row->id . ')" class="btn btn-danger btn-sm mr-1 my-1" value="' . $row->id . '" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fas fa-trash"></i></button>';
+                        }
+                        $actionBtn .= '
+                        <a href="' . route('user.edit', $row->id) . '" id="btn-edit" class="btn btn-warning btn-sm mr-1 my-1" data-toggle="tooltip" data-placement="top" title="Ubah"><i class="fas fa-edit"></i></a>';
+                    } else {
+                        if ($row->id != 1) {
+                            $actionBtn .= '
+                            <a href="' . route('user.edit', $row->id) . '" id="btn-edit" class="btn btn-warning btn-sm mr-1 my-1" data-toggle="tooltip" data-placement="top" title="Ubah"><i class="fas fa-edit"></i></a>';
+                            $actionBtn .= '<button id="btn-delete" onclick="hapus(' . $row->id . ')" class="btn btn-danger btn-sm mr-1 my-1" value="' . $row->id . '" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fas fa-trash"></i></button>';
+                        }
                     }
                     $actionBtn .= '</div>';
                     return $actionBtn;
                 })
-                ->filter(function ($query) use ($request) {    
+                ->filter(function ($query) use ($request) {
                     if ($request->search != '') {
                         $query->whereHas('profile', function ($query) use ($request) {
                             $query->where("profiles.nama_lengkap", "LIKE", "%$request->search%")
-                                    ->orWhere("users.username", "LIKE", "%$request->search%");                                
+                                ->orWhere("users.username", "LIKE", "%$request->search%");
                         });
-                    }      
-                                    
+                    }
+
                     if (!empty($request->role)) {
-                        $query->where('role', $request->role);                       
+                        $query->where('role', $request->role);
                     }
 
                     if (!empty($request->status)) {
-                        $query->where('status', $request->status);                       
+                        $query->where('status', $request->status);
                     }
                 })
                 ->rawColumns(['nama_profil', 'password_pengguna', 'status_pengguna', 'action'])
@@ -90,7 +96,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        
+
         return view('pages.masterData.user.create');
     }
 
@@ -109,7 +115,7 @@ class UserController extends Controller
                 'password' => 'required',
                 'role' => 'required',
                 'status' => 'required',
-                
+
             ],
             [
                 'username.required' => 'Nama Pengguna tidak boleh kosong',
@@ -174,7 +180,7 @@ class UserController extends Controller
                 // 'password' => 'required',
                 'role' => 'required',
                 'status' => 'required',
-                
+
             ],
             [
                 'username.required' => 'Nama Pengguna tidak boleh kosong',
@@ -189,9 +195,9 @@ class UserController extends Controller
             return response()->json(['error' => $validator->errors()]);
         }
 
-        if($request->password == ''){
+        if ($request->password == '') {
             $password = $user->password;
-        } else{
+        } else {
             $password = bcrypt($request->password);
         }
 

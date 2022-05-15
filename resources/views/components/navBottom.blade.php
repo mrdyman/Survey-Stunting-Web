@@ -32,7 +32,7 @@
                                 <a href="{{ url('profile') }}">Profil</a>
                             </li>
                             <li>
-                                <a href="{{ url('user') }}">Pengguna</a>
+                                <a href="{{ url('user') }}">Akun</a>
                             </li>
                         </ul>
                     </div>
