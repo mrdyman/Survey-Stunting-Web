@@ -250,15 +250,17 @@ class ApiSurveyController extends Controller
             array_push($response, $kategori);
             foreach($kategori->soal as $soal){
                 $soal->jawabanSurvey->where('survey_id', $survey->id)->first();
-            global $jawaban;
+            $jawaban_ = [];
             foreach($soal->jawabanSurvey as $j){
                 if($j->jawaban_soal_id != null){
                     $jawaban = JawabanSoal::where('id', $j->jawaban_soal_id)->first()['jawaban'];
-                    } else {
+                    array_push($jawaban_, $jawaban);
+                } else {
+                    array_push($jawaban_, $j->jawaban_lainnya);
                     $jawaban = $j->jawaban_lainnya;
                 }
             }
-            $soal->jawaban = $jawaban;
+            $soal->jawaban_soal = $jawaban_;
             }
         }
         
