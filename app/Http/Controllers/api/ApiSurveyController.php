@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Models\JawabanSoal;
 use Illuminate\Http\Request;
 use App\Models\Survey;
 use App\Models\Profile;
 use App\Models\KategoriSoal;
+use App\Models\Soal;
 use App\Models\JawabanSurvey;
 use App\Models\NamaSurvey;
 use Illuminate\Support\Facades\Auth;
@@ -241,12 +243,25 @@ class ApiSurveyController extends Controller
             ], 404);
         }
 
-        $daftarKategori = KategoriSoal::with(['soal', 'jawabanSurvey'])->where('nama_survey_id', $survey->nama_survey_id)->get();
+        $daftarKategori = KategoriSoal::with(['soal'])->where('nama_survey_id', $survey->nama_survey_id)->get();
+
         $response = [];
         foreach($daftarKategori as $kategori){
             array_push($response, $kategori);
+            foreach($kategori->soal as $soal){
+                $soal->jawabanSurvey->where('survey_id', $survey->id)->first();
+            global $jawaban;
+            foreach($soal->jawabanSurvey as $j){
+                if($j->jawaban_soal_id != null){
+                    $jawaban = JawabanSoal::where('id', $j->jawaban_soal_id)->first()['jawaban'];
+                    } else {
+                    $jawaban = $j->jawaban_lainnya;
+                }
+            }
+            $soal->jawaban = $jawaban;
+            }
         }
-
+        
         return response([
             'message' => 'OK',
             'data' => $response
