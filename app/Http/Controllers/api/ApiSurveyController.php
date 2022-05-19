@@ -243,20 +243,15 @@ class ApiSurveyController extends Controller
             ], 404);
         }
 
-        $daftarKategori = KategoriSoal::with(['soal', 'jawabanSurvey'])->where('nama_survey_id', $survey->nama_survey_id)->get();
-
         $response = [];
-        foreach($daftarKategori as $kategori){
+        $kategoriSoal = KategoriSoal::with(['soal'])->where('nama_survey_id', $survey->nama_survey_id)->get();
+        foreach($kategoriSoal as $kategori){
             array_push($response, $kategori);
-            foreach($kategori->jawabanSurvey as $jawaban){
-                if($jawaban->jawaban_soal_id != null){
-                    $jawaban->jawaban_soal = JawabanSoal::where('id', $jawaban->jawaban_soal_id)->first();
-                } else {
-                    $jawaban->jawaban_soal = $jawaban->jawaban_lainnya;
-                }
-            }
+            $kategori->jawaban_survey = JawabanSurvey::with(['jawabanSoal'])
+                                                        ->where('kode_unik_survey', $kodeUnik)
+                                                        ->where('kategori_soal_id', $kategori->id)
+                                                        ->get();
         }
-        
         return response([
             'message' => 'OK',
             'data' => $response
