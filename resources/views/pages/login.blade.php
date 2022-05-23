@@ -3,12 +3,13 @@
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Login</title>
+    <title>e - PAGASSI | Login</title>
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
-    <link rel="icon" href="{{asset('assets/logo')}}/untad.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="{{ asset('assets/landingPage') }}/favicon/favicon.ico" type="image/x-icon" />
+
 
     <!-- Fonts and icons -->
-    <script src="{{asset('assets/dashboard')}}/js/plugin/webfont/webfont.min.js"></script>
+    <script src="{{ asset('assets/dashboard') }}/js/plugin/webfont/webfont.min.js"></script>
     <script>
         WebFont.load({
             google: {
@@ -20,21 +21,21 @@
                 ],
                 urls: ['assets/dashboard/css/fonts.min.css']
             },
-            active: function () {
+            active: function() {
                 sessionStorage.fonts = true;
             }
         });
-
     </script>
 
     <!-- CSS Files -->
-    <link rel="stylesheet" href="{{asset('assets/dashboard')}}/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{asset('assets/dashboard')}}/css/atlantis.css">
+    <link rel="stylesheet" href="{{ asset('assets/dashboard') }}/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/dashboard') }}/css/atlantis.css">
     <style>
         .login {
-            background: url('{{asset('assets/dashboard/img/new1.jpg')}}');
+            background: url('{{ asset('assets/dashboard/img/new1.jpg') }}');
             background-size: cover;
         }
+
     </style>
 </head>
 
@@ -43,9 +44,9 @@
         <div class="container container-login animated fadeIn">
             <h3 class="text-center">Masuk</h3>
             @if (session()->has('loginError'))
-            <div class="alert alert-danger">
-                {{ session('loginError') }}
-            </div>
+                <div class="alert alert-danger">
+                    {{ session('loginError') }}
+                </div>
             @endif
             <form action="/cekLogin" method="POST">
                 @csrf
@@ -64,17 +65,18 @@
                         </div>
                     </div>
                     <div class="form-action mb-3 col-lg-12">
-                        <button type="submit" class="btn col-lg-12 btn-danger" style="color: white"><i class="fas fa-sign-in-alt"></i> Masuk</button>
+                        <button type="submit" class="btn col-lg-12 btn-danger" style="color: white"><i
+                                class="fas fa-sign-in-alt"></i> Masuk</button>
                     </div>
                 </div>
             </form>
         </div>
     </div>
-    <script src="{{asset('assets/dashboard')}}/js/core/jquery.3.2.1.min.js"></script>
-    <script src="{{asset('assets/dashboard')}}/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
-    <script src="{{asset('assets/dashboard')}}/js/core/popper.min.js"></script>
-    <script src="{{asset('assets/dashboard')}}/js/core/bootstrap.min.js"></script>
-    <script src="{{asset('assets/dashboard')}}/js/atlantis.min.js"></script>
+    <script src="{{ asset('assets/dashboard') }}/js/core/jquery.3.2.1.min.js"></script>
+    <script src="{{ asset('assets/dashboard') }}/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+    <script src="{{ asset('assets/dashboard') }}/js/core/popper.min.js"></script>
+    <script src="{{ asset('assets/dashboard') }}/js/core/bootstrap.min.js"></script>
+    <script src="{{ asset('assets/dashboard') }}/js/atlantis.min.js"></script>
 </body>
 
 </html>
