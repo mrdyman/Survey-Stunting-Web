@@ -21,10 +21,10 @@ class DashboardController extends Controller
     public function index()
     {
         $profile = Profile::where('user_id', Auth::user()->id)->first();
-        if($profile == null){
+        if ($profile == null) {
             return redirect(route('lengkapiProfile'));
-        } else{
-            if(Auth::user()->role == 'Admin'){
+        } else {
+            if (Auth::user()->role == 'Admin') {
                 $data = [
                     'totalSurvey' => Survey::count(),
                     'totalSurveyPre' => Survey::with('namaSurvey')->whereHas('namaSurvey', function ($query) {
@@ -37,14 +37,14 @@ class DashboardController extends Controller
                     'totalResponden' => DB::table('responden')->count(),
                     'riwayatSurveyHariIni' => Survey::with('responden', 'namaSurvey', 'profile')->whereDate('created_at', '=', date('Y-m-d'))->latest(),
                     'riwayatSurveyMingguIni' => Survey::with('responden', 'namaSurvey', 'profile')->whereBetween('created_at', [date('Y-m-d', strtotime('-7 days')), date('Y-m-d')])
-                    ->orWhereDate('created_at', '=', date('Y-m-d'))->latest(),
+                        ->orWhereDate('created_at', '=', date('Y-m-d'))->latest(),
                     'riwayatSurveyBulanIni' => Survey::with('responden', 'namaSurvey', 'profile')->whereBetween('created_at', [date('Y-m-d', strtotime('-30 days')), date('Y-m-d')])
-                    ->orWhereDate('created_at', '=', date('Y-m-d'))->latest(),
+                        ->orWhereDate('created_at', '=', date('Y-m-d'))->latest(),
                     'daftarTahun' => Survey::select(DB::raw('YEAR(created_at) as tahun'))->groupBy('tahun')->latest()->get(),
                     // Jumlah perbulan di tahun ini
                 ];
                 return view('pages.dashboard.admin', $data);
-            } else if(Auth::user()->role == 'Surveyor'){
+            } else if (Auth::user()->role == 'Surveyor') {
                 // Jumlahnya masih mau diubah sesuai surveyor yang login
                 $profile = Profile::where('user_id', Auth::user()->id)->first();
                 $data = [
@@ -57,11 +57,12 @@ class DashboardController extends Controller
                     })->count(),
                 ];
                 return view('pages.dashboard.surveyor', $data);
-            } 
+            }
         }
     }
 
-    public function surveyBelumSelesai(Request $request){
+    public function surveyBelumSelesai(Request $request)
+    {
         if ($request->ajax()) {
             $data = Survey::with(['responden', 'namaSurvey', 'profile'])->where('is_selesai', 0)->orderBy('id', 'DESC')->get();
             return DataTables::of($data)
@@ -83,7 +84,7 @@ class DashboardController extends Controller
                 })
                 ->addColumn('action', function ($row) {
                     $actionBtn = '
-                        <a href="' . url('/survey/pertanyaan-survey') . "/" . $row->id . "/" . $row->kategori_selanjutnya . '" class="btn btn-warning btn-sm mr-1 my-1" title="Ubah"><i class="far fa-play-circle"></i> Lanjutkan</a>
+                        <a href="' . url('/survey/pertanyaan-survey') . "/" . $row->kode_unik . "/" . $row->kategori_selanjutnya . '" class="btn btn-warning btn-sm mr-1 my-1" title="Ubah"><i class="far fa-play-circle"></i> Lanjutkan</a>
                     </div>';
                     return $actionBtn;
                 })
@@ -93,7 +94,8 @@ class DashboardController extends Controller
         // return view('pages.survey.index');
     }
 
-    public function statistikSurvey(Request $request){
+    public function statistikSurvey(Request $request)
+    {
         $jumlahPerbulan = Survey::select(DB::raw('MONTHNAME(created_at) as bulan, MONTH(created_at) as bulanAngka, COUNT(*) as jumlah'))
             ->whereYear('created_at', $request->tahun)
             ->groupBy('bulanAngka')
@@ -107,24 +109,24 @@ class DashboardController extends Controller
         $jumlahPerbulanPost = Survey::with('namaSurvey')->select(DB::raw('MONTH(created_at) as bulan, COUNT(*) as jumlah'))->whereYear('created_at', $request->tahun)->groupBy('bulan')->whereHas('namaSurvey', function ($query) {
             $query->where('tipe', 'Post');
         })->orderBy('bulan', 'asc')->get();
-       
+
         $jsonJumlahPerbulan = [];
-        foreach($jumlahPerbulan as $bulan){
+        foreach ($jumlahPerbulan as $bulan) {
             $jsonJumlahPerbulan[] = $bulan->jumlah;
         }
 
         $jsonJumlahPerbulanPre = [];
-        foreach($jumlahPerbulanPre as $bulan){
+        foreach ($jumlahPerbulanPre as $bulan) {
             $jsonJumlahPerbulanPre[] = $bulan->jumlah;
         }
 
         $jsonJumlahPerbulanPost = [];
-        foreach($jumlahPerbulanPost as $bulan){
+        foreach ($jumlahPerbulanPost as $bulan) {
             $jsonJumlahPerbulanPost[] = $bulan->jumlah;
         }
 
         $jsonNamaBulan = [];
-        foreach($jumlahPerbulan as $bulan){
+        foreach ($jumlahPerbulan as $bulan) {
             $jsonNamaBulan[] = substr($bulan->bulan, 0, 3);
         }
 
@@ -143,7 +145,8 @@ class DashboardController extends Controller
 
 
 
-    public function editProfileAccount(){
+    public function editProfileAccount()
+    {
         $data = [
             'user' => User::find(Auth::user()->id),
             'profile' => Profile::select('*', DB::raw('DATE_FORMAT(tanggal_lahir, "%d/%m/%Y") AS tanggal_lahir'))->where('user_id', '=', Auth::user()->id)->orderBy('created_at', 'DESC')->first(),
@@ -152,7 +155,8 @@ class DashboardController extends Controller
         return view('pages.editProfileUser', $data);
     }
 
-    public function updateProfile(Request $request){
+    public function updateProfile(Request $request)
+    {
         $validator = Validator::make(
             $request->all(),
             [
@@ -165,7 +169,7 @@ class DashboardController extends Controller
                 'kabupaten_kota' => 'required',
                 'kecamatan' => 'required',
                 'desa_kelurahan' => 'required',
-                'nomor_hp' => 'required',                
+                'nomor_hp' => 'required',
             ],
             [
                 'nama_lengkap.required' => 'Nama Lengkap tidak boleh kosong',
@@ -184,7 +188,7 @@ class DashboardController extends Controller
         if ($validator->fails()) {
             return response()->json(['error' => $validator->errors()]);
         }
-        
+
         $data = [
             'user_id' => Auth::user()->id,
             'nama_lengkap' => $request->nama_lengkap,
@@ -202,9 +206,9 @@ class DashboardController extends Controller
 
         $profile = Profile::where('user_id', '=', Auth::user()->id)->first();
 
-        if($profile){
+        if ($profile) {
             $profile->update($data);
-        } else{
+        } else {
             Profile::create($data);
         }
 
@@ -213,9 +217,10 @@ class DashboardController extends Controller
         return response()->json(['success' => 'Success']);
     }
 
-    public function updateAccount(Request $request){
+    public function updateAccount(Request $request)
+    {
         $user = User::find(Auth::user()->id);
-        
+
         $validator = Validator::make(
             $request->all(),
             [
@@ -233,13 +238,13 @@ class DashboardController extends Controller
             return response()->json(['error' => $validator->errors()]);
         }
 
-        if($request->password == ''){
+        if ($request->password == '') {
             $password = $user->password;
-        } else{
+        } else {
             $password = bcrypt($request->password);
         }
 
-        $data =[
+        $data = [
             'username' => $request->username,
             'password' => $password
         ];
