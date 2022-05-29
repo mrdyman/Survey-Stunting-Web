@@ -26,20 +26,29 @@ class DashboardController extends Controller
         } else {
             if (Auth::user()->role == 'Admin') {
                 $data = [
-                    'totalSurvey' => Survey::count(),
+                    'totalSurvey' => Survey::where('is_selesai', 1)->count(),
                     'totalSurveyPre' => Survey::with('namaSurvey')->whereHas('namaSurvey', function ($query) {
                         $query->where('tipe', 'Pre');
-                    })->count(),
+                    })->where('is_selesai', 1)->count(),
                     'totalSurveyPost' => Survey::with('namaSurvey')->whereHas('namaSurvey', function ($query) {
                         $query->where('tipe', 'Post');
+                    })->where('is_selesai', 1)->count(),
+                    'totalSurveyor' => Profile::with('user')->whereHas('user', function ($query) {
+                        $query->where('role', 'Surveyor');
                     })->count(),
-                    'totalSurveyor' => DB::table('users')->where('role', 'Surveyor')->count(),
-                    'totalResponden' => DB::table('responden')->count(),
-                    'riwayatSurveyHariIni' => Survey::with('responden', 'namaSurvey', 'profile')->whereDate('created_at', '=', date('Y-m-d'))->latest(),
-                    'riwayatSurveyMingguIni' => Survey::with('responden', 'namaSurvey', 'profile')->whereBetween('created_at', [date('Y-m-d', strtotime('-7 days')), date('Y-m-d')])
-                        ->orWhereDate('created_at', '=', date('Y-m-d'))->latest(),
-                    'riwayatSurveyBulanIni' => Survey::with('responden', 'namaSurvey', 'profile')->whereBetween('created_at', [date('Y-m-d', strtotime('-30 days')), date('Y-m-d')])
-                        ->orWhereDate('created_at', '=', date('Y-m-d'))->latest(),
+                    'totalResponden' => Responden::count(),
+                    'riwayatSurveyHariIni' => Survey::with('responden', 'namaSurvey', 'profile')->where('is_selesai', 1)->whereDate('created_at', '=', date('Y-m-d'))->latest(),
+                    'riwayatSurveyMingguIni' => Survey::with('responden', 'namaSurvey', 'profile')->where('is_selesai', 1)
+                        ->where(function ($query) {
+                            $query->whereBetween('created_at', [date('Y-m-d', strtotime('-7 days')), date('Y-m-d')])
+                                ->orWhereDate('created_at', '=', date('Y-m-d'))->latest();
+                        })->latest(),
+                    'riwayatSurveyBulanIni' => Survey::with('responden', 'namaSurvey', 'profile')->where('is_selesai', 1)
+                        ->where(function ($query) {
+                            $query->whereBetween('created_at', [date('Y-m-d', strtotime('-30 days')), date('Y-m-d')])
+                                ->orWhereDate('created_at', '=', date('Y-m-d'));
+                        })->latest(),
+
                     'daftarTahun' => Survey::select(DB::raw('YEAR(created_at) as tahun'))->groupBy('tahun')->latest()->get(),
                     // Jumlah perbulan di tahun ini
                 ];
@@ -63,13 +72,13 @@ class DashboardController extends Controller
 
     public function surveyBelumSelesai(Request $request)
     {
+        $profile = Profile::where('user_id', Auth::user()->id)->first();
         if ($request->ajax()) {
-            $data = Survey::with(['responden', 'namaSurvey', 'profile'])->where('is_selesai', 0)->orderBy('id', 'DESC')->get();
+            $data = Survey::with(['responden', 'namaSurvey', 'profile'])->where('profile_id', $profile->id)->where('is_selesai', 0)->orderBy('id', 'DESC')->get();
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('nama', function ($row) {
-                    return '<h6 class="text-uppercase mb-1 mt-4">Surveyor: ' . $row->profile->nama_lengkap . '</h6>
-                                    <h6 class="text-uppercase fw-bold mb-0">Responden: ' . $row->responden->kartu_keluarga . '</h6>
+                    return '<h6 class="text-uppercase fw-bold mb-0">Responden: ' . $row->responden->kartu_keluarga . '</h6>
                                     <span class="text-muted mb-4">Judul:  ' . $row->namaSurvey->nama . '</span>';
                 })
                 ->addColumn('tipe', function ($row) {
@@ -100,15 +109,16 @@ class DashboardController extends Controller
             ->whereYear('created_at', $request->tahun)
             ->groupBy('bulanAngka')
             ->orderBy('bulanAngka', 'asc')
+            ->where('is_selesai', 1)
             ->get();
 
         $jumlahPerbulanPre = Survey::with('namaSurvey')->select(DB::raw('MONTH(created_at) as bulan, COUNT(*) as jumlah'))->whereYear('created_at', $request->tahun)->groupBy('bulan')->whereHas('namaSurvey', function ($query) {
             $query->where('tipe', 'Pre');
-        })->orderBy('bulan', 'asc')->get();
+        })->where('is_selesai', 1)->orderBy('bulan', 'asc')->get();
 
         $jumlahPerbulanPost = Survey::with('namaSurvey')->select(DB::raw('MONTH(created_at) as bulan, COUNT(*) as jumlah'))->whereYear('created_at', $request->tahun)->groupBy('bulan')->whereHas('namaSurvey', function ($query) {
             $query->where('tipe', 'Post');
-        })->orderBy('bulan', 'asc')->get();
+        })->where('is_selesai', 1)->orderBy('bulan', 'asc')->get();
 
         $jsonJumlahPerbulan = [];
         foreach ($jumlahPerbulan as $bulan) {
