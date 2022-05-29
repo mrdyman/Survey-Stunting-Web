@@ -11,6 +11,12 @@
                     <span class="menu-title">Beranda</span>
                 </a>
             </li>
+            <li class="nav-item menu">
+                <a class="nav-link" href="{{ url('/survey/daftar-survey') }}">
+                    <i class="link-icon icon-book-open text-danger"></i>
+                    <span class="menu-title">Survey</span>
+                </a>
+            </li>
             @if (Auth::user()->role == 'Admin')
                 <li class="nav-item menu">
                     <a class="nav-link" href="{{ url('/namaSurvey') }}">
@@ -39,23 +45,17 @@
                 </li>
             @endif
             <li class="nav-item menu">
-                <a class="nav-link" href="{{ url('/survey/daftar-survey') }}">
-                    <i class="link-icon icon-book-open text-danger"></i>
-                    <span class="menu-title">Survey</span>
-                </a>
-            </li>
-            <li class="nav-item menu">
                 <a class="nav-link" href="{{ url('/exportSurvey') }}">
                     <i class="link-icon icon-cloud-download text-danger"></i>
                     <span class="menu-title"> Export Survey</span>
                 </a>
             </li>
-            <li class="nav-item menu">
+            {{-- <li class="nav-item menu">
                 <a class="nav-link" href="{{ url('/importSurvey') }}">
                     <i class="link-icon icon-cloud-upload text-danger"></i>
                     <span class="menu-title"> Import Survey</span>
                 </a>
-            </li>
+            </li> --}}
 
         </ul>
     </div>

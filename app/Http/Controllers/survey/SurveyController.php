@@ -60,13 +60,18 @@ class SurveyController extends Controller
                         $query->where('nama_lengkap', 'like', '%' . $search . '%');
                     });
                 }
-            })->orderBy('id', 'DESC')->get();
+            })->latest()->get();
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('nama', function ($row) {
-                    return '<h6 class="text-uppercase mb-1 mt-4">Surveyor: ' . $row->profile->nama_lengkap . '</h6>
+                    if (Auth::user()->role == "Admin") {
+                        return '<h6 class="text-uppercase mb-1 mt-4">Surveyor: ' . $row->profile->nama_lengkap . '</h6>
                                     <h6 class="text-uppercase fw-bold mb-0">Responden: ' . $row->responden->kartu_keluarga . '</h6>
                                     <span class="text-muted mb-4">Judul:  ' . $row->namaSurvey->nama . '</span>';
+                    } else if (Auth::user()->role == "Surveyor") {
+                        return '<h6 class="text-uppercase fw-bold mb-0">Responden: ' . $row->responden->kartu_keluarga . '</h6>
+                                    <span class="text-muted mb-4">Judul:  ' . $row->namaSurvey->nama . '</span>';
+                    }
                 })
                 ->addColumn('tipe', function ($row) {
                     if ($row->namaSurvey->tipe == "Pre") {
