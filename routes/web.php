@@ -53,8 +53,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/exportSurvey', [ExportSurveyController::class, 'index']);
     Route::post('/exportSurvey/exportExcel', [ExportSurveyController::class, 'exportSurvey']);
-    // Route::get('/importSurvey', [ImportSurveyController::class, 'index']);
-    // Route::post('/importSurvey/store', [ImportSurveyController::class, 'store']);
+    Route::get('/importSurvey', [ImportSurveyController::class, 'index']);
+    Route::post('/importSurvey/store', [ImportSurveyController::class, 'store']);
     Route::get('/survey/lihat-survey/{survey}', [SurveyController::class, 'lihatSurvey']);
     Route::post('/survey/cek-pilih-responden', [SurveyController::class, 'cekPilihResponden']);
     Route::get('/survey/daftar-survey', [SurveyController::class, 'index']);
