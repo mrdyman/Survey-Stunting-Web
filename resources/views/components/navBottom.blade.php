@@ -50,12 +50,12 @@
                     <span class="menu-title"> Export Survey</span>
                 </a>
             </li>
-            {{-- <li class="nav-item menu">
+            <li class="nav-item menu">
                 <a class="nav-link" href="{{ url('/importSurvey') }}">
                     <i class="link-icon icon-cloud-upload text-danger"></i>
-                    <span class="menu-title"> Import Survey</span>
+                    <span class="menu-title"> Import Survey Android</span>
                 </a>
-            </li> --}}
+            </li>
 
         </ul>
     </div>
