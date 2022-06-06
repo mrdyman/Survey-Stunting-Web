@@ -11,6 +11,7 @@ use App\Models\KategoriSoal;
 use App\Models\Soal;
 use App\Models\JawabanSurvey;
 use App\Models\NamaSurvey;
+use App\Models\Responden;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 
@@ -183,7 +184,7 @@ class ApiSurveyController extends Controller
                     return response([
                         'status' => 'error',
                         'message' => 'Pastikan Setiap Kategori Memiliki Minimal 1 Soal'
-                    ], 201);
+                    ], 400);
                 }
             }
         }
@@ -206,6 +207,15 @@ class ApiSurveyController extends Controller
                 'is_selesai' => $request->is_selesai,
                 'kode_unik' => $request->kode_unik
             ];
+        }
+
+        // check if current responden survey is not found
+        $respondenData = Responden::where('kode_unik', $request->kode_unik_responden)->first();
+        if(!$respondenData){
+            return response([
+                'status' => 'error',
+                'message' => 'Responden Tidak Ditemukan'
+            ], 422);
         }
 
         Survey::updateOrCreate(['kode_unik' => $request->kode_unik], $data);
