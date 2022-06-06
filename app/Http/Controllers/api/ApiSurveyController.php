@@ -142,6 +142,11 @@ class ApiSurveyController extends Controller
     public function store(Request $request){
         $incomingKodeUnik = $request->kode_unik;
         $currentKodeUnik = Survey::where('kode_unik', $incomingKodeUnik)->first();
+        $sync = $request->sync;
+        if($sync){
+            $kartuKeluarga = $request->responden->kartu_keluarga;
+            $newKodeUnikResponden = Responden::where('kartu_keluarga', $kartuKeluarga)->first()['kode_unik'];
+        }
        
         if($currentKodeUnik == null){
             $request->validate([
@@ -190,33 +195,55 @@ class ApiSurveyController extends Controller
         }
 
         if($incomingKodeUnik == null){
-            $data = [
-                'kode_unik_responden' => $request->kode_unik_responden,
-                'nama_survey_id' => $request->nama_survey_id,
-                'profile_id' => $request->profile_id,
-                'kategori_selanjutnya' => $kategoriSelanjutnya,
-                'is_selesai' => $request->is_selesai,
-                'kode_unik' => $this->generateKodeUnik()
-            ];
+            if($sync){
+                $data = [
+                    'kode_unik_responden' => $newKodeUnikResponden,
+                    'nama_survey_id' => $request->nama_survey_id,
+                    'profile_id' => $request->profile_id,
+                    'kategori_selanjutnya' => $kategoriSelanjutnya,
+                    'is_selesai' => $request->is_selesai,
+                    'kode_unik' => $this->generateKodeUnik()
+                ];
+            } else {
+                $data = [
+                    'kode_unik_responden' => $request->kode_unik_responden,
+                    'nama_survey_id' => $request->nama_survey_id,
+                    'profile_id' => $request->profile_id,
+                    'kategori_selanjutnya' => $kategoriSelanjutnya,
+                    'is_selesai' => $request->is_selesai,
+                    'kode_unik' => $this->generateKodeUnik()
+                ];
+            }
         } else {
-            $data = [
-                'kode_unik_responden' => $request->kode_unik_responden,
-                'nama_survey_id' => $request->nama_survey_id,
-                'profile_id' => $request->profile_id,
-                'kategori_selanjutnya' => $kategoriSelanjutnya,
-                'is_selesai' => $request->is_selesai,
-                'kode_unik' => $request->kode_unik
-            ];
+            if($sync){
+                $data = [
+                    'kode_unik_responden' => $newKodeUnikResponden,
+                    'nama_survey_id' => $request->nama_survey_id,
+                    'profile_id' => $request->profile_id,
+                    'kategori_selanjutnya' => $kategoriSelanjutnya,
+                    'is_selesai' => $request->is_selesai,
+                    'kode_unik' => $request->kode_unik
+                ];
+            } else {
+                $data = [
+                    'kode_unik_responden' => $request->kode_unik_responden,
+                    'nama_survey_id' => $request->nama_survey_id,
+                    'profile_id' => $request->profile_id,
+                    'kategori_selanjutnya' => $kategoriSelanjutnya,
+                    'is_selesai' => $request->is_selesai,
+                    'kode_unik' => $request->kode_unik
+                ];
+            }
         }
 
-        // check if current responden survey is not found
-        $respondenData = Responden::where('kode_unik', $request->kode_unik_responden)->first();
-        if(!$respondenData){
-            return response([
-                'status' => 'error',
-                'message' => 'Responden Tidak Ditemukan'
-            ], 422);
-        }
+        // // check if current responden survey is not found
+        // $respondenData = Responden::where('kode_unik', $request->kode_unik_responden)->first();
+        // if(!$respondenData){
+        //     return response([
+        //         'status' => 'error',
+        //         'message' => 'Responden Tidak Ditemukan'
+        //     ], 422);
+        // }
 
         Survey::updateOrCreate(['kode_unik' => $request->kode_unik], $data);
         
