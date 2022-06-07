@@ -15,7 +15,7 @@ class CreateRespondensTable extends Migration
     {
         Schema::create('responden', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('kartu_keluarga')->unique();
+            $table->bigInteger('kartu_keluarga');
             $table->text('alamat');
             $table->bigInteger('provinsi_id');
             $table->bigInteger('kabupaten_kota_id');
