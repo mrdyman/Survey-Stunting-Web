@@ -144,7 +144,7 @@ class ApiSurveyController extends Controller
         $currentKodeUnik = Survey::where('kode_unik', $incomingKodeUnik)->first();
         $sync = $request->sync;
         if($sync){
-            $kartuKeluarga = $request->responden->kartu_keluarga;
+            $kartuKeluarga = $request->kartu_keluarga;
             $newKodeUnikResponden = Responden::where('kartu_keluarga', $kartuKeluarga)->first()['kode_unik'];
         }
        
