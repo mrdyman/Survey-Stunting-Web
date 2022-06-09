@@ -13,9 +13,14 @@ class ApiRespondenController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $responden = Responden::withTrashed()->orderBy('id', 'desc')->get();
+        $withTrashed = $request->withTrashed;
+        if(!$withTrashed){
+            $responden = Responden::orderBy('id', 'desc')->get();
+        }else {
+            $responden = Responden::withTrashed()->orderBy('id', 'desc')->get();
+        }
         if($responden){
             return response([
                 'message' => 'OK',
