@@ -115,6 +115,7 @@ class RespondenController extends Controller
             'kecamatan_id' => $request->kecamatan,
             'desa_kelurahan_id' => $request->desa_kelurahan,
             'nomor_hp' => $request->nomor_hp,
+            'kode_unik' => $this->generateKodeUnik(),
         ];
 
         Responden::create($data);
