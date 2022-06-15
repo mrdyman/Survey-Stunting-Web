@@ -71,9 +71,9 @@
                         @foreach ($kategori->soal as $soal)
                             @php
                                 $daftarJawaban = \App\Models\JawabanSurvey::with(['jawabanSoal'])
-                                    ->where('kode_unik_survey', $survey->kode_unik)
-                                    ->where('kategori_soal_id', $kategori->id)
-                                    ->where('soal_id', $soal->id)
+                                    ->where('kode_unik_survey', "$survey->kode_unik")
+                                    ->where('kategori_soal_id', "$kategori->id")
+                                    ->where('soal_id', "$soal->id")
                                     ->get();
                             @endphp
                             <th align="center" style="vertical-align: center;border: 1px solid black;">
