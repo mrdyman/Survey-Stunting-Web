@@ -33,7 +33,8 @@
                                     <div class="form-group">
                                         <label for="exampleFormControlFile1">Upload Survey</label>
                                         <div class="custom-file">
-                                            <input type="file" name="file_survey" class="custom-file-input" id="customFile">
+                                            <input type="file" name="file_survey" class="custom-file-input"
+                                                id="customFile">
                                             <label class="custom-file-label" for="customFile">Pilih file</label>
                                         </div>
                                         <span class="text-muted d-block">File yang di import harus yang bernama

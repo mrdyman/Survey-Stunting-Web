@@ -29,7 +29,6 @@
             opacity: 1 !important;
             border: 0px solid black;
         }
-
     </style>
 @endpush
 
@@ -37,11 +36,12 @@
     <section>
         <div class="row">
             <div class="col-lg">
-                @component('components.formGroup.select', [
-                    'label' => 'Pilih Nama Survey',
-                    'name' => 'nama_survey_id',
-                    'id' => 'nama_survey_id',
-                    'class' => 'select2 filter',
+                @component('components.formGroup.select',
+                    [
+                        'label' => 'Pilih Jenis Survey',
+                        'name' => 'nama_survey_id',
+                        'id' => 'nama_survey_id',
+                        'class' => 'select2 filter',
                     ])
                     @slot('options')
                         <option value="semua">Semua</option>
@@ -55,11 +55,12 @@
             </div>
             @if (Auth::user()->role == 'Surveyor')
                 <div class="col-lg">
-                    @component('components.formGroup.select', [
-                        'label' => 'Pilih Status',
-                        'name' => 'status',
-                        'id' => 'status',
-                        'class' => 'select2 filter',
+                    @component('components.formGroup.select',
+                        [
+                            'label' => 'Pilih Status',
+                            'name' => 'status',
+                            'id' => 'status',
+                            'class' => 'select2 filter',
                         ])
                         @slot('options')
                             <option value="semua">Semua</option>
