@@ -79,7 +79,7 @@
                             <th align="center" style="vertical-align: center;border: 1px solid black;">
                                 @foreach ($daftarJawaban as $jawaban)
                                     <p>
-                                        {{ $jawaban->jawaban_soal_id == null ? $jawaban->jawaban_lainnya : $jawaban->jawabanSoal->jawaban }}
+                                        {{ $itemJawaban->jawaban_soal_id == null || $itemJawaban->jawaban_soal_id == 0 ? $itemJawaban->jawaban_lainnya : $itemJawaban->jawabanSoal->jawaban }}
                                     </p>
                                 @endforeach
                             </th>

@@ -72,6 +72,7 @@ Route::group(['middleware' => ['admin']], function () {
         'responden' => 'responden'
     ]);
 
+    Route::put('/namaSurvey/statusAktif/{namaSurvey}', [NamaSurveyController::class, 'statusAktif']);
     Route::resource('/namaSurvey', NamaSurveyController::class);
     Route::resource("/kategoriSoal/{namaSurvey}", KategoriSoalController::class)->parameters([
         '{namaSurvey}' => 'kategoriSoal'

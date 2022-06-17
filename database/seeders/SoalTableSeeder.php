@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class SoalTableSeeder extends Seeder
 {
@@ -15,1239 +14,3757 @@ class SoalTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('soal')->insert(array(
-            0 =>
-            array(
+        
+
+        \DB::table('soal')->delete();
+        
+        \DB::table('soal')->insert(array (
+            0 => 
+            array (
                 'id' => 7,
                 'soal' => 'Apakah Anda mengetahui kata “STUNTING” ?',
                 'urutan' => 1,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 7,
                 'deleted_at' => NULL,
                 'created_at' => '2022-02-22 02:27:36',
                 'updated_at' => '2022-02-22 02:27:36',
             ),
-            1 =>
-            array(
+            1 => 
+            array (
                 'id' => 8,
                 'soal' => 'Dari mana Anda mengetahui STUNTING?',
                 'urutan' => 2,
                 'tipe_jawaban' => 'Kotak Centang',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 7,
                 'deleted_at' => NULL,
                 'created_at' => '2022-02-22 02:28:26',
                 'updated_at' => '2022-02-22 02:28:26',
             ),
-            2 =>
-            array(
+            2 => 
+            array (
                 'id' => 9,
                 'soal' => 'Apa yang dimaksud dengan Stunting menurut Anda ?',
                 'urutan' => 3,
                 'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 7,
                 'deleted_at' => NULL,
                 'created_at' => '2022-02-22 02:28:41',
                 'updated_at' => '2022-02-22 02:28:41',
             ),
-            3 =>
-            array(
+            3 => 
+            array (
                 'id' => 10,
                 'soal' => 'Apakah ada makanan yang dilarang saat hamil ? sebutkan !',
                 'urutan' => 1,
                 'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 8,
                 'deleted_at' => NULL,
                 'created_at' => '2022-02-22 02:29:44',
                 'updated_at' => '2022-02-22 02:29:44',
             ),
-            4 =>
-            array(
+            4 => 
+            array (
                 'id' => 11,
                 'soal' => 'Apakah dirumah Anda mendahulukan laki-laki makan sebelum perempuan ?',
                 'urutan' => 2,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 8,
                 'deleted_at' => NULL,
                 'created_at' => '2022-02-22 02:30:03',
                 'updated_at' => '2022-02-22 02:30:03',
             ),
-            5 =>
-            array(
+            5 => 
+            array (
                 'id' => 12,
-                'soal' => 'Apakah Ada Paksaan dalam pernikahan (Kesiapan Menikah)?',
+            'soal' => 'Apakah Ada Paksaan dalam pernikahan (Kesiapan Menikah)?',
                 'urutan' => 3,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 8,
                 'deleted_at' => NULL,
                 'created_at' => '2022-02-22 02:30:19',
                 'updated_at' => '2022-02-22 02:30:19',
             ),
-            6 =>
-            array(
+            6 => 
+            array (
                 'id' => 13,
                 'soal' => 'Jumlah Pendapatan',
                 'urutan' => 1,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 9,
                 'deleted_at' => NULL,
                 'created_at' => '2022-02-22 02:31:31',
                 'updated_at' => '2022-02-22 02:31:31',
             ),
-            7 =>
-            array(
+            7 => 
+            array (
                 'id' => 14,
-                'soal' => 'Sumber pendapatan (boleh memilih lebih dari 1 pilihan)',
+            'soal' => 'Sumber pendapatan (boleh memilih lebih dari 1 pilihan)',
                 'urutan' => 2,
                 'tipe_jawaban' => 'Kotak Centang',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 9,
                 'deleted_at' => NULL,
                 'created_at' => '2022-02-22 02:32:09',
                 'updated_at' => '2022-02-22 02:32:09',
             ),
-            8 =>
-            array(
+            8 => 
+            array (
                 'id' => 15,
                 'soal' => 'Apakah Anda memilik kartu keluarga sejahtera atau perlindungan sosial ?',
                 'urutan' => 3,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 9,
                 'deleted_at' => NULL,
                 'created_at' => '2022-02-22 02:32:35',
                 'updated_at' => '2022-02-22 02:32:35',
             ),
-            9 =>
-            array(
+            9 => 
+            array (
                 'id' => 16,
                 'soal' => 'Sarana air bersih',
                 'urutan' => 1,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 10,
                 'deleted_at' => NULL,
                 'created_at' => '2022-02-22 02:34:28',
                 'updated_at' => '2022-02-22 02:34:28',
             ),
-            10 =>
-            array(
+            10 => 
+            array (
                 'id' => 17,
-                'soal' => 'Jamban (sarana pembuangan kotoran)',
+            'soal' => 'Jamban (sarana pembuangan kotoran)',
                 'urutan' => 2,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 10,
                 'deleted_at' => NULL,
                 'created_at' => '2022-02-22 02:35:23',
                 'updated_at' => '2022-02-22 02:35:23',
             ),
-            11 =>
-            array(
+            11 => 
+            array (
                 'id' => 18,
                 'soal' => 'Jendela kamar tidur',
                 'urutan' => 3,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 10,
                 'deleted_at' => NULL,
                 'created_at' => '2022-02-22 02:35:50',
                 'updated_at' => '2022-02-22 02:35:50',
             ),
-            12 =>
-            array(
+            12 => 
+            array (
                 'id' => 20,
                 'soal' => 'Nama Responden',
                 'urutan' => 1,
                 'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 11,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 16:23:22',
                 'updated_at' => '2022-03-01 16:23:22',
             ),
-            13 =>
-            array(
+            13 => 
+            array (
                 'id' => 21,
                 'soal' => 'Nomor Telepon/Handphone',
                 'urutan' => 2,
                 'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 11,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 16:23:59',
                 'updated_at' => '2022-03-01 16:23:59',
             ),
-            14 =>
-            array(
+            14 => 
+            array (
                 'id' => 22,
                 'soal' => 'Nama Ayah',
                 'urutan' => 3,
                 'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 11,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 16:24:23',
                 'updated_at' => '2022-03-01 16:24:23',
             ),
-            15 =>
-            array(
+            15 => 
+            array (
                 'id' => 23,
                 'soal' => 'Pekerjaan Ayah',
                 'urutan' => 4,
                 'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 11,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 16:24:46',
                 'updated_at' => '2022-03-01 16:24:46',
             ),
-            16 =>
-            array(
+            16 => 
+            array (
                 'id' => 24,
                 'soal' => 'Nama Ibu',
                 'urutan' => 5,
                 'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 11,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 16:25:05',
                 'updated_at' => '2022-03-01 16:25:05',
             ),
-            17 =>
-            array(
+            17 => 
+            array (
                 'id' => 25,
                 'soal' => 'Pekerjaan Ibu',
                 'urutan' => 6,
                 'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 11,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 16:25:25',
                 'updated_at' => '2022-03-01 16:25:25',
             ),
-            18 =>
-            array(
+            18 => 
+            array (
                 'id' => 26,
                 'soal' => 'Nama Suami',
                 'urutan' => 7,
                 'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 11,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 16:25:54',
                 'updated_at' => '2022-03-01 16:25:54',
             ),
-            19 =>
-            array(
+            19 => 
+            array (
                 'id' => 27,
                 'soal' => 'Pekerjaan Suami',
                 'urutan' => 8,
                 'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 11,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 16:26:12',
                 'updated_at' => '2022-03-01 16:26:12',
             ),
-            20 =>
-            array(
+            20 => 
+            array (
                 'id' => 28,
                 'soal' => 'Nama Istri',
                 'urutan' => 9,
                 'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 11,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 16:26:46',
                 'updated_at' => '2022-03-01 16:26:46',
             ),
-            21 =>
-            array(
+            21 => 
+            array (
                 'id' => 29,
                 'soal' => 'Pekerjaan Istri',
                 'urutan' => 10,
                 'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 11,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 16:27:07',
                 'updated_at' => '2022-03-01 16:27:19',
             ),
-            22 =>
-            array(
+            22 => 
+            array (
                 'id' => 30,
                 'soal' => 'Jenis Kelamin',
                 'urutan' => 11,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 11,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 16:27:58',
                 'updated_at' => '2022-03-01 16:27:58',
             ),
-            23 =>
-            array(
+            23 => 
+            array (
                 'id' => 31,
                 'soal' => 'Umur',
                 'urutan' => 12,
                 'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 11,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 16:28:33',
                 'updated_at' => '2022-03-01 16:28:33',
             ),
-            24 =>
-            array(
+            24 => 
+            array (
                 'id' => 32,
                 'soal' => 'Pendidikan Terakhir',
                 'urutan' => 13,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 11,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 16:30:34',
                 'updated_at' => '2022-03-01 16:30:34',
             ),
-            25 =>
-            array(
+            25 => 
+            array (
                 'id' => 33,
                 'soal' => 'Pekerjaan',
                 'urutan' => 14,
                 'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 11,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 16:30:49',
                 'updated_at' => '2022-03-01 16:30:49',
             ),
-            26 =>
-            array(
+            26 => 
+            array (
                 'id' => 34,
                 'soal' => 'Usia Menikah Pertama Kali',
                 'urutan' => 15,
                 'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 11,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 16:31:04',
                 'updated_at' => '2022-03-01 16:31:04',
             ),
-            27 =>
-            array(
+            27 => 
+            array (
                 'id' => 35,
                 'soal' => 'Usia Saat Hamil Pertama',
                 'urutan' => 16,
                 'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 11,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 16:31:28',
                 'updated_at' => '2022-03-01 16:31:28',
             ),
-            28 =>
-            array(
+            28 => 
+            array (
                 'id' => 36,
                 'soal' => 'Jumlah Anak',
                 'urutan' => 17,
                 'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 11,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 16:31:52',
                 'updated_at' => '2022-03-01 16:31:52',
             ),
-            29 =>
-            array(
+            29 => 
+            array (
                 'id' => 38,
                 'soal' => 'Usia Hamil Lanjutan > 35 Tahun',
                 'urutan' => 18,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 11,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 16:34:53',
                 'updated_at' => '2022-03-01 16:34:53',
             ),
-            30 =>
-            array(
+            30 => 
+            array (
                 'id' => 39,
                 'soal' => 'Berapa jumlah Anggota keluarga yang tinggal menetap dalam dirumah ?',
                 'urutan' => 19,
                 'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 11,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 16:35:33',
                 'updated_at' => '2022-03-01 16:36:12',
             ),
-            31 =>
-            array(
+            31 => 
+            array (
                 'id' => 40,
                 'soal' => 'Apakah Anda mengetahui kata “STUNTING” ?',
                 'urutan' => 1,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 12,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 16:38:23',
                 'updated_at' => '2022-03-01 16:38:23',
             ),
-            32 =>
-            array(
+            32 => 
+            array (
                 'id' => 41,
                 'soal' => 'Dari mana Anda mengetahui STUNTING?',
                 'urutan' => 2,
                 'tipe_jawaban' => 'Kotak Centang',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 12,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 16:39:34',
                 'updated_at' => '2022-03-01 16:39:34',
             ),
-            33 =>
-            array(
+            33 => 
+            array (
                 'id' => 42,
                 'soal' => 'Apa yang dimaksud dengan Stunting menurut Anda ?',
                 'urutan' => 3,
                 'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 12,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 16:41:10',
                 'updated_at' => '2022-03-01 16:41:10',
             ),
-            34 =>
-            array(
+            34 => 
+            array (
                 'id' => 43,
                 'soal' => 'Apakah ada makanan yang dilarang saat hamil ? sebutkan !',
                 'urutan' => 1,
                 'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 13,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 16:42:02',
                 'updated_at' => '2022-03-01 16:42:02',
             ),
-            35 =>
-            array(
+            35 => 
+            array (
                 'id' => 44,
                 'soal' => 'Apakah dirumah Anda mendahulukan laki-laki makan sebelum perempuan ?',
                 'urutan' => 2,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 13,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 16:42:28',
                 'updated_at' => '2022-03-01 16:42:28',
             ),
-            36 =>
-            array(
+            36 => 
+            array (
                 'id' => 45,
-                'soal' => 'Apakah Ada Paksaan dalam pernikahan (Kesiapan Menikah)?',
+            'soal' => 'Apakah Ada Paksaan dalam pernikahan (Kesiapan Menikah)?',
                 'urutan' => 3,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 13,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 16:42:52',
                 'updated_at' => '2022-03-01 16:42:52',
             ),
-            37 =>
-            array(
+            37 => 
+            array (
                 'id' => 46,
                 'soal' => 'Apakah Anda Hamil sebelum nikah ?',
                 'urutan' => 4,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 13,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 16:43:11',
                 'updated_at' => '2022-03-01 16:43:11',
             ),
-            38 =>
-            array(
+            38 => 
+            array (
                 'id' => 47,
                 'soal' => 'Jumlah Pendapatan',
                 'urutan' => 1,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 14,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 16:45:54',
                 'updated_at' => '2022-03-01 16:45:54',
             ),
-            39 =>
-            array(
+            39 => 
+            array (
                 'id' => 48,
-                'soal' => 'Sumber pendapatan (boleh memilih lebih dari 1 pilihan)',
+            'soal' => 'Sumber pendapatan (boleh memilih lebih dari 1 pilihan)',
                 'urutan' => 2,
                 'tipe_jawaban' => 'Kotak Centang',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 14,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 16:47:19',
                 'updated_at' => '2022-03-01 16:47:19',
             ),
-            40 =>
-            array(
+            40 => 
+            array (
                 'id' => 49,
                 'soal' => 'Apakah Anda memilik kartu keluarga sejahtera atau perlindungan sosial ?',
                 'urutan' => 3,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 14,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 16:47:48',
                 'updated_at' => '2022-03-01 16:47:48',
             ),
-            41 =>
-            array(
+            41 => 
+            array (
                 'id' => 50,
                 'soal' => 'Pengeluaran keluarga lebih banyak dihabiskan untuk apa?',
                 'urutan' => 4,
                 'tipe_jawaban' => 'Kotak Centang',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 14,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 16:49:05',
                 'updated_at' => '2022-03-01 16:49:05',
             ),
-            42 =>
-            array(
+            42 => 
+            array (
                 'id' => 51,
                 'soal' => 'Apakah keluarga anda Mendapatkan bantuan sosial seperti PKH,PBNT, BST dan lain-lain',
                 'urutan' => 5,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 14,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 16:55:24',
                 'updated_at' => '2022-03-01 16:55:24',
             ),
-            43 =>
-            array(
+            43 => 
+            array (
                 'id' => 52,
                 'soal' => 'Sarana air bersih',
                 'urutan' => 1,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 15,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 17:00:56',
                 'updated_at' => '2022-03-01 17:00:56',
             ),
-            44 =>
-            array(
+            44 => 
+            array (
                 'id' => 53,
-                'soal' => 'Jamban(sarana pembuangankotoran)',
+            'soal' => 'Jamban(sarana pembuangankotoran)',
                 'urutan' => 2,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 15,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 17:02:20',
                 'updated_at' => '2022-03-01 17:02:20',
             ),
-            45 =>
-            array(
+            45 => 
+            array (
                 'id' => 54,
                 'soal' => 'Sarana pembuangan air limbah',
                 'urutan' => 3,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 15,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 17:03:00',
                 'updated_at' => '2022-03-01 17:03:00',
             ),
-            46 =>
-            array(
+            46 => 
+            array (
                 'id' => 55,
-                'soal' => 'Sarana pembuangan sampah (tempat sampah)',
+            'soal' => 'Sarana pembuangan sampah (tempat sampah)',
                 'urutan' => 4,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 15,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 17:03:37',
                 'updated_at' => '2022-03-01 17:03:37',
             ),
-            47 =>
-            array(
+            47 => 
+            array (
                 'id' => 56,
                 'soal' => 'Membuang sampah ketempat sampah',
                 'urutan' => 5,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 15,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 17:04:13',
                 'updated_at' => '2022-03-01 17:04:13',
             ),
-            48 =>
-            array(
+            48 => 
+            array (
                 'id' => 57,
                 'soal' => 'Dinding',
                 'urutan' => 6,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 15,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 17:04:51',
                 'updated_at' => '2022-03-01 17:04:51',
             ),
-            49 =>
-            array(
+            49 => 
+            array (
                 'id' => 58,
                 'soal' => 'Lantai',
                 'urutan' => 7,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 15,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 17:05:18',
                 'updated_at' => '2022-03-01 17:05:18',
             ),
-            50 =>
-            array(
+            50 => 
+            array (
                 'id' => 59,
                 'soal' => 'Jendela kamar tidur',
                 'urutan' => 8,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 15,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 17:05:39',
                 'updated_at' => '2022-03-01 17:05:39',
             ),
-            51 =>
-            array(
+            51 => 
+            array (
                 'id' => 60,
                 'soal' => 'Jendela ruang keluarga',
                 'urutan' => 9,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 15,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 17:06:15',
                 'updated_at' => '2022-03-01 17:06:15',
             ),
-            52 =>
-            array(
+            52 => 
+            array (
                 'id' => 61,
                 'soal' => 'Ventilasi',
                 'urutan' => 10,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 15,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 17:06:43',
                 'updated_at' => '2022-03-01 17:06:43',
             ),
-            53 =>
-            array(
+            53 => 
+            array (
                 'id' => 62,
                 'soal' => 'LubangAsapDapur',
                 'urutan' => 11,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 15,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 17:07:16',
                 'updated_at' => '2022-03-01 17:07:16',
             ),
-            54 =>
-            array(
+            54 => 
+            array (
                 'id' => 63,
                 'soal' => 'Pencahayaan',
                 'urutan' => 12,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 15,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 17:07:45',
                 'updated_at' => '2022-03-01 17:07:45',
             ),
-            55 =>
-            array(
+            55 => 
+            array (
                 'id' => 64,
                 'soal' => 'Apa yang digunakan untuk memasak',
                 'urutan' => 13,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 15,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 17:08:28',
                 'updated_at' => '2022-03-01 17:08:28',
             ),
-            56 =>
-            array(
+            56 => 
+            array (
                 'id' => 65,
                 'soal' => 'Apakah anda tau keluarga anda punya Riwayat penyakit',
                 'urutan' => 1,
                 'tipe_jawaban' => 'Kotak Centang',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 16,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 17:10:38',
                 'updated_at' => '2022-03-01 17:10:38',
             ),
-            57 =>
-            array(
+            57 => 
+            array (
                 'id' => 66,
                 'soal' => 'Apakah anda dan keluarga anda biasanya terkena Paparan asap rokok',
                 'urutan' => 2,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 16,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 17:11:08',
                 'updated_at' => '2022-03-01 17:11:08',
             ),
-            58 =>
-            array(
+            58 => 
+            array (
                 'id' => 67,
                 'soal' => 'Berapa kali keluarga anda mandi dalam sehari',
                 'urutan' => 3,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 16,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 17:11:40',
                 'updated_at' => '2022-03-01 17:11:40',
             ),
-            59 =>
-            array(
+            59 => 
+            array (
                 'id' => 68,
                 'soal' => 'Berapa kali anda/ keluarga anda Makan Setiap hari',
                 'urutan' => 4,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 16,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 17:12:21',
                 'updated_at' => '2022-03-01 17:21:26',
             ),
-            60 =>
-            array(
+            60 => 
+            array (
                 'id' => 69,
                 'soal' => 'Apakah Anda mengonsumsi suplemen ?',
                 'urutan' => 5,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 16,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 17:15:05',
                 'updated_at' => '2022-03-01 17:21:42',
             ),
-            61 =>
-            array(
+            61 => 
+            array (
                 'id' => 70,
                 'soal' => 'Sudah berapa lama Anda mengonsumsi suplemen ?',
                 'urutan' => 6,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 16,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 17:20:43',
                 'updated_at' => '2022-03-01 17:21:50',
             ),
-            62 =>
-            array(
+            62 => 
+            array (
                 'id' => 71,
                 'soal' => 'Seberapa sering Anda mengonsumsi suplemen makanan?',
                 'urutan' => 7,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 16,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 17:23:09',
                 'updated_at' => '2022-03-01 17:23:09',
             ),
-            63 =>
-            array(
+            63 => 
+            array (
                 'id' => 72,
                 'soal' => 'Apa alasan Anda tidak mengonsumsi suplemen ?',
                 'urutan' => 8,
                 'tipe_jawaban' => 'Kotak Centang',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 16,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 17:24:41',
                 'updated_at' => '2022-03-01 17:24:41',
             ),
-            64 =>
-            array(
+            64 => 
+            array (
                 'id' => 73,
-                'soal' => 'Apa saja yang dimakan tiap hari (perminggu)',
+            'soal' => 'Apa saja yang dimakan tiap hari (perminggu)',
                 'urutan' => 9,
                 'tipe_jawaban' => 'Kotak Centang',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 16,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 17:25:49',
                 'updated_at' => '2022-03-01 17:25:49',
             ),
-            65 =>
-            array(
+            65 => 
+            array (
                 'id' => 74,
-                'soal' => 'Remaja: Berapa KEK ... Cm (di isi untuk Kebutuhan anak Remaja saja)',
+            'soal' => 'Remaja: Berapa KEK ... Cm (di isi untuk Kebutuhan anak Remaja saja)',
                 'urutan' => 10,
                 'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 16,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 17:28:06',
                 'updated_at' => '2022-03-01 17:28:45',
             ),
-            66 =>
-            array(
+            66 => 
+            array (
                 'id' => 75,
-                'soal' => 'Remaja: BerapaHB ... g/dL (di isi untuk Kebutuhan anak Remaja saja)',
+            'soal' => 'Remaja: BerapaHB ... g/dL (di isi untuk Kebutuhan anak Remaja saja)',
                 'urutan' => 11,
                 'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 16,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 17:29:52',
                 'updated_at' => '2022-03-01 17:29:52',
             ),
-            67 =>
-            array(
+            67 => 
+            array (
                 'id' => 76,
-                'soal' => 'Remaja: IMT ... Kg/m2 (di isi untuk Kebutuhan anak Remaja saja)',
+            'soal' => 'Remaja: IMT ... Kg/m2 (di isi untuk Kebutuhan anak Remaja saja)',
                 'urutan' => 12,
                 'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 16,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 17:30:49',
                 'updated_at' => '2022-03-01 17:37:41',
             ),
-            68 =>
-            array(
+            68 => 
+            array (
                 'id' => 77,
-                'soal' => 'Remaja: TekananDarah ... mm/Hg (di isi untuk Kebutuhan anak Remaja saja)',
+            'soal' => 'Remaja: TekananDarah ... mm/Hg (di isi untuk Kebutuhan anak Remaja saja)',
                 'urutan' => 13,
                 'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 16,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 17:31:20',
                 'updated_at' => '2022-03-01 17:37:59',
             ),
-            69 =>
-            array(
+            69 => 
+            array (
                 'id' => 78,
-                'soal' => 'Ibu Hamil: Berapa HB ... g/dL (Di isi oleh responden ibu hamil)',
+            'soal' => 'Ibu Hamil: Berapa HB ... g/dL (Di isi oleh responden ibu hamil)',
                 'urutan' => 14,
                 'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 16,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 17:32:09',
                 'updated_at' => '2022-03-01 17:34:25',
             ),
-            70 =>
-            array(
+            70 => 
+            array (
                 'id' => 79,
-                'soal' => 'Ibu Hamil: Berapa KEK ... Cm (Di isi oleh responden ibu hamil)',
+            'soal' => 'Ibu Hamil: Berapa KEK ... Cm (Di isi oleh responden ibu hamil)',
                 'urutan' => 15,
                 'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 16,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 17:34:53',
                 'updated_at' => '2022-03-01 17:38:35',
             ),
-            71 =>
-            array(
+            71 => 
+            array (
                 'id' => 80,
-                'soal' => 'Ibu Hamil: Berapa BB ... Kg (Di isi oleh responden ibu hamil)',
+            'soal' => 'Ibu Hamil: Berapa BB ... Kg (Di isi oleh responden ibu hamil)',
                 'urutan' => 16,
                 'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 16,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 17:35:32',
                 'updated_at' => '2022-03-01 17:38:58',
             ),
-            72 =>
-            array(
+            72 => 
+            array (
                 'id' => 81,
-                'soal' => 'Ibu Hamil: Tekanan Darah ... mm/Hg (Di isi oleh responden ibu hamil)',
+            'soal' => 'Ibu Hamil: Tekanan Darah ... mm/Hg (Di isi oleh responden ibu hamil)',
                 'urutan' => 17,
                 'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 16,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 17:36:11',
                 'updated_at' => '2022-03-01 17:39:11',
             ),
-            73 =>
-            array(
+            73 => 
+            array (
                 'id' => 82,
-                'soal' => 'Ibu Hamil: Penambahan BB selama hamil ... Kg (Di isi oleh responden ibu hamil)',
+            'soal' => 'Ibu Hamil: Penambahan BB selama hamil ... Kg (Di isi oleh responden ibu hamil)',
                 'urutan' => 18,
                 'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 16,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 17:36:42',
                 'updated_at' => '2022-03-01 17:39:21',
             ),
-            74 =>
-            array(
+            74 => 
+            array (
                 'id' => 83,
-                'soal' => 'Ibu Hamil: Rutin Tablet FE ? (Di isi oleh responden ibu hamil)',
+            'soal' => 'Ibu Hamil: Rutin Tablet FE ? (Di isi oleh responden ibu hamil)',
                 'urutan' => 19,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 16,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 17:37:16',
                 'updated_at' => '2022-03-01 17:39:39',
             ),
-            75 =>
-            array(
+            75 => 
+            array (
                 'id' => 85,
-                'soal' => 'Ibu Hamil: ANC ? (Di isi oleh responden ibu hamil)',
+            'soal' => 'Ibu Hamil: ANC ? (Di isi oleh responden ibu hamil)',
                 'urutan' => 20,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 16,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 17:42:41',
                 'updated_at' => '2022-03-01 17:42:41',
             ),
-            76 =>
-            array(
+            76 => 
+            array (
                 'id' => 86,
-                'soal' => 'Ibu Hamil: Imunisasi ? (Di isi oleh responden ibu hamil)',
+            'soal' => 'Ibu Hamil: Imunisasi ? (Di isi oleh responden ibu hamil)',
                 'urutan' => 21,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 16,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 17:44:14',
                 'updated_at' => '2022-03-01 17:44:14',
             ),
-            77 =>
-            array(
+            77 => 
+            array (
                 'id' => 87,
-                'soal' => 'Ibu Hamil: KB ? (Di isi oleh responden ibu hamil)',
+            'soal' => 'Ibu Hamil: KB ? (Di isi oleh responden ibu hamil)',
                 'urutan' => 22,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 16,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 17:44:56',
                 'updated_at' => '2022-03-01 17:44:56',
             ),
-            78 =>
-            array(
+            78 => 
+            array (
                 'id' => 88,
-                'soal' => 'Ibu Hamil: Supelemen tambahan ? (Di isi oleh responden ibu hamil)',
+            'soal' => 'Ibu Hamil: Supelemen tambahan ? (Di isi oleh responden ibu hamil)',
                 'urutan' => 23,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 16,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 17:45:44',
                 'updated_at' => '2022-03-01 17:45:44',
             ),
-            79 =>
-            array(
+            79 => 
+            array (
                 'id' => 89,
-                'soal' => 'Ibu Nifas / Menyusui: Siapa yang menolong ibu saat bersalin ? (di isi ibu Nifas dan Menyusui)',
+            'soal' => 'Ibu Nifas / Menyusui: Siapa yang menolong ibu saat bersalin ? (di isi ibu Nifas dan Menyusui)',
                 'urutan' => 24,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 16,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 17:48:42',
                 'updated_at' => '2022-03-01 17:48:42',
             ),
-            80 =>
-            array(
+            80 => 
+            array (
                 'id' => 90,
-                'soal' => 'Ibu Nifas / Menyusui: Apakah Ibu akan memberikan ASI eksklusif ? (di isi ibu Nifas dan Menyusui)',
+            'soal' => 'Ibu Nifas / Menyusui: Apakah Ibu akan memberikan ASI eksklusif ? (di isi ibu Nifas dan Menyusui)',
                 'urutan' => 25,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 16,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 17:52:36',
                 'updated_at' => '2022-03-01 17:54:21',
             ),
-            81 =>
-            array(
+            81 => 
+            array (
                 'id' => 91,
-                'soal' => 'Ibu Nifas / Menyusui: Kapan Ibu mulai memberikan ASI pada bayi ? (di isi ibu Nifas dan Menyusui)',
+            'soal' => 'Ibu Nifas / Menyusui: Kapan Ibu mulai memberikan ASI pada bayi ? (di isi ibu Nifas dan Menyusui)',
                 'urutan' => 26,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 16,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 17:53:44',
                 'updated_at' => '2022-03-01 17:53:44',
             ),
-            82 =>
-            array(
+            82 => 
+            array (
                 'id' => 92,
-                'soal' => 'Ibu Nifas / Menyusui: Supelemen tambahan ? (di isi ibu Nifas dan Menyusui)',
+            'soal' => 'Ibu Nifas / Menyusui: Supelemen tambahan ? (di isi ibu Nifas dan Menyusui)',
                 'urutan' => 27,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 16,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 17:55:18',
                 'updated_at' => '2022-03-01 17:55:18',
             ),
-            83 =>
-            array(
+            83 => 
+            array (
                 'id' => 93,
                 'soal' => 'Bayi, Baduta, dan Balita: Berapa PB/U ?',
                 'urutan' => 28,
                 'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 16,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 17:56:02',
                 'updated_at' => '2022-03-01 17:56:02',
             ),
-            84 =>
-            array(
+            84 => 
+            array (
                 'id' => 94,
                 'soal' => 'Bayi, Baduta, dan Balita: Berapa TB/U ?',
                 'urutan' => 29,
                 'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 16,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 17:56:33',
                 'updated_at' => '2022-03-01 17:56:33',
             ),
-            85 =>
-            array(
+            85 => 
+            array (
                 'id' => 95,
                 'soal' => 'Bayi, Baduta, dan Balita: Berapa BB/U ?',
                 'urutan' => 30,
                 'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 16,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 17:57:04',
                 'updated_at' => '2022-03-01 17:57:04',
             ),
-            86 =>
-            array(
+            86 => 
+            array (
                 'id' => 96,
                 'soal' => 'Bayi, Baduta, dan Balita: IMT/U ?',
                 'urutan' => 31,
                 'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 16,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 17:57:23',
                 'updated_at' => '2022-03-01 17:57:23',
             ),
-            87 =>
-            array(
+            87 => 
+            array (
                 'id' => 97,
                 'soal' => 'Bayi, Baduta, dan Balita: Status imunisasi ?',
                 'urutan' => 32,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 16,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 17:58:31',
                 'updated_at' => '2022-03-01 17:58:31',
             ),
-            88 =>
-            array(
+            88 => 
+            array (
                 'id' => 98,
                 'soal' => 'Bayi, Baduta, dan Balita: Suplemen tambahan ?',
                 'urutan' => 33,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 16,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 17:59:09',
                 'updated_at' => '2022-03-01 17:59:09',
             ),
-            89 =>
-            array(
+            89 => 
+            array (
                 'id' => 99,
                 'soal' => 'Apakah ibu pernah mendengar istilah “kolostrum”? Apa yang dimaksud dengan kolostrum?',
                 'urutan' => 34,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 16,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 18:00:10',
                 'updated_at' => '2022-03-01 18:00:10',
             ),
-            90 =>
-            array(
+            90 => 
+            array (
                 'id' => 100,
                 'soal' => 'Apakah ibu memberikan kolostrum pada bayi Ibu?',
                 'urutan' => 35,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 16,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 18:00:45',
                 'updated_at' => '2022-03-01 18:00:45',
             ),
-            91 =>
-            array(
+            91 => 
+            array (
                 'id' => 101,
-                'soal' => 'Apakah ibu melaksanakan Inisiasi Menyusui Dini (IMD)?',
+            'soal' => 'Apakah ibu melaksanakan Inisiasi Menyusui Dini (IMD)?',
                 'urutan' => 36,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 16,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 18:01:06',
                 'updated_at' => '2022-03-01 18:01:06',
             ),
-            92 =>
-            array(
+            92 => 
+            array (
                 'id' => 102,
                 'soal' => 'Setelah bayi lahir, hal apa yang dilakukan ?',
                 'urutan' => 37,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 16,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 18:02:10',
                 'updated_at' => '2022-03-01 18:02:10',
             ),
-            93 =>
-            array(
+            93 => 
+            array (
                 'id' => 103,
-                'soal' => 'Berapa lama ibu melaksanakan Inisiasi Menyusui Dini (IMD)?',
+            'soal' => 'Berapa lama ibu melaksanakan Inisiasi Menyusui Dini (IMD)?',
                 'urutan' => 38,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 16,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 18:02:42',
                 'updated_at' => '2022-03-01 18:02:42',
             ),
-            94 =>
-            array(
+            94 => 
+            array (
                 'id' => 104,
                 'soal' => 'Apakah anak ibu diberikan asi ekslusif ?',
                 'urutan' => 39,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 16,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 18:03:01',
                 'updated_at' => '2022-03-01 18:03:01',
             ),
-            95 =>
-            array(
+            95 => 
+            array (
                 'id' => 105,
                 'soal' => 'Apakah anak ibu ASI dua tahun ?',
                 'urutan' => 40,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 16,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 18:03:50',
                 'updated_at' => '2022-03-01 18:03:50',
             ),
-            96 =>
-            array(
+            96 => 
+            array (
                 'id' => 106,
                 'soal' => 'Pemberian makanan tambahan ?',
                 'urutan' => 41,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 16,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-01 18:04:07',
                 'updated_at' => '2022-03-01 18:04:07',
             ),
-            97 =>
-            array(
+            97 => 
+            array (
                 'id' => 107,
                 'soal' => 'Apakah dirumah Anda, Anda harus mematuhi peraturan yang dibuat oleh orangtua ?',
                 'urutan' => 1,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 24,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-02 01:50:45',
                 'updated_at' => '2022-03-02 01:50:45',
             ),
-            98 =>
-            array(
+            98 => 
+            array (
                 'id' => 108,
                 'soal' => 'Apakah dirumah Anda Orangtua sering marah kepada Anda ?',
                 'urutan' => 2,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 24,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-02 02:25:42',
                 'updated_at' => '2022-03-02 02:25:42',
             ),
-            99 =>
-            array(
+            99 => 
+            array (
                 'id' => 109,
-                'soal' => 'Apakah Orangtua sering melakukan kekerasan (cont. Memukul) terhadap Anda ?',
+            'soal' => 'Apakah Orangtua sering melakukan kekerasan (cont. Memukul) terhadap Anda ?',
                 'urutan' => 3,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 24,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-02 02:26:01',
                 'updated_at' => '2022-03-02 02:26:01',
             ),
-            100 =>
-            array(
+            100 => 
+            array (
                 'id' => 110,
                 'soal' => 'Apakah semua keputusan dirumah berada di tangan orangtua Anda ?',
                 'urutan' => 4,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 24,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-02 02:26:21',
                 'updated_at' => '2022-03-02 02:26:21',
             ),
-            101 =>
-            array(
+            101 => 
+            array (
                 'id' => 111,
                 'soal' => 'Apakah Orangtua jarang menceritakan masalah mereka kepada Anda ?',
                 'urutan' => 5,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 24,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-02 02:26:36',
                 'updated_at' => '2022-03-02 02:26:36',
             ),
-            102 =>
-            array(
+            102 => 
+            array (
                 'id' => 112,
                 'soal' => 'Apakah memberikan kesempatan untuk mengungkapkan apa yang Anda inginkan ?',
                 'urutan' => 6,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 24,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-02 02:26:55',
                 'updated_at' => '2022-03-02 02:26:55',
             ),
-            103 =>
-            array(
+            103 => 
+            array (
                 'id' => 113,
                 'soal' => 'Apakah Orangtua sering menjelaskan kepada Anda tentang perbuatan yang baik dan buruk ?',
                 'urutan' => 7,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 24,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-02 02:27:15',
                 'updated_at' => '2022-03-02 02:27:15',
             ),
-            104 =>
-            array(
+            104 => 
+            array (
                 'id' => 114,
                 'soal' => 'Apakah Orangtua sering bertanya tentang apa yang akan Anda lakukan ?',
                 'urutan' => 8,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 24,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-02 02:27:36',
                 'updated_at' => '2022-03-02 02:27:36',
             ),
-            105 =>
-            array(
+            105 => 
+            array (
                 'id' => 115,
                 'soal' => 'Apakah Jika Anda berperilaku baik, maka orangtua akan memberikan pujian kepada Anda ?',
                 'urutan' => 9,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 24,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-02 02:27:54',
                 'updated_at' => '2022-03-02 02:27:54',
             ),
-            106 =>
-            array(
+            106 => 
+            array (
                 'id' => 116,
                 'soal' => 'Jika ada permasalahan dalam keluarga, maka orangtua sering berdiskusi dengan Anda untuk membicarakan masalah tersebut ?',
                 'urutan' => 10,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 24,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-02 02:28:10',
                 'updated_at' => '2022-03-02 02:28:10',
             ),
-            107 =>
-            array(
+            107 => 
+            array (
                 'id' => 117,
                 'soal' => 'Apakah Orangtua tidak membatasi pergaulan Anda ?',
                 'urutan' => 11,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 24,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-02 02:28:42',
                 'updated_at' => '2022-03-02 02:28:42',
             ),
-            108 =>
-            array(
+            108 => 
+            array (
                 'id' => 118,
                 'soal' => 'Apakah Orangtua tidak bertanya atau melarang untuk melakukan apa yang Anda inginkan ?',
                 'urutan' => 12,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 24,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-02 02:28:58',
                 'updated_at' => '2022-03-02 02:28:58',
             ),
-            109 =>
-            array(
+            109 => 
+            array (
                 'id' => 119,
                 'soal' => 'Apakah Orangtua Anda berusaha untuk memenuhi keinginan Anda ?',
                 'urutan' => 13,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 24,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-02 02:29:34',
                 'updated_at' => '2022-03-02 02:29:34',
             ),
-            110 =>
-            array(
+            110 => 
+            array (
                 'id' => 120,
                 'soal' => 'Apakah Orangtua memberikan Anda kebebasan untuk memilih apa yang ingin Anda lakukan atau kerjakan ?',
                 'urutan' => 14,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 24,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-02 02:29:49',
                 'updated_at' => '2022-03-02 02:29:49',
             ),
-            111 =>
-            array(
+            111 => 
+            array (
                 'id' => 121,
                 'soal' => 'Apakah Orangtua jarang mengatur urusan Anda ?',
                 'urutan' => 15,
                 'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
                 'kategori_soal_id' => 24,
                 'deleted_at' => NULL,
                 'created_at' => '2022-03-02 02:30:05',
                 'updated_at' => '2022-03-02 02:30:05',
             ),
+            112 => 
+            array (
+                'id' => 122,
+                'soal' => 'Nama Responden',
+                'urutan' => 1,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 25,
+                'deleted_at' => '2022-05-28 17:43:02',
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:43:02',
+            ),
+            113 => 
+            array (
+                'id' => 123,
+                'soal' => 'Nomor Telepon/Handphone',
+                'urutan' => 2,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 25,
+                'deleted_at' => '2022-05-28 17:43:02',
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:43:02',
+            ),
+            114 => 
+            array (
+                'id' => 124,
+                'soal' => 'Nama Ayah',
+                'urutan' => 3,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 25,
+                'deleted_at' => '2022-05-28 17:43:02',
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:43:02',
+            ),
+            115 => 
+            array (
+                'id' => 125,
+                'soal' => 'Pekerjaan Ayah',
+                'urutan' => 4,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 25,
+                'deleted_at' => '2022-05-28 17:43:02',
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:43:02',
+            ),
+            116 => 
+            array (
+                'id' => 126,
+                'soal' => 'Nama Ibu',
+                'urutan' => 5,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 25,
+                'deleted_at' => '2022-05-28 17:43:02',
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:43:02',
+            ),
+            117 => 
+            array (
+                'id' => 127,
+                'soal' => 'Pekerjaan Ibu',
+                'urutan' => 6,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 25,
+                'deleted_at' => '2022-05-28 17:43:02',
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:43:02',
+            ),
+            118 => 
+            array (
+                'id' => 128,
+                'soal' => 'Nama Suami',
+                'urutan' => 7,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 25,
+                'deleted_at' => '2022-05-28 17:43:02',
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:43:02',
+            ),
+            119 => 
+            array (
+                'id' => 129,
+                'soal' => 'Pekerjaan Suami',
+                'urutan' => 8,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 25,
+                'deleted_at' => '2022-05-28 17:43:02',
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:43:02',
+            ),
+            120 => 
+            array (
+                'id' => 130,
+                'soal' => 'Nama Istri',
+                'urutan' => 9,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 25,
+                'deleted_at' => '2022-05-28 17:43:02',
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:43:02',
+            ),
+            121 => 
+            array (
+                'id' => 131,
+                'soal' => 'Pekerjaan Istri',
+                'urutan' => 10,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 25,
+                'deleted_at' => '2022-05-28 17:43:02',
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:43:02',
+            ),
+            122 => 
+            array (
+                'id' => 132,
+                'soal' => 'Jenis Kelamin',
+                'urutan' => 11,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 25,
+                'deleted_at' => '2022-05-28 17:43:02',
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:43:02',
+            ),
+            123 => 
+            array (
+                'id' => 133,
+                'soal' => 'Umur',
+                'urutan' => 12,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 25,
+                'deleted_at' => '2022-05-28 17:43:02',
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:43:02',
+            ),
+            124 => 
+            array (
+                'id' => 134,
+                'soal' => 'Pendidikan Terakhir',
+                'urutan' => 13,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 25,
+                'deleted_at' => '2022-05-28 17:43:02',
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:43:02',
+            ),
+            125 => 
+            array (
+                'id' => 135,
+                'soal' => 'Pekerjaan',
+                'urutan' => 14,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 25,
+                'deleted_at' => '2022-05-28 17:43:02',
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:43:02',
+            ),
+            126 => 
+            array (
+                'id' => 136,
+                'soal' => 'Usia Menikah Pertama Kali',
+                'urutan' => 15,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 25,
+                'deleted_at' => '2022-05-28 17:43:02',
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:43:02',
+            ),
+            127 => 
+            array (
+                'id' => 137,
+                'soal' => 'Usia Saat Hamil Pertama',
+                'urutan' => 16,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 25,
+                'deleted_at' => '2022-05-28 17:43:02',
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:43:02',
+            ),
+            128 => 
+            array (
+                'id' => 138,
+                'soal' => 'Jumlah Anak',
+                'urutan' => 17,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 25,
+                'deleted_at' => '2022-05-28 17:43:02',
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:43:02',
+            ),
+            129 => 
+            array (
+                'id' => 139,
+                'soal' => 'Usia Hamil Lanjutan > 35 Tahun',
+                'urutan' => 18,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 25,
+                'deleted_at' => '2022-05-28 17:43:02',
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:43:02',
+            ),
+            130 => 
+            array (
+                'id' => 140,
+                'soal' => 'Berapa jumlah Anggota keluarga yang tinggal menetap dalam dirumah ?',
+                'urutan' => 19,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 25,
+                'deleted_at' => '2022-05-28 17:43:02',
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:43:02',
+            ),
+            131 => 
+            array (
+                'id' => 141,
+                'soal' => 'Apakah Anda mengetahui kata “STUNTING” ?',
+                'urutan' => 1,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 26,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            132 => 
+            array (
+                'id' => 142,
+                'soal' => 'Dari mana Anda mengetahui STUNTING?',
+                'urutan' => 2,
+                'tipe_jawaban' => 'Kotak Centang',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 26,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            133 => 
+            array (
+                'id' => 143,
+                'soal' => 'Apa yang dimaksud dengan Stunting menurut Anda ?',
+                'urutan' => 3,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 26,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            134 => 
+            array (
+                'id' => 144,
+                'soal' => 'Apakah ada makanan yang dilarang saat hamil ? sebutkan !',
+                'urutan' => 1,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 27,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            135 => 
+            array (
+                'id' => 145,
+                'soal' => 'Apakah dirumah Anda mendahulukan laki-laki makan sebelum perempuan ?',
+                'urutan' => 2,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 27,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            136 => 
+            array (
+                'id' => 146,
+            'soal' => 'Apakah Ada Paksaan dalam pernikahan (Kesiapan Menikah)?',
+                'urutan' => 3,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 27,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            137 => 
+            array (
+                'id' => 147,
+                'soal' => 'Apakah Anda Hamil sebelum nikah ?',
+                'urutan' => 4,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 27,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            138 => 
+            array (
+                'id' => 148,
+                'soal' => 'Jumlah Pendapatan',
+                'urutan' => 1,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 28,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            139 => 
+            array (
+                'id' => 149,
+            'soal' => 'Sumber pendapatan (boleh memilih lebih dari 1 pilihan)',
+                'urutan' => 2,
+                'tipe_jawaban' => 'Kotak Centang',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 28,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            140 => 
+            array (
+                'id' => 150,
+                'soal' => 'Apakah Anda memilik kartu keluarga sejahtera atau perlindungan sosial ?',
+                'urutan' => 3,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 28,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            141 => 
+            array (
+                'id' => 151,
+                'soal' => 'Pengeluaran keluarga lebih banyak dihabiskan untuk apa?',
+                'urutan' => 4,
+                'tipe_jawaban' => 'Kotak Centang',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 28,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            142 => 
+            array (
+                'id' => 152,
+                'soal' => 'Apakah keluarga anda Mendapatkan bantuan sosial seperti PKH,PBNT, BST dan lain-lain',
+                'urutan' => 5,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 28,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            143 => 
+            array (
+                'id' => 153,
+                'soal' => 'Sarana air bersih',
+                'urutan' => 1,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 29,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            144 => 
+            array (
+                'id' => 154,
+            'soal' => 'Jamban(sarana pembuangankotoran)',
+                'urutan' => 2,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 29,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            145 => 
+            array (
+                'id' => 155,
+                'soal' => 'Sarana pembuangan air limbah',
+                'urutan' => 3,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 29,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            146 => 
+            array (
+                'id' => 156,
+            'soal' => 'Sarana pembuangan sampah (tempat sampah)',
+                'urutan' => 4,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 29,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            147 => 
+            array (
+                'id' => 157,
+                'soal' => 'Membuang sampah ketempat sampah',
+                'urutan' => 5,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 29,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            148 => 
+            array (
+                'id' => 158,
+                'soal' => 'Dinding',
+                'urutan' => 6,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 29,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            149 => 
+            array (
+                'id' => 159,
+                'soal' => 'Lantai',
+                'urutan' => 7,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 29,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            150 => 
+            array (
+                'id' => 160,
+                'soal' => 'Jendela kamar tidur',
+                'urutan' => 8,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 29,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            151 => 
+            array (
+                'id' => 161,
+                'soal' => 'Jendela ruang keluarga',
+                'urutan' => 9,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 29,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            152 => 
+            array (
+                'id' => 162,
+                'soal' => 'Ventilasi',
+                'urutan' => 10,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 29,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            153 => 
+            array (
+                'id' => 163,
+                'soal' => 'LubangAsapDapur',
+                'urutan' => 11,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 29,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            154 => 
+            array (
+                'id' => 164,
+                'soal' => 'Pencahayaan',
+                'urutan' => 12,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 29,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            155 => 
+            array (
+                'id' => 165,
+                'soal' => 'Apa yang digunakan untuk memasak',
+                'urutan' => 13,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 29,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            156 => 
+            array (
+                'id' => 166,
+                'soal' => 'Apakah anda tau keluarga anda punya Riwayat penyakit',
+                'urutan' => 1,
+                'tipe_jawaban' => 'Kotak Centang',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 30,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            157 => 
+            array (
+                'id' => 167,
+                'soal' => 'Apakah anda dan keluarga anda biasanya terkena Paparan asap rokok',
+                'urutan' => 2,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 30,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            158 => 
+            array (
+                'id' => 168,
+                'soal' => 'Berapa kali keluarga anda mandi dalam sehari',
+                'urutan' => 3,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 30,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            159 => 
+            array (
+                'id' => 169,
+                'soal' => 'Berapa kali anda/ keluarga anda Makan Setiap hari',
+                'urutan' => 4,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 30,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            160 => 
+            array (
+                'id' => 170,
+                'soal' => 'Apakah Anda mengonsumsi suplemen ?',
+                'urutan' => 5,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 30,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            161 => 
+            array (
+                'id' => 171,
+                'soal' => 'Sudah berapa lama Anda mengonsumsi suplemen ?',
+                'urutan' => 6,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 30,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            162 => 
+            array (
+                'id' => 172,
+                'soal' => 'Seberapa sering Anda mengonsumsi suplemen makanan?',
+                'urutan' => 7,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 30,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            163 => 
+            array (
+                'id' => 173,
+                'soal' => 'Apa alasan Anda tidak mengonsumsi suplemen ?',
+                'urutan' => 8,
+                'tipe_jawaban' => 'Kotak Centang',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 30,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            164 => 
+            array (
+                'id' => 174,
+            'soal' => 'Apa saja yang dimakan tiap hari (perminggu)',
+                'urutan' => 9,
+                'tipe_jawaban' => 'Kotak Centang',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 30,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            165 => 
+            array (
+                'id' => 175,
+            'soal' => 'Remaja: Berapa KEK ... Cm (di isi untuk Kebutuhan anak Remaja saja)',
+                'urutan' => 10,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 30,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            166 => 
+            array (
+                'id' => 176,
+            'soal' => 'Remaja: BerapaHB ... g/dL (di isi untuk Kebutuhan anak Remaja saja)',
+                'urutan' => 11,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 30,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            167 => 
+            array (
+                'id' => 177,
+            'soal' => 'Remaja: IMT ... Kg/m2 (di isi untuk Kebutuhan anak Remaja saja)',
+                'urutan' => 12,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 30,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            168 => 
+            array (
+                'id' => 178,
+            'soal' => 'Remaja: TekananDarah ... mm/Hg (di isi untuk Kebutuhan anak Remaja saja)',
+                'urutan' => 13,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 30,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            169 => 
+            array (
+                'id' => 179,
+            'soal' => 'Ibu Hamil: Berapa HB ... g/dL (Di isi oleh responden ibu hamil)',
+                'urutan' => 14,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 30,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            170 => 
+            array (
+                'id' => 180,
+            'soal' => 'Ibu Hamil: Berapa KEK ... Cm (Di isi oleh responden ibu hamil)',
+                'urutan' => 15,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 30,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            171 => 
+            array (
+                'id' => 181,
+            'soal' => 'Ibu Hamil: Berapa BB ... Kg (Di isi oleh responden ibu hamil)',
+                'urutan' => 16,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 30,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            172 => 
+            array (
+                'id' => 182,
+            'soal' => 'Ibu Hamil: Tekanan Darah ... mm/Hg (Di isi oleh responden ibu hamil)',
+                'urutan' => 17,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 30,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            173 => 
+            array (
+                'id' => 183,
+            'soal' => 'Ibu Hamil: Penambahan BB selama hamil ... Kg (Di isi oleh responden ibu hamil)',
+                'urutan' => 18,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 30,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            174 => 
+            array (
+                'id' => 184,
+            'soal' => 'Ibu Hamil: Rutin Tablet FE ? (Di isi oleh responden ibu hamil)',
+                'urutan' => 19,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 30,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            175 => 
+            array (
+                'id' => 185,
+            'soal' => 'Ibu Hamil: ANC ? (Di isi oleh responden ibu hamil)',
+                'urutan' => 20,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 30,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            176 => 
+            array (
+                'id' => 186,
+            'soal' => 'Ibu Hamil: Imunisasi ? (Di isi oleh responden ibu hamil)',
+                'urutan' => 21,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 30,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            177 => 
+            array (
+                'id' => 187,
+            'soal' => 'Ibu Hamil: KB ? (Di isi oleh responden ibu hamil)',
+                'urutan' => 22,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 30,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            178 => 
+            array (
+                'id' => 188,
+            'soal' => 'Ibu Hamil: Supelemen tambahan ? (Di isi oleh responden ibu hamil)',
+                'urutan' => 23,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 30,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            179 => 
+            array (
+                'id' => 189,
+            'soal' => 'Ibu Nifas / Menyusui: Siapa yang menolong ibu saat bersalin ? (di isi ibu Nifas dan Menyusui)',
+                'urutan' => 24,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 30,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            180 => 
+            array (
+                'id' => 190,
+            'soal' => 'Ibu Nifas / Menyusui: Apakah Ibu akan memberikan ASI eksklusif ? (di isi ibu Nifas dan Menyusui)',
+                'urutan' => 25,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 30,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            181 => 
+            array (
+                'id' => 191,
+            'soal' => 'Ibu Nifas / Menyusui: Kapan Ibu mulai memberikan ASI pada bayi ? (di isi ibu Nifas dan Menyusui)',
+                'urutan' => 26,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 30,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            182 => 
+            array (
+                'id' => 192,
+            'soal' => 'Ibu Nifas / Menyusui: Supelemen tambahan ? (di isi ibu Nifas dan Menyusui)',
+                'urutan' => 27,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 30,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            183 => 
+            array (
+                'id' => 193,
+                'soal' => 'Bayi, Baduta, dan Balita: Berapa PB/U ?',
+                'urutan' => 28,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 30,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            184 => 
+            array (
+                'id' => 194,
+                'soal' => 'Bayi, Baduta, dan Balita: Berapa TB/U ?',
+                'urutan' => 29,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 30,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            185 => 
+            array (
+                'id' => 195,
+                'soal' => 'Bayi, Baduta, dan Balita: Berapa BB/U ?',
+                'urutan' => 30,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 30,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            186 => 
+            array (
+                'id' => 196,
+                'soal' => 'Bayi, Baduta, dan Balita: IMT/U ?',
+                'urutan' => 31,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 30,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            187 => 
+            array (
+                'id' => 197,
+                'soal' => 'Bayi, Baduta, dan Balita: Status imunisasi ?',
+                'urutan' => 32,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 30,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            188 => 
+            array (
+                'id' => 198,
+                'soal' => 'Bayi, Baduta, dan Balita: Suplemen tambahan ?',
+                'urutan' => 33,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 30,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            189 => 
+            array (
+                'id' => 199,
+                'soal' => 'Apakah ibu pernah mendengar istilah “kolostrum”? Apa yang dimaksud dengan kolostrum?',
+                'urutan' => 34,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 30,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            190 => 
+            array (
+                'id' => 200,
+                'soal' => 'Apakah ibu memberikan kolostrum pada bayi Ibu?',
+                'urutan' => 35,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 30,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            191 => 
+            array (
+                'id' => 201,
+            'soal' => 'Apakah ibu melaksanakan Inisiasi Menyusui Dini (IMD)?',
+                'urutan' => 36,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 30,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            192 => 
+            array (
+                'id' => 202,
+                'soal' => 'Setelah bayi lahir, hal apa yang dilakukan ?',
+                'urutan' => 37,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 30,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            193 => 
+            array (
+                'id' => 203,
+            'soal' => 'Berapa lama ibu melaksanakan Inisiasi Menyusui Dini (IMD)?',
+                'urutan' => 38,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 30,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            194 => 
+            array (
+                'id' => 204,
+                'soal' => 'Apakah anak ibu diberikan asi ekslusif ?',
+                'urutan' => 39,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 30,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            195 => 
+            array (
+                'id' => 205,
+                'soal' => 'Apakah anak ibu ASI dua tahun ?',
+                'urutan' => 40,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 30,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            196 => 
+            array (
+                'id' => 206,
+                'soal' => 'Pemberian makanan tambahan ?',
+                'urutan' => 41,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 30,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            197 => 
+            array (
+                'id' => 207,
+                'soal' => 'Apakah dirumah Anda, Anda harus mematuhi peraturan yang dibuat oleh orangtua ?',
+                'urutan' => 1,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 31,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            198 => 
+            array (
+                'id' => 208,
+                'soal' => 'Apakah dirumah Anda Orangtua sering marah kepada Anda ?',
+                'urutan' => 2,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 31,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            199 => 
+            array (
+                'id' => 209,
+            'soal' => 'Apakah Orangtua sering melakukan kekerasan (cont. Memukul) terhadap Anda ?',
+                'urutan' => 3,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 31,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            200 => 
+            array (
+                'id' => 210,
+                'soal' => 'Apakah semua keputusan dirumah berada di tangan orangtua Anda ?',
+                'urutan' => 4,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 31,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            201 => 
+            array (
+                'id' => 211,
+                'soal' => 'Apakah Orangtua jarang menceritakan masalah mereka kepada Anda ?',
+                'urutan' => 5,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 31,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            202 => 
+            array (
+                'id' => 212,
+                'soal' => 'Apakah memberikan kesempatan untuk mengungkapkan apa yang Anda inginkan ?',
+                'urutan' => 6,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 31,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            203 => 
+            array (
+                'id' => 213,
+                'soal' => 'Apakah Orangtua sering menjelaskan kepada Anda tentang perbuatan yang baik dan buruk ?',
+                'urutan' => 7,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 31,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            204 => 
+            array (
+                'id' => 214,
+                'soal' => 'Apakah Orangtua sering bertanya tentang apa yang akan Anda lakukan ?',
+                'urutan' => 8,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 31,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            205 => 
+            array (
+                'id' => 215,
+                'soal' => 'Apakah Jika Anda berperilaku baik, maka orangtua akan memberikan pujian kepada Anda ?',
+                'urutan' => 9,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 31,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            206 => 
+            array (
+                'id' => 216,
+                'soal' => 'Jika ada permasalahan dalam keluarga, maka orangtua sering berdiskusi dengan Anda untuk membicarakan masalah tersebut ?',
+                'urutan' => 10,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 31,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            207 => 
+            array (
+                'id' => 217,
+                'soal' => 'Apakah Orangtua tidak membatasi pergaulan Anda ?',
+                'urutan' => 11,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 31,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            208 => 
+            array (
+                'id' => 218,
+                'soal' => 'Apakah Orangtua tidak bertanya atau melarang untuk melakukan apa yang Anda inginkan ?',
+                'urutan' => 12,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 31,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            209 => 
+            array (
+                'id' => 219,
+                'soal' => 'Apakah Orangtua Anda berusaha untuk memenuhi keinginan Anda ?',
+                'urutan' => 13,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 31,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            210 => 
+            array (
+                'id' => 220,
+                'soal' => 'Apakah Orangtua memberikan Anda kebebasan untuk memilih apa yang ingin Anda lakukan atau kerjakan ?',
+                'urutan' => 14,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 31,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            211 => 
+            array (
+                'id' => 221,
+                'soal' => 'Apakah Orangtua jarang mengatur urusan Anda ?',
+                'urutan' => 15,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 31,
+                'deleted_at' => NULL,
+                'created_at' => '2022-05-28 17:36:59',
+                'updated_at' => '2022-05-28 17:36:59',
+            ),
+            212 => 
+            array (
+                'id' => 222,
+                'soal' => 'Nama Responden',
+                'urutan' => 1,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 33,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            213 => 
+            array (
+                'id' => 223,
+                'soal' => 'Nomor Telepon/Handphone',
+                'urutan' => 2,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 33,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            214 => 
+            array (
+                'id' => 224,
+                'soal' => 'Nama Ayah',
+                'urutan' => 3,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 33,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            215 => 
+            array (
+                'id' => 225,
+                'soal' => 'Pekerjaan Ayah',
+                'urutan' => 4,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 33,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            216 => 
+            array (
+                'id' => 226,
+                'soal' => 'Nama Ibu',
+                'urutan' => 5,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 33,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            217 => 
+            array (
+                'id' => 227,
+                'soal' => 'Pekerjaan Ibu',
+                'urutan' => 6,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 33,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            218 => 
+            array (
+                'id' => 228,
+                'soal' => 'Nama Suami',
+                'urutan' => 7,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 33,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            219 => 
+            array (
+                'id' => 229,
+                'soal' => 'Pekerjaan Suami',
+                'urutan' => 8,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 33,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            220 => 
+            array (
+                'id' => 230,
+                'soal' => 'Nama Istri',
+                'urutan' => 9,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 33,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            221 => 
+            array (
+                'id' => 231,
+                'soal' => 'Pekerjaan Istri',
+                'urutan' => 10,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 33,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            222 => 
+            array (
+                'id' => 232,
+                'soal' => 'Jenis Kelamin',
+                'urutan' => 11,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 33,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            223 => 
+            array (
+                'id' => 233,
+                'soal' => 'Umur',
+                'urutan' => 12,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 33,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            224 => 
+            array (
+                'id' => 234,
+                'soal' => 'Pendidikan Terakhir',
+                'urutan' => 13,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 33,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            225 => 
+            array (
+                'id' => 235,
+                'soal' => 'Pekerjaan',
+                'urutan' => 14,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 33,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            226 => 
+            array (
+                'id' => 236,
+                'soal' => 'Usia Menikah Pertama Kali',
+                'urutan' => 15,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 33,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            227 => 
+            array (
+                'id' => 237,
+                'soal' => 'Usia Saat Hamil Pertama',
+                'urutan' => 16,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 33,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            228 => 
+            array (
+                'id' => 238,
+                'soal' => 'Jumlah Anak',
+                'urutan' => 17,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 33,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            229 => 
+            array (
+                'id' => 239,
+                'soal' => 'Usia Hamil Lanjutan > 35 Tahun',
+                'urutan' => 18,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 33,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            230 => 
+            array (
+                'id' => 240,
+                'soal' => 'Berapa jumlah Anggota keluarga yang tinggal menetap dalam dirumah ?',
+                'urutan' => 19,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 33,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            231 => 
+            array (
+                'id' => 241,
+                'soal' => 'Apakah Anda mengetahui kata “STUNTING” ?',
+                'urutan' => 1,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 34,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            232 => 
+            array (
+                'id' => 242,
+                'soal' => 'Dari mana Anda mengetahui STUNTING?',
+                'urutan' => 2,
+                'tipe_jawaban' => 'Kotak Centang',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 34,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            233 => 
+            array (
+                'id' => 243,
+                'soal' => 'Apa yang dimaksud dengan Stunting menurut Anda ?',
+                'urutan' => 3,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 34,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            234 => 
+            array (
+                'id' => 244,
+                'soal' => 'Apakah ada makanan yang dilarang saat hamil ? sebutkan !',
+                'urutan' => 1,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 35,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            235 => 
+            array (
+                'id' => 245,
+                'soal' => 'Apakah dirumah Anda mendahulukan laki-laki makan sebelum perempuan ?',
+                'urutan' => 2,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 35,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            236 => 
+            array (
+                'id' => 246,
+            'soal' => 'Apakah Ada Paksaan dalam pernikahan (Kesiapan Menikah)?',
+                'urutan' => 3,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 35,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            237 => 
+            array (
+                'id' => 247,
+                'soal' => 'Apakah Anda Hamil sebelum nikah ?',
+                'urutan' => 4,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 35,
+                'deleted_at' => '2022-06-14 20:37:20',
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 20:37:20',
+            ),
+            238 => 
+            array (
+                'id' => 248,
+                'soal' => 'Jumlah Pendapatan',
+                'urutan' => 1,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 36,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            239 => 
+            array (
+                'id' => 249,
+            'soal' => 'Sumber pendapatan (boleh memilih lebih dari 1 pilihan)',
+                'urutan' => 2,
+                'tipe_jawaban' => 'Kotak Centang',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 36,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            240 => 
+            array (
+                'id' => 250,
+                'soal' => 'Apakah Anda memilik kartu keluarga sejahtera atau perlindungan sosial ?',
+                'urutan' => 3,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 36,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            241 => 
+            array (
+                'id' => 251,
+                'soal' => 'Pengeluaran keluarga lebih banyak dihabiskan untuk apa?',
+                'urutan' => 4,
+                'tipe_jawaban' => 'Kotak Centang',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 36,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            242 => 
+            array (
+                'id' => 252,
+                'soal' => 'Apakah keluarga anda Mendapatkan bantuan sosial seperti PKH,PBNT, BST dan lain-lain',
+                'urutan' => 5,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 36,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            243 => 
+            array (
+                'id' => 253,
+                'soal' => 'Sarana air bersih',
+                'urutan' => 1,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 37,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            244 => 
+            array (
+                'id' => 254,
+            'soal' => 'Jamban(sarana pembuangankotoran)',
+                'urutan' => 2,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 37,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            245 => 
+            array (
+                'id' => 255,
+                'soal' => 'Sarana pembuangan air limbah',
+                'urutan' => 3,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 37,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            246 => 
+            array (
+                'id' => 256,
+            'soal' => 'Sarana pembuangan sampah (tempat sampah)',
+                'urutan' => 4,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 37,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            247 => 
+            array (
+                'id' => 257,
+                'soal' => 'Membuang sampah ketempat sampah',
+                'urutan' => 5,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 37,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            248 => 
+            array (
+                'id' => 258,
+                'soal' => 'Dinding',
+                'urutan' => 6,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 37,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            249 => 
+            array (
+                'id' => 259,
+                'soal' => 'Lantai',
+                'urutan' => 7,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 37,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            250 => 
+            array (
+                'id' => 260,
+                'soal' => 'Jendela kamar tidur',
+                'urutan' => 8,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 37,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            251 => 
+            array (
+                'id' => 261,
+                'soal' => 'Jendela ruang keluarga',
+                'urutan' => 9,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 37,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            252 => 
+            array (
+                'id' => 262,
+                'soal' => 'Ventilasi',
+                'urutan' => 10,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 37,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            253 => 
+            array (
+                'id' => 263,
+                'soal' => 'LubangAsapDapur',
+                'urutan' => 11,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 37,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            254 => 
+            array (
+                'id' => 264,
+                'soal' => 'Pencahayaan',
+                'urutan' => 12,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 37,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            255 => 
+            array (
+                'id' => 265,
+                'soal' => 'Apa yang digunakan untuk memasak',
+                'urutan' => 13,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 37,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            256 => 
+            array (
+                'id' => 266,
+                'soal' => 'Apakah anda tau keluarga anda punya Riwayat penyakit',
+                'urutan' => 1,
+                'tipe_jawaban' => 'Kotak Centang',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 38,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            257 => 
+            array (
+                'id' => 267,
+                'soal' => 'Apakah anda dan keluarga anda biasanya terkena Paparan asap rokok',
+                'urutan' => 2,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 38,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            258 => 
+            array (
+                'id' => 268,
+                'soal' => 'Berapa kali keluarga anda mandi dalam sehari',
+                'urutan' => 3,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 38,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            259 => 
+            array (
+                'id' => 269,
+                'soal' => 'Berapa kali anda/ keluarga anda Makan Setiap hari',
+                'urutan' => 4,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 38,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            260 => 
+            array (
+                'id' => 270,
+                'soal' => 'Apakah Anda mengonsumsi suplemen ?',
+                'urutan' => 5,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 38,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            261 => 
+            array (
+                'id' => 271,
+                'soal' => 'Sudah berapa lama Anda mengonsumsi suplemen ?',
+                'urutan' => 6,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 38,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            262 => 
+            array (
+                'id' => 272,
+                'soal' => 'Seberapa sering Anda mengonsumsi suplemen makanan?',
+                'urutan' => 7,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 38,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            263 => 
+            array (
+                'id' => 273,
+                'soal' => 'Apa alasan Anda tidak mengonsumsi suplemen ?',
+                'urutan' => 8,
+                'tipe_jawaban' => 'Kotak Centang',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 38,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            264 => 
+            array (
+                'id' => 274,
+            'soal' => 'Apa saja yang dimakan tiap hari (perminggu)',
+                'urutan' => 9,
+                'tipe_jawaban' => 'Kotak Centang',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 38,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            265 => 
+            array (
+                'id' => 275,
+            'soal' => 'Remaja: Berapa KEK ... Cm (di isi untuk Kebutuhan anak Remaja saja)',
+                'urutan' => 10,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 38,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            266 => 
+            array (
+                'id' => 276,
+            'soal' => 'Remaja: BerapaHB ... g/dL (di isi untuk Kebutuhan anak Remaja saja)',
+                'urutan' => 11,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 38,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            267 => 
+            array (
+                'id' => 277,
+            'soal' => 'Remaja: IMT ... Kg/m2 (di isi untuk Kebutuhan anak Remaja saja)',
+                'urutan' => 12,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 38,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            268 => 
+            array (
+                'id' => 278,
+            'soal' => 'Remaja: TekananDarah ... mm/Hg (di isi untuk Kebutuhan anak Remaja saja)',
+                'urutan' => 13,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 38,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            269 => 
+            array (
+                'id' => 279,
+            'soal' => 'Ibu Hamil: Berapa HB ... g/dL (Di isi oleh responden ibu hamil)',
+                'urutan' => 14,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 38,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            270 => 
+            array (
+                'id' => 280,
+            'soal' => 'Ibu Hamil: Berapa KEK ... Cm (Di isi oleh responden ibu hamil)',
+                'urutan' => 15,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 38,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            271 => 
+            array (
+                'id' => 281,
+            'soal' => 'Ibu Hamil: Berapa BB ... Kg (Di isi oleh responden ibu hamil)',
+                'urutan' => 16,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 38,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            272 => 
+            array (
+                'id' => 282,
+            'soal' => 'Ibu Hamil: Tekanan Darah ... mm/Hg (Di isi oleh responden ibu hamil)',
+                'urutan' => 17,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 38,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            273 => 
+            array (
+                'id' => 283,
+            'soal' => 'Ibu Hamil: Penambahan BB selama hamil ... Kg (Di isi oleh responden ibu hamil)',
+                'urutan' => 18,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 38,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            274 => 
+            array (
+                'id' => 284,
+            'soal' => 'Ibu Hamil: Rutin Tablet FE ? (Di isi oleh responden ibu hamil)',
+                'urutan' => 19,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 38,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            275 => 
+            array (
+                'id' => 285,
+            'soal' => 'Ibu Hamil: ANC ? (Di isi oleh responden ibu hamil)',
+                'urutan' => 20,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 38,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            276 => 
+            array (
+                'id' => 286,
+            'soal' => 'Ibu Hamil: Imunisasi ? (Di isi oleh responden ibu hamil)',
+                'urutan' => 21,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 38,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            277 => 
+            array (
+                'id' => 287,
+            'soal' => 'Ibu Hamil: KB ? (Di isi oleh responden ibu hamil)',
+                'urutan' => 22,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 38,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            278 => 
+            array (
+                'id' => 288,
+            'soal' => 'Ibu Hamil: Supelemen tambahan ? (Di isi oleh responden ibu hamil)',
+                'urutan' => 23,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 38,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            279 => 
+            array (
+                'id' => 289,
+            'soal' => 'Ibu Nifas / Menyusui: Siapa yang menolong ibu saat bersalin ? (di isi ibu Nifas dan Menyusui)',
+                'urutan' => 24,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 38,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            280 => 
+            array (
+                'id' => 290,
+            'soal' => 'Ibu Nifas / Menyusui: Apakah Ibu akan memberikan ASI eksklusif ? (di isi ibu Nifas dan Menyusui)',
+                'urutan' => 25,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 38,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            281 => 
+            array (
+                'id' => 291,
+            'soal' => 'Ibu Nifas / Menyusui: Kapan Ibu mulai memberikan ASI pada bayi ? (di isi ibu Nifas dan Menyusui)',
+                'urutan' => 26,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 38,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            282 => 
+            array (
+                'id' => 292,
+            'soal' => 'Ibu Nifas / Menyusui: Supelemen tambahan ? (di isi ibu Nifas dan Menyusui)',
+                'urutan' => 27,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 38,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            283 => 
+            array (
+                'id' => 293,
+                'soal' => 'Bayi : Berapa PB/U ?',
+                'urutan' => 28,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 38,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 20:41:59',
+            ),
+            284 => 
+            array (
+                'id' => 294,
+            'soal' => 'Bayi, Baduta (Bawah Dua Tahun), dan Balita (Bawah Lima Tahun) : Berapa TB/U ?',
+                'urutan' => 29,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 38,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 20:51:58',
+            ),
+            285 => 
+            array (
+                'id' => 295,
+            'soal' => 'Bayi, Baduta (Bawah Dua Tahun), dan Balita (Bawah Lima Tahun) : Berapa BB/U ?',
+                'urutan' => 30,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 38,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 20:52:10',
+            ),
+            286 => 
+            array (
+                'id' => 296,
+            'soal' => 'Bayi, Baduta (Bawah Dua Tahun), dan Balita (Bawah Lima Tahun) : IMT/U ?',
+                'urutan' => 31,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 38,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 20:52:22',
+            ),
+            287 => 
+            array (
+                'id' => 297,
+            'soal' => 'Bayi, Baduta (Bawah Dua Tahun), dan Balita (Bawah Lima Tahun) : Status imunisasi ?',
+                'urutan' => 32,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 38,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 20:52:48',
+            ),
+            288 => 
+            array (
+                'id' => 298,
+            'soal' => 'Bayi, Baduta (Bawah Dua Tahun), dan Balita (Bawah Lima Tahun) : Suplemen tambahan ?',
+                'urutan' => 33,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 38,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 20:53:05',
+            ),
+            289 => 
+            array (
+                'id' => 299,
+                'soal' => 'Apakah ibu pernah mendengar istilah “kolostrum”? Apa yang dimaksud dengan kolostrum?',
+                'urutan' => 34,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 38,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            290 => 
+            array (
+                'id' => 300,
+                'soal' => 'Apakah ibu memberikan kolostrum pada bayi Ibu?',
+                'urutan' => 35,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 38,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            291 => 
+            array (
+                'id' => 301,
+            'soal' => 'Apakah ibu melaksanakan Inisiasi Menyusui Dini (IMD)?',
+                'urutan' => 36,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 38,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            292 => 
+            array (
+                'id' => 302,
+                'soal' => 'Setelah bayi lahir, hal apa yang dilakukan ?',
+                'urutan' => 37,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 38,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            293 => 
+            array (
+                'id' => 303,
+            'soal' => 'Berapa lama ibu melaksanakan Inisiasi Menyusui Dini (IMD)?',
+                'urutan' => 38,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 38,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            294 => 
+            array (
+                'id' => 304,
+                'soal' => 'Apakah anak ibu diberikan asi ekslusif ?',
+                'urutan' => 39,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 38,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            295 => 
+            array (
+                'id' => 305,
+                'soal' => 'Apakah anak ibu ASI dua tahun ?',
+                'urutan' => 40,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 38,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            296 => 
+            array (
+                'id' => 306,
+                'soal' => 'Pemberian makanan tambahan ?',
+                'urutan' => 41,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 38,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            297 => 
+            array (
+                'id' => 307,
+                'soal' => 'Apakah dirumah Anda, Anda harus mematuhi peraturan yang dibuat oleh orangtua ?',
+                'urutan' => 1,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 39,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            298 => 
+            array (
+                'id' => 308,
+                'soal' => 'Apakah dirumah Anda Orangtua sering marah kepada Anda ?',
+                'urutan' => 2,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 39,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            299 => 
+            array (
+                'id' => 309,
+            'soal' => 'Apakah Orangtua sering melakukan kekerasan (cont. Memukul) terhadap Anda ?',
+                'urutan' => 3,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 39,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            300 => 
+            array (
+                'id' => 310,
+                'soal' => 'Apakah semua keputusan dirumah berada di tangan orangtua Anda ?',
+                'urutan' => 4,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 39,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            301 => 
+            array (
+                'id' => 311,
+                'soal' => 'Apakah Orangtua jarang menceritakan masalah mereka kepada Anda ?',
+                'urutan' => 5,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 39,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            302 => 
+            array (
+                'id' => 312,
+                'soal' => 'Apakah memberikan kesempatan untuk mengungkapkan apa yang Anda inginkan ?',
+                'urutan' => 6,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 39,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            303 => 
+            array (
+                'id' => 313,
+                'soal' => 'Apakah Orangtua sering menjelaskan kepada Anda tentang perbuatan yang baik dan buruk ?',
+                'urutan' => 7,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 39,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            304 => 
+            array (
+                'id' => 314,
+                'soal' => 'Apakah Orangtua sering bertanya tentang apa yang akan Anda lakukan ?',
+                'urutan' => 8,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 39,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            305 => 
+            array (
+                'id' => 315,
+                'soal' => 'Apakah Jika Anda berperilaku baik, maka orangtua akan memberikan pujian kepada Anda ?',
+                'urutan' => 9,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 39,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            306 => 
+            array (
+                'id' => 316,
+                'soal' => 'Jika ada permasalahan dalam keluarga, maka orangtua sering berdiskusi dengan Anda untuk membicarakan masalah tersebut ?',
+                'urutan' => 10,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 39,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            307 => 
+            array (
+                'id' => 317,
+                'soal' => 'Apakah Orangtua tidak membatasi pergaulan Anda ?',
+                'urutan' => 11,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 39,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            308 => 
+            array (
+                'id' => 318,
+                'soal' => 'Apakah Orangtua tidak bertanya atau melarang untuk melakukan apa yang Anda inginkan ?',
+                'urutan' => 12,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 39,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            309 => 
+            array (
+                'id' => 319,
+                'soal' => 'Apakah Orangtua Anda berusaha untuk memenuhi keinginan Anda ?',
+                'urutan' => 13,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 39,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            310 => 
+            array (
+                'id' => 320,
+                'soal' => 'Apakah Orangtua memberikan Anda kebebasan untuk memilih apa yang ingin Anda lakukan atau kerjakan ?',
+                'urutan' => 14,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 39,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
+            311 => 
+            array (
+                'id' => 321,
+                'soal' => 'Apakah Orangtua jarang mengatur urusan Anda ?',
+                'urutan' => 15,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 39,
+                'deleted_at' => NULL,
+                'created_at' => '2022-06-14 10:42:17',
+                'updated_at' => '2022-06-14 10:42:17',
+            ),
         ));
+        
+        
     }
 }

@@ -1,11 +1,11 @@
 @extends('templates/dashboard')
 
 @section('title-tab')
-    Nama Survey
+    Jenis Survey
 @endsection
 
 @section('title')
-    Nama Survey
+    Jenis Survey
 @endsection
 
 @section('subTitle')
@@ -19,9 +19,10 @@
     <section>
         <div class="row mb-3">
             <div class="col">
-                @component('components.buttons.add', [
-                    'href' => 'javascript:void(0);',
-                    'onClick' => 'tambah()',
+                @component('components.buttons.add',
+                    [
+                        'href' => 'javascript:void(0);',
+                        'onClick' => 'tambah()',
                     ])
                 @endcomponent
             </div>
@@ -36,6 +37,7 @@
                         <th>No.</th>
                         <th>Nama</th>
                         <th>Tipe</th>
+                        <th>Status</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -50,35 +52,50 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Tambah Nama Survey</h5>
+                    <h5 class="modal-title">Tambah Jenis Survey</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <form id="form-tambah">
-                        {{-- Input Nama Survey --}}
-                        @component('components.formGroup.input', [
-                            'label' => 'Nama Survey',
-                            'type' => 'text',
-                            'class' => '',
-                            'id' => 'nama',
-                            'name' => 'nama',
-                            'placeholder' => 'Masukkan',
-                            'value' => '',
+                        {{-- Input Jenis Survey --}}
+                        @component('components.formGroup.input',
+                            [
+                                'label' => 'Jenis Survey',
+                                'type' => 'text',
+                                'class' => '',
+                                'id' => 'nama',
+                                'name' => 'nama',
+                                'placeholder' => 'Masukkan',
+                                'value' => '',
                             ])
                         @endcomponent
 
                         {{-- Input Tipe Survey --}}
-                        @component('components.formGroup.select', [
-                            'label' => 'Tipe Survey',
-                            'name' => 'tipe',
-                            'id' => 'tipe',
-                            'class' => 'tipe',
+                        @component('components.formGroup.select',
+                            [
+                                'label' => 'Tipe Survey',
+                                'name' => 'tipe',
+                                'id' => 'tipe',
+                                'class' => 'tipe',
                             ])
                             @slot('options')
                                 <option value="Pre">Pre</option>
                                 <option value="Post">Post</option>
+                            @endslot
+                        @endcomponent
+
+                        @component('components.formGroup.select',
+                            [
+                                'label' => 'Status Aktif',
+                                'name' => 'status',
+                                'id' => 'status',
+                                'class' => 'status',
+                            ])
+                            @slot('options')
+                                <option value="0">Tidak Aktif</option>
+                                <option value="1">Aktif</option>
                             @endslot
                         @endcomponent
                 </div>
@@ -96,7 +113,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Edit Nama Survey</h5>
+                    <h5 class="modal-title">Edit Jenis Survey</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -104,24 +121,26 @@
                 <div class="modal-body">
                     <form id="form-edit">
                         @method('PUT')
-                        {{-- Input Nama Survey --}}
-                        @component('components.formGroup.input', [
-                            'label' => 'Nama Survey',
-                            'type' => 'text',
-                            'class' => '',
-                            'id' => 'nama_edit',
-                            'name' => 'nama',
-                            'placeholder' => 'Masukkan',
-                            'value' => '',
+                        {{-- Input Jenis Survey --}}
+                        @component('components.formGroup.input',
+                            [
+                                'label' => 'Jenis Survey',
+                                'type' => 'text',
+                                'class' => '',
+                                'id' => 'nama_edit',
+                                'name' => 'nama',
+                                'placeholder' => 'Masukkan',
+                                'value' => '',
                             ])
                         @endcomponent
 
                         {{-- Input Tipe Survey --}}
-                        @component('components.formGroup.select', [
-                            'label' => 'Tipe Survey',
-                            'name' => 'tipe',
-                            'id' => 'tipe_edit',
-                            'class' => 'tipe',
+                        @component('components.formGroup.select',
+                            [
+                                'label' => 'Tipe Survey',
+                                'name' => 'tipe',
+                                'id' => 'tipe_edit',
+                                'class' => 'tipe',
                             ])
                             @slot('options')
                                 <option value="Pre">Pre</option>
@@ -143,35 +162,72 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Duplikat Nama Survey</h5>
+                    <h5 class="modal-title">Duplikat Jenis Survey</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <form id="form-duplikat">
-                        {{-- Input Nama Survey --}}
-                        @component('components.formGroup.input', [
-                            'label' => 'Nama Survey',
-                            'type' => 'text',
-                            'class' => '',
-                            'id' => 'nama',
-                            'name' => 'nama',
-                            'placeholder' => 'Masukkan',
-                            'value' => '',
+                        {{-- Input Jenis Survey --}}
+                        @component('components.formGroup.input',
+                            [
+                                'label' => 'Jenis Survey',
+                                'type' => 'text',
+                                'class' => '',
+                                'id' => 'nama',
+                                'name' => 'nama',
+                                'placeholder' => 'Masukkan',
+                                'value' => '',
                             ])
                         @endcomponent
 
                         {{-- Input Tipe Survey --}}
-                        @component('components.formGroup.select', [
-                            'label' => 'Tipe Survey',
-                            'name' => 'tipe',
-                            'id' => 'tipe',
-                            'class' => 'tipe',
+                        @component('components.formGroup.select',
+                            [
+                                'label' => 'Tipe Survey',
+                                'name' => 'tipe',
+                                'id' => 'tipe',
+                                'class' => 'tipe',
                             ])
                             @slot('options')
                                 <option value="Pre">Pre</option>
                                 <option value="Post">Post</option>
+                            @endslot
+                        @endcomponent
+                </div>
+                <div class="modal-footer">
+                    @component('components.buttons.submit', ['label' => 'Simpan'])
+                    @endcomponent
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    {{-- NOTE: Modal Status Aktif --}}
+    <div class="modal" tabindex="-1" role="dialog" id="modal-status-aktif">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Ubah Status Aktif</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="form-status-aktif">
+                        {{-- Input Status Aktif --}}
+                        @component('components.formGroup.select',
+                            [
+                                'label' => 'Status Aktif',
+                                'name' => 'status_edit',
+                                'id' => 'status_edit',
+                                'class' => 'status_edit',
+                            ])
+                            @slot('options')
+                                <option value="0">Tidak Aktif</option>
+                                <option value="1">Aktif</option>
                             @endslot
                         @endcomponent
                 </div>
@@ -188,6 +244,7 @@
 @push('script')
     <script>
         var idEdit = 0;
+        var idEditStatus = 0;
         var idDuplikat = 0;
 
         function tambah() {
@@ -208,7 +265,7 @@
                     $("#overlay").fadeOut(100);
                     if (response.status == "success") {
                         swal("Berhasil",
-                            "Nama survey berhasil ditambahkan", {
+                            "Jenis survey berhasil ditambahkan", {
                                 icon: "success",
                                 buttons: {
                                     confirm: {
@@ -225,7 +282,47 @@
                 },
                 error: function(response) {
                     swal("Gagal",
-                        "Nama survey gagal ditambahkan", {
+                        "Jenis survey gagal ditambahkan", {
+                            icon: "error",
+                            buttons: {
+                                confirm: {
+                                    className: 'btn btn-danger'
+                                }
+                            },
+                        });
+                }
+            });
+        })
+
+        $('#form-status-aktif').submit(function(e) {
+            e.preventDefault();
+            $("#overlay").fadeIn(100);
+            $.ajax({
+                url: "{{ url('namaSurvey/statusAktif') . '/' }}" + idEditStatus,
+                type: "PUT",
+                data: $(this).serialize(),
+                success: function(response) {
+                    $("#overlay").fadeOut(100);
+                    if (response.status == "success") {
+                        swal("Berhasil",
+                            "Status survey berhasil diubah", {
+                                icon: "success",
+                                buttons: {
+                                    confirm: {
+                                        className: 'btn btn-success'
+                                    }
+                                },
+                            });
+                        $('#modal-status-aktif').modal('hide');
+                        table.draw();
+                    } else {
+                        printErrorMsg(response.error);
+                    }
+                },
+                error: function(response) {
+                    $("#overlay").fadeOut(100);
+                    swal("Gagal",
+                        "Status survey gagal diubah", {
                             icon: "error",
                             buttons: {
                                 confirm: {
@@ -249,7 +346,7 @@
                     $("#overlay").fadeOut(100);
                     if (response.status == "success") {
                         swal("Berhasil",
-                            "Nama survey berhasil diubah", {
+                            "Jenis survey berhasil diubah", {
                                 icon: "success",
                                 buttons: {
                                     confirm: {
@@ -267,7 +364,7 @@
                 error: function(response) {
                     $("#overlay").fadeOut(100);
                     swal("Gagal",
-                        "Nama survey gagal diubah", {
+                        "Jenis survey gagal diubah", {
                             icon: "error",
                             buttons: {
                                 confirm: {
@@ -291,7 +388,7 @@
                     $("#overlay").fadeOut(100);
                     if (response.status == "success") {
                         swal("Berhasil",
-                            "Nama survey berhasil di duplikat", {
+                            "Jenis survey berhasil di duplikat", {
                                 icon: "success",
                                 buttons: {
                                     confirm: {
@@ -309,7 +406,7 @@
                 error: function(response) {
                     $("#overlay").fadeOut(100);
                     swal("Gagal",
-                        "Nama survey gagal diduplikat", {
+                        "Jenis survey gagal diduplikat", {
                             icon: "error",
                             buttons: {
                                 confirm: {
@@ -320,6 +417,32 @@
                 }
             });
         })
+
+        function editStatus(id) {
+            idEditStatus = id;
+            $("#overlay").fadeIn(100);
+            $.ajax({
+                url: "{{ url('namaSurvey') . '/' }}" + id + "/edit",
+                type: "GET",
+                success: function(response) {
+                    $("#overlay").fadeOut(100);
+                    $('#status_edit').val(response.data.is_aktif).trigger('change');
+                    $('#modal-status-aktif').modal('show');
+                },
+                error: function(response) {
+                    $("#overlay").fadeOut(100);
+                    swal("Gagal",
+                        "Jenis survey gagal diedit", {
+                            icon: "error",
+                            buttons: {
+                                confirm: {
+                                    className: 'btn btn-danger'
+                                }
+                            },
+                        });
+                }
+            });
+        }
 
         function edit(id) {
             $("#overlay").fadeIn(100);
@@ -336,7 +459,7 @@
                 error: function(response) {
                     $("#overlay").fadeOut(100);
                     swal("Gagal",
-                        "Nama survey gagal diedit", {
+                        "Jenis survey gagal diedit", {
                             icon: "error",
                             buttons: {
                                 confirm: {
@@ -357,7 +480,7 @@
         function hapus(id) {
             swal({
                 title: "Apakah anda yakin?",
-                text: "Nama Survey akan dihapus secara permanen, seluruh data yang berhubungan dengan nama survey ini akan ikut terhapus",
+                text: "Jenis Survey akan dihapus secara permanen, seluruh data yang berhubungan dengan Jenis survey ini akan ikut terhapus",
                 icon: "warning",
                 buttons: {
                     confirm: {
@@ -381,7 +504,7 @@
                             $("#overlay").fadeOut(100);
                             if (response.status == "success") {
                                 swal("Berhasil",
-                                    "Nama survey berhasil dihapus", {
+                                    "Jenis survey berhasil dihapus", {
                                         icon: "success",
                                         buttons: {
                                             confirm: {
@@ -392,7 +515,7 @@
                                 table.draw();
                             } else {
                                 swal("Gagal",
-                                    "Nama survey gagal dihapus", {
+                                    "Jenis survey gagal dihapus", {
                                         icon: "error",
                                         buttons: {
                                             confirm: {
@@ -405,7 +528,7 @@
                         error: function(response) {
                             $("#overlay").fadeOut(100);
                             swal("Gagal",
-                                "Nama survey gagal dihapus", {
+                                "Jenis survey gagal dihapus", {
                                     icon: "error",
                                     buttons: {
                                         confirm: {
@@ -440,6 +563,11 @@
                 {
                     data: 'tipe',
                     name: 'tipe',
+                    className: 'text-center',
+                },
+                {
+                    data: 'aktif',
+                    name: 'aktif',
                     className: 'text-center',
                 },
                 {
