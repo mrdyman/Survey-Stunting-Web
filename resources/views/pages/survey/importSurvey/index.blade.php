@@ -33,7 +33,9 @@
                                     <div class="form-group">
                                         <label for="exampleFormControlFile1">Upload Survey</label>
                                         <div class="custom-file">
-                                            <input type="file" name="file_survey" class="custom-file-input" id="customFile">
+                                            <input type="file" name="file_survey" class="custom-file-input"
+                                                id="customFile"
+                                                accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
                                             <label class="custom-file-label" for="customFile">Pilih file</label>
                                         </div>
                                         <span class="text-muted d-block">File yang di import harus yang bernama
@@ -46,7 +48,8 @@
                                         <label for="exampleFormControlFile1">Upload Jawaban Survey</label>
                                         <div class="custom-file">
                                             <input type="file" name="file_jawaban_survey" class="custom-file-input"
-                                                id="customFile">
+                                                id="customFile"
+                                                accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
                                             <label class="custom-file-label" for="customFile">Pilih file</label>
                                         </div>
                                         <span class="text-muted d-block">File yang di import harus yang bernama
@@ -60,7 +63,8 @@
                                         <label for="exampleFormControlFile1">Upload Responden</label>
                                         <div class="custom-file">
                                             <input type="file" name="file_responden" class="custom-file-input"
-                                                id="customFile">
+                                                id="customFile"
+                                                accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
                                             <label class="custom-file-label" for="customFile">Pilih file</label>
                                         </div>
                                         <span class="text-muted d-block">File yang di import harus yang bernama

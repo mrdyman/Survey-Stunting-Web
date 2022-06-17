@@ -6,6 +6,7 @@ use App\Http\Controllers\ListController;
 use App\Http\Controllers\ImportController;
 use App\Http\Controllers\SurveyorController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\masterData\ImportRespondenController;
 use App\Http\Controllers\survey\SurveyController;
 use App\Http\Controllers\masterData\UserController;
 use App\Http\Controllers\masterSoal\SoalController;
@@ -71,6 +72,8 @@ Route::group(['middleware' => ['admin']], function () {
     Route::resource('/responden', RespondenController::class)->parameters([
         'responden' => 'responden'
     ]);
+    Route::post('/importResponden/store', [ImportRespondenController::class, 'store']);
+
 
     Route::put('/namaSurvey/statusAktif/{namaSurvey}', [NamaSurveyController::class, 'statusAktif']);
     Route::resource('/namaSurvey', NamaSurveyController::class);
