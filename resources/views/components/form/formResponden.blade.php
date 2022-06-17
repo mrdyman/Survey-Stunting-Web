@@ -16,7 +16,7 @@
         </div>
         <div class="col-lg-6 col-md-6">
             {{-- Kepala Keluarga --}}
-            @component('components.formGroup.input', ['label' => 'Nama Kepala Keluarga', 'type' => 'text', 'class' => '', 'id' => 'kepala-keluarga', 'name' => 'kepala_keluarga', 'placeholder' => 'Masukkan', 'value' => $responden->kepala_keluarga ?? null])
+            @component('components.formGroup.input', ['label' => 'Nama Kepala Keluarga', 'type' => 'text', 'class' => '', 'id' => 'kepala-keluarga', 'name' => 'nama_kepala_keluarga', 'placeholder' => 'Masukkan', 'value' => $responden->nama_kepala_keluarga ?? null])
             @endcomponent
         </div>
     </div>

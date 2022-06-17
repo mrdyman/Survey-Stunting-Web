@@ -90,9 +90,7 @@
                                         target="_blank" class="badge badge-danger text-right float-right">Format Import</a>
                                     <div class="custom-file">
                                         <input type="file" name="file_import_responden" class="custom-file-input"
-                                            id="file-import-responden"
-                                            accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
-                                            autocomplete="off">
+                                            id="file-import-responden" autocomplete="off">
                                         <label class="custom-file-label" for="customFile">Pilih file</label>
                                     </div>
                                     <span class="text-muted d-block">File yang di import harus sesuai format yang
@@ -195,8 +193,8 @@
                         name: 'kartu_keluarga'
                     },
                     {
-                        data: 'kepala_keluarga',
-                        name: 'kepala_keluarga'
+                        data: 'nama_kepala_keluarga',
+                        name: 'nama_kepala_keluarga'
                     },
                     // {
                     //     data: 'alamat',

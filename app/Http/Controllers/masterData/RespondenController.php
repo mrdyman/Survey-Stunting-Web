@@ -85,7 +85,7 @@ class RespondenController extends Controller
             $request->all(),
             [
                 'kartu_keluarga' => ['required', Rule::unique('responden')->withoutTrashed()],
-                'kepala_keluarga' => 'required',
+                'nama_kepala_keluarga' => 'required',
                 'alamat' => 'required',
                 'provinsi' => 'required',
                 'kabupaten_kota' => 'required',
@@ -96,7 +96,7 @@ class RespondenController extends Controller
             [
                 'kartu_keluarga.required' => 'Kartu keluarga tidak boleh kosong',
                 'kartu_keluarga.unique' => 'Kartu keluarga sudah terdaftar',
-                'kepala_keluarga.required' => 'Kepala keluarga tidak boleh kosong',
+                'nama_kepala_keluarga.required' => 'Kepala keluarga tidak boleh kosong',
                 'alamat.required' => 'Alamat tidak boleh kosong',
                 'provinsi.required' => 'Provinsi tidak boleh kosong',
                 'kabupaten_kota.required' => 'Kabupaten/Kota tidak boleh kosong',
@@ -111,7 +111,7 @@ class RespondenController extends Controller
 
         $data = [
             'kartu_keluarga' => $request->kartu_keluarga,
-            'kepala_keluarga' => $request->kepala_keluarga,
+            'nama_kepala_keluarga' => $request->nama_kepala_keluarga,
             'alamat' => $request->alamat,
             'provinsi_id' => $request->provinsi,
             'kabupaten_kota_id' => $request->kabupaten_kota,
@@ -132,7 +132,7 @@ class RespondenController extends Controller
             $request->all(),
             [
                 'kartu_keluarga' => ['required', Rule::unique('responden')->withoutTrashed()],
-                'kepala_keluarga' => 'required',
+                'nama_kepala_keluarga' => 'required',
                 'alamat' => 'required',
                 'provinsi' => 'required',
                 'kabupaten_kota' => 'required',
@@ -143,7 +143,7 @@ class RespondenController extends Controller
             [
                 'kartu_keluarga.required' => 'Kartu keluarga tidak boleh kosong',
                 'kartu_keluarga.unique' => 'Kartu keluarga sudah terdaftar',
-                'kepala_keluarga.required' => 'Kepala keluarga tidak boleh kosong',
+                'nama_kepala_keluarga.required' => 'Kepala keluarga tidak boleh kosong',
                 'alamat.required' => 'Alamat tidak boleh kosong',
                 'provinsi.required' => 'Provinsi tidak boleh kosong',
                 'kabupaten_kota.required' => 'Kabupaten/Kota tidak boleh kosong',
@@ -158,7 +158,7 @@ class RespondenController extends Controller
 
         $data = [
             'kartu_keluarga' => $request->kartu_keluarga,
-            'kepala_keluarga' => $request->kepala_keluarga,
+            'nama_kepala_keluarga' => $request->nama_kepala_keluarga,
             'alamat' => $request->alamat,
             'provinsi_id' => $request->provinsi,
             'kabupaten_kota_id' => $request->kabupaten_kota,
@@ -208,7 +208,7 @@ class RespondenController extends Controller
             $request->all(),
             [
                 'kartu_keluarga' => ['required', Rule::unique('responden')->ignore($responden->id)->withoutTrashed()],
-                'kepala_keluarga' => 'required',
+                'nama_kepala_keluarga' => 'required',
                 'alamat' => 'required',
                 'provinsi' => 'required',
                 'kabupaten_kota' => 'required',
@@ -219,7 +219,7 @@ class RespondenController extends Controller
             [
                 'kartu_keluarga.required' => 'Kartu keluarga tidak boleh kosong',
                 'kartu_keluarga.unique' => 'Kartu keluarga sudah terdaftar',
-                'kepala_keluarga.required' => 'Kepala keluarga tidak boleh kosong',
+                'nama_kepala_keluarga.required' => 'Kepala keluarga tidak boleh kosong',
                 'alamat.required' => 'Alamat tidak boleh kosong',
                 'provinsi.required' => 'Provinsi tidak boleh kosong',
                 'kabupaten_kota.required' => 'Kabupaten/Kota tidak boleh kosong',
@@ -234,7 +234,7 @@ class RespondenController extends Controller
 
         $data = [
             'kartu_keluarga' => $request->kartu_keluarga,
-            'kepala_keluarga' => $request->kepala_keluarga,
+            'nama_kepala_keluarga' => $request->nama_kepala_keluarga,
             'alamat' => $request->alamat,
             'provinsi_id' => $request->provinsi,
             'kabupaten_kota_id' => $request->kabupaten_kota,

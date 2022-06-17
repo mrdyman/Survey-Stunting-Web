@@ -23,7 +23,7 @@ class RespondenOnlyImport implements ToCollection, WithHeadingRow
             if (!$responden) {
                 Responden::create([
                     'kartu_keluarga' => $row['kartu_keluarga'],
-                    'kepala_keluarga' => $row['nama_kepala_keluarga'],
+                    'nama_kepala_keluarga' => $row['nama_kepala_keluarga'],
                     'alamat' => $row['alamat'],
                     'provinsi_id' => $row['provinsi'],
                     'kabupaten_kota_id' => $row['kabupaten'],

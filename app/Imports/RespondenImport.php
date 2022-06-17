@@ -24,6 +24,7 @@ class RespondenImport implements ToModel, WithHeadingRow
         if ($responden == null) {
             return new Responden([
                 'kartu_keluarga'    => $row['kartu_keluarga'],
+                'nama_kepala_keluarga' => $row['nama_kepala_keluarga'],
                 'alamat'    => $row['alamat'],
                 'provinsi_id'    => $row['provinsi_id'],
                 'kabupaten_kota_id'    => $row['kabupaten_kota_id'],

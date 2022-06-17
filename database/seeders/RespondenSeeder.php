@@ -22,7 +22,7 @@ class RespondenSeeder extends Seeder
             [
                 'id' => 1,
                 'kartu_keluarga' => 72060907099700001,
-                'kepala_keluarga' => 'Budi',
+                'nama_kepala_keluarga' => 'Angga',
                 'alamat' => 'Jl. Pertama',
                 'provinsi_id' => 73,
                 'kabupaten_kota_id' => 7373,
@@ -35,7 +35,7 @@ class RespondenSeeder extends Seeder
             [
                 'id' => 2,
                 'kartu_keluarga' => 88960907099700788,
-                'kepala_keluarga' => 'Ahmad',
+                'nama_kepala_keluarga' => 'Febri',
                 'alamat' => 'Jl. Kedua',
                 'provinsi_id' => 72,
                 'kabupaten_kota_id' => 7203,
@@ -48,7 +48,7 @@ class RespondenSeeder extends Seeder
             [
                 'id' => 3,
                 'kartu_keluarga' => 66770907099705432,
-                'kepala_keluarga' => 'Bambang',
+                'nama_kepala_keluarga' => 'Boy',
                 'alamat' => 'Jl. Ketiga',
                 'provinsi_id' => 73,
                 'kabupaten_kota_id' => 7313,
