@@ -17,6 +17,7 @@ class CreateNamaSurveyTable extends Migration
             $table->id();
             $table->text('nama');
             $table->string('tipe', 5);
+            $table->integer('is_aktif');
             $table->softDeletes();
             $table->timestamps();
         });

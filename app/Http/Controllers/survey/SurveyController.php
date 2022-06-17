@@ -118,7 +118,11 @@ class SurveyController extends Controller
     public function pilihResponden()
     {
         $responden = Responden::orderBy('id', 'desc')->get();
-        $namaSurvey = NamaSurvey::orderBy('id', 'desc')->get();
+        $namaSurvey = NamaSurvey::orderBy('id', 'desc')->where('is_aktif', 1)
+            ->whereHas('kategoriSoal', function ($query) {
+                $query->whereHas('soal');
+            })
+            ->get();
         return view('pages.survey.pilihResponden', compact('responden', 'namaSurvey'));
     }
 

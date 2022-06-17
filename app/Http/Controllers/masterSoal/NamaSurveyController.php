@@ -34,12 +34,21 @@ class NamaSurveyController extends Controller
                         return '<span class="badge badge-success">Post</span>';
                     }
                 })
+                ->addColumn('aktif', function ($row) {
+                    if ($row->is_aktif == 0) {
+                        return '<span class="badge badge-danger">Tidak Aktif</span>';
+                    } else {
+                        return '<span class="badge badge-success">Aktif</span>';
+                    }
+                })
                 ->addColumn('action', function ($row) {
                     $actionBtn = '
                             <a id="btn-edit" href="' . url('/kategoriSoal') . "/" . $row->id . '" class="btn btn-primary btn-sm mr-1 my-1" ><i class="fas fa-eye"></i> Lihat Kategori Soal</a>
                             ';
 
                     $actionBtn .= '<button id="btn-duplikat" class="btn btn-success btn-sm mr-1 my-1"  onclick="duplikat(' . $row->id . ')"><i class="fas fa-copy"></i> Duplikat</button>';
+
+                    $actionBtn .= '<button id="btn-edit-status" class="btn btn-warning btn-sm mr-1 my-1"  onclick="editStatus(' . $row->id . ')"><i class="fas fa-edit"></i> Ubah Status</button>';
 
                     $survey = Survey::where('nama_survey_id', $row->id)->first();
                     if (!$survey) {
@@ -49,7 +58,7 @@ class NamaSurveyController extends Controller
 
                     return $actionBtn;
                 })
-                ->rawColumns(['action', 'tipe'])
+                ->rawColumns(['action', 'tipe', 'aktif'])
                 ->make(true);
         }
         return view('pages.masterSoal.namaSurvey');
@@ -77,11 +86,13 @@ class NamaSurveyController extends Controller
             $request->all(),
             [
                 'nama' => 'required',
-                'tipe' => 'required'
+                'tipe' => 'required',
+                'status' => 'required'
             ],
             [
                 'nama.required' => "Nama Survey Tidak Boleh Dikosongkan",
                 'tipe.required' => "Tipe Survey Tidak Boleh Dikosongkan",
+                'status.required' => "Status Survey Tidak Boleh Dikosongkan"
             ]
         );
 
@@ -92,6 +103,7 @@ class NamaSurveyController extends Controller
         $nama_survey = new NamaSurvey();
         $nama_survey->nama = $request->nama;
         $nama_survey->tipe = $request->tipe;
+        $nama_survey->is_aktif = $request->status;
         $nama_survey->save();
 
         return response()->json(['status' => 'success']);
@@ -240,6 +252,16 @@ class NamaSurveyController extends Controller
             }
         }
 
+
+        return response()->json(['status' => 'success']);
+    }
+
+    public function statusAktif(NamaSurvey $namaSurvey, Request $request)
+    {
+        $statusAktif = $request->status_edit;
+
+        $namaSurvey->is_aktif = $statusAktif;
+        $namaSurvey->save();
 
         return response()->json(['status' => 'success']);
     }
