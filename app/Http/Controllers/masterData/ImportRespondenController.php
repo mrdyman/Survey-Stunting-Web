@@ -18,10 +18,11 @@ class ImportRespondenController extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'file_import_responden' => 'required',
+                'file_import_responden' => 'required|mimes:xls,xlsx',
             ],
             [
                 'file_import_responden.required' => "File Responden Tidak Boleh Dikosongkan",
+                'file_import_responden.mimes' => "File Responden Harus Berupa File Excel",
             ]
         );
 
@@ -29,11 +30,6 @@ class ImportRespondenController extends Controller
             return response()->json(['error' => $validator->errors()]);
         }
 
-        // $responden = new RespondenImport;
-        // Excel::import($responden, $request->file('file_responden'));
-        // $bentrok = $responden->getBentrok();
         Excel::import(new RespondenOnlyImport, $request->file('file_import_responden'));
-        // Excel::import(new JawabanSurveyImport, $request->file('file_jawaban_survey'));
-        // return response()->json(['success' => 'Data Berhasil Diimport']);
     }
 }

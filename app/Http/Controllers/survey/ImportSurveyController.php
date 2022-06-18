@@ -28,14 +28,17 @@ class ImportSurveyController extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'file_survey' => 'required',
-                'file_jawaban_survey' => 'required',
-                'file_responden' => 'required',
+                'file_survey' => 'required|mimes:xls,xlsx',
+                'file_jawaban_survey' => 'required|mimes:xls,xlsx',
+                'file_responden' => 'required|mimes:xls,xlsx',
             ],
             [
                 'file_survey.required' => "File Survey Tidak Boleh Dikosongkan",
+                'file_survey.mimes' => "File Survey Harus Berupa File Excel",
                 'file_jawaban_survey.required' => "File Jawaban Survey Tidak Boleh Dikosongkan",
+                'file_jawaban_survey.mimes' => "File Jawaban Survey Harus Berupa File Excel",
                 'file_responden.required' => "File Responden Tidak Boleh Dikosongkan",
+                'file_responden.mimes' => "File Responden Harus Berupa File Excel",
             ]
         );
 
