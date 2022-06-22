@@ -38,6 +38,9 @@
                                 <a href="{{ url('profile') }}">Profil</a>
                             </li>
                             <li>
+                                <a href="{{ url('institusi') }}">Institusi</a>
+                            </li>
+                            <li>
                                 <a href="{{ url('user') }}">Akun</a>
                             </li>
                         </ul>

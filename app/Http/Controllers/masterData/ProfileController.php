@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\Institusi;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Validator;
 
@@ -25,39 +26,41 @@ class ProfileController extends Controller
             $data = Profile::with('user')->orderBy('created_at', 'DESC');
             return DataTables::of($data)
                 ->addIndexColumn()
-                ->addColumn('username', function ($row) {     
+                ->addColumn('username', function ($row) {
                     return $row->user->username;
                 })
-                ->addColumn('role', function ($row) {   
-                    if($row->user->role == 'Admin'){
+                ->addColumn('institusi', function ($row) {
+                    return $row->institusi->nama;
+                })
+                ->addColumn('role', function ($row) {
+                    if ($row->user->role == 'Admin') {
                         return '<span class="badge badge-primary">Admin</span>';
-                    } else if ($row->user->role == 'Surveyor'){
+                    } else if ($row->user->role == 'Surveyor') {
                         return '<span class="badge badge-success">Surveyor</span>';
                     }
-
                 })
-                ->addColumn('action', function ($row) {     
-                        $actionBtn = '
+                ->addColumn('action', function ($row) {
+                    $actionBtn = '
                         <div class="row text-center justify-content-center">';
-                        $actionBtn .= '
-                            <a href="'.route('profile.show', $row->id).'" class="btn btn-info btn-sm mr-1 my-1" data-toggle="tooltip" data-placement="top" title="Lihat"><i class="fas fa-eye"></i></a>
-                            <a href="'.route('profile.edit', $row->id).'" id="btn-edit" class="btn btn-warning btn-sm mr-1 my-1" data-toggle="tooltip" data-placement="top" title="Ubah"><i class="fas fa-edit"></i></a>
+                    $actionBtn .= '
+                            <a href="' . route('profile.show', $row->id) . '" class="btn btn-info btn-sm mr-1 my-1" data-toggle="tooltip" data-placement="top" title="Lihat"><i class="fas fa-eye"></i></a>
+                            <a href="' . route('profile.edit', $row->id) . '" id="btn-edit" class="btn btn-warning btn-sm mr-1 my-1" data-toggle="tooltip" data-placement="top" title="Ubah"><i class="fas fa-edit"></i></a>
                             <button id="btn-delete" onclick="hapus(' . $row->id . ')" class="btn btn-danger btn-sm mr-1 my-1" value="' . $row->id . '" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fas fa-trash"></i></button>
                         </div>';
                     return $actionBtn;
                 })
 
-                ->filter(function ($query) use ($request) {    
+                ->filter(function ($query) use ($request) {
                     if ($request->search != '') {
                         $query->whereHas('user', function ($query) use ($request) {
                             $query->where("users.username", "LIKE", "%$request->search%")
-                                    ->orWhere("profiles.nama_lengkap", "LIKE", "%$request->search%");                                
+                                ->orWhere("profiles.nama_lengkap", "LIKE", "%$request->search%");
                         });
-                    }      
-                                    
+                    }
+
                     if (!empty($request->role)) {
                         $query->whereHas('user', function ($query) use ($request) {
-                            $query->where('users.role', $request->role);                       
+                            $query->where('users.role', $request->role);
                         });
                     }
                 })
@@ -78,6 +81,7 @@ class ProfileController extends Controller
 
         $data = [
             'users' => User::doesntHave('profile')->get(),
+            'institusi' => Institusi::latest()->get(),
         ];
         return view('pages.masterData.profile.create', $data);
     }
@@ -94,6 +98,7 @@ class ProfileController extends Controller
             $request->all(),
             [
                 'user_id' => ['required', Rule::unique('profiles')->withoutTrashed()],
+                'institusi_id' => 'required',
                 'nama_lengkap' => 'required',
                 'jenis_kelamin' => 'required',
                 'tempat_lahir' => 'required',
@@ -108,6 +113,8 @@ class ProfileController extends Controller
             [
                 'user_id.required' => 'Nama Pengguna tidak boleh kosong',
                 'user_id.unique' => 'Nama Pengguna sudah terdaftar',
+                'institusi_id.required' => 'Institusi tidak boleh kosong',
+                'institusi_id.unique' => 'Institusi sudah terdaftar',
                 'nama_lengkap.required' => 'Nama Lengkap tidak boleh kosong',
                 'jenis_kelamin.required' => 'Jenis Kelamin tidak boleh kosong',
                 'tempat_lahir.required' => 'Tempat Lahir tidak boleh kosong',
@@ -127,6 +134,7 @@ class ProfileController extends Controller
 
         $data = [
             'user_id' => $request->user_id,
+            'institusi_id' => $request->institusi_id,
             'nama_lengkap' => $request->nama_lengkap,
             'jenis_kelamin' => $request->jenis_kelamin,
             'tempat_lahir' => $request->tempat_lahir,
@@ -166,7 +174,8 @@ class ProfileController extends Controller
     {
         $data = [
             'profile' => Profile::select('*', DB::raw('DATE_FORMAT(tanggal_lahir, "%d/%m/%Y") AS tanggal_lahir'))->where('id', '=', $profile->id)->first(),
-            'users' => User::where('status', '=', '1')->get(),
+            'users' => User::all(),
+            'institusi' => Institusi::latest()->get(),
         ];
         return view('pages.masterData.profile.edit', $data);
     }
@@ -184,6 +193,7 @@ class ProfileController extends Controller
             $request->all(),
             [
                 'user_id' => ['required', Rule::unique('profiles')->ignore($profile->id)->withoutTrashed()],
+                'institusi_id' => 'required',
                 'nama_lengkap' => 'required',
                 'jenis_kelamin' => 'required',
                 'tempat_lahir' => 'required',
@@ -198,6 +208,8 @@ class ProfileController extends Controller
             [
                 'user_id.required' => 'Nama Pengguna tidak boleh kosong',
                 'user_id.unique' => 'Nama Pengguna sudah terdaftar',
+                'institusi_id.required' => 'Institusi tidak boleh kosong',
+                'institusi_id.unique' => 'Institusi sudah terdaftar',
                 'nama_pengguna.unique' => 'Nama Pengguna sudah terdaftar',
                 'nama_lengkap.required' => 'Nama Lengkap tidak boleh kosong',
                 'jenis_kelamin.required' => 'Jenis Kelamin tidak boleh kosong',
@@ -218,6 +230,7 @@ class ProfileController extends Controller
 
         $data = [
             // 'user_id' => $request->user_id,
+            'institusi_id' => $request->institusi_id,
             'nama_lengkap' => $request->nama_lengkap,
             'jenis_kelamin' => $request->jenis_kelamin,
             'tempat_lahir' => $request->tempat_lahir,

@@ -7,6 +7,7 @@ use App\Http\Controllers\ImportController;
 use App\Http\Controllers\SurveyorController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\masterData\ImportRespondenController;
+use App\Http\Controllers\masterData\InstitusiController;
 use App\Http\Controllers\survey\SurveyController;
 use App\Http\Controllers\masterData\UserController;
 use App\Http\Controllers\masterSoal\SoalController;
@@ -17,6 +18,7 @@ use App\Http\Controllers\masterData\RespondenController;
 use App\Http\Controllers\masterSoal\NamaSurveyController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 use App\Http\Controllers\masterSoal\KategoriSoalController;
+use App\Models\Institusi;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,7 +51,8 @@ Route::group(['middleware' => ['auth']], function () {
 
 
     Route::get('/lengkapi-profile', function () {
-        return view('pages.lengkapiProfile');
+        $institusi = Institusi::latest()->get();
+        return view('pages.lengkapiProfile', compact('institusi'));
     })->name('lengkapiProfile');
 
     Route::get('/exportSurvey', [ExportSurveyController::class, 'index']);
@@ -69,6 +72,7 @@ Route::group(['middleware' => ['auth']], function () {
 Route::group(['middleware' => ['admin']], function () {
     Route::resource('/user', UserController::class);
     Route::resource('/profile', ProfileController::class);
+    Route::resource('/institusi', InstitusiController::class);
     Route::resource('/responden', RespondenController::class)->parameters([
         'responden' => 'responden'
     ]);

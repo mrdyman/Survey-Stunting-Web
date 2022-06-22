@@ -25,6 +25,24 @@
             @endcomponent
         </div>
         <div class="col-lg col-md">
+            {{-- Institusi --}}
+            @component('components.formGroup.select',
+                [
+                    'label' => 'Pilih Institusi',
+                    'name' => 'institusi_id',
+                    'id' => 'institusi-id',
+                    'class' => 'select2',
+                ])
+                @slot('options')
+                    @foreach ($institusi as $row)
+                        <option value="{{ $row->id }}"
+                            {{ isset($profile) && $profile->institusi_id == $row->id ? 'selected' : '' }}>
+                            {{ $row->nama }}</option>
+                    @endforeach
+                @endslot
+            @endcomponent
+        </div>
+        <div class="col-lg col-md">
             {{-- Nama Lengkap --}}
             @component('components.formGroup.input', ['label' => 'Nama Lengkap', 'type' => 'text', 'class' => '', 'id' => 'nama-lengkap', 'name' => 'nama_lengkap', 'placeholder' => 'Masukkan', 'value' => $profile->nama_lengkap ?? null])
             @endcomponent
@@ -32,7 +50,7 @@
     </div>
 
     <div class="row">
-        <div class="col-lg-3">
+        <div class="col-lg-4 col-md">
             {{-- Jenis Kelamin --}}
             <div class="form-group">
                 <label>Jenis Kelamin</label><br>
@@ -50,9 +68,9 @@
             @component('components.formGroup.input', ['label' => 'Tempat Lahir', 'type' => 'text', 'class' => '', 'id' => 'tempat-lahir', 'name' => 'tempat_lahir', 'placeholder' => 'Masukkan', 'value' => $profile->tempat_lahir ?? null])
             @endcomponent
         </div>
-        <div class="col-lg col-md">
+        <div class="col-lg col-md-4">
             {{-- Tanggal Lahir --}}
-            @component('components.formGroup.input', ['label' => 'Tanggal Lahir (contoh: 31-12-1992)', 'type' => 'text', 'class' => 'tanggal', 'id' => 'tanggal-lahir', 'name' => 'tanggal_lahir', 'placeholder' => 'Masukkan', 'value' => $profile->tanggal_lahir ?? null])
+            @component('components.formGroup.input', ['label' => 'Tanggal Lahir (cth: 31-12-1992)', 'type' => 'text', 'class' => 'tanggal', 'id' => 'tanggal-lahir', 'name' => 'tanggal_lahir', 'placeholder' => 'Masukkan', 'value' => $profile->tanggal_lahir ?? null])
             @endcomponent
         </div>
     </div>

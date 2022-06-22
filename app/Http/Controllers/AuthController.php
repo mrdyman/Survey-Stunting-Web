@@ -21,11 +21,12 @@ class AuthController extends Controller
         ]);
 
         if (Auth::attempt($credentials)) {
-            if(Auth::user()->status == 1){
+            if (Auth::user()->status == 2) {
+                Auth::logout();
+                return back()->with('loginError', 'Akun anda dinonaktifkan, silahkan hubungi admin untuk informasi lebih lanjut.');
+            } else {
                 $request->session()->regenerate();
                 return redirect('/dashboard');
-            } else{
-                return back()->with('loginError', 'Akun anda dinonaktifkan, silahkan hubungi admin untuk informasi lebih lanjut.');
             }
         }
         return back()->with('loginError', 'Nama Pengguna / Kata Sandi Salah');
