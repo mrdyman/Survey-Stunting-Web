@@ -66,7 +66,7 @@
     @endcomponent
 
     <div class="row">
-        <div class="col-lg col-md">
+        <div class="col-lg-6 col-md">
             {{-- Provinsi --}}
             @component('components.formGroup.select',
                 [
@@ -78,7 +78,7 @@
                 ])
             @endcomponent
         </div>
-        <div class="col-lg col-md">
+        <div class="col-lg-6 col-md">
             {{-- Kabupaten / Kota --}}
             @component('components.formGroup.select',
                 [
@@ -92,7 +92,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-lg col-md">
+        <div class="col-lg-6 col-md">
             {{-- Kecamatan --}}
             @component('components.formGroup.select',
                 [
@@ -104,7 +104,7 @@
                 ])
             @endcomponent
         </div>
-        <div class="col-lg col-md">
+        <div class="col-lg-6 col-md">
             {{-- Desa / Kelurahan --}}
             @component('components.formGroup.select',
                 [
@@ -213,7 +213,6 @@
                     $('.' + key + '-error').text(value);
                 });
             }
-
 
         });
     </script>
