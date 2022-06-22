@@ -19,6 +19,7 @@ class ProfileSeeder extends Seeder
             [
                 'id' => 1,
                 'user_id' => 1,
+                'institusi_id' => 1,
                 'nama_lengkap' => 'Administrator',
                 'jenis_kelamin' => 'Laki-laki',
                 'tempat_lahir' => 'Palopo',
@@ -35,6 +36,7 @@ class ProfileSeeder extends Seeder
             [
                 'id' => 2,
                 'user_id' => 4,
+                'institusi_id' => 1,
                 'nama_lengkap' => 'Inosuke',
                 'jenis_kelamin' => 'Laki-laki',
                 'tempat_lahir' => 'Palopo',
@@ -51,6 +53,7 @@ class ProfileSeeder extends Seeder
             [
                 'id' => 3,
                 'user_id' => 2,
+                'institusi_id' => 1,
                 'nama_lengkap' => 'Zenetsu',
                 'jenis_kelamin' => 'Perempuan',
                 'tempat_lahir' => 'Siwa',
@@ -65,7 +68,7 @@ class ProfileSeeder extends Seeder
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             ],
         ];
-        
+
         DB::table('profiles')->insert($data);
     }
 }

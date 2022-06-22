@@ -1,15 +1,41 @@
-<form id="{{$form_id}}" action="#" method="POST" enctype="multipart/form-data">
+<form id="{{ $form_id }}" action="#" method="POST" enctype="multipart/form-data">
     @csrf
-    {{-- @if(isset($method) && $method == 'PUT')
+    {{-- @if (isset($method) && $method == 'PUT')
         @method('PUT')
     @endif --}}
 
     <div class="row">
         <div class="col-lg col-md">
-            {{-- Nama Lengkap--}}
+            {{-- Nama Lengkap --}}
             @component('components.formGroup.input', ['label' => 'Nama Lengkap', 'type' => 'text', 'class' => '', 'id' => 'nama-lengkap', 'name' => 'nama_lengkap', 'placeholder' => 'Masukkan', 'value' => $profile->nama_lengkap ?? null])
             @endcomponent
         </div>
+        <div class="col-lg col-md">
+            {{-- Institusi --}}
+            @component('components.formGroup.select',
+                [
+                    'label' => 'Institusi',
+                    'name' => 'institusi_id',
+                    'id' => 'institusi-id',
+                    'class' => 'select2',
+                ])
+                @slot('options')
+                    @if ($profile)
+                        @foreach ($institusi as $row)
+                            <option value="{{ $row->id }}"
+                                {{ isset($profile) && $profile->institusi_id == $row->id ? 'selected' : '' }}>
+                                {{ $row->nama }}</option>
+                        @endforeach
+                    @else
+                        @foreach ($institusi as $row)
+                            <option value="{{ $row->id }}">{{ $row->nama }}</option>
+                        @endforeach
+                    @endif
+                @endslot
+            @endcomponent
+        </div>
+    </div>
+    <div class="row">
         <div class="col-lg-4 col-md-4">
             {{-- Jenis Kelamin --}}
             <div class="form-group">
@@ -23,8 +49,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row">
         <div class="col-lg col-md">
             {{-- Tempat Lahir --}}
             @component('components.formGroup.input', ['label' => 'Tempat Lahir', 'type' => 'text', 'class' => '', 'id' => 'tempat-lahir', 'name' => 'tempat_lahir', 'placeholder' => 'Masukkan', 'value' => $profile->tempat_lahir ?? null])
@@ -44,48 +68,52 @@
     <div class="row">
         <div class="col-lg col-md">
             {{-- Provinsi --}}
-            @component('components.formGroup.select', [
-                'label' => 'Provinsi',
-                'name' => 'provinsi',
-                'id' => 'provinsi',
-                'class' => 'select2',
-                'options' => '',
-            ])  
+            @component('components.formGroup.select',
+                [
+                    'label' => 'Provinsi',
+                    'name' => 'provinsi',
+                    'id' => 'provinsi',
+                    'class' => 'select2',
+                    'options' => '',
+                ])
             @endcomponent
         </div>
         <div class="col-lg col-md">
             {{-- Kabupaten / Kota --}}
-            @component('components.formGroup.select', [
-                'label' => 'Kabupaten / Kota',
-                'name' => 'kabupaten_kota',
-                'id' => 'kabupaten-kota',
-                'class' => 'select2',
-                'options' => '',
-            ])  
+            @component('components.formGroup.select',
+                [
+                    'label' => 'Kabupaten / Kota',
+                    'name' => 'kabupaten_kota',
+                    'id' => 'kabupaten-kota',
+                    'class' => 'select2',
+                    'options' => '',
+                ])
             @endcomponent
         </div>
     </div>
     <div class="row">
         <div class="col-lg col-md">
             {{-- Kecamatan --}}
-            @component('components.formGroup.select', [
-                'label' => 'Kecamatan',
-                'name' => 'kecamatan',
-                'id' => 'kecamatan',
-                'class' => 'select2',
-                'options' => '',
-            ])  
+            @component('components.formGroup.select',
+                [
+                    'label' => 'Kecamatan',
+                    'name' => 'kecamatan',
+                    'id' => 'kecamatan',
+                    'class' => 'select2',
+                    'options' => '',
+                ])
             @endcomponent
         </div>
         <div class="col-lg col-md">
             {{-- Desa / Kelurahan --}}
-            @component('components.formGroup.select', [
-                'label' => 'Desa / Kelurahan',
-                'name' => 'desa_kelurahan',
-                'id' => 'desa-kelurahan',
-                'class' => 'select2',
-                'options' => '',
-            ])  
+            @component('components.formGroup.select',
+                [
+                    'label' => 'Desa / Kelurahan',
+                    'name' => 'desa_kelurahan',
+                    'id' => 'desa-kelurahan',
+                    'class' => 'select2',
+                    'options' => '',
+                ])
             @endcomponent
         </div>
     </div>
@@ -112,79 +140,81 @@
     </div>
 </form>
 
-@component('components.wilayah.form', [
-    'provinsi' => $profile->provinsi ?? null, 
-    'kabupaten_kota' => $profile->kabupaten_kota ?? null, 
-    'kecamatan' => $profile->kecamatan ?? null, 
-    'desa_kelurahan' => $profile->desa_kelurahan ?? null])
+@component('components.wilayah.form',
+    [
+        'provinsi' => $profile->provinsi ?? null,
+        'kabupaten_kota' => $profile->kabupaten_kota ?? null,
+        'kecamatan' => $profile->kecamatan ?? null,
+        'desa_kelurahan' => $profile->desa_kelurahan ?? null,
+    ])
 @endcomponent
 
 @push('script')
-<script>
-    $(function() {
-        if('{{$method}}' == 'PUT') {
-            $('#user-id').attr('disabled', true);
-        }
+    <script>
+        $(function() {
+            if ('{{ $method }}' == 'PUT') {
+                $('#user-id').attr('disabled', true);
+            }
 
-        $('#{{$form_id}}').submit(function(e) {
-            $("#overlay").fadeIn(100);
-            e.preventDefault();
-            $('.error-text').text('');
-            var formData = new FormData(this)
-            $.ajax({
-                type: "POST",
-                url: "{{$action}}",
-                headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}'},
-                data: formData,
-                cache : false,
-                processData: false,
-                contentType: false,
-                success: function (data) {
-                    console.log(data);
-                    $("#overlay").fadeOut(100);
-                    if ($.isEmptyObject(data.error)) {
-                        if('{{$method}}' == 'PUT') {
+            $('#{{ $form_id }}').submit(function(e) {
+                $("#overlay").fadeIn(100);
+                e.preventDefault();
+                $('.error-text').text('');
+                var formData = new FormData(this)
+                $.ajax({
+                    type: "POST",
+                    url: "{{ $action }}",
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    data: formData,
+                    cache: false,
+                    processData: false,
+                    contentType: false,
+                    success: function(data) {
+                        console.log(data);
+                        $("#overlay").fadeOut(100);
+                        if ($.isEmptyObject(data.error)) {
+                            if ('{{ $method }}' == 'PUT') {
+                                swal({
+                                    title: "Berhasil!",
+                                    text: "Perubahan berhasil disimpan!",
+                                    icon: "success",
+                                    button: false
+                                })
+                            } else {
+                                swal({
+                                    title: "Berhasil!",
+                                    text: "Data berhasil disimpan!",
+                                    icon: "success",
+                                    button: false
+                                })
+                            }
+                            setTimeout(
+                                function() {
+                                    window.location.href = "{{ $back_url }}";
+                                }, 2000);
+
+                        } else {
                             swal({
-                                title: "Berhasil!",
-                                text: "Perubahan berhasil disimpan!",
-                                icon: "success",
-                                button: false
-                            })
-                        } else{
-                            swal({
-                                title: "Berhasil!",
-                                text: "Data berhasil disimpan!",
-                                icon: "success",
-                                button: false
-                            })
+                                title: "Terjadi Kesalahan!",
+                                text: "Data gagal disimpan, silahkan cek kembali inputan anda.",
+                                icon: "error",
+                            });
+                            printErrorMsg(data.error);
                         }
-                        setTimeout(
-                        function () {
-                            window.location.href = "{{$back_url}}";
-                        }, 2000);
-                    
-                    }
-                    else{
-                        swal({
-                            title: "Terjadi Kesalahan!",
-                            text: "Data gagal disimpan, silahkan cek kembali inputan anda.",
-                            icon: "error",
-                        });
-                        printErrorMsg(data.error);
-                    }
-                },
+                    },
+                })
+
             })
 
-        })
+            const printErrorMsg = (msg) => {
+                $.each(msg, function(key, value) {
+                    $('.' + key + '-error').text(value);
+                });
+            }
 
-        const printErrorMsg = (msg) => {
-            $.each(msg, function (key, value) {
-                $('.' + key + '-error').text(value);
-            });
-        }
 
-       
-    });
-
-</script>
+        });
+    </script>
 @endpush

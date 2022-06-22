@@ -11,11 +11,16 @@ use DateTimeInterface;
 class Profile extends Model
 {
     use HasFactory, SoftDeletes;
-    protected $guarded = ['id'];    
+    protected $guarded = ['id'];
 
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function institusi()
+    {
+        return $this->belongsTo(Institusi::class);
     }
     /**
      * Prepare a date for array / JSON serialization.

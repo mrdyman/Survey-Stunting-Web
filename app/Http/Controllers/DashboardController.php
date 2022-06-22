@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Survey;
 use App\Models\Profile;
+use App\Models\Institusi;
 use App\Models\Responden;
 use App\Models\KategoriSoal;
 use Illuminate\Http\Request;
@@ -159,6 +160,7 @@ class DashboardController extends Controller
     {
         $data = [
             'user' => User::find(Auth::user()->id),
+            'institusi' => Institusi::latest()->get(),
             'profile' => Profile::select('*', DB::raw('DATE_FORMAT(tanggal_lahir, "%d/%m/%Y") AS tanggal_lahir'))->where('user_id', '=', Auth::user()->id)->orderBy('created_at', 'DESC')->first(),
 
         ];
@@ -170,6 +172,7 @@ class DashboardController extends Controller
         $validator = Validator::make(
             $request->all(),
             [
+                'institusi_id' => 'required',
                 'nama_lengkap' => 'required',
                 'jenis_kelamin' => 'required',
                 'tempat_lahir' => 'required',
@@ -182,6 +185,7 @@ class DashboardController extends Controller
                 'nomor_hp' => 'required',
             ],
             [
+                'institusi_id' => 'required',
                 'nama_lengkap.required' => 'Nama Lengkap tidak boleh kosong',
                 'jenis_kelamin.required' => 'Jenis Kelamin tidak boleh kosong',
                 'tempat_lahir.required' => 'Tempat Lahir tidak boleh kosong',
@@ -201,6 +205,7 @@ class DashboardController extends Controller
 
         $data = [
             'user_id' => Auth::user()->id,
+            'institusi_id' => $request->institusi_id,
             'nama_lengkap' => $request->nama_lengkap,
             'jenis_kelamin' => $request->jenis_kelamin,
             'tempat_lahir' => $request->tempat_lahir,
