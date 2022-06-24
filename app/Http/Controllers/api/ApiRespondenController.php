@@ -42,6 +42,7 @@ class ApiRespondenController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'nama_kepala_keluarga' => 'required',
             'kartu_keluarga' => 'required|numeric|unique:responden',
             'alamat' => 'required',
             'provinsi_id' => 'required|numeric',
@@ -57,6 +58,7 @@ class ApiRespondenController extends Controller
         }
 
         $data = [
+            'nama_kepala_keluarga' => $request->nama_kepala_keluarga,
             'kartu_keluarga' => $request->kartu_keluarga,
             'alamat' => $request->alamat,
             'provinsi_id' => $request->provinsi_id,
