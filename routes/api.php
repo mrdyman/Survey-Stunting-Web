@@ -16,6 +16,7 @@ use App\Http\Controllers\api\ApiJawabanSurveyController;
 use App\Http\Controllers\api\ApiKategoriSoalController;
 use App\Http\Controllers\api\ApiProfileController;
 use App\Http\Controllers\api\ApiAkunController;
+use App\Http\Controllers\api\ApiInstitusiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -86,6 +87,9 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
         // Akun
     Route::get('/dashboard/akun', [ApiAkunController::class, 'show']);
     Route::put('/dashboard/akun', [ApiAkunController::class, 'update']);
+
+    // Institusi
+    Route::get('/institusi', [ApiInstitusiController::class, 'index']);
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
