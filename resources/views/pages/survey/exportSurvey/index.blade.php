@@ -29,7 +29,6 @@
             opacity: 1 !important;
             border: 0px solid black;
         }
-
     </style>
 @endpush
 
@@ -38,11 +37,12 @@
         @csrf
         <div class="row">
             <div class="col-lg">
-                @component('components.formGroup.select', [
-                    'label' => 'Pilih Nama Survey',
-                    'name' => 'nama_survey_id',
-                    'id' => 'nama_survey_id',
-                    'class' => 'select2 filter',
+                @component('components.formGroup.select',
+                    [
+                        'label' => 'Pilih Nama Survey',
+                        'name' => 'nama_survey_id',
+                        'id' => 'nama_survey_id',
+                        'class' => 'select2 filter',
                     ])
                     @slot('options')
                         @if (count($namaSurvey) > 0)
@@ -55,11 +55,30 @@
             </div>
             @if (Auth::user()->role == 'Admin')
                 <div class="col-lg">
-                    @component('components.formGroup.select', [
-                        'label' => 'Pilih Surveyor',
-                        'name' => 'surveyor_id',
-                        'id' => 'surveyor_id',
-                        'class' => 'filter select2',
+                    @component('components.formGroup.select',
+                        [
+                            'label' => 'Pilih Institusi',
+                            'name' => 'institusi_id',
+                            'id' => 'institusi_id',
+                            'class' => 'filter select2',
+                        ])
+                        @slot('options')
+                            <option value="semua">Semua</option>
+                            @if (count($institusi) > 0)
+                                @foreach ($institusi as $row)
+                                    <option value="{{ $row->id }}">{{ $row->nama }}</option>
+                                @endforeach
+                            @endif
+                        @endslot
+                    @endcomponent
+                </div>
+                <div class="col-lg">
+                    @component('components.formGroup.select',
+                        [
+                            'label' => 'Pilih Surveyor',
+                            'name' => 'surveyor_id',
+                            'id' => 'surveyor_id',
+                            'class' => 'filter select2',
                         ])
                         @slot('options')
                             <option value="semua">Semua</option>
@@ -87,9 +106,10 @@
                 @endif
             </div>
             <div class="col-lg-12 mt-3 d-flex justify-content-end">
-                @component('components.buttons.next', [
-                    'label' => 'Export',
-                    'class' => '',
+                @component('components.buttons.next',
+                    [
+                        'label' => 'Export',
+                        'class' => '',
                     ])
                 @endcomponent
             </div>
@@ -105,6 +125,7 @@
                     <tr class="text-center  ">
                         <th>No</th>
                         <th>Nama</th>
+                        <th>Institusi</th>
                         <th>Tipe</th>
                         <th>Tanggal</th>
                     </tr>
@@ -128,6 +149,7 @@
                 data: function(d) {
                     d.surveyor_id = $('#surveyor_id').val();
                     d.nama_survey_id = $('#nama_survey_id').val();
+                    d.institusi_id = $('#institusi_id').val();
                     d.search = $('input[type="search"]').val();
                 }
             },
@@ -141,6 +163,11 @@
                 {
                     data: 'nama',
                     name: 'nama'
+                },
+                {
+                    data: 'institusi',
+                    name: 'institusi',
+                    className: 'text-center',
                 },
                 {
                     data: 'tipe',

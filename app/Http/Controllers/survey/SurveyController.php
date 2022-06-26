@@ -207,7 +207,7 @@ class SurveyController extends Controller
         $indexKategori = array_search($idKategori, $semuaKategori->pluck('id')->toArray());
 
         if (($indexKategori + 1) == count($semuaKategori)) {
-            $tombolSelanjutnya = 'Simpan';
+            $tombolSelanjutnya = 'Selanjutnya';
         } else {
             $tombolSelanjutnya = 'Selanjutnya';
         }

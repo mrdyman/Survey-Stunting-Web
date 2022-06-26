@@ -4,6 +4,7 @@ namespace App\Http\Controllers\survey;
 
 use App\Exports\SurveyExport;
 use App\Http\Controllers\Controller;
+use App\Models\Institusi;
 use App\Models\JawabanSurvey;
 use Illuminate\Http\Request;
 use App\Models\Survey;
@@ -25,10 +26,12 @@ class ExportSurveyController extends Controller
         $surveyor = Profile::with(['user'])->whereHas('user', function ($user) {
             $user->where('role', '=', 'surveyor');
         })->orderBy('nama_lengkap')->get();
+        $institusi = Institusi::orderBy('nama', 'asc')->get();
 
         // Filter
         $surveyor_id = $request->surveyor_id;
         $nama_survey_id = $request->nama_survey_id;
+        $institusi_id = $request->institusi_id;
 
         if ($request->ajax()) {
             $data = Survey::with(['responden', 'namaSurvey', 'profile'])->where('is_selesai', 1)->where(function ($query) use ($surveyor_id) {
@@ -39,7 +42,13 @@ class ExportSurveyController extends Controller
                         $query->where('profile_id', $surveyor_id);
                     }
                 }
-            })->where('nama_survey_id', $nama_survey_id)->orderBy('id', 'DESC')->get();
+            })
+                ->whereHas('profile', function ($query) use ($institusi_id) {
+                    if (Auth::user()->role != "Surveyor" && $institusi_id != 'semua' && $institusi_id != null) {
+                        $query->where('institusi_id', $institusi_id);
+                    }
+                })
+                ->where('nama_survey_id', $nama_survey_id)->orderBy('id', 'DESC')->get();
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('nama', function ($row) {
@@ -57,15 +66,19 @@ class ExportSurveyController extends Controller
                 ->addColumn('tanggal', function ($row) {
                     return Carbon::parse($row->created_at)->translatedFormat('d F Y');
                 })
-                ->rawColumns(['nama', 'tipe'])
+                ->addColumn('institusi', function ($row) {
+                    return $row->profile->institusi->nama;
+                })
+                ->rawColumns(['nama', 'tipe', 'institusi'])
                 ->make(true);
         }
-        return view('pages.survey.exportSurvey.index', compact('namaSurvey', 'surveyor'));
+        return view('pages.survey.exportSurvey.index', compact('namaSurvey', 'surveyor', 'institusi'));
     }
 
     public function exportSurvey(Request $request)
     {
         $surveyor_id = $request->surveyor_id;
+        $institusi_id = $request->institusi_id;
         $this->validate(
             $request,
             [
@@ -85,7 +98,13 @@ class ExportSurveyController extends Controller
                     $query->where('profile_id', $surveyor_id);
                 }
             }
-        })->where('nama_survey_id', $request->nama_survey_id)->orderBy('id', 'DESC')->get();
+        })
+            ->whereHas('profile', function ($query) use ($institusi_id) {
+                if (Auth::user()->role != "Surveyor" && $institusi_id != 'semua' && $institusi_id != null) {
+                    $query->where('institusi_id', $institusi_id);
+                }
+            })
+            ->where('nama_survey_id', $request->nama_survey_id)->orderBy('id', 'DESC')->get();
 
         if (count($survey) == 0) {
             return back()->with('error', 'Data Tidak Ditemukan');
@@ -103,6 +122,8 @@ class ExportSurveyController extends Controller
 
         $tanggal = Carbon::parse(Carbon::now())->translatedFormat('d F Y');
 
-        return Excel::download(new SurveyExport($kategori, $survey, $surveyor), $survey[0]->namaSurvey->nama . "-" . $tanggal . "-" . rand(1, 9999) . '.xlsx');
+        $institusi = Institusi::where('id', $institusi_id)->first();
+
+        return Excel::download(new SurveyExport($kategori, $survey, $surveyor, $institusi), $survey[0]->namaSurvey->nama . "-" . $tanggal . "-" . rand(1, 9999) . '.xlsx');
     }
 }
