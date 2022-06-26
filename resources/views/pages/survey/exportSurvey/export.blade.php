@@ -14,6 +14,13 @@
                 <th colspan="8">{{ $surveyor->nama_lengkap }}</th>
             </tr>
         @endif
+        @if ($institusi)
+            <tr>
+                <th></th>
+                <th colspan="2">Institusi : </th>
+                <th colspan="8">{{ $institusi->nama }}</th>
+            </tr>
+        @endif
 
     </table>
 
