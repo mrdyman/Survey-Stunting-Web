@@ -50,6 +50,7 @@ class SurveyController extends Controller
                 if ($search) {
                     $query->whereHas('responden', function ($query) use ($search) {
                         $query->where('kartu_keluarga', 'like', '%' . $search . '%');
+                        $query->orWhere('nama_kepala_keluarga', 'like', '%' . $search . '%');
                     });
 
                     $query->orWhereHas('namaSurvey', function ($query) use ($search) {

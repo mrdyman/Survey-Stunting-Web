@@ -68,13 +68,13 @@
         </div>
     </section>
 
-    <!-- Modal Ubah Status Aset-->
+    <!-- Modal Upload Responden-->
     <div class="modal fade" id="modal-import-responden" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title fw-bold" id="exampleModalLongTitle">Ubah Status Aset</h5>
+                    <h5 class="modal-title fw-bold" id="exampleModalLongTitle">Upload Responden</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
