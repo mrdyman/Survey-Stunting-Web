@@ -145,7 +145,7 @@ class ApiSurveyController extends Controller
         $sync = $request->sync;
         if($sync){
             $kartuKeluarga = $request->kartu_keluarga;
-            $newKodeUnikResponden = Responden::where('kartu_keluarga', $kartuKeluarga)->first()['kode_unik'];
+            $newKodeUnikResponden = Responden::withTrashed()->where('kartu_keluarga', $kartuKeluarga)->first()['kode_unik'];
         }
        
         if($currentKodeUnik == null){
