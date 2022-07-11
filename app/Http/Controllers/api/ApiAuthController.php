@@ -22,19 +22,25 @@ class ApiAuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             if(Auth::user()->status == 1){
-                //account is active
-                // Generate token
-                $token = $user->createToken('userToken')->plainTextToken;
-
-                // get profile data
-                $profile = Profile::where('user_id', '=', Auth::user()->id)->first();
-
-                return response([
-                    'message' => 'OK',
-                    'data' => $user,
-                    'token' => $token,
-                    'profileData' => $profile
-                ], 201);
+                if(Auth::user()->role == "Surveyor"){
+                    //account is active
+                    // Generate token
+                    $token = $user->createToken('userToken')->plainTextToken;
+    
+                    // get profile data
+                    $profile = Profile::where('user_id', '=', Auth::user()->id)->first();
+    
+                    return response([
+                        'message' => 'OK',
+                        'data' => $user,
+                        'token' => $token,
+                        'profileData' => $profile
+                    ], 201);
+                }else {
+                    return response([
+                        'message' => 'Access Forbidden. Only surveyor can use API'
+                    ], 403);
+                }
             } else{
                 //account is disabled
                 return response([
