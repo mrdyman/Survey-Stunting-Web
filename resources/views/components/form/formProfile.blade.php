@@ -1,4 +1,4 @@
-<form id="{{ $form_id }}" action="#" method="POST" enctype="multipart/form-data">
+<form id="{{ $form_id }}" action="#" method="POST" enctype="multipart/form-data" autocomplete="off">
     @csrf
     @if (isset($method) && $method == 'PUT')
         @method('PUT')
@@ -13,7 +13,10 @@
                     'name' => 'user_id',
                     'id' => 'user-id',
                     'class' => 'select2',
-                    'button_add' => '<a href="' . route('user.create') . '" class="badge rounded-pill bg-success text-white shadow-sm float-right"><i class="fas fa-plus"></i> Buat Akun</a>',
+                    'button_add' =>
+                        '<a href="' .
+                        route('user.create') .
+                        '" class="badge rounded-pill bg-success text-white shadow-sm float-right"><i class="fas fa-plus"></i> Buat Akun</a>',
                 ])
                 @slot('options')
                     @foreach ($users as $user)
@@ -44,7 +47,16 @@
         </div>
         <div class="col-lg col-md">
             {{-- Nama Lengkap --}}
-            @component('components.formGroup.input', ['label' => 'Nama Lengkap', 'type' => 'text', 'class' => '', 'id' => 'nama-lengkap', 'name' => 'nama_lengkap', 'placeholder' => 'Masukkan', 'value' => $profile->nama_lengkap ?? null])
+            @component('components.formGroup.input',
+                [
+                    'label' => 'Nama Lengkap',
+                    'type' => 'text',
+                    'class' => '',
+                    'id' => 'nama-lengkap',
+                    'name' => 'nama_lengkap',
+                    'placeholder' => 'Masukkan',
+                    'value' => $profile->nama_lengkap ?? null,
+                ])
             @endcomponent
         </div>
     </div>
@@ -54,9 +66,23 @@
             {{-- Jenis Kelamin --}}
             <div class="form-group">
                 <label>Jenis Kelamin</label><br>
-                @component('components.formGroup.radio', ['label' => 'Laki-laki', 'id' => 'laki-laki', 'name' => 'jenis_kelamin', 'value' => 'Laki-laki', 'checked' => $profile->jenis_kelamin ?? null])
+                @component('components.formGroup.radio',
+                    [
+                        'label' => 'Laki-laki',
+                        'id' => 'laki-laki',
+                        'name' => 'jenis_kelamin',
+                        'value' => 'Laki-laki',
+                        'checked' => $profile->jenis_kelamin ?? null,
+                    ])
                 @endcomponent
-                @component('components.formGroup.radio', ['label' => 'Perempuan', 'id' => 'perempuan', 'name' => 'jenis_kelamin', 'value' => 'Perempuan', 'checked' => $profile->jenis_kelamin ?? null])
+                @component('components.formGroup.radio',
+                    [
+                        'label' => 'Perempuan',
+                        'id' => 'perempuan',
+                        'name' => 'jenis_kelamin',
+                        'value' => 'Perempuan',
+                        'checked' => $profile->jenis_kelamin ?? null,
+                    ])
                 @endcomponent
                 <div>
                     <span class="text-danger error-text jenis_kelamin-error"></span>
@@ -65,66 +91,29 @@
         </div>
         <div class="col-lg col-md">
             {{-- Tempat Lahir --}}
-            @component('components.formGroup.input', ['label' => 'Tempat Lahir', 'type' => 'text', 'class' => '', 'id' => 'tempat-lahir', 'name' => 'tempat_lahir', 'placeholder' => 'Masukkan', 'value' => $profile->tempat_lahir ?? null])
+            @component('components.formGroup.input',
+                [
+                    'label' => 'Tempat Lahir',
+                    'type' => 'text',
+                    'class' => '',
+                    'id' => 'tempat-lahir',
+                    'name' => 'tempat_lahir',
+                    'placeholder' => 'Masukkan',
+                    'value' => $profile->tempat_lahir ?? null,
+                ])
             @endcomponent
         </div>
         <div class="col-lg col-md-4">
             {{-- Tanggal Lahir --}}
-            @component('components.formGroup.input', ['label' => 'Tanggal Lahir (cth: 31-12-1992)', 'type' => 'text', 'class' => 'tanggal', 'id' => 'tanggal-lahir', 'name' => 'tanggal_lahir', 'placeholder' => 'Masukkan', 'value' => $profile->tanggal_lahir ?? null])
-            @endcomponent
-        </div>
-    </div>
-
-    {{-- alamat --}}
-    @component('components.formGroup.textArea', ['label' => 'Alamat', 'class' => '', 'id' => 'alamat', 'name' => 'alamat', 'placeholder' => 'Masukkan', 'value' => $profile->alamat ?? null])
-    @endcomponent
-
-    <div class="row">
-        <div class="col-lg-6 col-md-6">
-            {{-- Provinsi --}}
-            @component('components.formGroup.select',
+            @component('components.formGroup.input',
                 [
-                    'label' => 'Provinsi',
-                    'name' => 'provinsi',
-                    'id' => 'provinsi',
-                    'class' => 'select2',
-                    'options' => '',
-                ])
-            @endcomponent
-        </div>
-        <div class="col-lg-6 col-md-6">
-            {{-- Kabupaten / Kota --}}
-            @component('components.formGroup.select',
-                [
-                    'label' => 'Kabupaten / Kota',
-                    'name' => 'kabupaten_kota',
-                    'id' => 'kabupaten-kota',
-                    'class' => 'select2',
-                    'options' => '',
-                ])
-            @endcomponent
-        </div>
-        <div class="col-lg-6 col-md-6">
-            {{-- Kecamatan --}}
-            @component('components.formGroup.select',
-                [
-                    'label' => 'Kecamatan',
-                    'name' => 'kecamatan',
-                    'id' => 'kecamatan',
-                    'class' => 'select2',
-                    'options' => '',
-                ])
-            @endcomponent
-        </div>
-        <div class="col-lg-6 col-md-6">
-            {{-- Desa / Kelurahan --}}
-            @component('components.formGroup.select',
-                [
-                    'label' => 'Desa / Kelurahan',
-                    'name' => 'desa_kelurahan',
-                    'id' => 'desa-kelurahan',
-                    'class' => 'select2',
-                    'options' => '',
+                    'label' => 'Tanggal Lahir (cth: 31-12-1992)',
+                    'type' => 'text',
+                    'class' => 'tanggal',
+                    'id' => 'tanggal-lahir',
+                    'name' => 'tanggal_lahir',
+                    'placeholder' => 'Masukkan',
+                    'value' => $profile->tanggal_lahir ?? null,
                 ])
             @endcomponent
         </div>
@@ -133,18 +122,115 @@
     <div class="row">
         <div class="col-lg col-md">
             {{-- Nomor HP --}}
-            @component('components.formGroup.input', ['label' => 'Nomor HP', 'type' => 'text', 'class' => 'angka', 'id' => 'nomor-hp', 'name' => 'nomor_hp', 'placeholder' => 'Masukkan', 'value' => $profile->nomor_hp ?? null])
+            @component('components.formGroup.input',
+                [
+                    'label' => 'Nomor HP',
+                    'type' => 'text',
+                    'class' => 'angka',
+                    'id' => 'nomor-hp',
+                    'name' => 'nomor_hp',
+                    'placeholder' => 'Masukkan',
+                    'value' => $profile->nomor_hp ?? null,
+                ])
             @endcomponent
         </div>
         <div class="col-lg col-md">
             {{-- Email --}}
-            @component('components.formGroup.input', ['label' => 'Email (optional)', 'type' => 'text', 'class' => '', 'id' => 'email', 'name' => 'email', 'placeholder' => 'Masukkan', 'value' => $profile->email ?? null])
+            @component('components.formGroup.input',
+                [
+                    'label' => 'Email (boleh dikosongkan)',
+                    'type' => 'text',
+                    'class' => '',
+                    'id' => 'email',
+                    'name' => 'email',
+                    'placeholder' => 'Masukkan',
+                    'value' => $profile->email ?? null,
+                ])
             @endcomponent
         </div>
     </div>
 
+    <div class="row mt-3">
+        <div class="col">
+            <div class="card">
+                <div class="card-body px-3">
+                    <div class="row">
+                        <div class="col-12">
+                            <h5 class="mx-2"><span class="fw-bold">Isi Sesuai KTP</span> (<span
+                                    style="font-style: italic">Isi
+                                    alamat di bawah
+                                    ini
+                                    sesuai alamat di
+                                    <span class="fw-bold">KTP</span>
+                                    anda</span>)</h5>
+                            {{-- alamat --}}
+                            @component('components.formGroup.textArea',
+                                [
+                                    'label' => 'Alamat (nama jalan/rt/rw)',
+                                    'class' => '',
+                                    'id' => 'alamat',
+                                    'name' => 'alamat',
+                                    'placeholder' => 'Masukkan',
+                                    'value' => $profile->alamat ?? null,
+                                ])
+                            @endcomponent
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            {{-- Provinsi --}}
+                            @component('components.formGroup.select',
+                                [
+                                    'label' => 'Provinsi',
+                                    'name' => 'provinsi',
+                                    'id' => 'provinsi',
+                                    'class' => 'select2',
+                                    'options' => '',
+                                ])
+                            @endcomponent
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            {{-- Kabupaten / Kota --}}
+                            @component('components.formGroup.select',
+                                [
+                                    'label' => 'Kabupaten / Kota',
+                                    'name' => 'kabupaten_kota',
+                                    'id' => 'kabupaten-kota',
+                                    'class' => 'select2',
+                                    'options' => '',
+                                ])
+                            @endcomponent
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            {{-- Kecamatan --}}
+                            @component('components.formGroup.select',
+                                [
+                                    'label' => 'Kecamatan',
+                                    'name' => 'kecamatan',
+                                    'id' => 'kecamatan',
+                                    'class' => 'select2',
+                                    'options' => '',
+                                ])
+                            @endcomponent
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            {{-- Desa / Kelurahan --}}
+                            @component('components.formGroup.select',
+                                [
+                                    'label' => 'Desa / Kelurahan',
+                                    'name' => 'desa_kelurahan',
+                                    'id' => 'desa-kelurahan',
+                                    'class' => 'select2',
+                                    'options' => '',
+                                ])
+                            @endcomponent
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     {{-- Submit --}}
-    <div class="form-row mt-2">
+    <div class="form-row mt-1">
         <div class="form-group ml-auto">
             @component('components.buttons.submit', ['label' => 'Simpan'])
             @endcomponent

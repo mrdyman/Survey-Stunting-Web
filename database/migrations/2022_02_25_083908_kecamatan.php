@@ -17,7 +17,9 @@ class Kecamatan extends Migration
             $table->id();
             $table->bigInteger('kabupaten_kota_id');
             $table->text('nama');
+            $table->integer('status')->default(1);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
