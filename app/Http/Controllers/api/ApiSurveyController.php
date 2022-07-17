@@ -140,9 +140,23 @@ class ApiSurveyController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request){
+        $touch = $request->touch;
         $incomingKodeUnik = $request->kode_unik;
         $currentKodeUnik = Survey::where('kode_unik', $incomingKodeUnik)->first();
         $sync = $request->sync;
+        if($touch){
+            if(!$currentKodeUnik){
+                return response([
+                    'status' => 'error',
+                    'message' => 'survey with kodeUnik '.$incomingKodeUnik. ' not found. failed to touch.'
+                ], 404);
+            }
+            $currentKodeUnik->touch();
+            return response([
+                'status' => 'OK',
+                'message' => 'data touched.'
+            ], 200);
+        }
         if($sync){
             $kartuKeluarga = $request->kartu_keluarga;
             $newKodeUnikResponden = Responden::withTrashed()->where('kartu_keluarga', $kartuKeluarga)->first()['kode_unik'];
