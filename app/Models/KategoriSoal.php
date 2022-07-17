@@ -14,7 +14,7 @@ class KategoriSoal extends Model
 
     public function soal()
     {
-        return $this->hasMany(Soal::class);
+        return $this->hasMany(Soal::class)->orderBy('urutan', 'asc');
     }
 
     public function jawabanSurvey()

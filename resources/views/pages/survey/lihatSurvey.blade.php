@@ -29,7 +29,6 @@
             opacity: 1 !important;
             border: 0px solid black;
         }
-
     </style>
 @endpush
 
@@ -42,14 +41,13 @@
                         Nama Survey :
                         {{ $survey->namaSurvey->nama }}
                         {!! $survey->namaSurvey->tipe == 'Pre'
-    ? ' <span class="badge badge-primary">PRE</span>'
-    : ' <span
-                        class="badge badge-success">POST</span>' !!}
+                            ? ' <span class="badge badge-primary">PRE</span>'
+                            : ' <span
+                                                                                                                                                class="badge badge-success">POST</span>' !!}
 
                     </div>
                     <div class="card-body ">
-                        <p class="card-text">Responden : {{ $survey->responden->kartu_keluarga }} <span
-                                class="float-right">
+                        <p class="card-text">Responden : {{ $survey->responden->kartu_keluarga }} <span class="float-right">
                                 {{ \Carbon\Carbon::parse($survey->created_at)->translatedFormat('d F Y') }}</span></p>
 
                     </div>
@@ -80,41 +78,22 @@
                                 @if ($soal->tipe_jawaban != 'Jawaban Singkat')
                                     @php
                                         if ($soal->tipe_jawaban == 'Pilihan Ganda') {
-                                            $tipe = 'radio';
+                                            $tipe = 'fas fa-check-circle';
                                         } else {
-                                            $tipe = 'checkbox';
+                                            $tipe = 'far fa-check-square';
                                         }
                                     @endphp
                                     @foreach ($daftarJawaban as $jawaban)
                                         @if ($jawaban->jawaban_soal_id != null)
-                                            <div class='input-group my-2'>
-                                                <div class='input-group-text'><input class='form-check-input mt-0'
-                                                        type='{{ $tipe }}'
-                                                        aria-label='Radio button for following text input' checked disabled
-                                                        readonly />
-                                                </div>
-                                                <input type='text' class='form-control text-jawaban'
-                                                    aria-label='Text input with radio button'
-                                                    placeholder='{{ $jawaban->jawaban }}' disabled readonly
-                                                    value="{{ $jawaban->jawabanSoal->jawaban }}" />
-                                            </div>
+                                            <p><i class="{{ $tipe }}"></i> {{ $jawaban->jawabanSoal->jawaban }}
+                                            </p>
                                         @else
-                                            <div class='input-group my-2'>
-                                                <div class='input-group-text'><input class='form-check-input mt-0'
-                                                        type='{{ $tipe }}'
-                                                        aria-label='Radio button for following text input' checked disabled
-                                                        readonly />
-                                                </div>
-                                                <input type='text' class='form-control text-jawaban'
-                                                    aria-label='Text input with radio button'
-                                                    placeholder='{{ $jawaban->jawaban }}' disabled readonly
-                                                    value="{{ $jawaban->jawaban_lainnya }}" />
-                                            </div>
+                                            <p><i class="{{ $tipe }}"></i> {{ $jawaban->jawabanSoal->jawaban }}
+                                            </p>
                                         @endif
                                     @endforeach
                                 @else
-                                    <input type='text' class='form-control text-jawaban text-kotak-centang' disabled
-                                        value='{{ $daftarJawaban[0]->jawaban_lainnya }}' />
+                                    <p>{{ $daftarJawaban[0]->jawaban_lainnya }}</p>
                                 @endif
                             @endforeach
                         </div>

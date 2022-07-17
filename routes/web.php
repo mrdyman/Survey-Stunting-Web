@@ -1,24 +1,28 @@
 <?php
 
+use App\Models\Institusi;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ListController;
 use App\Http\Controllers\ImportController;
 use App\Http\Controllers\SurveyorController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\masterData\ImportRespondenController;
-use App\Http\Controllers\masterData\InstitusiController;
 use App\Http\Controllers\survey\SurveyController;
 use App\Http\Controllers\masterData\UserController;
 use App\Http\Controllers\masterSoal\SoalController;
 use App\Http\Controllers\masterData\ProfileController;
 use App\Http\Controllers\survey\ExportSurveyController;
 use App\Http\Controllers\survey\ImportSurveyController;
+use App\Http\Controllers\masterData\InstitusiController;
 use App\Http\Controllers\masterData\RespondenController;
 use App\Http\Controllers\masterSoal\NamaSurveyController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 use App\Http\Controllers\masterSoal\KategoriSoalController;
-use App\Models\Institusi;
+use App\Http\Controllers\masterData\ImportRespondenController;
+use App\Http\Controllers\masterData\wilayah\ProvinsiController;
+use App\Http\Controllers\masterData\wilayah\KabupatenKotaController;
+use App\Http\Controllers\masterData\wilayah\KecamatanController;
+use App\Http\Controllers\masterData\wilayah\DesaKelurahanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,6 +74,23 @@ Route::group(['middleware' => ['auth']], function () {
 
 // Role Admin
 Route::group(['middleware' => ['admin']], function () {
+    Route::resource('/wilayah-provinsi', ProvinsiController::class);
+    Route::put('/status-provinsi/{wilayah_provinsi}', [ProvinsiController::class, 'status']);
+    Route::resource('/wilayah-kabupaten/{wilayah_provinsi}', KabupatenKotaController::class)->parameters([
+        '{wilayah_provinsi}' => 'kabupatenKota'
+    ]);
+    Route::put('/status-kabupaten/{kabupatenKota}', [KabupatenKotaController::class, 'status']);
+    Route::resource('/wilayah-kecamatan/{kabupatenKota}', KecamatanController::class)->parameters([
+        '{kabupatenKota}' => 'kecamatan'
+    ]);
+    Route::put('/status-kecamatan/{kecamatan}', [KecamatanController::class, 'status']);
+    Route::resource('/wilayah-desa/{kecamatan}', DesaKelurahanController::class)->parameters([
+        '{kecamatan}' => 'desaKelurahan'
+    ]);
+    Route::put('/status-desa/{desaKelurahan}', [DesaKelurahanController::class, 'status']);
+
+
+
     Route::resource('/user', UserController::class);
     Route::resource('/profile', ProfileController::class);
     Route::resource('/institusi', InstitusiController::class);

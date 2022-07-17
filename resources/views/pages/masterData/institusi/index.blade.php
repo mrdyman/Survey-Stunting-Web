@@ -118,41 +118,41 @@
             title = 'ditambahkan';
         }
 
-
-
-        var table = $('.yajra-datatable').DataTable({
-            processing: true,
-            serverSide: true,
-            responsive: true,
-            ajax: {
-                url: "{{ route('institusi.index') }}",
-                data: function(d) {
-                    d.search = $('input[type="search"]').val();
-                }
-            },
-            columns: [{
-                    data: 'DT_RowIndex',
-                    name: 'DT_RowIndex',
-                    className: 'text-center',
-                    orderable: false,
-                    searchable: false
+        $(function() {
+            var table = $('.yajra-datatable').DataTable({
+                processing: true,
+                serverSide: true,
+                responsive: true,
+                ajax: {
+                    url: "{{ route('institusi.index') }}",
+                    data: function(d) {
+                        d.search = $('input[type="search"]').val();
+                    }
                 },
-                {
-                    data: 'nama',
-                    name: 'nama'
-                },
-                {
-                    data: 'alamat',
-                    name: 'alamat'
-                },
-                {
-                    data: 'action',
-                    name: 'action',
-                    className: 'text-center',
-                    orderable: true,
-                    searchable: true
-                },
-            ],
+                columns: [{
+                        data: 'DT_RowIndex',
+                        name: 'DT_RowIndex',
+                        className: 'text-center',
+                        orderable: false,
+                        searchable: false
+                    },
+                    {
+                        data: 'nama',
+                        name: 'nama'
+                    },
+                    {
+                        data: 'alamat',
+                        name: 'alamat'
+                    },
+                    {
+                        data: 'action',
+                        name: 'action',
+                        className: 'text-center',
+                        orderable: true,
+                        searchable: true
+                    },
+                ],
+            });
         });
 
         function edit(id) {
