@@ -35,13 +35,16 @@
                                 <a href="{{ url('responden') }}">Responden</a>
                             </li>
                             <li>
-                                <a href="{{ url('profile') }}">Profil</a>
-                            </li>
-                            <li>
                                 <a href="{{ url('institusi') }}">Institusi</a>
                             </li>
                             <li>
+                                <a href="{{ url('profile') }}">Profil</a>
+                            </li>
+                            <li>
                                 <a href="{{ url('user') }}">Akun</a>
+                            </li>
+                            <li>
+                                <a href="{{ url('wilayah-provinsi') }}">Wilayah</a>
                             </li>
                         </ul>
                     </div>

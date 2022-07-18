@@ -11,18 +11,44 @@
     <div class="row">
         <div class="col-lg-6 col-md-6">
             {{-- Kartu Keluarga --}}
-            @component('components.formGroup.input', ['label' => 'Nomor Kartu Keluarga', 'type' => 'text', 'class' => 'angka', 'id' => 'kartu-keluarga', 'name' => 'kartu_keluarga', 'placeholder' => 'Masukkan', 'value' => $responden->kartu_keluarga ?? null])
+            @component('components.formGroup.input',
+                [
+                    'label' => 'Nomor Kartu Keluarga',
+                    'type' => 'text',
+                    'class' => 'angka',
+                    'id' => 'kartu-keluarga',
+                    'name' => 'kartu_keluarga',
+                    'placeholder' => 'Masukkan',
+                    'value' => $responden->kartu_keluarga ?? null,
+                ])
             @endcomponent
         </div>
         <div class="col-lg-6 col-md-6">
             {{-- Kepala Keluarga --}}
-            @component('components.formGroup.input', ['label' => 'Nama Kepala Keluarga', 'type' => 'text', 'class' => '', 'id' => 'kepala-keluarga', 'name' => 'nama_kepala_keluarga', 'placeholder' => 'Masukkan', 'value' => $responden->nama_kepala_keluarga ?? null])
+            @component('components.formGroup.input',
+                [
+                    'label' => 'Nama Kepala Keluarga',
+                    'type' => 'text',
+                    'class' => '',
+                    'id' => 'kepala-keluarga',
+                    'name' => 'nama_kepala_keluarga',
+                    'placeholder' => 'Masukkan',
+                    'value' => $responden->nama_kepala_keluarga ?? null,
+                ])
             @endcomponent
         </div>
     </div>
 
     {{-- alamat --}}
-    @component('components.formGroup.textArea', ['label' => 'Alamat', 'class' => '', 'id' => 'alamat', 'name' => 'alamat', 'placeholder' => 'Masukkan', 'value' => $responden->alamat ?? null])
+    @component('components.formGroup.textArea',
+        [
+            'label' => 'Alamat',
+            'class' => '',
+            'id' => 'alamat',
+            'name' => 'alamat',
+            'placeholder' => 'Masukkan',
+            'value' => $responden->alamat ?? null,
+        ])
     @endcomponent
 
     <div class="row">
@@ -79,7 +105,16 @@
     <div class="row">
         <div class="col-lg col-md">
             {{-- Nomor HP --}}
-            @component('components.formGroup.input', ['label' => 'Nomor HP (Optional)', 'type' => 'text', 'class' => 'angka', 'id' => 'nomor-hp', 'name' => 'nomor_hp', 'placeholder' => 'Masukkan', 'value' => $responden->nomor_hp ?? null])
+            @component('components.formGroup.input',
+                [
+                    'label' => 'Nomor HP (Optional)',
+                    'type' => 'text',
+                    'class' => 'angka',
+                    'id' => 'nomor-hp',
+                    'name' => 'nomor_hp',
+                    'placeholder' => 'Masukkan',
+                    'value' => $responden->nomor_hp ?? null,
+                ])
             @endcomponent
         </div>
     </div>
@@ -95,6 +130,7 @@
 
 @component('components.wilayah.form',
     [
+        'is_responden' => 1,
         'provinsi' => $responden->provinsi_id ?? null,
         'kabupaten_kota' => $responden->kabupaten_kota_id ?? null,
         'kecamatan' => $responden->kecamatan_id ?? null,
