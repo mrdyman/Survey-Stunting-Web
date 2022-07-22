@@ -165,234 +165,6 @@ class SoalTableSeeder extends Seeder
             ),
             12 => 
             array (
-                'id' => 20,
-                'soal' => 'Nama Responden',
-                'urutan' => 1,
-                'tipe_jawaban' => 'Jawaban Singkat',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 11,
-                'deleted_at' => NULL,
-                'created_at' => '2022-03-01 16:23:22',
-                'updated_at' => '2022-03-01 16:23:22',
-            ),
-            13 => 
-            array (
-                'id' => 21,
-                'soal' => 'Nomor Telepon/Handphone',
-                'urutan' => 2,
-                'tipe_jawaban' => 'Jawaban Singkat',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 11,
-                'deleted_at' => NULL,
-                'created_at' => '2022-03-01 16:23:59',
-                'updated_at' => '2022-03-01 16:23:59',
-            ),
-            14 => 
-            array (
-                'id' => 22,
-                'soal' => 'Nama Ayah',
-                'urutan' => 3,
-                'tipe_jawaban' => 'Jawaban Singkat',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 11,
-                'deleted_at' => NULL,
-                'created_at' => '2022-03-01 16:24:23',
-                'updated_at' => '2022-03-01 16:24:23',
-            ),
-            15 => 
-            array (
-                'id' => 23,
-                'soal' => 'Pekerjaan Ayah',
-                'urutan' => 4,
-                'tipe_jawaban' => 'Jawaban Singkat',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 11,
-                'deleted_at' => NULL,
-                'created_at' => '2022-03-01 16:24:46',
-                'updated_at' => '2022-03-01 16:24:46',
-            ),
-            16 => 
-            array (
-                'id' => 24,
-                'soal' => 'Nama Ibu',
-                'urutan' => 5,
-                'tipe_jawaban' => 'Jawaban Singkat',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 11,
-                'deleted_at' => NULL,
-                'created_at' => '2022-03-01 16:25:05',
-                'updated_at' => '2022-03-01 16:25:05',
-            ),
-            17 => 
-            array (
-                'id' => 25,
-                'soal' => 'Pekerjaan Ibu',
-                'urutan' => 6,
-                'tipe_jawaban' => 'Jawaban Singkat',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 11,
-                'deleted_at' => NULL,
-                'created_at' => '2022-03-01 16:25:25',
-                'updated_at' => '2022-03-01 16:25:25',
-            ),
-            18 => 
-            array (
-                'id' => 26,
-                'soal' => 'Nama Suami',
-                'urutan' => 7,
-                'tipe_jawaban' => 'Jawaban Singkat',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 11,
-                'deleted_at' => NULL,
-                'created_at' => '2022-03-01 16:25:54',
-                'updated_at' => '2022-03-01 16:25:54',
-            ),
-            19 => 
-            array (
-                'id' => 27,
-                'soal' => 'Pekerjaan Suami',
-                'urutan' => 8,
-                'tipe_jawaban' => 'Jawaban Singkat',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 11,
-                'deleted_at' => NULL,
-                'created_at' => '2022-03-01 16:26:12',
-                'updated_at' => '2022-03-01 16:26:12',
-            ),
-            20 => 
-            array (
-                'id' => 28,
-                'soal' => 'Nama Istri',
-                'urutan' => 9,
-                'tipe_jawaban' => 'Jawaban Singkat',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 11,
-                'deleted_at' => NULL,
-                'created_at' => '2022-03-01 16:26:46',
-                'updated_at' => '2022-03-01 16:26:46',
-            ),
-            21 => 
-            array (
-                'id' => 29,
-                'soal' => 'Pekerjaan Istri',
-                'urutan' => 10,
-                'tipe_jawaban' => 'Jawaban Singkat',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 11,
-                'deleted_at' => NULL,
-                'created_at' => '2022-03-01 16:27:07',
-                'updated_at' => '2022-03-01 16:27:19',
-            ),
-            22 => 
-            array (
-                'id' => 30,
-                'soal' => 'Jenis Kelamin',
-                'urutan' => 11,
-                'tipe_jawaban' => 'Pilihan Ganda',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 11,
-                'deleted_at' => NULL,
-                'created_at' => '2022-03-01 16:27:58',
-                'updated_at' => '2022-03-01 16:27:58',
-            ),
-            23 => 
-            array (
-                'id' => 31,
-                'soal' => 'Umur',
-                'urutan' => 12,
-                'tipe_jawaban' => 'Jawaban Singkat',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 11,
-                'deleted_at' => NULL,
-                'created_at' => '2022-03-01 16:28:33',
-                'updated_at' => '2022-03-01 16:28:33',
-            ),
-            24 => 
-            array (
-                'id' => 32,
-                'soal' => 'Pendidikan Terakhir',
-                'urutan' => 13,
-                'tipe_jawaban' => 'Pilihan Ganda',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 11,
-                'deleted_at' => NULL,
-                'created_at' => '2022-03-01 16:30:34',
-                'updated_at' => '2022-03-01 16:30:34',
-            ),
-            25 => 
-            array (
-                'id' => 33,
-                'soal' => 'Pekerjaan',
-                'urutan' => 14,
-                'tipe_jawaban' => 'Jawaban Singkat',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 11,
-                'deleted_at' => NULL,
-                'created_at' => '2022-03-01 16:30:49',
-                'updated_at' => '2022-03-01 16:30:49',
-            ),
-            26 => 
-            array (
-                'id' => 34,
-                'soal' => 'Usia Menikah Pertama Kali',
-                'urutan' => 15,
-                'tipe_jawaban' => 'Jawaban Singkat',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 11,
-                'deleted_at' => NULL,
-                'created_at' => '2022-03-01 16:31:04',
-                'updated_at' => '2022-03-01 16:31:04',
-            ),
-            27 => 
-            array (
-                'id' => 35,
-                'soal' => 'Usia Saat Hamil Pertama',
-                'urutan' => 16,
-                'tipe_jawaban' => 'Jawaban Singkat',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 11,
-                'deleted_at' => NULL,
-                'created_at' => '2022-03-01 16:31:28',
-                'updated_at' => '2022-03-01 16:31:28',
-            ),
-            28 => 
-            array (
-                'id' => 36,
-                'soal' => 'Jumlah Anak',
-                'urutan' => 17,
-                'tipe_jawaban' => 'Jawaban Singkat',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 11,
-                'deleted_at' => NULL,
-                'created_at' => '2022-03-01 16:31:52',
-                'updated_at' => '2022-03-01 16:31:52',
-            ),
-            29 => 
-            array (
-                'id' => 38,
-                'soal' => 'Usia Hamil Lanjutan > 35 Tahun',
-                'urutan' => 18,
-                'tipe_jawaban' => 'Pilihan Ganda',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 11,
-                'deleted_at' => NULL,
-                'created_at' => '2022-03-01 16:34:53',
-                'updated_at' => '2022-03-01 16:34:53',
-            ),
-            30 => 
-            array (
-                'id' => 39,
-                'soal' => 'Berapa jumlah Anggota keluarga yang tinggal menetap dalam dirumah ?',
-                'urutan' => 19,
-                'tipe_jawaban' => 'Jawaban Singkat',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 11,
-                'deleted_at' => NULL,
-                'created_at' => '2022-03-01 16:35:33',
-                'updated_at' => '2022-03-01 16:36:12',
-            ),
-            31 => 
-            array (
                 'id' => 40,
                 'soal' => 'Apakah Anda mengetahui kata “STUNTING” ?',
                 'urutan' => 1,
@@ -403,7 +175,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 16:38:23',
                 'updated_at' => '2022-03-01 16:38:23',
             ),
-            32 => 
+            13 => 
             array (
                 'id' => 41,
                 'soal' => 'Dari mana Anda mengetahui STUNTING?',
@@ -415,7 +187,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 16:39:34',
                 'updated_at' => '2022-03-01 16:39:34',
             ),
-            33 => 
+            14 => 
             array (
                 'id' => 42,
                 'soal' => 'Apa yang dimaksud dengan Stunting menurut Anda ?',
@@ -427,7 +199,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 16:41:10',
                 'updated_at' => '2022-03-01 16:41:10',
             ),
-            34 => 
+            15 => 
             array (
                 'id' => 43,
                 'soal' => 'Apakah ada makanan yang dilarang saat hamil ? sebutkan !',
@@ -439,7 +211,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 16:42:02',
                 'updated_at' => '2022-03-01 16:42:02',
             ),
-            35 => 
+            16 => 
             array (
                 'id' => 44,
                 'soal' => 'Apakah dirumah Anda mendahulukan laki-laki makan sebelum perempuan ?',
@@ -451,7 +223,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 16:42:28',
                 'updated_at' => '2022-03-01 16:42:28',
             ),
-            36 => 
+            17 => 
             array (
                 'id' => 45,
             'soal' => 'Apakah Ada Paksaan dalam pernikahan (Kesiapan Menikah)?',
@@ -463,7 +235,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 16:42:52',
                 'updated_at' => '2022-03-01 16:42:52',
             ),
-            37 => 
+            18 => 
             array (
                 'id' => 46,
                 'soal' => 'Apakah Anda Hamil sebelum nikah ?',
@@ -475,7 +247,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 16:43:11',
                 'updated_at' => '2022-03-01 16:43:11',
             ),
-            38 => 
+            19 => 
             array (
                 'id' => 47,
                 'soal' => 'Jumlah Pendapatan',
@@ -487,7 +259,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 16:45:54',
                 'updated_at' => '2022-03-01 16:45:54',
             ),
-            39 => 
+            20 => 
             array (
                 'id' => 48,
             'soal' => 'Sumber pendapatan (boleh memilih lebih dari 1 pilihan)',
@@ -499,7 +271,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 16:47:19',
                 'updated_at' => '2022-03-01 16:47:19',
             ),
-            40 => 
+            21 => 
             array (
                 'id' => 49,
                 'soal' => 'Apakah Anda memilik kartu keluarga sejahtera atau perlindungan sosial ?',
@@ -511,7 +283,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 16:47:48',
                 'updated_at' => '2022-03-01 16:47:48',
             ),
-            41 => 
+            22 => 
             array (
                 'id' => 50,
                 'soal' => 'Pengeluaran keluarga lebih banyak dihabiskan untuk apa?',
@@ -523,7 +295,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 16:49:05',
                 'updated_at' => '2022-03-01 16:49:05',
             ),
-            42 => 
+            23 => 
             array (
                 'id' => 51,
                 'soal' => 'Apakah keluarga anda Mendapatkan bantuan sosial seperti PKH,PBNT, BST dan lain-lain',
@@ -535,7 +307,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 16:55:24',
                 'updated_at' => '2022-03-01 16:55:24',
             ),
-            43 => 
+            24 => 
             array (
                 'id' => 52,
                 'soal' => 'Sarana air bersih',
@@ -547,7 +319,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 17:00:56',
                 'updated_at' => '2022-03-01 17:00:56',
             ),
-            44 => 
+            25 => 
             array (
                 'id' => 53,
             'soal' => 'Jamban(sarana pembuangankotoran)',
@@ -559,7 +331,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 17:02:20',
                 'updated_at' => '2022-03-01 17:02:20',
             ),
-            45 => 
+            26 => 
             array (
                 'id' => 54,
                 'soal' => 'Sarana pembuangan air limbah',
@@ -571,7 +343,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 17:03:00',
                 'updated_at' => '2022-03-01 17:03:00',
             ),
-            46 => 
+            27 => 
             array (
                 'id' => 55,
             'soal' => 'Sarana pembuangan sampah (tempat sampah)',
@@ -583,7 +355,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 17:03:37',
                 'updated_at' => '2022-03-01 17:03:37',
             ),
-            47 => 
+            28 => 
             array (
                 'id' => 56,
                 'soal' => 'Membuang sampah ketempat sampah',
@@ -595,7 +367,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 17:04:13',
                 'updated_at' => '2022-03-01 17:04:13',
             ),
-            48 => 
+            29 => 
             array (
                 'id' => 57,
                 'soal' => 'Dinding',
@@ -607,7 +379,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 17:04:51',
                 'updated_at' => '2022-03-01 17:04:51',
             ),
-            49 => 
+            30 => 
             array (
                 'id' => 58,
                 'soal' => 'Lantai',
@@ -619,7 +391,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 17:05:18',
                 'updated_at' => '2022-03-01 17:05:18',
             ),
-            50 => 
+            31 => 
             array (
                 'id' => 59,
                 'soal' => 'Jendela kamar tidur',
@@ -631,7 +403,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 17:05:39',
                 'updated_at' => '2022-03-01 17:05:39',
             ),
-            51 => 
+            32 => 
             array (
                 'id' => 60,
                 'soal' => 'Jendela ruang keluarga',
@@ -643,7 +415,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 17:06:15',
                 'updated_at' => '2022-03-01 17:06:15',
             ),
-            52 => 
+            33 => 
             array (
                 'id' => 61,
                 'soal' => 'Ventilasi',
@@ -655,7 +427,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 17:06:43',
                 'updated_at' => '2022-03-01 17:06:43',
             ),
-            53 => 
+            34 => 
             array (
                 'id' => 62,
                 'soal' => 'LubangAsapDapur',
@@ -667,7 +439,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 17:07:16',
                 'updated_at' => '2022-03-01 17:07:16',
             ),
-            54 => 
+            35 => 
             array (
                 'id' => 63,
                 'soal' => 'Pencahayaan',
@@ -679,7 +451,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 17:07:45',
                 'updated_at' => '2022-03-01 17:07:45',
             ),
-            55 => 
+            36 => 
             array (
                 'id' => 64,
                 'soal' => 'Apa yang digunakan untuk memasak',
@@ -691,7 +463,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 17:08:28',
                 'updated_at' => '2022-03-01 17:08:28',
             ),
-            56 => 
+            37 => 
             array (
                 'id' => 65,
                 'soal' => 'Apakah anda tau keluarga anda punya Riwayat penyakit',
@@ -703,7 +475,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 17:10:38',
                 'updated_at' => '2022-03-01 17:10:38',
             ),
-            57 => 
+            38 => 
             array (
                 'id' => 66,
                 'soal' => 'Apakah anda dan keluarga anda biasanya terkena Paparan asap rokok',
@@ -715,7 +487,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 17:11:08',
                 'updated_at' => '2022-03-01 17:11:08',
             ),
-            58 => 
+            39 => 
             array (
                 'id' => 67,
                 'soal' => 'Berapa kali keluarga anda mandi dalam sehari',
@@ -727,7 +499,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 17:11:40',
                 'updated_at' => '2022-03-01 17:11:40',
             ),
-            59 => 
+            40 => 
             array (
                 'id' => 68,
                 'soal' => 'Berapa kali anda/ keluarga anda Makan Setiap hari',
@@ -739,7 +511,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 17:12:21',
                 'updated_at' => '2022-03-01 17:21:26',
             ),
-            60 => 
+            41 => 
             array (
                 'id' => 69,
                 'soal' => 'Apakah Anda mengonsumsi suplemen ?',
@@ -751,7 +523,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 17:15:05',
                 'updated_at' => '2022-03-01 17:21:42',
             ),
-            61 => 
+            42 => 
             array (
                 'id' => 70,
                 'soal' => 'Sudah berapa lama Anda mengonsumsi suplemen ?',
@@ -763,7 +535,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 17:20:43',
                 'updated_at' => '2022-03-01 17:21:50',
             ),
-            62 => 
+            43 => 
             array (
                 'id' => 71,
                 'soal' => 'Seberapa sering Anda mengonsumsi suplemen makanan?',
@@ -775,7 +547,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 17:23:09',
                 'updated_at' => '2022-03-01 17:23:09',
             ),
-            63 => 
+            44 => 
             array (
                 'id' => 72,
                 'soal' => 'Apa alasan Anda tidak mengonsumsi suplemen ?',
@@ -787,7 +559,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 17:24:41',
                 'updated_at' => '2022-03-01 17:24:41',
             ),
-            64 => 
+            45 => 
             array (
                 'id' => 73,
             'soal' => 'Apa saja yang dimakan tiap hari (perminggu)',
@@ -799,7 +571,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 17:25:49',
                 'updated_at' => '2022-03-01 17:25:49',
             ),
-            65 => 
+            46 => 
             array (
                 'id' => 74,
             'soal' => 'Remaja: Berapa KEK ... Cm (di isi untuk Kebutuhan anak Remaja saja)',
@@ -811,7 +583,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 17:28:06',
                 'updated_at' => '2022-03-01 17:28:45',
             ),
-            66 => 
+            47 => 
             array (
                 'id' => 75,
             'soal' => 'Remaja: BerapaHB ... g/dL (di isi untuk Kebutuhan anak Remaja saja)',
@@ -823,7 +595,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 17:29:52',
                 'updated_at' => '2022-03-01 17:29:52',
             ),
-            67 => 
+            48 => 
             array (
                 'id' => 76,
             'soal' => 'Remaja: IMT ... Kg/m2 (di isi untuk Kebutuhan anak Remaja saja)',
@@ -835,7 +607,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 17:30:49',
                 'updated_at' => '2022-03-01 17:37:41',
             ),
-            68 => 
+            49 => 
             array (
                 'id' => 77,
             'soal' => 'Remaja: TekananDarah ... mm/Hg (di isi untuk Kebutuhan anak Remaja saja)',
@@ -847,7 +619,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 17:31:20',
                 'updated_at' => '2022-03-01 17:37:59',
             ),
-            69 => 
+            50 => 
             array (
                 'id' => 78,
             'soal' => 'Ibu Hamil: Berapa HB ... g/dL (Di isi oleh responden ibu hamil)',
@@ -859,7 +631,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 17:32:09',
                 'updated_at' => '2022-03-01 17:34:25',
             ),
-            70 => 
+            51 => 
             array (
                 'id' => 79,
             'soal' => 'Ibu Hamil: Berapa KEK ... Cm (Di isi oleh responden ibu hamil)',
@@ -871,7 +643,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 17:34:53',
                 'updated_at' => '2022-03-01 17:38:35',
             ),
-            71 => 
+            52 => 
             array (
                 'id' => 80,
             'soal' => 'Ibu Hamil: Berapa BB ... Kg (Di isi oleh responden ibu hamil)',
@@ -883,7 +655,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 17:35:32',
                 'updated_at' => '2022-03-01 17:38:58',
             ),
-            72 => 
+            53 => 
             array (
                 'id' => 81,
             'soal' => 'Ibu Hamil: Tekanan Darah ... mm/Hg (Di isi oleh responden ibu hamil)',
@@ -895,7 +667,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 17:36:11',
                 'updated_at' => '2022-03-01 17:39:11',
             ),
-            73 => 
+            54 => 
             array (
                 'id' => 82,
             'soal' => 'Ibu Hamil: Penambahan BB selama hamil ... Kg (Di isi oleh responden ibu hamil)',
@@ -907,7 +679,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 17:36:42',
                 'updated_at' => '2022-03-01 17:39:21',
             ),
-            74 => 
+            55 => 
             array (
                 'id' => 83,
             'soal' => 'Ibu Hamil: Rutin Tablet FE ? (Di isi oleh responden ibu hamil)',
@@ -919,7 +691,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 17:37:16',
                 'updated_at' => '2022-03-01 17:39:39',
             ),
-            75 => 
+            56 => 
             array (
                 'id' => 85,
             'soal' => 'Ibu Hamil: ANC ? (Di isi oleh responden ibu hamil)',
@@ -931,7 +703,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 17:42:41',
                 'updated_at' => '2022-03-01 17:42:41',
             ),
-            76 => 
+            57 => 
             array (
                 'id' => 86,
             'soal' => 'Ibu Hamil: Imunisasi ? (Di isi oleh responden ibu hamil)',
@@ -943,7 +715,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 17:44:14',
                 'updated_at' => '2022-03-01 17:44:14',
             ),
-            77 => 
+            58 => 
             array (
                 'id' => 87,
             'soal' => 'Ibu Hamil: KB ? (Di isi oleh responden ibu hamil)',
@@ -955,7 +727,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 17:44:56',
                 'updated_at' => '2022-03-01 17:44:56',
             ),
-            78 => 
+            59 => 
             array (
                 'id' => 88,
             'soal' => 'Ibu Hamil: Supelemen tambahan ? (Di isi oleh responden ibu hamil)',
@@ -967,7 +739,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 17:45:44',
                 'updated_at' => '2022-03-01 17:45:44',
             ),
-            79 => 
+            60 => 
             array (
                 'id' => 89,
             'soal' => 'Ibu Nifas / Menyusui: Siapa yang menolong ibu saat bersalin ? (di isi ibu Nifas dan Menyusui)',
@@ -979,7 +751,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 17:48:42',
                 'updated_at' => '2022-03-01 17:48:42',
             ),
-            80 => 
+            61 => 
             array (
                 'id' => 90,
             'soal' => 'Ibu Nifas / Menyusui: Apakah Ibu akan memberikan ASI eksklusif ? (di isi ibu Nifas dan Menyusui)',
@@ -991,7 +763,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 17:52:36',
                 'updated_at' => '2022-03-01 17:54:21',
             ),
-            81 => 
+            62 => 
             array (
                 'id' => 91,
             'soal' => 'Ibu Nifas / Menyusui: Kapan Ibu mulai memberikan ASI pada bayi ? (di isi ibu Nifas dan Menyusui)',
@@ -1003,7 +775,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 17:53:44',
                 'updated_at' => '2022-03-01 17:53:44',
             ),
-            82 => 
+            63 => 
             array (
                 'id' => 92,
             'soal' => 'Ibu Nifas / Menyusui: Supelemen tambahan ? (di isi ibu Nifas dan Menyusui)',
@@ -1015,7 +787,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 17:55:18',
                 'updated_at' => '2022-03-01 17:55:18',
             ),
-            83 => 
+            64 => 
             array (
                 'id' => 93,
                 'soal' => 'Bayi, Baduta, dan Balita: Berapa PB/U ?',
@@ -1027,7 +799,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 17:56:02',
                 'updated_at' => '2022-03-01 17:56:02',
             ),
-            84 => 
+            65 => 
             array (
                 'id' => 94,
                 'soal' => 'Bayi, Baduta, dan Balita: Berapa TB/U ?',
@@ -1039,7 +811,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 17:56:33',
                 'updated_at' => '2022-03-01 17:56:33',
             ),
-            85 => 
+            66 => 
             array (
                 'id' => 95,
                 'soal' => 'Bayi, Baduta, dan Balita: Berapa BB/U ?',
@@ -1051,7 +823,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 17:57:04',
                 'updated_at' => '2022-03-01 17:57:04',
             ),
-            86 => 
+            67 => 
             array (
                 'id' => 96,
                 'soal' => 'Bayi, Baduta, dan Balita: IMT/U ?',
@@ -1063,7 +835,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 17:57:23',
                 'updated_at' => '2022-03-01 17:57:23',
             ),
-            87 => 
+            68 => 
             array (
                 'id' => 97,
                 'soal' => 'Bayi, Baduta, dan Balita: Status imunisasi ?',
@@ -1075,7 +847,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 17:58:31',
                 'updated_at' => '2022-03-01 17:58:31',
             ),
-            88 => 
+            69 => 
             array (
                 'id' => 98,
                 'soal' => 'Bayi, Baduta, dan Balita: Suplemen tambahan ?',
@@ -1087,7 +859,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 17:59:09',
                 'updated_at' => '2022-03-01 17:59:09',
             ),
-            89 => 
+            70 => 
             array (
                 'id' => 99,
                 'soal' => 'Apakah ibu pernah mendengar istilah “kolostrum”? Apa yang dimaksud dengan kolostrum?',
@@ -1099,7 +871,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 18:00:10',
                 'updated_at' => '2022-03-01 18:00:10',
             ),
-            90 => 
+            71 => 
             array (
                 'id' => 100,
                 'soal' => 'Apakah ibu memberikan kolostrum pada bayi Ibu?',
@@ -1111,7 +883,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 18:00:45',
                 'updated_at' => '2022-03-01 18:00:45',
             ),
-            91 => 
+            72 => 
             array (
                 'id' => 101,
             'soal' => 'Apakah ibu melaksanakan Inisiasi Menyusui Dini (IMD)?',
@@ -1123,7 +895,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 18:01:06',
                 'updated_at' => '2022-03-01 18:01:06',
             ),
-            92 => 
+            73 => 
             array (
                 'id' => 102,
                 'soal' => 'Setelah bayi lahir, hal apa yang dilakukan ?',
@@ -1135,7 +907,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 18:02:10',
                 'updated_at' => '2022-03-01 18:02:10',
             ),
-            93 => 
+            74 => 
             array (
                 'id' => 103,
             'soal' => 'Berapa lama ibu melaksanakan Inisiasi Menyusui Dini (IMD)?',
@@ -1147,7 +919,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 18:02:42',
                 'updated_at' => '2022-03-01 18:02:42',
             ),
-            94 => 
+            75 => 
             array (
                 'id' => 104,
                 'soal' => 'Apakah anak ibu diberikan asi ekslusif ?',
@@ -1159,7 +931,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 18:03:01',
                 'updated_at' => '2022-03-01 18:03:01',
             ),
-            95 => 
+            76 => 
             array (
                 'id' => 105,
                 'soal' => 'Apakah anak ibu ASI dua tahun ?',
@@ -1171,7 +943,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 18:03:50',
                 'updated_at' => '2022-03-01 18:03:50',
             ),
-            96 => 
+            77 => 
             array (
                 'id' => 106,
                 'soal' => 'Pemberian makanan tambahan ?',
@@ -1183,7 +955,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-01 18:04:07',
                 'updated_at' => '2022-03-01 18:04:07',
             ),
-            97 => 
+            78 => 
             array (
                 'id' => 107,
                 'soal' => 'Apakah dirumah Anda, Anda harus mematuhi peraturan yang dibuat oleh orangtua ?',
@@ -1195,7 +967,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-02 01:50:45',
                 'updated_at' => '2022-03-02 01:50:45',
             ),
-            98 => 
+            79 => 
             array (
                 'id' => 108,
                 'soal' => 'Apakah dirumah Anda Orangtua sering marah kepada Anda ?',
@@ -1207,7 +979,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-02 02:25:42',
                 'updated_at' => '2022-03-02 02:25:42',
             ),
-            99 => 
+            80 => 
             array (
                 'id' => 109,
             'soal' => 'Apakah Orangtua sering melakukan kekerasan (cont. Memukul) terhadap Anda ?',
@@ -1219,7 +991,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-02 02:26:01',
                 'updated_at' => '2022-03-02 02:26:01',
             ),
-            100 => 
+            81 => 
             array (
                 'id' => 110,
                 'soal' => 'Apakah semua keputusan dirumah berada di tangan orangtua Anda ?',
@@ -1231,7 +1003,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-02 02:26:21',
                 'updated_at' => '2022-03-02 02:26:21',
             ),
-            101 => 
+            82 => 
             array (
                 'id' => 111,
                 'soal' => 'Apakah Orangtua jarang menceritakan masalah mereka kepada Anda ?',
@@ -1243,7 +1015,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-02 02:26:36',
                 'updated_at' => '2022-03-02 02:26:36',
             ),
-            102 => 
+            83 => 
             array (
                 'id' => 112,
                 'soal' => 'Apakah memberikan kesempatan untuk mengungkapkan apa yang Anda inginkan ?',
@@ -1255,7 +1027,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-02 02:26:55',
                 'updated_at' => '2022-03-02 02:26:55',
             ),
-            103 => 
+            84 => 
             array (
                 'id' => 113,
                 'soal' => 'Apakah Orangtua sering menjelaskan kepada Anda tentang perbuatan yang baik dan buruk ?',
@@ -1267,7 +1039,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-02 02:27:15',
                 'updated_at' => '2022-03-02 02:27:15',
             ),
-            104 => 
+            85 => 
             array (
                 'id' => 114,
                 'soal' => 'Apakah Orangtua sering bertanya tentang apa yang akan Anda lakukan ?',
@@ -1279,7 +1051,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-02 02:27:36',
                 'updated_at' => '2022-03-02 02:27:36',
             ),
-            105 => 
+            86 => 
             array (
                 'id' => 115,
                 'soal' => 'Apakah Jika Anda berperilaku baik, maka orangtua akan memberikan pujian kepada Anda ?',
@@ -1291,7 +1063,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-02 02:27:54',
                 'updated_at' => '2022-03-02 02:27:54',
             ),
-            106 => 
+            87 => 
             array (
                 'id' => 116,
                 'soal' => 'Jika ada permasalahan dalam keluarga, maka orangtua sering berdiskusi dengan Anda untuk membicarakan masalah tersebut ?',
@@ -1303,7 +1075,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-02 02:28:10',
                 'updated_at' => '2022-03-02 02:28:10',
             ),
-            107 => 
+            88 => 
             array (
                 'id' => 117,
                 'soal' => 'Apakah Orangtua tidak membatasi pergaulan Anda ?',
@@ -1315,7 +1087,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-02 02:28:42',
                 'updated_at' => '2022-03-02 02:28:42',
             ),
-            108 => 
+            89 => 
             array (
                 'id' => 118,
                 'soal' => 'Apakah Orangtua tidak bertanya atau melarang untuk melakukan apa yang Anda inginkan ?',
@@ -1327,7 +1099,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-02 02:28:58',
                 'updated_at' => '2022-03-02 02:28:58',
             ),
-            109 => 
+            90 => 
             array (
                 'id' => 119,
                 'soal' => 'Apakah Orangtua Anda berusaha untuk memenuhi keinginan Anda ?',
@@ -1339,7 +1111,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-02 02:29:34',
                 'updated_at' => '2022-03-02 02:29:34',
             ),
-            110 => 
+            91 => 
             array (
                 'id' => 120,
                 'soal' => 'Apakah Orangtua memberikan Anda kebebasan untuk memilih apa yang ingin Anda lakukan atau kerjakan ?',
@@ -1351,7 +1123,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-02 02:29:49',
                 'updated_at' => '2022-03-02 02:29:49',
             ),
-            111 => 
+            92 => 
             array (
                 'id' => 121,
                 'soal' => 'Apakah Orangtua jarang mengatur urusan Anda ?',
@@ -1363,235 +1135,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-03-02 02:30:05',
                 'updated_at' => '2022-03-02 02:30:05',
             ),
-            112 => 
-            array (
-                'id' => 122,
-                'soal' => 'Nama Responden',
-                'urutan' => 1,
-                'tipe_jawaban' => 'Jawaban Singkat',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 25,
-                'deleted_at' => '2022-05-28 17:43:02',
-                'created_at' => '2022-05-28 17:36:59',
-                'updated_at' => '2022-05-28 17:43:02',
-            ),
-            113 => 
-            array (
-                'id' => 123,
-                'soal' => 'Nomor Telepon/Handphone',
-                'urutan' => 2,
-                'tipe_jawaban' => 'Jawaban Singkat',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 25,
-                'deleted_at' => '2022-05-28 17:43:02',
-                'created_at' => '2022-05-28 17:36:59',
-                'updated_at' => '2022-05-28 17:43:02',
-            ),
-            114 => 
-            array (
-                'id' => 124,
-                'soal' => 'Nama Ayah',
-                'urutan' => 3,
-                'tipe_jawaban' => 'Jawaban Singkat',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 25,
-                'deleted_at' => '2022-05-28 17:43:02',
-                'created_at' => '2022-05-28 17:36:59',
-                'updated_at' => '2022-05-28 17:43:02',
-            ),
-            115 => 
-            array (
-                'id' => 125,
-                'soal' => 'Pekerjaan Ayah',
-                'urutan' => 4,
-                'tipe_jawaban' => 'Jawaban Singkat',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 25,
-                'deleted_at' => '2022-05-28 17:43:02',
-                'created_at' => '2022-05-28 17:36:59',
-                'updated_at' => '2022-05-28 17:43:02',
-            ),
-            116 => 
-            array (
-                'id' => 126,
-                'soal' => 'Nama Ibu',
-                'urutan' => 5,
-                'tipe_jawaban' => 'Jawaban Singkat',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 25,
-                'deleted_at' => '2022-05-28 17:43:02',
-                'created_at' => '2022-05-28 17:36:59',
-                'updated_at' => '2022-05-28 17:43:02',
-            ),
-            117 => 
-            array (
-                'id' => 127,
-                'soal' => 'Pekerjaan Ibu',
-                'urutan' => 6,
-                'tipe_jawaban' => 'Jawaban Singkat',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 25,
-                'deleted_at' => '2022-05-28 17:43:02',
-                'created_at' => '2022-05-28 17:36:59',
-                'updated_at' => '2022-05-28 17:43:02',
-            ),
-            118 => 
-            array (
-                'id' => 128,
-                'soal' => 'Nama Suami',
-                'urutan' => 7,
-                'tipe_jawaban' => 'Jawaban Singkat',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 25,
-                'deleted_at' => '2022-05-28 17:43:02',
-                'created_at' => '2022-05-28 17:36:59',
-                'updated_at' => '2022-05-28 17:43:02',
-            ),
-            119 => 
-            array (
-                'id' => 129,
-                'soal' => 'Pekerjaan Suami',
-                'urutan' => 8,
-                'tipe_jawaban' => 'Jawaban Singkat',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 25,
-                'deleted_at' => '2022-05-28 17:43:02',
-                'created_at' => '2022-05-28 17:36:59',
-                'updated_at' => '2022-05-28 17:43:02',
-            ),
-            120 => 
-            array (
-                'id' => 130,
-                'soal' => 'Nama Istri',
-                'urutan' => 9,
-                'tipe_jawaban' => 'Jawaban Singkat',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 25,
-                'deleted_at' => '2022-05-28 17:43:02',
-                'created_at' => '2022-05-28 17:36:59',
-                'updated_at' => '2022-05-28 17:43:02',
-            ),
-            121 => 
-            array (
-                'id' => 131,
-                'soal' => 'Pekerjaan Istri',
-                'urutan' => 10,
-                'tipe_jawaban' => 'Jawaban Singkat',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 25,
-                'deleted_at' => '2022-05-28 17:43:02',
-                'created_at' => '2022-05-28 17:36:59',
-                'updated_at' => '2022-05-28 17:43:02',
-            ),
-            122 => 
-            array (
-                'id' => 132,
-                'soal' => 'Jenis Kelamin',
-                'urutan' => 11,
-                'tipe_jawaban' => 'Pilihan Ganda',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 25,
-                'deleted_at' => '2022-05-28 17:43:02',
-                'created_at' => '2022-05-28 17:36:59',
-                'updated_at' => '2022-05-28 17:43:02',
-            ),
-            123 => 
-            array (
-                'id' => 133,
-                'soal' => 'Umur',
-                'urutan' => 12,
-                'tipe_jawaban' => 'Jawaban Singkat',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 25,
-                'deleted_at' => '2022-05-28 17:43:02',
-                'created_at' => '2022-05-28 17:36:59',
-                'updated_at' => '2022-05-28 17:43:02',
-            ),
-            124 => 
-            array (
-                'id' => 134,
-                'soal' => 'Pendidikan Terakhir',
-                'urutan' => 13,
-                'tipe_jawaban' => 'Pilihan Ganda',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 25,
-                'deleted_at' => '2022-05-28 17:43:02',
-                'created_at' => '2022-05-28 17:36:59',
-                'updated_at' => '2022-05-28 17:43:02',
-            ),
-            125 => 
-            array (
-                'id' => 135,
-                'soal' => 'Pekerjaan',
-                'urutan' => 14,
-                'tipe_jawaban' => 'Jawaban Singkat',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 25,
-                'deleted_at' => '2022-05-28 17:43:02',
-                'created_at' => '2022-05-28 17:36:59',
-                'updated_at' => '2022-05-28 17:43:02',
-            ),
-            126 => 
-            array (
-                'id' => 136,
-                'soal' => 'Usia Menikah Pertama Kali',
-                'urutan' => 15,
-                'tipe_jawaban' => 'Jawaban Singkat',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 25,
-                'deleted_at' => '2022-05-28 17:43:02',
-                'created_at' => '2022-05-28 17:36:59',
-                'updated_at' => '2022-05-28 17:43:02',
-            ),
-            127 => 
-            array (
-                'id' => 137,
-                'soal' => 'Usia Saat Hamil Pertama',
-                'urutan' => 16,
-                'tipe_jawaban' => 'Jawaban Singkat',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 25,
-                'deleted_at' => '2022-05-28 17:43:02',
-                'created_at' => '2022-05-28 17:36:59',
-                'updated_at' => '2022-05-28 17:43:02',
-            ),
-            128 => 
-            array (
-                'id' => 138,
-                'soal' => 'Jumlah Anak',
-                'urutan' => 17,
-                'tipe_jawaban' => 'Jawaban Singkat',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 25,
-                'deleted_at' => '2022-05-28 17:43:02',
-                'created_at' => '2022-05-28 17:36:59',
-                'updated_at' => '2022-05-28 17:43:02',
-            ),
-            129 => 
-            array (
-                'id' => 139,
-                'soal' => 'Usia Hamil Lanjutan > 35 Tahun',
-                'urutan' => 18,
-                'tipe_jawaban' => 'Pilihan Ganda',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 25,
-                'deleted_at' => '2022-05-28 17:43:02',
-                'created_at' => '2022-05-28 17:36:59',
-                'updated_at' => '2022-05-28 17:43:02',
-            ),
-            130 => 
-            array (
-                'id' => 140,
-                'soal' => 'Berapa jumlah Anggota keluarga yang tinggal menetap dalam dirumah ?',
-                'urutan' => 19,
-                'tipe_jawaban' => 'Jawaban Singkat',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 25,
-                'deleted_at' => '2022-05-28 17:43:02',
-                'created_at' => '2022-05-28 17:36:59',
-                'updated_at' => '2022-05-28 17:43:02',
-            ),
-            131 => 
+            93 => 
             array (
                 'id' => 141,
                 'soal' => 'Apakah Anda mengetahui kata “STUNTING” ?',
@@ -1603,7 +1147,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            132 => 
+            94 => 
             array (
                 'id' => 142,
                 'soal' => 'Dari mana Anda mengetahui STUNTING?',
@@ -1615,7 +1159,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            133 => 
+            95 => 
             array (
                 'id' => 143,
                 'soal' => 'Apa yang dimaksud dengan Stunting menurut Anda ?',
@@ -1627,7 +1171,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            134 => 
+            96 => 
             array (
                 'id' => 144,
                 'soal' => 'Apakah ada makanan yang dilarang saat hamil ? sebutkan !',
@@ -1639,7 +1183,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            135 => 
+            97 => 
             array (
                 'id' => 145,
                 'soal' => 'Apakah dirumah Anda mendahulukan laki-laki makan sebelum perempuan ?',
@@ -1651,7 +1195,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            136 => 
+            98 => 
             array (
                 'id' => 146,
             'soal' => 'Apakah Ada Paksaan dalam pernikahan (Kesiapan Menikah)?',
@@ -1663,7 +1207,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            137 => 
+            99 => 
             array (
                 'id' => 147,
                 'soal' => 'Apakah Anda Hamil sebelum nikah ?',
@@ -1675,7 +1219,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            138 => 
+            100 => 
             array (
                 'id' => 148,
                 'soal' => 'Jumlah Pendapatan',
@@ -1687,7 +1231,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            139 => 
+            101 => 
             array (
                 'id' => 149,
             'soal' => 'Sumber pendapatan (boleh memilih lebih dari 1 pilihan)',
@@ -1699,7 +1243,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            140 => 
+            102 => 
             array (
                 'id' => 150,
                 'soal' => 'Apakah Anda memilik kartu keluarga sejahtera atau perlindungan sosial ?',
@@ -1711,7 +1255,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            141 => 
+            103 => 
             array (
                 'id' => 151,
                 'soal' => 'Pengeluaran keluarga lebih banyak dihabiskan untuk apa?',
@@ -1723,7 +1267,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            142 => 
+            104 => 
             array (
                 'id' => 152,
                 'soal' => 'Apakah keluarga anda Mendapatkan bantuan sosial seperti PKH,PBNT, BST dan lain-lain',
@@ -1735,7 +1279,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            143 => 
+            105 => 
             array (
                 'id' => 153,
                 'soal' => 'Sarana air bersih',
@@ -1747,7 +1291,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            144 => 
+            106 => 
             array (
                 'id' => 154,
             'soal' => 'Jamban(sarana pembuangankotoran)',
@@ -1759,7 +1303,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            145 => 
+            107 => 
             array (
                 'id' => 155,
                 'soal' => 'Sarana pembuangan air limbah',
@@ -1771,7 +1315,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            146 => 
+            108 => 
             array (
                 'id' => 156,
             'soal' => 'Sarana pembuangan sampah (tempat sampah)',
@@ -1783,7 +1327,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            147 => 
+            109 => 
             array (
                 'id' => 157,
                 'soal' => 'Membuang sampah ketempat sampah',
@@ -1795,7 +1339,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            148 => 
+            110 => 
             array (
                 'id' => 158,
                 'soal' => 'Dinding',
@@ -1807,7 +1351,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            149 => 
+            111 => 
             array (
                 'id' => 159,
                 'soal' => 'Lantai',
@@ -1819,7 +1363,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            150 => 
+            112 => 
             array (
                 'id' => 160,
                 'soal' => 'Jendela kamar tidur',
@@ -1831,7 +1375,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            151 => 
+            113 => 
             array (
                 'id' => 161,
                 'soal' => 'Jendela ruang keluarga',
@@ -1843,7 +1387,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            152 => 
+            114 => 
             array (
                 'id' => 162,
                 'soal' => 'Ventilasi',
@@ -1855,7 +1399,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            153 => 
+            115 => 
             array (
                 'id' => 163,
                 'soal' => 'LubangAsapDapur',
@@ -1867,7 +1411,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            154 => 
+            116 => 
             array (
                 'id' => 164,
                 'soal' => 'Pencahayaan',
@@ -1879,7 +1423,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            155 => 
+            117 => 
             array (
                 'id' => 165,
                 'soal' => 'Apa yang digunakan untuk memasak',
@@ -1891,7 +1435,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            156 => 
+            118 => 
             array (
                 'id' => 166,
                 'soal' => 'Apakah anda tau keluarga anda punya Riwayat penyakit',
@@ -1903,7 +1447,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            157 => 
+            119 => 
             array (
                 'id' => 167,
                 'soal' => 'Apakah anda dan keluarga anda biasanya terkena Paparan asap rokok',
@@ -1915,7 +1459,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            158 => 
+            120 => 
             array (
                 'id' => 168,
                 'soal' => 'Berapa kali keluarga anda mandi dalam sehari',
@@ -1927,7 +1471,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            159 => 
+            121 => 
             array (
                 'id' => 169,
                 'soal' => 'Berapa kali anda/ keluarga anda Makan Setiap hari',
@@ -1939,7 +1483,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            160 => 
+            122 => 
             array (
                 'id' => 170,
                 'soal' => 'Apakah Anda mengonsumsi suplemen ?',
@@ -1951,7 +1495,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            161 => 
+            123 => 
             array (
                 'id' => 171,
                 'soal' => 'Sudah berapa lama Anda mengonsumsi suplemen ?',
@@ -1963,7 +1507,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            162 => 
+            124 => 
             array (
                 'id' => 172,
                 'soal' => 'Seberapa sering Anda mengonsumsi suplemen makanan?',
@@ -1975,7 +1519,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            163 => 
+            125 => 
             array (
                 'id' => 173,
                 'soal' => 'Apa alasan Anda tidak mengonsumsi suplemen ?',
@@ -1987,7 +1531,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            164 => 
+            126 => 
             array (
                 'id' => 174,
             'soal' => 'Apa saja yang dimakan tiap hari (perminggu)',
@@ -1999,7 +1543,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            165 => 
+            127 => 
             array (
                 'id' => 175,
             'soal' => 'Remaja: Berapa KEK ... Cm (di isi untuk Kebutuhan anak Remaja saja)',
@@ -2011,7 +1555,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            166 => 
+            128 => 
             array (
                 'id' => 176,
             'soal' => 'Remaja: BerapaHB ... g/dL (di isi untuk Kebutuhan anak Remaja saja)',
@@ -2023,7 +1567,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            167 => 
+            129 => 
             array (
                 'id' => 177,
             'soal' => 'Remaja: IMT ... Kg/m2 (di isi untuk Kebutuhan anak Remaja saja)',
@@ -2035,7 +1579,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            168 => 
+            130 => 
             array (
                 'id' => 178,
             'soal' => 'Remaja: TekananDarah ... mm/Hg (di isi untuk Kebutuhan anak Remaja saja)',
@@ -2047,7 +1591,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            169 => 
+            131 => 
             array (
                 'id' => 179,
             'soal' => 'Ibu Hamil: Berapa HB ... g/dL (Di isi oleh responden ibu hamil)',
@@ -2059,7 +1603,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            170 => 
+            132 => 
             array (
                 'id' => 180,
             'soal' => 'Ibu Hamil: Berapa KEK ... Cm (Di isi oleh responden ibu hamil)',
@@ -2071,7 +1615,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            171 => 
+            133 => 
             array (
                 'id' => 181,
             'soal' => 'Ibu Hamil: Berapa BB ... Kg (Di isi oleh responden ibu hamil)',
@@ -2083,7 +1627,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            172 => 
+            134 => 
             array (
                 'id' => 182,
             'soal' => 'Ibu Hamil: Tekanan Darah ... mm/Hg (Di isi oleh responden ibu hamil)',
@@ -2095,7 +1639,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            173 => 
+            135 => 
             array (
                 'id' => 183,
             'soal' => 'Ibu Hamil: Penambahan BB selama hamil ... Kg (Di isi oleh responden ibu hamil)',
@@ -2107,7 +1651,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            174 => 
+            136 => 
             array (
                 'id' => 184,
             'soal' => 'Ibu Hamil: Rutin Tablet FE ? (Di isi oleh responden ibu hamil)',
@@ -2119,7 +1663,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            175 => 
+            137 => 
             array (
                 'id' => 185,
             'soal' => 'Ibu Hamil: ANC ? (Di isi oleh responden ibu hamil)',
@@ -2131,7 +1675,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            176 => 
+            138 => 
             array (
                 'id' => 186,
             'soal' => 'Ibu Hamil: Imunisasi ? (Di isi oleh responden ibu hamil)',
@@ -2143,7 +1687,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            177 => 
+            139 => 
             array (
                 'id' => 187,
             'soal' => 'Ibu Hamil: KB ? (Di isi oleh responden ibu hamil)',
@@ -2155,7 +1699,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            178 => 
+            140 => 
             array (
                 'id' => 188,
             'soal' => 'Ibu Hamil: Supelemen tambahan ? (Di isi oleh responden ibu hamil)',
@@ -2167,7 +1711,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            179 => 
+            141 => 
             array (
                 'id' => 189,
             'soal' => 'Ibu Nifas / Menyusui: Siapa yang menolong ibu saat bersalin ? (di isi ibu Nifas dan Menyusui)',
@@ -2179,7 +1723,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            180 => 
+            142 => 
             array (
                 'id' => 190,
             'soal' => 'Ibu Nifas / Menyusui: Apakah Ibu akan memberikan ASI eksklusif ? (di isi ibu Nifas dan Menyusui)',
@@ -2191,7 +1735,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            181 => 
+            143 => 
             array (
                 'id' => 191,
             'soal' => 'Ibu Nifas / Menyusui: Kapan Ibu mulai memberikan ASI pada bayi ? (di isi ibu Nifas dan Menyusui)',
@@ -2203,7 +1747,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            182 => 
+            144 => 
             array (
                 'id' => 192,
             'soal' => 'Ibu Nifas / Menyusui: Supelemen tambahan ? (di isi ibu Nifas dan Menyusui)',
@@ -2215,7 +1759,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            183 => 
+            145 => 
             array (
                 'id' => 193,
                 'soal' => 'Bayi, Baduta, dan Balita: Berapa PB/U ?',
@@ -2227,7 +1771,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            184 => 
+            146 => 
             array (
                 'id' => 194,
                 'soal' => 'Bayi, Baduta, dan Balita: Berapa TB/U ?',
@@ -2239,7 +1783,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            185 => 
+            147 => 
             array (
                 'id' => 195,
                 'soal' => 'Bayi, Baduta, dan Balita: Berapa BB/U ?',
@@ -2251,7 +1795,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            186 => 
+            148 => 
             array (
                 'id' => 196,
                 'soal' => 'Bayi, Baduta, dan Balita: IMT/U ?',
@@ -2263,7 +1807,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            187 => 
+            149 => 
             array (
                 'id' => 197,
                 'soal' => 'Bayi, Baduta, dan Balita: Status imunisasi ?',
@@ -2275,7 +1819,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            188 => 
+            150 => 
             array (
                 'id' => 198,
                 'soal' => 'Bayi, Baduta, dan Balita: Suplemen tambahan ?',
@@ -2287,7 +1831,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            189 => 
+            151 => 
             array (
                 'id' => 199,
                 'soal' => 'Apakah ibu pernah mendengar istilah “kolostrum”? Apa yang dimaksud dengan kolostrum?',
@@ -2299,7 +1843,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            190 => 
+            152 => 
             array (
                 'id' => 200,
                 'soal' => 'Apakah ibu memberikan kolostrum pada bayi Ibu?',
@@ -2311,7 +1855,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            191 => 
+            153 => 
             array (
                 'id' => 201,
             'soal' => 'Apakah ibu melaksanakan Inisiasi Menyusui Dini (IMD)?',
@@ -2323,7 +1867,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            192 => 
+            154 => 
             array (
                 'id' => 202,
                 'soal' => 'Setelah bayi lahir, hal apa yang dilakukan ?',
@@ -2335,7 +1879,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            193 => 
+            155 => 
             array (
                 'id' => 203,
             'soal' => 'Berapa lama ibu melaksanakan Inisiasi Menyusui Dini (IMD)?',
@@ -2347,7 +1891,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            194 => 
+            156 => 
             array (
                 'id' => 204,
                 'soal' => 'Apakah anak ibu diberikan asi ekslusif ?',
@@ -2359,7 +1903,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            195 => 
+            157 => 
             array (
                 'id' => 205,
                 'soal' => 'Apakah anak ibu ASI dua tahun ?',
@@ -2371,7 +1915,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            196 => 
+            158 => 
             array (
                 'id' => 206,
                 'soal' => 'Pemberian makanan tambahan ?',
@@ -2383,7 +1927,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            197 => 
+            159 => 
             array (
                 'id' => 207,
                 'soal' => 'Apakah dirumah Anda, Anda harus mematuhi peraturan yang dibuat oleh orangtua ?',
@@ -2395,7 +1939,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            198 => 
+            160 => 
             array (
                 'id' => 208,
                 'soal' => 'Apakah dirumah Anda Orangtua sering marah kepada Anda ?',
@@ -2407,7 +1951,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            199 => 
+            161 => 
             array (
                 'id' => 209,
             'soal' => 'Apakah Orangtua sering melakukan kekerasan (cont. Memukul) terhadap Anda ?',
@@ -2419,7 +1963,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            200 => 
+            162 => 
             array (
                 'id' => 210,
                 'soal' => 'Apakah semua keputusan dirumah berada di tangan orangtua Anda ?',
@@ -2431,7 +1975,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            201 => 
+            163 => 
             array (
                 'id' => 211,
                 'soal' => 'Apakah Orangtua jarang menceritakan masalah mereka kepada Anda ?',
@@ -2443,7 +1987,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            202 => 
+            164 => 
             array (
                 'id' => 212,
                 'soal' => 'Apakah memberikan kesempatan untuk mengungkapkan apa yang Anda inginkan ?',
@@ -2455,7 +1999,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            203 => 
+            165 => 
             array (
                 'id' => 213,
                 'soal' => 'Apakah Orangtua sering menjelaskan kepada Anda tentang perbuatan yang baik dan buruk ?',
@@ -2467,7 +2011,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            204 => 
+            166 => 
             array (
                 'id' => 214,
                 'soal' => 'Apakah Orangtua sering bertanya tentang apa yang akan Anda lakukan ?',
@@ -2479,7 +2023,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            205 => 
+            167 => 
             array (
                 'id' => 215,
                 'soal' => 'Apakah Jika Anda berperilaku baik, maka orangtua akan memberikan pujian kepada Anda ?',
@@ -2491,7 +2035,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            206 => 
+            168 => 
             array (
                 'id' => 216,
                 'soal' => 'Jika ada permasalahan dalam keluarga, maka orangtua sering berdiskusi dengan Anda untuk membicarakan masalah tersebut ?',
@@ -2503,7 +2047,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            207 => 
+            169 => 
             array (
                 'id' => 217,
                 'soal' => 'Apakah Orangtua tidak membatasi pergaulan Anda ?',
@@ -2515,7 +2059,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            208 => 
+            170 => 
             array (
                 'id' => 218,
                 'soal' => 'Apakah Orangtua tidak bertanya atau melarang untuk melakukan apa yang Anda inginkan ?',
@@ -2527,7 +2071,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            209 => 
+            171 => 
             array (
                 'id' => 219,
                 'soal' => 'Apakah Orangtua Anda berusaha untuk memenuhi keinginan Anda ?',
@@ -2539,7 +2083,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            210 => 
+            172 => 
             array (
                 'id' => 220,
                 'soal' => 'Apakah Orangtua memberikan Anda kebebasan untuk memilih apa yang ingin Anda lakukan atau kerjakan ?',
@@ -2551,7 +2095,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            211 => 
+            173 => 
             array (
                 'id' => 221,
                 'soal' => 'Apakah Orangtua jarang mengatur urusan Anda ?',
@@ -2563,235 +2107,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-05-28 17:36:59',
                 'updated_at' => '2022-05-28 17:36:59',
             ),
-            212 => 
-            array (
-                'id' => 222,
-                'soal' => 'Nama Responden',
-                'urutan' => 1,
-                'tipe_jawaban' => 'Jawaban Singkat',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 33,
-                'deleted_at' => NULL,
-                'created_at' => '2022-06-14 10:42:17',
-                'updated_at' => '2022-06-14 10:42:17',
-            ),
-            213 => 
-            array (
-                'id' => 223,
-                'soal' => 'Nomor Telepon/Handphone',
-                'urutan' => 2,
-                'tipe_jawaban' => 'Jawaban Singkat',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 33,
-                'deleted_at' => NULL,
-                'created_at' => '2022-06-14 10:42:17',
-                'updated_at' => '2022-06-14 10:42:17',
-            ),
-            214 => 
-            array (
-                'id' => 224,
-                'soal' => 'Nama Ayah',
-                'urutan' => 3,
-                'tipe_jawaban' => 'Jawaban Singkat',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 33,
-                'deleted_at' => NULL,
-                'created_at' => '2022-06-14 10:42:17',
-                'updated_at' => '2022-06-14 10:42:17',
-            ),
-            215 => 
-            array (
-                'id' => 225,
-                'soal' => 'Pekerjaan Ayah',
-                'urutan' => 4,
-                'tipe_jawaban' => 'Jawaban Singkat',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 33,
-                'deleted_at' => NULL,
-                'created_at' => '2022-06-14 10:42:17',
-                'updated_at' => '2022-06-14 10:42:17',
-            ),
-            216 => 
-            array (
-                'id' => 226,
-                'soal' => 'Nama Ibu',
-                'urutan' => 5,
-                'tipe_jawaban' => 'Jawaban Singkat',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 33,
-                'deleted_at' => NULL,
-                'created_at' => '2022-06-14 10:42:17',
-                'updated_at' => '2022-06-14 10:42:17',
-            ),
-            217 => 
-            array (
-                'id' => 227,
-                'soal' => 'Pekerjaan Ibu',
-                'urutan' => 6,
-                'tipe_jawaban' => 'Jawaban Singkat',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 33,
-                'deleted_at' => NULL,
-                'created_at' => '2022-06-14 10:42:17',
-                'updated_at' => '2022-06-14 10:42:17',
-            ),
-            218 => 
-            array (
-                'id' => 228,
-                'soal' => 'Nama Suami',
-                'urutan' => 7,
-                'tipe_jawaban' => 'Jawaban Singkat',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 33,
-                'deleted_at' => NULL,
-                'created_at' => '2022-06-14 10:42:17',
-                'updated_at' => '2022-06-14 10:42:17',
-            ),
-            219 => 
-            array (
-                'id' => 229,
-                'soal' => 'Pekerjaan Suami',
-                'urutan' => 8,
-                'tipe_jawaban' => 'Jawaban Singkat',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 33,
-                'deleted_at' => NULL,
-                'created_at' => '2022-06-14 10:42:17',
-                'updated_at' => '2022-06-14 10:42:17',
-            ),
-            220 => 
-            array (
-                'id' => 230,
-                'soal' => 'Nama Istri',
-                'urutan' => 9,
-                'tipe_jawaban' => 'Jawaban Singkat',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 33,
-                'deleted_at' => NULL,
-                'created_at' => '2022-06-14 10:42:17',
-                'updated_at' => '2022-06-14 10:42:17',
-            ),
-            221 => 
-            array (
-                'id' => 231,
-                'soal' => 'Pekerjaan Istri',
-                'urutan' => 10,
-                'tipe_jawaban' => 'Jawaban Singkat',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 33,
-                'deleted_at' => NULL,
-                'created_at' => '2022-06-14 10:42:17',
-                'updated_at' => '2022-06-14 10:42:17',
-            ),
-            222 => 
-            array (
-                'id' => 232,
-                'soal' => 'Jenis Kelamin',
-                'urutan' => 11,
-                'tipe_jawaban' => 'Pilihan Ganda',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 33,
-                'deleted_at' => NULL,
-                'created_at' => '2022-06-14 10:42:17',
-                'updated_at' => '2022-06-14 10:42:17',
-            ),
-            223 => 
-            array (
-                'id' => 233,
-                'soal' => 'Umur',
-                'urutan' => 12,
-                'tipe_jawaban' => 'Jawaban Singkat',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 33,
-                'deleted_at' => NULL,
-                'created_at' => '2022-06-14 10:42:17',
-                'updated_at' => '2022-06-14 10:42:17',
-            ),
-            224 => 
-            array (
-                'id' => 234,
-                'soal' => 'Pendidikan Terakhir',
-                'urutan' => 13,
-                'tipe_jawaban' => 'Pilihan Ganda',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 33,
-                'deleted_at' => NULL,
-                'created_at' => '2022-06-14 10:42:17',
-                'updated_at' => '2022-06-14 10:42:17',
-            ),
-            225 => 
-            array (
-                'id' => 235,
-                'soal' => 'Pekerjaan',
-                'urutan' => 14,
-                'tipe_jawaban' => 'Jawaban Singkat',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 33,
-                'deleted_at' => NULL,
-                'created_at' => '2022-06-14 10:42:17',
-                'updated_at' => '2022-06-14 10:42:17',
-            ),
-            226 => 
-            array (
-                'id' => 236,
-                'soal' => 'Usia Menikah Pertama Kali',
-                'urutan' => 15,
-                'tipe_jawaban' => 'Jawaban Singkat',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 33,
-                'deleted_at' => NULL,
-                'created_at' => '2022-06-14 10:42:17',
-                'updated_at' => '2022-06-14 10:42:17',
-            ),
-            227 => 
-            array (
-                'id' => 237,
-                'soal' => 'Usia Saat Hamil Pertama',
-                'urutan' => 16,
-                'tipe_jawaban' => 'Jawaban Singkat',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 33,
-                'deleted_at' => NULL,
-                'created_at' => '2022-06-14 10:42:17',
-                'updated_at' => '2022-06-14 10:42:17',
-            ),
-            228 => 
-            array (
-                'id' => 238,
-                'soal' => 'Jumlah Anak',
-                'urutan' => 17,
-                'tipe_jawaban' => 'Jawaban Singkat',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 33,
-                'deleted_at' => NULL,
-                'created_at' => '2022-06-14 10:42:17',
-                'updated_at' => '2022-06-14 10:42:17',
-            ),
-            229 => 
-            array (
-                'id' => 239,
-                'soal' => 'Usia Hamil Lanjutan > 35 Tahun',
-                'urutan' => 18,
-                'tipe_jawaban' => 'Pilihan Ganda',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 33,
-                'deleted_at' => NULL,
-                'created_at' => '2022-06-14 10:42:17',
-                'updated_at' => '2022-06-14 10:42:17',
-            ),
-            230 => 
-            array (
-                'id' => 240,
-                'soal' => 'Berapa jumlah Anggota keluarga yang tinggal menetap dalam dirumah ?',
-                'urutan' => 19,
-                'tipe_jawaban' => 'Jawaban Singkat',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 33,
-                'deleted_at' => NULL,
-                'created_at' => '2022-06-14 10:42:17',
-                'updated_at' => '2022-06-14 10:42:17',
-            ),
-            231 => 
+            174 => 
             array (
                 'id' => 241,
                 'soal' => 'Apakah Anda mengetahui kata “STUNTING” ?',
@@ -2803,7 +2119,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            232 => 
+            175 => 
             array (
                 'id' => 242,
                 'soal' => 'Dari mana Anda mengetahui STUNTING?',
@@ -2815,7 +2131,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            233 => 
+            176 => 
             array (
                 'id' => 243,
                 'soal' => 'Apa yang dimaksud dengan Stunting menurut Anda ?',
@@ -2827,7 +2143,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            234 => 
+            177 => 
             array (
                 'id' => 244,
                 'soal' => 'Apakah ada makanan yang dilarang saat hamil ? sebutkan !',
@@ -2839,7 +2155,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            235 => 
+            178 => 
             array (
                 'id' => 245,
                 'soal' => 'Apakah dirumah Anda mendahulukan laki-laki makan sebelum perempuan ?',
@@ -2851,7 +2167,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            236 => 
+            179 => 
             array (
                 'id' => 246,
             'soal' => 'Apakah Ada Paksaan dalam pernikahan (Kesiapan Menikah)?',
@@ -2863,19 +2179,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            237 => 
-            array (
-                'id' => 247,
-                'soal' => 'Apakah Anda Hamil sebelum nikah ?',
-                'urutan' => 4,
-                'tipe_jawaban' => 'Pilihan Ganda',
-                'is_numerik' => 0,
-                'kategori_soal_id' => 35,
-                'deleted_at' => '2022-06-14 20:37:20',
-                'created_at' => '2022-06-14 10:42:17',
-                'updated_at' => '2022-06-14 20:37:20',
-            ),
-            238 => 
+            180 => 
             array (
                 'id' => 248,
                 'soal' => 'Jumlah Pendapatan',
@@ -2887,7 +2191,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            239 => 
+            181 => 
             array (
                 'id' => 249,
             'soal' => 'Sumber pendapatan (boleh memilih lebih dari 1 pilihan)',
@@ -2899,7 +2203,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            240 => 
+            182 => 
             array (
                 'id' => 250,
                 'soal' => 'Apakah Anda memilik kartu keluarga sejahtera atau perlindungan sosial ?',
@@ -2911,7 +2215,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            241 => 
+            183 => 
             array (
                 'id' => 251,
                 'soal' => 'Pengeluaran keluarga lebih banyak dihabiskan untuk apa?',
@@ -2923,7 +2227,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            242 => 
+            184 => 
             array (
                 'id' => 252,
                 'soal' => 'Apakah keluarga anda Mendapatkan bantuan sosial seperti PKH,PBNT, BST dan lain-lain',
@@ -2935,7 +2239,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            243 => 
+            185 => 
             array (
                 'id' => 253,
                 'soal' => 'Sarana air bersih',
@@ -2947,7 +2251,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            244 => 
+            186 => 
             array (
                 'id' => 254,
             'soal' => 'Jamban(sarana pembuangankotoran)',
@@ -2959,7 +2263,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            245 => 
+            187 => 
             array (
                 'id' => 255,
                 'soal' => 'Sarana pembuangan air limbah',
@@ -2971,7 +2275,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            246 => 
+            188 => 
             array (
                 'id' => 256,
             'soal' => 'Sarana pembuangan sampah (tempat sampah)',
@@ -2983,7 +2287,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            247 => 
+            189 => 
             array (
                 'id' => 257,
                 'soal' => 'Membuang sampah ketempat sampah',
@@ -2995,7 +2299,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            248 => 
+            190 => 
             array (
                 'id' => 258,
                 'soal' => 'Dinding',
@@ -3007,7 +2311,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            249 => 
+            191 => 
             array (
                 'id' => 259,
                 'soal' => 'Lantai',
@@ -3019,7 +2323,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            250 => 
+            192 => 
             array (
                 'id' => 260,
                 'soal' => 'Jendela kamar tidur',
@@ -3031,7 +2335,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            251 => 
+            193 => 
             array (
                 'id' => 261,
                 'soal' => 'Jendela ruang keluarga',
@@ -3043,7 +2347,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            252 => 
+            194 => 
             array (
                 'id' => 262,
                 'soal' => 'Ventilasi',
@@ -3055,7 +2359,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            253 => 
+            195 => 
             array (
                 'id' => 263,
                 'soal' => 'LubangAsapDapur',
@@ -3067,7 +2371,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            254 => 
+            196 => 
             array (
                 'id' => 264,
                 'soal' => 'Pencahayaan',
@@ -3079,7 +2383,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            255 => 
+            197 => 
             array (
                 'id' => 265,
                 'soal' => 'Apa yang digunakan untuk memasak',
@@ -3091,7 +2395,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            256 => 
+            198 => 
             array (
                 'id' => 266,
                 'soal' => 'Apakah anda tau keluarga anda punya Riwayat penyakit',
@@ -3103,7 +2407,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            257 => 
+            199 => 
             array (
                 'id' => 267,
                 'soal' => 'Apakah anda dan keluarga anda biasanya terkena Paparan asap rokok',
@@ -3115,7 +2419,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            258 => 
+            200 => 
             array (
                 'id' => 268,
                 'soal' => 'Berapa kali keluarga anda mandi dalam sehari',
@@ -3127,7 +2431,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            259 => 
+            201 => 
             array (
                 'id' => 269,
                 'soal' => 'Berapa kali anda/ keluarga anda Makan Setiap hari',
@@ -3139,7 +2443,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            260 => 
+            202 => 
             array (
                 'id' => 270,
                 'soal' => 'Apakah Anda mengonsumsi suplemen ?',
@@ -3151,7 +2455,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            261 => 
+            203 => 
             array (
                 'id' => 271,
                 'soal' => 'Sudah berapa lama Anda mengonsumsi suplemen ?',
@@ -3163,7 +2467,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            262 => 
+            204 => 
             array (
                 'id' => 272,
                 'soal' => 'Seberapa sering Anda mengonsumsi suplemen makanan?',
@@ -3175,7 +2479,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            263 => 
+            205 => 
             array (
                 'id' => 273,
                 'soal' => 'Apa alasan Anda tidak mengonsumsi suplemen ?',
@@ -3187,7 +2491,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            264 => 
+            206 => 
             array (
                 'id' => 274,
             'soal' => 'Apa saja yang dimakan tiap hari (perminggu)',
@@ -3199,7 +2503,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            265 => 
+            207 => 
             array (
                 'id' => 275,
             'soal' => 'Remaja: Berapa KEK ... Cm (di isi untuk Kebutuhan anak Remaja saja)',
@@ -3211,7 +2515,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            266 => 
+            208 => 
             array (
                 'id' => 276,
             'soal' => 'Remaja: BerapaHB ... g/dL (di isi untuk Kebutuhan anak Remaja saja)',
@@ -3223,7 +2527,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            267 => 
+            209 => 
             array (
                 'id' => 277,
             'soal' => 'Remaja: IMT ... Kg/m2 (di isi untuk Kebutuhan anak Remaja saja)',
@@ -3235,7 +2539,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            268 => 
+            210 => 
             array (
                 'id' => 278,
             'soal' => 'Remaja: TekananDarah ... mm/Hg (di isi untuk Kebutuhan anak Remaja saja)',
@@ -3247,7 +2551,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            269 => 
+            211 => 
             array (
                 'id' => 279,
             'soal' => 'Ibu Hamil: Berapa HB ... g/dL (Di isi oleh responden ibu hamil)',
@@ -3259,7 +2563,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            270 => 
+            212 => 
             array (
                 'id' => 280,
             'soal' => 'Ibu Hamil: Berapa KEK ... Cm (Di isi oleh responden ibu hamil)',
@@ -3271,7 +2575,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            271 => 
+            213 => 
             array (
                 'id' => 281,
             'soal' => 'Ibu Hamil: Berapa BB ... Kg (Di isi oleh responden ibu hamil)',
@@ -3283,7 +2587,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            272 => 
+            214 => 
             array (
                 'id' => 282,
             'soal' => 'Ibu Hamil: Tekanan Darah ... mm/Hg (Di isi oleh responden ibu hamil)',
@@ -3295,7 +2599,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            273 => 
+            215 => 
             array (
                 'id' => 283,
             'soal' => 'Ibu Hamil: Penambahan BB selama hamil ... Kg (Di isi oleh responden ibu hamil)',
@@ -3307,7 +2611,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            274 => 
+            216 => 
             array (
                 'id' => 284,
             'soal' => 'Ibu Hamil: Rutin Tablet FE ? (Di isi oleh responden ibu hamil)',
@@ -3319,7 +2623,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            275 => 
+            217 => 
             array (
                 'id' => 285,
             'soal' => 'Ibu Hamil: ANC ? (Di isi oleh responden ibu hamil)',
@@ -3331,7 +2635,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            276 => 
+            218 => 
             array (
                 'id' => 286,
             'soal' => 'Ibu Hamil: Imunisasi ? (Di isi oleh responden ibu hamil)',
@@ -3343,7 +2647,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            277 => 
+            219 => 
             array (
                 'id' => 287,
             'soal' => 'Ibu Hamil: KB ? (Di isi oleh responden ibu hamil)',
@@ -3355,7 +2659,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            278 => 
+            220 => 
             array (
                 'id' => 288,
             'soal' => 'Ibu Hamil: Supelemen tambahan ? (Di isi oleh responden ibu hamil)',
@@ -3367,7 +2671,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            279 => 
+            221 => 
             array (
                 'id' => 289,
             'soal' => 'Ibu Nifas / Menyusui: Siapa yang menolong ibu saat bersalin ? (di isi ibu Nifas dan Menyusui)',
@@ -3379,7 +2683,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            280 => 
+            222 => 
             array (
                 'id' => 290,
             'soal' => 'Ibu Nifas / Menyusui: Apakah Ibu akan memberikan ASI eksklusif ? (di isi ibu Nifas dan Menyusui)',
@@ -3391,7 +2695,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            281 => 
+            223 => 
             array (
                 'id' => 291,
             'soal' => 'Ibu Nifas / Menyusui: Kapan Ibu mulai memberikan ASI pada bayi ? (di isi ibu Nifas dan Menyusui)',
@@ -3403,7 +2707,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            282 => 
+            224 => 
             array (
                 'id' => 292,
             'soal' => 'Ibu Nifas / Menyusui: Supelemen tambahan ? (di isi ibu Nifas dan Menyusui)',
@@ -3415,7 +2719,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            283 => 
+            225 => 
             array (
                 'id' => 293,
                 'soal' => 'Bayi : Berapa PB/U ?',
@@ -3427,7 +2731,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 20:41:59',
             ),
-            284 => 
+            226 => 
             array (
                 'id' => 294,
             'soal' => 'Bayi, Baduta (Bawah Dua Tahun), dan Balita (Bawah Lima Tahun) : Berapa TB/U ?',
@@ -3439,7 +2743,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 20:51:58',
             ),
-            285 => 
+            227 => 
             array (
                 'id' => 295,
             'soal' => 'Bayi, Baduta (Bawah Dua Tahun), dan Balita (Bawah Lima Tahun) : Berapa BB/U ?',
@@ -3451,7 +2755,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 20:52:10',
             ),
-            286 => 
+            228 => 
             array (
                 'id' => 296,
             'soal' => 'Bayi, Baduta (Bawah Dua Tahun), dan Balita (Bawah Lima Tahun) : IMT/U ?',
@@ -3463,7 +2767,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 20:52:22',
             ),
-            287 => 
+            229 => 
             array (
                 'id' => 297,
             'soal' => 'Bayi, Baduta (Bawah Dua Tahun), dan Balita (Bawah Lima Tahun) : Status imunisasi ?',
@@ -3475,7 +2779,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 20:52:48',
             ),
-            288 => 
+            230 => 
             array (
                 'id' => 298,
             'soal' => 'Bayi, Baduta (Bawah Dua Tahun), dan Balita (Bawah Lima Tahun) : Suplemen tambahan ?',
@@ -3487,7 +2791,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 20:53:05',
             ),
-            289 => 
+            231 => 
             array (
                 'id' => 299,
                 'soal' => 'Apakah ibu pernah mendengar istilah “kolostrum”? Apa yang dimaksud dengan kolostrum?',
@@ -3499,7 +2803,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            290 => 
+            232 => 
             array (
                 'id' => 300,
                 'soal' => 'Apakah ibu memberikan kolostrum pada bayi Ibu?',
@@ -3511,7 +2815,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            291 => 
+            233 => 
             array (
                 'id' => 301,
             'soal' => 'Apakah ibu melaksanakan Inisiasi Menyusui Dini (IMD)?',
@@ -3523,7 +2827,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            292 => 
+            234 => 
             array (
                 'id' => 302,
                 'soal' => 'Setelah bayi lahir, hal apa yang dilakukan ?',
@@ -3535,7 +2839,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            293 => 
+            235 => 
             array (
                 'id' => 303,
             'soal' => 'Berapa lama ibu melaksanakan Inisiasi Menyusui Dini (IMD)?',
@@ -3547,7 +2851,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            294 => 
+            236 => 
             array (
                 'id' => 304,
                 'soal' => 'Apakah anak ibu diberikan asi ekslusif ?',
@@ -3559,7 +2863,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            295 => 
+            237 => 
             array (
                 'id' => 305,
                 'soal' => 'Apakah anak ibu ASI dua tahun ?',
@@ -3571,7 +2875,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            296 => 
+            238 => 
             array (
                 'id' => 306,
                 'soal' => 'Pemberian makanan tambahan ?',
@@ -3583,7 +2887,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            297 => 
+            239 => 
             array (
                 'id' => 307,
                 'soal' => 'Apakah dirumah Anda, Anda harus mematuhi peraturan yang dibuat oleh orangtua ?',
@@ -3595,7 +2899,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            298 => 
+            240 => 
             array (
                 'id' => 308,
                 'soal' => 'Apakah dirumah Anda Orangtua sering marah kepada Anda ?',
@@ -3607,7 +2911,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            299 => 
+            241 => 
             array (
                 'id' => 309,
             'soal' => 'Apakah Orangtua sering melakukan kekerasan (cont. Memukul) terhadap Anda ?',
@@ -3619,7 +2923,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            300 => 
+            242 => 
             array (
                 'id' => 310,
                 'soal' => 'Apakah semua keputusan dirumah berada di tangan orangtua Anda ?',
@@ -3631,7 +2935,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            301 => 
+            243 => 
             array (
                 'id' => 311,
                 'soal' => 'Apakah Orangtua jarang menceritakan masalah mereka kepada Anda ?',
@@ -3643,7 +2947,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            302 => 
+            244 => 
             array (
                 'id' => 312,
                 'soal' => 'Apakah memberikan kesempatan untuk mengungkapkan apa yang Anda inginkan ?',
@@ -3655,7 +2959,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            303 => 
+            245 => 
             array (
                 'id' => 313,
                 'soal' => 'Apakah Orangtua sering menjelaskan kepada Anda tentang perbuatan yang baik dan buruk ?',
@@ -3667,7 +2971,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            304 => 
+            246 => 
             array (
                 'id' => 314,
                 'soal' => 'Apakah Orangtua sering bertanya tentang apa yang akan Anda lakukan ?',
@@ -3679,7 +2983,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            305 => 
+            247 => 
             array (
                 'id' => 315,
                 'soal' => 'Apakah Jika Anda berperilaku baik, maka orangtua akan memberikan pujian kepada Anda ?',
@@ -3691,7 +2995,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            306 => 
+            248 => 
             array (
                 'id' => 316,
                 'soal' => 'Jika ada permasalahan dalam keluarga, maka orangtua sering berdiskusi dengan Anda untuk membicarakan masalah tersebut ?',
@@ -3703,7 +3007,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            307 => 
+            249 => 
             array (
                 'id' => 317,
                 'soal' => 'Apakah Orangtua tidak membatasi pergaulan Anda ?',
@@ -3715,7 +3019,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            308 => 
+            250 => 
             array (
                 'id' => 318,
                 'soal' => 'Apakah Orangtua tidak bertanya atau melarang untuk melakukan apa yang Anda inginkan ?',
@@ -3727,7 +3031,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            309 => 
+            251 => 
             array (
                 'id' => 319,
                 'soal' => 'Apakah Orangtua Anda berusaha untuk memenuhi keinginan Anda ?',
@@ -3739,7 +3043,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            310 => 
+            252 => 
             array (
                 'id' => 320,
                 'soal' => 'Apakah Orangtua memberikan Anda kebebasan untuk memilih apa yang ingin Anda lakukan atau kerjakan ?',
@@ -3751,7 +3055,7 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
             ),
-            311 => 
+            253 => 
             array (
                 'id' => 321,
                 'soal' => 'Apakah Orangtua jarang mengatur urusan Anda ?',
@@ -3762,6 +3066,1254 @@ class SoalTableSeeder extends Seeder
                 'deleted_at' => NULL,
                 'created_at' => '2022-06-14 10:42:17',
                 'updated_at' => '2022-06-14 10:42:17',
+            ),
+            254 => 
+            array (
+                'id' => 322,
+            'soal' => 'Nama Ibu (yang ada dalam kartu keluarga)',
+                'urutan' => 1,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 40,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 20:29:05',
+                'updated_at' => '2022-07-21 20:29:05',
+            ),
+            255 => 
+            array (
+                'id' => 323,
+            'soal' => 'Umur Ibu (Usia)',
+                'urutan' => 2,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 1,
+                'kategori_soal_id' => 40,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 20:29:29',
+                'updated_at' => '2022-07-21 20:29:49',
+            ),
+            256 => 
+            array (
+                'id' => 324,
+                'soal' => 'Pendidikan Terakhir Ibu',
+                'urutan' => 3,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 40,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 20:30:49',
+                'updated_at' => '2022-07-21 20:30:49',
+            ),
+            257 => 
+            array (
+                'id' => 325,
+                'soal' => 'Pekerjaan Ibu',
+                'urutan' => 4,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 40,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 20:34:32',
+                'updated_at' => '2022-07-21 20:34:32',
+            ),
+            258 => 
+            array (
+                'id' => 326,
+                'soal' => 'Nomor HP Ibu',
+                'urutan' => 5,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 1,
+                'kategori_soal_id' => 40,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 20:34:54',
+                'updated_at' => '2022-07-21 20:34:54',
+            ),
+            259 => 
+            array (
+                'id' => 327,
+                'soal' => 'Status Pernikahan Ibu',
+                'urutan' => 6,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 40,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 20:35:44',
+                'updated_at' => '2022-07-21 20:35:44',
+            ),
+            260 => 
+            array (
+                'id' => 328,
+                'soal' => 'Usia Ibu Ketika Menikah Pertama Kali',
+                'urutan' => 7,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 1,
+                'kategori_soal_id' => 40,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 20:36:01',
+                'updated_at' => '2022-07-21 20:36:01',
+            ),
+            261 => 
+            array (
+                'id' => 329,
+                'soal' => 'Usia Ibu Saat Hamil Pertama Kali',
+                'urutan' => 8,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 1,
+                'kategori_soal_id' => 40,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 20:36:26',
+                'updated_at' => '2022-07-21 20:36:26',
+            ),
+            262 => 
+            array (
+                'id' => 330,
+                'soal' => 'Jumlah Anak',
+                'urutan' => 9,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 1,
+                'kategori_soal_id' => 40,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 20:37:34',
+                'updated_at' => '2022-07-21 20:37:34',
+            ),
+            263 => 
+            array (
+                'id' => 331,
+                'soal' => 'Apakah usia hamil lanjutan > 35 Tahun ?',
+                'urutan' => 10,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 40,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 20:38:10',
+                'updated_at' => '2022-07-21 20:38:10',
+            ),
+            264 => 
+            array (
+                'id' => 332,
+                'soal' => 'Berapa jumlah anggota keluarga yang tinggal menetap dalam rumah ?',
+                'urutan' => 11,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 1,
+                'kategori_soal_id' => 40,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 20:38:32',
+                'updated_at' => '2022-07-21 20:38:32',
+            ),
+            265 => 
+            array (
+                'id' => 333,
+            'soal' => 'Berapa Kepala Keluarga (KK) yang menetap dalam rumah ?',
+                'urutan' => 12,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 1,
+                'kategori_soal_id' => 40,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 20:38:55',
+                'updated_at' => '2022-07-21 20:38:55',
+            ),
+            266 => 
+            array (
+                'id' => 334,
+                'soal' => 'Nama Suami',
+                'urutan' => 13,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 40,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 20:39:21',
+                'updated_at' => '2022-07-21 20:39:21',
+            ),
+            267 => 
+            array (
+                'id' => 335,
+                'soal' => 'Pekerjaan Suami',
+                'urutan' => 14,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 40,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 20:40:33',
+                'updated_at' => '2022-07-21 20:40:33',
+            ),
+            268 => 
+            array (
+                'id' => 336,
+            'soal' => 'Umur suami (Usia)',
+                'urutan' => 15,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 1,
+                'kategori_soal_id' => 40,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 20:41:42',
+                'updated_at' => '2022-07-21 20:41:42',
+            ),
+            269 => 
+            array (
+                'id' => 337,
+                'soal' => 'Pendidikan terakhir suami',
+                'urutan' => 16,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 40,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 20:42:47',
+                'updated_at' => '2022-07-21 20:42:47',
+            ),
+            270 => 
+            array (
+                'id' => 338,
+                'soal' => 'Apakah anda mendengar kata "Stunting"',
+                'urutan' => 1,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 41,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 20:47:05',
+                'updated_at' => '2022-07-21 20:47:05',
+            ),
+            271 => 
+            array (
+                'id' => 339,
+                'soal' => 'Dari mana anda mengetahui stunting',
+                'urutan' => 2,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 41,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 20:49:32',
+                'updated_at' => '2022-07-21 20:50:31',
+            ),
+            272 => 
+            array (
+                'id' => 340,
+                'soal' => 'Apa yang dimaksud dengan stunting menurut anda',
+                'urutan' => 3,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 41,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 20:53:07',
+                'updated_at' => '2022-07-21 20:53:07',
+            ),
+            273 => 
+            array (
+                'id' => 341,
+                'soal' => 'Menurut anda, apa yang menjadi penyebab stunting',
+                'urutan' => 4,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 41,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 20:53:57',
+                'updated_at' => '2022-07-21 20:53:57',
+            ),
+            274 => 
+            array (
+                'id' => 342,
+            'soal' => 'Apakah ada jenis makanan yang dilarang (pantangan) saat hamil ? Sebutkan !',
+                'urutan' => 1,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 42,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 20:58:15',
+                'updated_at' => '2022-07-21 20:58:15',
+            ),
+            275 => 
+            array (
+                'id' => 343,
+                'soal' => 'Apakah dirumah ada kebiasaan mendahulukan laki-laki makan sebelum perempuan ?',
+                'urutan' => 2,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 42,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 20:58:48',
+                'updated_at' => '2022-07-21 20:58:48',
+            ),
+            276 => 
+            array (
+                'id' => 344,
+                'soal' => 'Apakah anda menikah karena perjodohan / paksaan orang tua ?',
+                'urutan' => 3,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 42,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 20:59:08',
+                'updated_at' => '2022-07-21 20:59:08',
+            ),
+            277 => 
+            array (
+                'id' => 345,
+                'soal' => 'Jumlah pendapatan',
+                'urutan' => 1,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 43,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 21:04:15',
+                'updated_at' => '2022-07-21 21:04:15',
+            ),
+            278 => 
+            array (
+                'id' => 346,
+            'soal' => 'Sumber pendapatan (boleh memilih lebih dari 1 pilihan)',
+                'urutan' => 2,
+                'tipe_jawaban' => 'Kotak Centang',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 43,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 21:06:47',
+                'updated_at' => '2022-07-21 21:06:47',
+            ),
+            279 => 
+            array (
+                'id' => 347,
+                'soal' => 'Apakah anda memiliki kartu keluarga sejatera atau perlindungan sosial ?',
+                'urutan' => 3,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 43,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 21:07:17',
+                'updated_at' => '2022-07-21 21:07:17',
+            ),
+            280 => 
+            array (
+                'id' => 349,
+            'soal' => 'Apakah keluarga anda Mendapatkan bantuan sosial seperti Program Keluarga Harapan (PKH), Bantuan Langsung Tunai (BLT), dan lain-lain ? Jika Ya, Sebutkan !',
+                'urutan' => 4,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 43,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 21:09:34',
+                'updated_at' => '2022-07-21 21:09:34',
+            ),
+            281 => 
+            array (
+                'id' => 350,
+                'soal' => 'Pengeluaran keluarga lebih banyak dihabiskan untuk apa ?',
+                'urutan' => 5,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 43,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 21:11:26',
+                'updated_at' => '2022-07-21 21:11:26',
+            ),
+            282 => 
+            array (
+                'id' => 351,
+                'soal' => 'Apakah tersedia sarana air bersih dirumah anda ?',
+                'urutan' => 1,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 44,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 21:12:38',
+                'updated_at' => '2022-07-21 21:12:38',
+            ),
+            283 => 
+            array (
+                'id' => 352,
+                'soal' => 'Apa jenis sumber air bersih dirumah anda ?',
+                'urutan' => 2,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 44,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 21:13:54',
+                'updated_at' => '2022-07-21 21:13:54',
+            ),
+            284 => 
+            array (
+                'id' => 353,
+            'soal' => 'Jamban / WC (Tempat buang air kecil / besar)',
+                'urutan' => 3,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 44,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 21:19:40',
+                'updated_at' => '2022-07-21 21:19:40',
+            ),
+            285 => 
+            array (
+                'id' => 355,
+            'soal' => 'Dimana Buang Air Besar (BAB) ? Sebutkan !',
+                'urutan' => 4,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 44,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 21:24:26',
+                'updated_at' => '2022-07-21 21:24:26',
+            ),
+            286 => 
+            array (
+                'id' => 356,
+                'soal' => 'Apakah ada sarana pembuangan air limbah dirumah anda ?',
+                'urutan' => 5,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 44,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 21:26:00',
+                'updated_at' => '2022-07-21 21:26:00',
+            ),
+            287 => 
+            array (
+                'id' => 357,
+            'soal' => 'Apakah ada sarana pembuangan sampah (tempat sampah) dirumah anda ?',
+                'urutan' => 6,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 44,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 21:26:54',
+                'updated_at' => '2022-07-21 21:26:54',
+            ),
+            288 => 
+            array (
+                'id' => 358,
+                'soal' => 'Dimanakah anda membuang sampah ?',
+                'urutan' => 7,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 44,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 21:33:17',
+                'updated_at' => '2022-07-21 21:33:17',
+            ),
+            289 => 
+            array (
+                'id' => 359,
+                'soal' => 'Seberapa sering anda membuang sampah ?',
+                'urutan' => 8,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 44,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 21:34:03',
+                'updated_at' => '2022-07-21 21:34:03',
+            ),
+            290 => 
+            array (
+                'id' => 360,
+            'soal' => 'Berapa luas rumah anda (meter persegi) ?',
+                'urutan' => 9,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 1,
+                'kategori_soal_id' => 44,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 21:35:13',
+                'updated_at' => '2022-07-21 21:35:13',
+            ),
+            291 => 
+            array (
+                'id' => 361,
+                'soal' => 'Apakah jenis dinding dirumah anda ?',
+                'urutan' => 10,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 44,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 21:36:06',
+                'updated_at' => '2022-07-21 21:36:06',
+            ),
+            292 => 
+            array (
+                'id' => 362,
+                'soal' => 'Apa jenis lantai di rumah anda ?',
+                'urutan' => 11,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 44,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 21:37:34',
+                'updated_at' => '2022-07-21 21:37:34',
+            ),
+            293 => 
+            array (
+                'id' => 363,
+                'soal' => 'Apakah ada jendela di semua kamar tidur di rumah anda ?',
+                'urutan' => 12,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 44,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 21:39:36',
+                'updated_at' => '2022-07-21 21:39:36',
+            ),
+            294 => 
+            array (
+                'id' => 364,
+                'soal' => 'Apakah ada jendela di ruang keluarga rumah anda ?',
+                'urutan' => 13,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 44,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 21:40:23',
+                'updated_at' => '2022-07-21 21:40:23',
+            ),
+            295 => 
+            array (
+                'id' => 365,
+                'soal' => 'Apakah ada ventilasi di rumah anda ?',
+                'urutan' => 14,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 44,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 21:41:14',
+                'updated_at' => '2022-07-21 21:41:14',
+            ),
+            296 => 
+            array (
+                'id' => 366,
+                'soal' => 'Apakah ada lubang asap dapur di rumah anda ?',
+                'urutan' => 15,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 44,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 21:42:37',
+                'updated_at' => '2022-07-21 21:42:37',
+            ),
+            297 => 
+            array (
+                'id' => 367,
+                'soal' => 'Bagaimana pencahayaan di rumah anda ?',
+                'urutan' => 16,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 44,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 21:43:27',
+                'updated_at' => '2022-07-21 21:43:27',
+            ),
+            298 => 
+            array (
+                'id' => 368,
+                'soal' => 'Apa jenis alat penerangan yang digunakan dirumah anda ?',
+                'urutan' => 17,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 44,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 21:44:28',
+                'updated_at' => '2022-07-21 21:44:28',
+            ),
+            299 => 
+            array (
+                'id' => 369,
+                'soal' => 'Apa jenis bahan bakar yang digunakan untuk memasak di rumah anda ?',
+                'urutan' => 18,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 44,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 21:46:23',
+                'updated_at' => '2022-07-21 21:46:23',
+            ),
+            300 => 
+            array (
+                'id' => 370,
+                'soal' => 'Apakah anda tahu anggota keluarga anda yang berada dalam rumah punya riwayat penyakit  ?',
+                'urutan' => 1,
+                'tipe_jawaban' => 'Kotak Centang',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 45,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 21:49:42',
+                'updated_at' => '2022-07-21 21:49:42',
+            ),
+            301 => 
+            array (
+                'id' => 371,
+                'soal' => 'Apakah ada anggota keluarga yang merokok di dalam rumah anda  ?',
+                'urutan' => 2,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 45,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 21:50:31',
+                'updated_at' => '2022-07-21 21:50:31',
+            ),
+            302 => 
+            array (
+                'id' => 372,
+                'soal' => 'Bagaimana kebiasaan merokok anggota keluarga anda ketika di rumah ?',
+                'urutan' => 3,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 45,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 21:54:52',
+                'updated_at' => '2022-07-21 21:54:52',
+            ),
+            303 => 
+            array (
+                'id' => 373,
+                'soal' => 'Apakah anda dan keluarga anda biasa terkena paparan asap rokok ?',
+                'urutan' => 4,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 45,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 21:55:30',
+                'updated_at' => '2022-07-21 21:55:30',
+            ),
+            304 => 
+            array (
+                'id' => 374,
+                'soal' => 'Berapa kali keluarga anda mandi dalam sehari ?',
+                'urutan' => 5,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 45,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 21:57:11',
+                'updated_at' => '2022-07-21 21:57:11',
+            ),
+            305 => 
+            array (
+                'id' => 375,
+                'soal' => 'Berapa kali anda / keluarga anda makan setiap hari ?',
+                'urutan' => 6,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 45,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 21:58:40',
+                'updated_at' => '2022-07-21 21:58:40',
+            ),
+            306 => 
+            array (
+                'id' => 376,
+            'soal' => 'Apakah anda mengkonsumsi suplemen Makanan (Bahan makanan sebagai pengganti atau tambahan asupan gizi harian Biasa berupa bubuk susu, pil, tablet, cair dll) ?',
+                'urutan' => 7,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 45,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 22:00:29',
+                'updated_at' => '2022-07-21 22:00:29',
+            ),
+            307 => 
+            array (
+                'id' => 377,
+                'soal' => 'Sudah berapa lama anda mengkonsumsi suplemen ?',
+                'urutan' => 8,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 45,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 22:07:46',
+                'updated_at' => '2022-07-21 22:07:46',
+            ),
+            308 => 
+            array (
+                'id' => 378,
+                'soal' => 'Apa alasan anda tidak mengkonsumsi suplemen ?',
+                'urutan' => 9,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 45,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 22:13:34',
+                'updated_at' => '2022-07-21 22:13:34',
+            ),
+            309 => 
+            array (
+                'id' => 379,
+            'soal' => 'Apa jenis lauk pauk yang dikonsumsi tiap hari/perminggu (bisa lebih dari 1 jawaban) ?',
+                'urutan' => 10,
+                'tipe_jawaban' => 'Kotak Centang',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 45,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 22:14:58',
+                'updated_at' => '2022-07-21 22:14:58',
+            ),
+            310 => 
+            array (
+                'id' => 380,
+            'soal' => 'Apakah ada usia remaja (10 – 20 Tahun) dalam rumah ?',
+                'urutan' => 11,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 45,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 22:15:28',
+                'updated_at' => '2022-07-21 22:15:28',
+            ),
+            311 => 
+            array (
+                'id' => 381,
+            'soal' => 'Berapa lingkar lengan atas remaja (Cm) ?',
+                'urutan' => 12,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 45,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 22:16:31',
+                'updated_at' => '2022-07-21 22:16:31',
+            ),
+            312 => 
+            array (
+                'id' => 382,
+                'soal' => 'Berapa HB remaja ?',
+                'urutan' => 13,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 45,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 22:17:02',
+                'updated_at' => '2022-07-21 22:18:43',
+            ),
+            313 => 
+            array (
+                'id' => 383,
+            'soal' => 'Berapa tinggi badan remaja (cm) ?',
+                'urutan' => 14,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 45,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 22:19:24',
+                'updated_at' => '2022-07-21 22:19:24',
+            ),
+            314 => 
+            array (
+                'id' => 384,
+            'soal' => 'Berapa berat badan remaja (Kg) ?',
+                'urutan' => 15,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 45,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 22:20:14',
+                'updated_at' => '2022-07-21 22:20:14',
+            ),
+            315 => 
+            array (
+                'id' => 385,
+            'soal' => 'Berapa tekanan darah remaja (mm/Hg, contoh : 120/80)  ?',
+                'urutan' => 16,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 45,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 22:21:45',
+                'updated_at' => '2022-07-21 22:21:45',
+            ),
+            316 => 
+            array (
+                'id' => 386,
+                'soal' => 'Apakah ada ibu hamil dalam rumah ?',
+                'urutan' => 17,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 45,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 22:22:21',
+                'updated_at' => '2022-07-21 22:22:21',
+            ),
+            317 => 
+            array (
+                'id' => 387,
+                'soal' => 'Berapa HB Ibu Hamil ?',
+                'urutan' => 18,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 45,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 22:23:16',
+                'updated_at' => '2022-07-21 22:23:16',
+            ),
+            318 => 
+            array (
+                'id' => 388,
+            'soal' => 'Berapa lingkar lengan atas ibu hamil (Cm) ?',
+                'urutan' => 19,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 45,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 22:23:51',
+                'updated_at' => '2022-07-21 22:23:51',
+            ),
+            319 => 
+            array (
+                'id' => 389,
+            'soal' => 'Berapa berat badan ibu hamil (Kg) ?',
+                'urutan' => 20,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 45,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 22:24:24',
+                'updated_at' => '2022-07-21 22:24:24',
+            ),
+            320 => 
+            array (
+                'id' => 390,
+            'soal' => 'Berapa tekanan darah ibu hamil (mm/Hg, contoh : 120/80) ?)',
+                'urutan' => 21,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 45,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 22:24:55',
+                'updated_at' => '2022-07-21 22:24:55',
+            ),
+            321 => 
+            array (
+                'id' => 391,
+            'soal' => 'Berapa penambahan berat badan selama hamil berapa (Kg) ?',
+                'urutan' => 22,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 45,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 22:25:56',
+                'updated_at' => '2022-07-21 22:25:56',
+            ),
+            322 => 
+            array (
+                'id' => 392,
+            'soal' => 'Apakah ibu hamil rutin minum tablet tambah darah (Fe) ?',
+                'urutan' => 23,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 45,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 22:26:55',
+                'updated_at' => '2022-07-21 22:26:55',
+            ),
+            323 => 
+            array (
+                'id' => 393,
+                'soal' => 'Bagaimana proses pemeriksaan ANC Ibu hamil ?',
+                'urutan' => 24,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 45,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 22:28:25',
+                'updated_at' => '2022-07-21 22:28:25',
+            ),
+            324 => 
+            array (
+                'id' => 394,
+            'soal' => 'Apakah imunisasi Tetanus Toksoid (TT) ibu hamil lengkap ?',
+                'urutan' => 25,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 45,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 22:30:37',
+                'updated_at' => '2022-07-21 22:30:37',
+            ),
+            325 => 
+            array (
+                'id' => 395,
+                'soal' => 'Apakah anda menggunakan alat kontrasepsi KB, kemudian hamil ?',
+                'urutan' => 26,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 45,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 22:31:41',
+                'updated_at' => '2022-07-21 22:31:41',
+            ),
+            326 => 
+            array (
+                'id' => 396,
+                'soal' => 'Apakah anda meminum suplemen tambahan selama hamil  ?',
+                'urutan' => 27,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 45,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 22:32:23',
+                'updated_at' => '2022-07-21 22:32:23',
+            ),
+            327 => 
+            array (
+                'id' => 397,
+                'soal' => 'Apakah ada ibu nifas / menyusui dalam rumah ini ?',
+                'urutan' => 28,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 45,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 22:34:26',
+                'updated_at' => '2022-07-21 22:34:26',
+            ),
+            328 => 
+            array (
+                'id' => 398,
+                'soal' => 'Siapa yang menolong ibu saat bersalin ?',
+                'urutan' => 29,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 45,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 22:36:28',
+                'updated_at' => '2022-07-21 22:36:28',
+            ),
+            329 => 
+            array (
+                'id' => 399,
+            'soal' => 'Apakah Ibu akan memberikan ASI eksklusif (Hanya memberi ASI sampai usia 6 bulan tanpa tambahan makanan lainnya selain obat) ?',
+                'urutan' => 30,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 45,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 22:38:12',
+                'updated_at' => '2022-07-21 22:38:12',
+            ),
+            330 => 
+            array (
+                'id' => 400,
+                'soal' => 'Kapan Ibu mulai memberikan ASI pada bayi ?',
+                'urutan' => 31,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 45,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 22:39:03',
+                'updated_at' => '2022-07-21 22:39:03',
+            ),
+            331 => 
+            array (
+                'id' => 402,
+            'soal' => 'Berapa Panjang Badan Bayi (cm) ?',
+                'urutan' => 32,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 45,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 22:40:45',
+                'updated_at' => '2022-07-21 22:40:45',
+            ),
+            332 => 
+            array (
+                'id' => 403,
+            'soal' => 'Umur Bayi (Bulan) ?',
+                'urutan' => 33,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 45,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 22:41:08',
+                'updated_at' => '2022-07-21 22:41:08',
+            ),
+            333 => 
+            array (
+                'id' => 404,
+            'soal' => 'Berapa tinggi badan bayi dua tahun (BADUTA) (Cm) ?',
+                'urutan' => 34,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 45,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 22:41:57',
+                'updated_at' => '2022-07-21 22:41:57',
+            ),
+            334 => 
+            array (
+                'id' => 405,
+            'soal' => 'Berapa umur bayi dua tahun (BADUTA) (Bulan)',
+                'urutan' => 35,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 45,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 22:42:23',
+                'updated_at' => '2022-07-21 22:42:23',
+            ),
+            335 => 
+            array (
+                'id' => 406,
+            'soal' => 'Bagaiman status Imunisasi bayi / bayi dua tahun (BADUTA) / bayi lima tahun (BALITA) ?',
+                'urutan' => 36,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 45,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 22:45:30',
+                'updated_at' => '2022-07-21 22:45:30',
+            ),
+            336 => 
+            array (
+                'id' => 407,
+            'soal' => 'Untuk bayi dua tahun (BADUTA), apakah ada suplemen tambahan ?',
+                'urutan' => 37,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 45,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 22:46:18',
+                'updated_at' => '2022-07-21 22:46:18',
+            ),
+            337 => 
+            array (
+                'id' => 408,
+                'soal' => 'Apakah ibu pernah mendengar istilah “kolostrum” ?',
+                'urutan' => 38,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 45,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 22:46:46',
+                'updated_at' => '2022-07-21 22:46:46',
+            ),
+            338 => 
+            array (
+                'id' => 409,
+                'soal' => 'Apa yang dimaksud dengan kolostrum ?',
+                'urutan' => 39,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 45,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 22:47:33',
+                'updated_at' => '2022-07-21 22:47:33',
+            ),
+            339 => 
+            array (
+                'id' => 410,
+                'soal' => 'Apakah ibu memberikan kolostrum pada bayi Ibu ?',
+                'urutan' => 40,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 45,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 22:48:16',
+                'updated_at' => '2022-07-21 22:48:16',
+            ),
+            340 => 
+            array (
+                'id' => 411,
+                'soal' => 'Hal apa yang dilakukan setelah bayi lahir ?',
+                'urutan' => 41,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 45,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 22:51:34',
+                'updated_at' => '2022-07-21 22:51:34',
+            ),
+            341 => 
+            array (
+                'id' => 412,
+                'soal' => 'Apakah anak ibu diberikan ASI sampai dua tahun ?',
+                'urutan' => 42,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 45,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 22:52:04',
+                'updated_at' => '2022-07-21 22:52:04',
+            ),
+            342 => 
+            array (
+                'id' => 413,
+                'soal' => 'Makanan apa yang pertama diberikan sebagai makanan tambahan pada bayi ? Sebutkan !',
+                'urutan' => 43,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 45,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 22:52:20',
+                'updated_at' => '2022-07-21 22:52:20',
+            ),
+            343 => 
+            array (
+                'id' => 414,
+                'soal' => 'Bagi saya, seorang anak harus mematuhi peraturan yang dibuat oleh orang tua',
+                'urutan' => 1,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 46,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 22:53:18',
+                'updated_at' => '2022-07-21 22:53:18',
+            ),
+            344 => 
+            array (
+                'id' => 415,
+                'soal' => 'Bagi saya,  perilaku marah kepada anak adalah hal yang biasa atau lumrah',
+                'urutan' => 2,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 46,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 22:53:41',
+                'updated_at' => '2022-07-21 22:53:41',
+            ),
+            345 => 
+            array (
+                'id' => 416,
+            'soal' => 'Bagi saya, kekerasan terhadap anak (memukul) adalah hal yang biasa',
+                'urutan' => 3,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 46,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 22:53:56',
+                'updated_at' => '2022-07-21 22:53:56',
+            ),
+            346 => 
+            array (
+                'id' => 417,
+                'soal' => 'Bagi saya, perilaku yang dilakukan oleh anak harus atas seizin orang tua',
+                'urutan' => 4,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 46,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 22:54:09',
+                'updated_at' => '2022-07-21 22:54:09',
+            ),
+            347 => 
+            array (
+                'id' => 418,
+                'soal' => 'Bagi saya, anak-anak tidak perlu mengetahui permasalahan orang tua',
+                'urutan' => 5,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 46,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 22:54:24',
+                'updated_at' => '2022-07-21 22:54:24',
+            ),
+            348 => 
+            array (
+                'id' => 419,
+                'soal' => 'Bagi saya, penting bagi seorang anak untuk mengungkapkan perasaannya',
+                'urutan' => 6,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 46,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 22:54:48',
+                'updated_at' => '2022-07-21 22:54:48',
+            ),
+            349 => 
+            array (
+                'id' => 420,
+                'soal' => 'Bagi saya, penting bagi orang tua untuk menjelaskan kepada anak tentang perbuatan baik dan buruk',
+                'urutan' => 7,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 46,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 22:55:09',
+                'updated_at' => '2022-07-21 22:55:09',
+            ),
+            350 => 
+            array (
+                'id' => 421,
+                'soal' => 'Bagi saya, penting bagi orang tua untuk mengetahui aktifitas yang dilakukan oleh anak',
+                'urutan' => 8,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 46,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 22:55:23',
+                'updated_at' => '2022-07-21 22:55:23',
+            ),
+            351 => 
+            array (
+                'id' => 422,
+                'soal' => 'Bagi saya, jika anak berperilaku baik maka ia perlu mendapatkan pujian',
+                'urutan' => 9,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 46,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 22:55:44',
+                'updated_at' => '2022-07-21 22:55:44',
+            ),
+            352 => 
+            array (
+                'id' => 423,
+                'soal' => 'Bagi saya, jika ada permasalahan dalam keluarga maka anak perlu dilibatkan untuk berdiskusi terkait permasalahan tersebut',
+                'urutan' => 10,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 46,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 22:56:00',
+                'updated_at' => '2022-07-21 22:56:00',
+            ),
+            353 => 
+            array (
+                'id' => 424,
+                'soal' => 'Bagi saya, pergaulan anak tidak perlu dibatasi',
+                'urutan' => 11,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 46,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 22:56:12',
+                'updated_at' => '2022-07-21 22:56:12',
+            ),
+            354 => 
+            array (
+                'id' => 425,
+                'soal' => 'Bagi saya, adalah baik untuk tidak melarang anak untuk melakukan apa yang diinginkan',
+                'urutan' => 12,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 46,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 22:56:30',
+                'updated_at' => '2022-07-21 22:56:30',
+            ),
+            355 => 
+            array (
+                'id' => 426,
+                'soal' => 'Bagi saya, semua keinginan anak harus dipenuhi',
+                'urutan' => 13,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 46,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 22:56:44',
+                'updated_at' => '2022-07-21 22:56:44',
+            ),
+            356 => 
+            array (
+                'id' => 427,
+                'soal' => 'Bagi saya, perlu untuk memberikan kebebasan kepada anak untuk memilih apa yang ingin dilakukan atau dikerjakan',
+                'urutan' => 14,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 46,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 22:56:59',
+                'updated_at' => '2022-07-21 22:56:59',
+            ),
+            357 => 
+            array (
+                'id' => 428,
+                'soal' => 'Bagi saya, tidak masalah jika seorang ibu jarang mengurus anak',
+                'urutan' => 15,
+                'tipe_jawaban' => 'Pilihan Ganda',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 46,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-21 22:57:17',
+                'updated_at' => '2022-07-21 22:57:17',
             ),
         ));
         
