@@ -88,11 +88,11 @@ class DatabaseSeeder extends Seeder
 
 
 
-        $this->call(RespondenSeeder::class);
-        $this->call(UserSeeder::class);
-        $this->call(ProfileSeeder::class);
-        $this->call(InstitusiSeeder::class);
-        $this->call(SurveySeeder::class);
+        // $this->call(RespondenSeeder::class);
+        // $this->call(UserSeeder::class);
+        // $this->call(ProfileSeeder::class);
+        // $this->call(InstitusiSeeder::class);
+        // $this->call(SurveySeeder::class);
         $this->call(ProvinsiTableSeeder::class);
         $this->call(KabupatenKotaTableSeeder::class);
         $this->call(KecamatanTableSeeder::class);
@@ -101,5 +101,9 @@ class DatabaseSeeder extends Seeder
         $this->call(KategoriSoalTableSeeder::class);
         $this->call(SoalTableSeeder::class);
         $this->call(JawabanSoalTableSeeder::class);
+        $this->call(InstitusiTableSeeder::class);
+        $this->call(ProfilesTableSeeder::class);
+        $this->call(RespondenTableSeeder::class);
+        $this->call(UsersTableSeeder::class);
     }
 }
