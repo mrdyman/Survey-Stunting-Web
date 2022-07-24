@@ -4,6 +4,7 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use App\Models\JawabanSurvey;
+use App\Models\Survey;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Concerns\ToArray;
 
@@ -65,6 +66,14 @@ class ApiJawabanSurveyController extends Controller
      */
     public function store(Request $request)
     {
+        $kodeUnikSurvey = $request->all()[0]['kode_unik_survey'];
+        
+        $survey = Survey::where('kode_unik', $kodeUnikSurvey)->first();
+        if($survey == null){
+            return response([
+                'message' => 'failed to create data. survey with kode_unik '. $kodeUnikSurvey . ' not found.'
+            ], 400);
+        }
         $data = JawabanSurvey::insert($request->all());
         
         if($data){
