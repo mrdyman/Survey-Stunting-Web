@@ -307,6 +307,8 @@ class SurveyController extends Controller
             }
             $survey->save();
             $url = url('/survey/pertanyaan-survey/') . "/" . $kodeUnik . "/" . $kategori[$indexKategori + 1]->id;
+            // touch survey to update field updatedAt into current time stamp
+            $survey->touch();
         }
 
         return response()->json(
