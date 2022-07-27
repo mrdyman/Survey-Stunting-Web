@@ -69,9 +69,12 @@ class UserController extends Controller
                 })
                 ->filter(function ($query) use ($request) {
                     if ($request->search != '') {
-                        $query->whereHas('profile', function ($query) use ($request) {
-                            $query->where("profiles.nama_lengkap", "LIKE", "%$request->search%")
-                                ->orWhere("users.username", "LIKE", "%$request->search%");
+                        $query->where(function ($query) use ($request) {
+                            $query->whereHas('profile', function ($query) use ($request) {
+                                $query->where("profiles.nama_lengkap", "LIKE", "%$request->search%");
+                                    
+                            });
+                            $query->orWhere("users.username", "LIKE", "%$request->search%");                        
                         });
                     }
 

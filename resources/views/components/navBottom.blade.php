@@ -46,6 +46,9 @@
                             <li>
                                 <a href="{{ url('wilayah-provinsi') }}">Wilayah</a>
                             </li>
+                            <li>
+                                <a href="{{ url('lokasi-survey') }}">Lokasi Survey</a>
+                            </li>
                         </ul>
                     </div>
                 </li>
