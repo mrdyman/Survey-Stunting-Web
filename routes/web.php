@@ -23,6 +23,7 @@ use App\Http\Controllers\masterData\wilayah\ProvinsiController;
 use App\Http\Controllers\masterData\wilayah\KabupatenKotaController;
 use App\Http\Controllers\masterData\wilayah\KecamatanController;
 use App\Http\Controllers\masterData\wilayah\DesaKelurahanController;
+use App\Http\Controllers\masterData\LokasiSurveyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -108,6 +109,9 @@ Route::group(['middleware' => ['admin']], function () {
     Route::resource("/soal/{kategoriSoal}", SoalController::class)->parameters([
         '{kategoriSoal}' => 'soal'
     ]);
+
+    Route::resource('/lokasi-survey', LokasiSurveyController::class);
+
 });
 
 
