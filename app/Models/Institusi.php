@@ -13,4 +13,9 @@ class Institusi extends Model
 
     protected $table = 'institusi';
     protected $guarded = ['id'];
+
+    public function profiles()
+    {
+        return $this->hasMany(Profile::class);
+    }
 }

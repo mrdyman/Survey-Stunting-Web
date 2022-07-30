@@ -29,6 +29,16 @@ class NamaSurveyTableSeeder extends Seeder
                 'created_at' => '2022-07-21 20:24:16',
                 'updated_at' => '2022-07-21 20:24:16',
             ),
+            1 => 
+            array (
+                'id' => 7,
+                'nama' => 'Coba DPL',
+                'tipe' => 'Pre',
+                'is_aktif' => 1,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-28 20:47:11',
+                'updated_at' => '2022-07-28 20:47:11',
+            ),
         ));
         
         

@@ -4315,6 +4315,18 @@ class SoalTableSeeder extends Seeder
                 'created_at' => '2022-07-21 22:57:17',
                 'updated_at' => '2022-07-21 22:57:17',
             ),
+            358 => 
+            array (
+                'id' => 429,
+                'soal' => 'Siapa Nama Anda ?',
+                'urutan' => 1,
+                'tipe_jawaban' => 'Jawaban Singkat',
+                'is_numerik' => 0,
+                'kategori_soal_id' => 47,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-28 20:47:39',
+                'updated_at' => '2022-07-28 20:47:39',
+            ),
         ));
         
         

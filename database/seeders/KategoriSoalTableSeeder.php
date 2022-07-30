@@ -89,6 +89,16 @@ class KategoriSoalTableSeeder extends Seeder
                 'created_at' => '2022-07-21 22:52:52',
                 'updated_at' => '2022-07-21 22:52:52',
             ),
+            7 => 
+            array (
+                'id' => 47,
+                'urutan' => 1,
+                'nama' => 'Biografi',
+                'nama_survey_id' => 7,
+                'deleted_at' => NULL,
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
         ));
         
         
