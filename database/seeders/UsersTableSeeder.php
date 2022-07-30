@@ -48,12 +48,12 @@ class UsersTableSeeder extends Seeder
                 'id' => 3,
                 'username' => 'surveyor2',
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
-                'status' => 2,
+                'status' => 1,
                 'role' => 'Surveyor',
                 'remember_token' => NULL,
                 'deleted_at' => NULL,
                 'created_at' => NULL,
-                'updated_at' => NULL,
+                'updated_at' => '2022-07-28 20:48:37',
             ),
             3 => 
             array (
@@ -3522,6 +3522,54 @@ class UsersTableSeeder extends Seeder
                 'deleted_at' => NULL,
                 'created_at' => '2022-07-12 13:54:54',
                 'updated_at' => '2022-07-12 13:54:54',
+            ),
+            292 => 
+            array (
+                'id' => 296,
+                'username' => 'dpl1',
+                'password' => '$2y$10$MHnBQIvrCNspqJUHGOV79uKhLxsFl1A7IQlRDtitKj5FUyehNV9Qi',
+                'status' => 1,
+                'role' => 'Supervisor',
+                'remember_token' => NULL,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-28 10:40:45',
+                'updated_at' => '2022-07-28 10:40:45',
+            ),
+            293 => 
+            array (
+                'id' => 297,
+                'username' => 'dpl2',
+                'password' => '$2y$10$uOieWGIyRRn9vHSLjWZfeeufNThfsOub.IA5nptYI3l0ItP8uTVRG',
+                'status' => 1,
+                'role' => 'Supervisor',
+                'remember_token' => NULL,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-28 10:41:00',
+                'updated_at' => '2022-07-28 10:41:00',
+            ),
+            294 => 
+            array (
+                'id' => 298,
+                'username' => 'untad',
+                'password' => '$2y$10$AaEx8uytVRqzsc6heOD5V.U0X45qjHD0E2VZZPoesUaVuKfQNYkV6',
+                'status' => 1,
+                'role' => 'Institusi',
+                'remember_token' => NULL,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-29 15:16:41',
+                'updated_at' => '2022-07-29 15:16:41',
+            ),
+            295 => 
+            array (
+                'id' => 299,
+                'username' => 'alkhairat',
+                'password' => '$2y$10$rNTbooSOI5i684pNS01DWOsVVLOt1PzJhxW6r53.usK0dskmMfLI2',
+                'status' => 1,
+                'role' => 'Institusi',
+                'remember_token' => NULL,
+                'deleted_at' => NULL,
+                'created_at' => '2022-07-29 22:09:54',
+                'updated_at' => '2022-07-29 22:09:54',
             ),
         ));
         

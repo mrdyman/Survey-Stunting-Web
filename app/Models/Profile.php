@@ -22,6 +22,17 @@ class Profile extends Model
     {
         return $this->belongsTo(Institusi::class);
     }
+
+    public function lokasiSurveySupervisor()
+    {
+        return $this->hasMany(LokasiSurveySupervisor::class, 'profile_id', 'id');
+    }
+
+    public function anggotaSupervisor()
+    {
+        return $this->belongsTo(AnggotaSupervisor::class, 'id', 'profile_surveyor');
+    }
+
     /**
      * Prepare a date for array / JSON serialization.
      *

@@ -11,12 +11,22 @@
                     <span class="menu-title">Beranda</span>
                 </a>
             </li>
-            <li class="nav-item menu">
-                <a class="nav-link" href="{{ url('/survey/daftar-survey') }}">
-                    <i class="link-icon icon-book-open text-danger"></i>
-                    <span class="menu-title">Survey</span>
-                </a>
-            </li>
+            @if (Auth::user()->role != 'Supervisor')
+                <li class="nav-item menu">
+                    <a class="nav-link" href="{{ url('/survey/daftar-survey') }}">
+                        <i class="link-icon icon-book-open text-danger"></i>
+                        <span class="menu-title">Survey</span>
+                    </a>
+                </li>
+            @else
+                <li class="nav-item menu">
+                    <a class="nav-link" href="{{ url('/survey-supervisor/lokasi-survey') }}">
+                        <i class="link-icon icon-book-open text-danger"></i>
+                        <span class="menu-title">Survey</span>
+                    </a>
+                </li>
+            @endif
+
             @if (Auth::user()->role == 'Admin')
                 <li class="nav-item menu">
                     <a class="nav-link" href="{{ url('/namaSurvey') }}">
@@ -49,6 +59,9 @@
                             <li>
                                 <a href="{{ url('lokasi-survey') }}">Lokasi Survey</a>
                             </li>
+                            <li>
+                                <a href="{{ url('institusi-supervisor-dpl') }}">Supervisor / DPL</a>
+                            </li>
                         </ul>
                     </div>
                 </li>
@@ -59,12 +72,15 @@
                     <span class="menu-title"> Export Survey</span>
                 </a>
             </li>
-            <li class="nav-item menu">
-                <a class="nav-link" href="{{ url('/importSurvey') }}">
-                    <i class="link-icon icon-cloud-upload text-danger"></i>
-                    <span class="menu-title"> Import Survey Android</span>
-                </a>
-            </li>
+            @if (!in_array(Auth::user()->role, ['Institusi', 'Supervisor']))
+                <li class="nav-item menu">
+                    <a class="nav-link" href="{{ url('/importSurvey') }}">
+                        <i class="link-icon icon-cloud-upload text-danger"></i>
+                        <span class="menu-title"> Import Survey Android</span>
+                    </a>
+                </li>
+            @endif
+
 
         </ul>
     </div>

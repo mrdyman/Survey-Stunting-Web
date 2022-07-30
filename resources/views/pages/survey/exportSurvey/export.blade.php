@@ -21,6 +21,13 @@
                 <th colspan="8">{{ $institusi->nama }}</th>
             </tr>
         @endif
+        @if ($supervisor)
+            <tr>
+                <th></th>
+                <th colspan="2">Supervisor / DPL : </th>
+                <th colspan="8">{{ $supervisor->nama_lengkap }}</th>
+            </tr>
+        @endif
 
     </table>
 

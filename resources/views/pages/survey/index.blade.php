@@ -53,6 +53,40 @@
                     @endslot
                 @endcomponent
             </div>
+            @if (in_array(Auth::user()->role, ['Admin', 'Institusi']))
+                @if (Auth::user()->role == 'Admin')
+                    <div class="col-lg">
+                        @component('components.formGroup.select',
+                            [
+                                'label' => 'Pilih Institusi',
+                                'name' => 'institusi_id',
+                                'id' => 'institusi_id',
+                                'class' => 'filter select2',
+                            ])
+                            @slot('options')
+                                <option value="semua">Semua</option>
+                                @if (count($institusi) > 0)
+                                    @foreach ($institusi as $row)
+                                        <option value="{{ $row->id }}">{{ $row->nama }}</option>
+                                    @endforeach
+                                @endif
+                            @endslot
+                        @endcomponent
+                    </div>
+                @endif
+                <div class="col-lg">
+                    @component('components.formGroup.select',
+                        [
+                            'label' => 'Pilih Supervisor / DPL',
+                            'name' => 'supervisor_id',
+                            'id' => 'supervisor_id',
+                            'class' => 'filter select2',
+                        ])
+                        @slot('options')
+                        @endslot
+                    @endcomponent
+                </div>
+            @endif
             @if (Auth::user()->role == 'Surveyor')
                 <div class="col-lg">
                     @component('components.formGroup.select',
@@ -98,6 +132,7 @@
                     <tr class="text-center  ">
                         <th>No</th>
                         <th>Nama</th>
+                        <th>Supervisor / DPL</th>
                         <th>Tipe</th>
                         <th>Status</th>
                         <th>Tanggal</th>
@@ -113,6 +148,9 @@
 
 @push('script')
     <script>
+        var idInstitusi = "{{ Auth::user()->profile->institusi_id }}";
+        getSupervisor(idInstitusi);
+
         function hapus(id) {
             swal({
                 title: "Apakah anda yakin?",
@@ -183,6 +221,8 @@
                 url: "{{ url('/survey/daftar-survey') }}",
                 data: function(d) {
                     d.nama_survey_id = $('#nama_survey_id').val();
+                    d.institusi_id = $('#institusi_id').val();
+                    d.supervisor_id = $('#supervisor_id').val();
                     d.status = $('#status').val();
                     d.search = $('input[type="search"]').val();
                 }
@@ -197,6 +237,10 @@
                 {
                     data: 'nama',
                     name: 'nama'
+                },
+                {
+                    data: 'supervisor',
+                    name: 'supervisor'
                 },
                 {
                     data: 'tipe',
@@ -222,6 +266,38 @@
                 },
             ],
         });
+
+        $('#institusi_id').change(function() {
+            if ("{{ Auth::user()->role }}" == "Admin") {
+                var idInstitusi = $(this).val();
+            }
+            getSupervisor(idInstitusi);
+        })
+
+        function getSupervisor(idInstitusi) {
+            $('#supervisor_id').html('');
+            $.ajax({
+                url: "{{ url('list/supervisor') }}",
+                type: 'GET',
+                data: {
+                    '_token': '{{ csrf_token() }}',
+                    idInstitusi: idInstitusi
+                },
+                success: function(response) {
+                    if (response.length > 0) {
+                        $('#supervisor_id').append("<option></option>");
+                        $('#supervisor_id').append("<option value='semua'>Semua</option>");
+                        for (var i = 0; i < response.length; i++) {
+                            $('#supervisor_id').append('<option value="' + response[i].id + '">' +
+                                response[
+                                    i]
+                                .nama_lengkap +
+                                '</option>');
+                        }
+                    }
+                }
+            })
+        }
 
         $('.filter').change(function() {
             table.draw();

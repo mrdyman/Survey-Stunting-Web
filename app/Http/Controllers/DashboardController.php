@@ -25,7 +25,7 @@ class DashboardController extends Controller
         if ($profile == null) {
             return redirect(route('lengkapiProfile'));
         } else {
-            if (Auth::user()->role == 'Admin') {
+            if (in_array(Auth::user()->role, array('Admin', 'Supervisor', 'Institusi'))) {
                 $data = [
                     'totalSurvey' => Survey::where('is_selesai', 1)->count(),
                     'totalSurveyPre' => Survey::with('namaSurvey')->whereHas('namaSurvey', function ($query) {

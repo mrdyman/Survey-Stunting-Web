@@ -24,6 +24,12 @@ use App\Http\Controllers\masterData\wilayah\KabupatenKotaController;
 use App\Http\Controllers\masterData\wilayah\KecamatanController;
 use App\Http\Controllers\masterData\wilayah\DesaKelurahanController;
 use App\Http\Controllers\masterData\LokasiSurveyController;
+use App\Http\Controllers\masterData\supervisorDpl\AnggotaSupervisorController;
+use App\Http\Controllers\masterData\supervisorDpl\InstitusiSupervisorDplController;
+use App\Http\Controllers\masterData\supervisorDpl\LokasiSurveySupervisorController;
+use App\Http\Controllers\masterData\supervisorDpl\SupervisorDplController;
+use App\Http\Controllers\surveySupervisor\SurveySupervisorController;
+use App\Http\Controllers\surveySupervisor\SurveySupervisorLokasiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -112,6 +118,15 @@ Route::group(['middleware' => ['admin']], function () {
 
     Route::resource('/lokasi-survey', LokasiSurveyController::class); //// NEW
 
+    // DPL
+    Route::get('/institusi-supervisor-dpl', [InstitusiSupervisorDplController::class, 'index']);
+    Route::get('/supervisor-dpl/{institusi}', [SupervisorDplController::class, 'index']);
+    Route::resource('/lokasi-survey-supervisor-dpl/{dpl}', LokasiSurveySupervisorController::class)->parameters([
+        '{dpl}' => 'lokasiSurvey'
+    ]);
+    Route::resource('/anggota-supervisor-dpl/{lokasiSurveySupervisor}', AnggotaSupervisorController::class)->parameters([
+        '{lokasiSurveySupervisor}' => 'anggotaSupervisor'
+    ]);
 });
 
 
@@ -123,11 +138,16 @@ Route::group(['middleware' => ['surveyor']], function () {
     Route::post('/survey/cek-jawaban/{survey}', [SurveyController::class, 'cekJawabanSurvey']);
 });
 
+Route::get('/survey-supervisor/lokasi-survey', [SurveySupervisorLokasiController::class, 'index']);
+Route::get('/survey-supervisor/survey/{lokasiSurveySupervisor}', [SurveySupervisorController::class, 'index']);
 
 // Wilayah Indonesia
 Route::get('/provinsi', [ListController::class, 'listProvinsi'])->name('listProvinsi');
 Route::get('/kabupaten-kota', [ListController::class, 'listKabupatenKota'])->name('listKabupatenKota');
 Route::get('/kecamatan', [ListController::class, 'listKecamatan'])->name('listKecamatan');
 Route::get('/desa-kelurahan', [ListController::class, 'listDesaKelurahan'])->name('listDesaKelurahan');
+Route::get('/list/lokasi-survey', [ListController::class, 'listLokasiSurvey']);
+Route::get('/list/surveyor', [ListController::class, 'listSurveyor']);
+Route::get('/list/supervisor', [ListController::class, 'listSupervisor']);
 
 Route::post('/namaSurvey/{namaSurvey}/duplikat', [NamaSurveyController::class, 'duplikat']);

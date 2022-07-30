@@ -29,6 +29,16 @@ class Survey extends Model
         return $this->belongsTo(Profile::class)->withTrashed();
     }
 
+    public function anggotaSupervisor()
+    {
+        return $this->hasMany(AnggotaSupervisor::class, 'profile_surveyor', 'profile_id');
+    }
+
+    public function supervisor()
+    {
+        return $this->hasMany(AnggotaSupervisor::class, 'profile_surveyor', 'profile_id')->groupBy('profile_dpl');
+    }
+
     /**
      * Prepare a date for array / JSON serialization.
      *
