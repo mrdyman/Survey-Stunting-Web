@@ -67,7 +67,12 @@ class DashboardController extends Controller
                     })->count(),
                 ];
                 return view('pages.dashboard.surveyor', $data);
+            } else if(Auth::user()->role == 'Supervisor'){
+                dd('berhasil supervisor / dpl');
+            } else if(Auth::user()->role == 'Institusi'){
+                dd('berhasil institusi / universitas');
             }
+            
         }
     }
 

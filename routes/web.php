@@ -110,7 +110,7 @@ Route::group(['middleware' => ['admin']], function () {
         '{kategoriSoal}' => 'soal'
     ]);
 
-    Route::resource('/lokasi-survey', LokasiSurveyController::class);
+    Route::resource('/lokasi-survey', LokasiSurveyController::class); //// NEW
 
 });
 
