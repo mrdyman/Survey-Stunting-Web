@@ -106,5 +106,9 @@ class DatabaseSeeder extends Seeder
         $this->call(RespondenTableSeeder::class);
         $this->call(UsersTableSeeder::class);
         $this->call(LokasiSurveyTableSeeder::class);
+        $this->call(JawabanSurveyTableSeeder::class);
+        $this->call(SurveyTableSeeder::class);
+        $this->call(LokasiSurveySupervisorTableSeeder::class);
+        $this->call(AnggotaSupervisorTableSeeder::class);
     }
 }

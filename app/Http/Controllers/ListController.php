@@ -10,6 +10,8 @@ use App\Models\Desa_kelurahan;
 use App\Models\Kabupaten_kota;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\LokasiSurvey;
+use App\Models\Profile;
 
 class ListController extends Controller
 {
@@ -55,5 +57,50 @@ class ListController extends Controller
         }
         $json = json_decode(($url));
         return $json;
+    }
+
+    public function listLokasiSurvey(Request $request)
+    {
+        $idLokasiSurvey = $request->idLokasiSurvey;
+        $lokasiSurvey = LokasiSurvey::with(['desa_kelurahan', 'desa_kelurahan.kecamatan', 'desa_kelurahan.kecamatan.kabupatenKota', 'desa_kelurahan.kecamatan.kabupatenKota.provinsi'])->orderBy('nama_lokasi_survey', 'asc')->get();
+
+        if ($idLokasiSurvey) {
+            $lokasiSurveyHapus = LokasiSurvey::with(['desa_kelurahan', 'desa_kelurahan.kecamatan', 'desa_kelurahan.kecamatan.kabupatenKota', 'desa_kelurahan.kecamatan.kabupatenKota.provinsi'])->where('id', $idLokasiSurvey)->withTrashed()->first();
+            if ($lokasiSurveyHapus->trashed()) {
+                $lokasiSurvey->push($lokasiSurveyHapus);
+            }
+        }
+
+        return response()->json($lokasiSurvey);
+    }
+
+    public function listSurveyor(Request $request)
+    {
+        $dpl = Profile::where('id', $request->idSupervisor)->first();
+        $idProfileSurveyor = $request->idProfileSurveyor;
+        $surveyor = Profile::where('institusi_id', $dpl->institusi_id)->whereHas('user', function ($query) {
+            $query->where('role', '=', 'Surveyor');
+        })->get();
+
+        if ($idProfileSurveyor) {
+            $surveyorHapus = Profile::where('institusi_id', $dpl->institusi_id)->where('id', $idProfileSurveyor)->whereHas('user', function ($query) {
+                $query->where('role', '=', 'Surveyor');
+            })->withTrashed()->first();
+            if ($surveyorHapus->trashed()) {
+                $surveyor->push($surveyorHapus);
+            }
+        }
+
+        return response()->json($surveyor);
+    }
+
+    public function listSupervisor(Request $request)
+    {
+        $idInstitusi = $request->idInstitusi;
+        $supervisor = Profile::where('institusi_id', $idInstitusi)->whereHas('user', function ($query) {
+            $query->where('role', 'Supervisor');
+        })->get();
+
+        return response()->json($supervisor);
     }
 }

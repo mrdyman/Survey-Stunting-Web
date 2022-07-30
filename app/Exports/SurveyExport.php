@@ -11,13 +11,15 @@ class SurveyExport implements FromView
     protected $survey;
     protected $surveyor;
     protected $institusi;
+    protected $supervisor;
 
-    function __construct($kategori, $survey, $surveyor, $institusi)
+    function __construct($kategori, $survey, $surveyor, $institusi, $supervisor)
     {
         $this->kategori = $kategori;
         $this->survey = $survey;
         $this->surveyor = $surveyor;
         $this->institusi = $institusi;
+        $this->supervisor = $supervisor;
     }
 
     /**
@@ -29,6 +31,7 @@ class SurveyExport implements FromView
         $daftarSurvey = $this->survey;
         $surveyor = $this->surveyor;
         $institusi = $this->institusi;
-        return view('pages.survey.exportSurvey.export', compact('daftarKategori', 'daftarSurvey', 'surveyor', 'institusi'));
+        $supervisor = $this->supervisor;
+        return view('pages.survey.exportSurvey.export', compact('daftarKategori', 'daftarSurvey', 'surveyor', 'institusi', 'supervisor'));
     }
 }

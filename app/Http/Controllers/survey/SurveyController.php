@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\survey;
 
 use App\Http\Controllers\Controller;
+use App\Models\Institusi;
 use App\Models\JawabanSurvey;
 use App\Models\KategoriSoal;
 use App\Models\NamaSurvey;
@@ -21,58 +22,91 @@ class SurveyController extends Controller
     public function index(Request $request)
     {
         $namaSurveyId = $request->nama_survey_id;
+        $institusiId = $request->institusi_id;
+        $supervisorId = $request->supervisor_id;
         $status = $request->status;
         $search = $request->search;
 
         $namaSurvey = NamaSurvey::all();
         if ($request->ajax()) {
-            $data = Survey::with(['responden', 'namaSurvey', 'profile'])->whereHas('namaSurvey', function ($namaSurvey) use ($namaSurveyId) {
-                if ($namaSurveyId != 'semua' && $namaSurveyId != null) {
-                    $namaSurvey->where('nama_survey_id', $namaSurveyId);
-                }
-            })->where(function ($query) {
-                if (Auth::user()->role == "Surveyor") {
-                    $query->where('profile_id', Auth::user()->profile->id);
-                }
-            })->where(function ($query) use ($status) {
-                if (Auth::user()->role == "Surveyor") {
-                    if ($status != 'semua' && $status != null) {
-                        if ($status == 'selesai') {
-                            $query->where('is_selesai', 1);
-                        } else {
-                            $query->where('is_selesai', 0);
+            $data = Survey::with(['responden', 'namaSurvey', 'profile'])
+                ->whereHas('namaSurvey', function ($namaSurvey) use ($namaSurveyId) {
+                    if ($namaSurveyId != 'semua' && $namaSurveyId != null) {
+                        $namaSurvey->where('nama_survey_id', $namaSurveyId);
+                    }
+                })
+                ->whereHas('profile', function ($query) use ($institusiId) {
+                    if (Auth::user()->role == "Admin") {
+                        if ($institusiId != 'semua' && $institusiId != null) {
+                            $query->where('institusi_id', $institusiId);
+                        }
+                    } else if (Auth::user()->role == "Institusi") {
+                        $query->where('institusi_id', Auth::user()->profile->institusi_id);
+                    }
+                })
+                ->whereHas('supervisor', function ($query) use ($supervisorId) {
+                    if (in_array(Auth::user()->role, ["Admin", 'Institusi'])) {
+                        if ($supervisorId != 'semua' && $supervisorId != null) {
+                            $query->where('profile_dpl', $supervisorId);
                         }
                     }
-                } else {
-                    $query->where('is_selesai', 1);
-                }
-            })->where(function ($query) use ($search) {
-                if ($search) {
-                    $query->whereHas('responden', function ($query) use ($search) {
-                        $query->where('kartu_keluarga', 'like', '%' . $search . '%');
-                        $query->orWhere('nama_kepala_keluarga', 'like', '%' . $search . '%');
-                    });
+                })
+                ->where(function ($query) {
+                    if (Auth::user()->role == "Surveyor") {
+                        $query->where('profile_id', Auth::user()->profile->id);
+                    }
+                })->where(function ($query) use ($status) {
+                    if (Auth::user()->role == "Surveyor") {
+                        if ($status != 'semua' && $status != null) {
+                            if ($status == 'selesai') {
+                                $query->where('is_selesai', 1);
+                            } else {
+                                $query->where('is_selesai', 0);
+                            }
+                        }
+                    } else {
+                        $query->where('is_selesai', 1);
+                    }
+                })->where(function ($query) use ($search) {
+                    if ($search) {
+                        $query->whereHas('responden', function ($query) use ($search) {
+                            $query->where('kartu_keluarga', 'like', '%' . $search . '%');
+                            $query->orWhere('nama_kepala_keluarga', 'like', '%' . $search . '%');
+                        });
 
-                    $query->orWhereHas('namaSurvey', function ($query) use ($search) {
-                        $query->where('nama', 'like', '%' . $search . '%');
-                    });
+                        $query->orWhereHas('namaSurvey', function ($query) use ($search) {
+                            $query->where('nama', 'like', '%' . $search . '%');
+                        });
 
-                    $query->orWhereHas('profile', function ($query) use ($search) {
-                        $query->where('nama_lengkap', 'like', '%' . $search . '%');
-                    });
-                }
-            })->latest()->get();
+                        $query->orWhereHas('profile', function ($query) use ($search) {
+                            $query->where('nama_lengkap', 'like', '%' . $search . '%');
+                        });
+                    }
+                })->latest()->get();
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('nama', function ($row) {
-                    if (Auth::user()->role == "Admin") {
+                    if (in_array(Auth::user()->role, ['Admin', 'Institusi'])) {
                         return '<h6 class="text-uppercase mb-1 mt-4">Surveyor: ' . $row->profile->nama_lengkap . '</h6>
                                     <h6 class="text-uppercase fw-bold mb-0">Responden: ' . $row->responden->kartu_keluarga . ' (' . $row->responden->nama_kepala_keluarga . ')</h6>
-                                    <span class="text-muted mb-4">Judul:  ' . $row->namaSurvey->nama . '</span>';
+                                    <span class="text-muted mb-4">Judul:  ' . $row->namaSurvey->nama . '</span>
+                                    <br>
+                                    <span class="text-muted mb-4">Institusi / Universitas:  ' . $row->profile->institusi->nama . '</span>';
                     } else if (Auth::user()->role == "Surveyor") {
                         return '<h6 class="text-uppercase fw-bold mb-0">Responden: ' . $row->responden->kartu_keluarga . ' (' . $row->responden->nama_kepala_keluarga . ')</h6>
                                     <span class="text-muted mb-4">Judul:  ' . $row->namaSurvey->nama . '</span>';
                     }
+                })
+                ->addColumn('supervisor', function ($row) {
+                    if (count($row->supervisor)) {
+                        $daftarSupervisor = '';
+                        foreach ($row->supervisor as $supervisor) {
+                            $daftarSupervisor .= '<p> - ' . $supervisor->profileSupervisor->nama_lengkap . '</p>';
+                        }
+                    } else {
+                        $daftarSupervisor = '-';
+                    }
+                    return $daftarSupervisor;
                 })
                 ->addColumn('tipe', function ($row) {
                     if ($row->namaSurvey->tipe == "Pre") {
@@ -106,14 +140,17 @@ class SurveyController extends Controller
                              <a href="' . url('/survey/pertanyaan-survey') . "/" . $row->kode_unik . "/" . $kategori->id . '" class="btn btn-warning btn-sm mr-1 my-1" title="Ubah" ><i class="fas fa-edit"></i> Ubah</a>';
                         }
 
-                        $actionBtn .= '<button id="btn-delete" onclick="hapus(' . $row->kode_unik . ')" class="btn btn-danger btn-sm mr-1 my-1" value="' . $row->kode_unik . '" title="Hapus"><i class="fas fa-trash"></i> Hapus</button></div>';
+                        if (Auth::user()->role != "Institusi") {
+                            $actionBtn .= '<button id="btn-delete" onclick="hapus(' . $row->kode_unik . ')" class="btn btn-danger btn-sm mr-1 my-1" value="' . $row->kode_unik . '" title="Hapus"><i class="fas fa-trash"></i> Hapus</button></div>';
+                        }
                     }
                     return $actionBtn;
                 })
-                ->rawColumns(['action', 'nama', 'tipe', 'status'])
+                ->rawColumns(['action', 'nama', 'supervisor', 'tipe', 'status'])
                 ->make(true);
         }
-        return view('pages.survey.index', compact('namaSurvey'));
+        $institusi = Institusi::orderBy('nama', 'asc')->get();
+        return view('pages.survey.index', compact('namaSurvey', 'institusi'));
     }
 
     public function pilihResponden()
