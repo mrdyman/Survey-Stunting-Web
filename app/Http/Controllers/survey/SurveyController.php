@@ -44,7 +44,7 @@ class SurveyController extends Controller
                         $query->where('institusi_id', Auth::user()->profile->institusi_id);
                     }
                 })
-                ->whereHas('supervisor', function ($query) use ($supervisorId) {
+                ->where(function ($query) use ($supervisorId) {
                     if (in_array(Auth::user()->role, ["Admin", 'Institusi'])) {
                         if ($supervisorId != 'semua' && $supervisorId != null) {
                             $query->where('profile_dpl', $supervisorId);
