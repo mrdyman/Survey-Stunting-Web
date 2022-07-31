@@ -19,10 +19,6 @@ class RespondenController extends Controller
      */
     public function index(Request $request)
     {
-
-        // $data = Responden::with('provinsi', 'kabupaten_kota', 'kecamatan', 'desa_kelurahan')->get();
-        // dd($data);
-
         if ($request->ajax()) {
             $data = Responden::with('provinsi', 'kabupaten_kota', 'kecamatan', 'desa_kelurahan')->orderBy('created_at', 'DESC');
             return DataTables::of($data)
@@ -48,6 +44,39 @@ class RespondenController extends Controller
                     <button id="btn-delete" onclick="hapus(' . $row->id . ')" class="btn btn-danger btn-sm mr-1 my-1" value="' . $row->id . '" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fas fa-trash"></i></button>
                 </div>';
                     return $actionBtn;
+                })
+                ->filter(function ($query) use ($request) {
+                    if ($request->search != '') {
+                        $query->where(function ($query) use ($request) {
+                            $query->where("nama_kepala_keluarga", "LIKE", "%$request->search%");
+                                
+                            $query->orWhere("kartu_keluarga", "LIKE", "%$request->search%");                        
+                        });
+                    }
+
+                    if (!empty($request->provinsi)) {
+                        $query->whereHas('provinsi', function ($query) use ($request) {
+                            $query->where('id', $request->provinsi);
+                        });
+                    }
+
+                    if (!empty($request->kabupaten)) {
+                        $query->whereHas('kabupaten_kota', function ($query) use ($request) {
+                            $query->where('id', $request->kabupaten);
+                        });
+                    }
+
+                    if (!empty($request->kecamatan)) {
+                        $query->whereHas('kecamatan', function ($query) use ($request) {
+                            $query->where('id', $request->kecamatan);
+                        });
+                    }
+
+                    if (!empty($request->desa)) {
+                        $query->whereHas('desa_kelurahan', function ($query) use ($request) {
+                            $query->where('id', $request->desa);
+                        });
+                    }
                 })
                 ->rawColumns(['provinsi', 'kabupaten_kota', 'kecamatan', 'desa_kelurahan', 'action'])
                 ->make(true);

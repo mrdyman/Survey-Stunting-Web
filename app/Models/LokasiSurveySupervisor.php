@@ -24,4 +24,9 @@ class LokasiSurveySupervisor extends Model
     {
         return $this->hasMany(AnggotaSupervisor::class, 'lokasi_survey_supervisor_id', 'id');
     }
+
+    public function profile()
+    {
+        return $this->belongsTo(Profile::class);
+    }
 }

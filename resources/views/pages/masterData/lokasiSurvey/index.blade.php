@@ -39,6 +39,62 @@
         </div>
     </section>
     <section>
+        <div class="row mb-4">
+            <div class="col-lg-6 col-md-6">
+                {{-- Provinsi --}}
+                @component('components.formGroup.select',
+                    [
+                        'label' => 'Pilih Provinsi',
+                        'name' => 'provinsi',
+                        'id' => 'provinsi',
+                        'class' => 'select2',
+                        'class_fg' => 'px-0',
+                        'options' => '',
+                    ])
+                @endcomponent
+            </div>
+            <div class="col-lg-6 col-md-6">
+                {{-- Kabupaten / Kota --}}
+                @component('components.formGroup.select',
+                    [
+                        'label' => 'Pilih Kabupaten / Kota',
+                        'name' => 'kabupaten_kota',
+                        'id' => 'kabupaten-kota',
+                        'class' => 'select2',
+                        'class_fg' => 'px-0',
+                        'options' => '',
+                    ])
+                @endcomponent
+            </div>
+            <div class="col-lg-6 col-md-6">
+                {{-- Kecamatan --}}
+                @component('components.formGroup.select',
+                    [
+                        'label' => 'Pilih Kecamatan',
+                        'name' => 'kecamatan',
+                        'id' => 'kecamatan',
+                        'class' => 'select2',
+                        'class_fg' => 'px-0',
+                        'options' => '',
+                    ])
+                @endcomponent
+            </div>
+            <div class="col-lg-6 col-md-6">
+                {{-- Desa / Kelurahan --}}
+                @component('components.formGroup.select',
+                    [
+                        'label' => 'Pilih Desa / Kelurahan',
+                        'name' => 'desa_kelurahan',
+                        'id' => 'desa-kelurahan',
+                        'class' => 'select2',
+                        'class_fg' => 'px-0',
+                        'options' => '',
+                    ])
+                @endcomponent
+            </div>
+        </div>
+    </section>
+    <section>
         <div class="row">
             <div class="col">
                 <div class="table-responsive">
@@ -61,8 +117,8 @@
     </section>
 
     <!-- Modal Upload Responden-->
-    <div class="modal fade" id="modal-import-responden" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-        aria-hidden="true">
+    <div class="modal fade" id="modal-import-responden" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -110,6 +166,16 @@
         </div>
     </div>
 @endsection
+
+@component('components.wilayah.form',
+    [
+        'is_responden' => 1,
+        'provinsi' => $responden->provinsi_id ?? null,
+        'kabupaten_kota' => $responden->kabupaten_kota_id ?? null,
+        'kecamatan' => $responden->kecamatan_id ?? null,
+        'desa_kelurahan' => $responden->desa_kelurahan_id ?? null,
+    ])
+@endcomponent
 
 @push('script')
     <script>
@@ -173,6 +239,13 @@
                 // responsive: true,
                 ajax: {
                     url: "{{ route('lokasi-survey.index') }}",
+                    data: function(d) {
+                        d.provinsi = $('#provinsi').val();
+                        d.kabupaten = $('#kabupaten-kota').val();
+                        d.kecamatan = $('#kecamatan').val();
+                        d.desa = $('#desa-kelurahan').val();
+                        d.search = $('input[type="search"]').val();
+                    }
                 },
                 columns: [{
                         data: 'DT_RowIndex',
@@ -211,6 +284,29 @@
                 ],
 
             });
+
+            $('#provinsi').change(function() {
+                table.draw();
+                $('#desa-kelurahan').html('');
+                $('#kecamatan').html('');
+                $('#kecamatan').attr('disabled', true);
+                $('#desa-kelurahan').attr('disabled', true);
+            })
+
+            $('#kabupaten-kota').change(function() {
+                table.draw();
+                $('#desa-kelurahan').html('');
+                $('#desa-kelurahan').attr('disabled', true);
+            })
+
+            $('#kecamatan').change(function() {
+                table.draw();
+            })
+
+            $('#desa-kelurahan').change(function() {
+                table.draw();
+            })
+
 
         })
     </script>

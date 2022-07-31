@@ -116,10 +116,13 @@ Route::group(['middleware' => ['admin']], function () {
         '{kategoriSoal}' => 'soal'
     ]);
 
-    Route::resource('/lokasi-survey', LokasiSurveyController::class);
+    Route::resource('/lokasi-survey', LokasiSurveyController::class); //// NEW
 
     // DPL
     Route::get('/institusi-supervisor-dpl', [InstitusiSupervisorDplController::class, 'index']);
+});
+
+Route::group(['middleware' => ['admin_institusi']], function () {
     Route::get('/supervisor-dpl/{institusi}', [SupervisorDplController::class, 'index']);
     Route::resource('/lokasi-survey-supervisor-dpl/{dpl}', LokasiSurveySupervisorController::class)->parameters([
         '{dpl}' => 'lokasiSurvey'
@@ -127,6 +130,12 @@ Route::group(['middleware' => ['admin']], function () {
     Route::resource('/anggota-supervisor-dpl/{lokasiSurveySupervisor}', AnggotaSupervisorController::class)->parameters([
         '{lokasiSurveySupervisor}' => 'anggotaSupervisor'
     ]);
+});
+
+// supervisor DPL
+Route::group(['middleware' => ['supervisor']], function () {
+    Route::get('/survey-supervisor/lokasi-survey', [SurveySupervisorLokasiController::class, 'index']);
+    Route::get('/survey-supervisor/survey/{lokasiSurveySupervisor}', [SurveySupervisorController::class, 'index']);
 });
 
 
@@ -138,8 +147,7 @@ Route::group(['middleware' => ['surveyor']], function () {
     Route::post('/survey/cek-jawaban/{survey}', [SurveyController::class, 'cekJawabanSurvey']);
 });
 
-Route::get('/survey-supervisor/lokasi-survey', [SurveySupervisorLokasiController::class, 'index']);
-Route::get('/survey-supervisor/survey/{lokasiSurveySupervisor}', [SurveySupervisorController::class, 'index']);
+
 
 // Wilayah Indonesia
 Route::get('/provinsi', [ListController::class, 'listProvinsi'])->name('listProvinsi');

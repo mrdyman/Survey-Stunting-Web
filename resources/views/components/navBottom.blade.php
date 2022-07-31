@@ -72,6 +72,15 @@
                     <span class="menu-title"> Export Survey</span>
                 </a>
             </li>
+
+            @if (Auth::user()->role == 'Institusi')
+                <li class="nav-item menu">
+                    <a class="nav-link" href="{{ url('/supervisor-dpl/' . Auth::user()->profile->institusi_id) }}">
+                        <i class="icon-people text-danger"> </i> <span class="menu-title ml-1"> Supervisor/DPL</span>
+                    </a>
+                </li>
+            @endif
+
             @if (!in_array(Auth::user()->role, ['Institusi', 'Supervisor']))
                 <li class="nav-item menu">
                     <a class="nav-link" href="{{ url('/importSurvey') }}">

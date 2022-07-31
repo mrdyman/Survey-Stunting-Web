@@ -9,8 +9,6 @@ use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Validator;
-use App\Http\Requests\StoreLokasiSurveyRequest;
-use App\Http\Requests\UpdateLokasiSurveyRequest;
 
 class LokasiSurveyController extends Controller
 {
@@ -45,6 +43,49 @@ class LokasiSurveyController extends Controller
                     <button id="btn-delete" class="btn btn-danger btn-sm mr-1 my-1 btn-delete" value="' . $row->id . '" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fas fa-trash"></i></button>
                 </div>';
                     return $actionBtn;
+                })
+                ->filter(function ($query) use ($request) {
+                    if ($request->search != '') {
+                        $query->where(function ($query) use ($request) {
+                            $query->where("nama_lokasi_survey", "LIKE", "%$request->search%");
+                        });
+                    }
+
+                    if (!empty($request->provinsi)) {
+                        $query->whereHas('desa_kelurahan', function ($query) use ($request) {
+                            $query->whereHas('kecamatan', function ($query) use ($request) {
+                                $query->whereHas('kabupatenKota', function ($query) use ($request) {
+                                    $query->whereHas('provinsi', function ($query) use ($request) {
+                                        $query->where('id', $request->provinsi);
+                                    });
+                                });
+                            });
+                        });
+                    }
+
+                    if (!empty($request->kabupaten)) {
+                        $query->whereHas('desa_kelurahan', function ($query) use ($request) {
+                            $query->whereHas('kecamatan', function ($query) use ($request) {
+                                $query->whereHas('kabupatenKota', function ($query) use ($request) {
+                                    $query->where('id', $request->kabupaten);
+                                });
+                            });
+                        });
+                    }
+
+                    if (!empty($request->kecamatan)) {
+                        $query->whereHas('desa_kelurahan', function ($query) use ($request) {
+                            $query->whereHas('kecamatan', function ($query) use ($request) {
+                                $query->where('id', $request->kecamatan);
+                            });
+                        });
+                    }
+
+                    if (!empty($request->desa)) {
+                        $query->whereHas('desa_kelurahan', function ($query) use ($request) {
+                            $query->where('id', $request->desa);
+                        });
+                    }
                 })
                 ->rawColumns(['action'])
                 ->make(true);

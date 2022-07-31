@@ -37,6 +37,10 @@ class ProfileController extends Controller
                         return '<span class="badge badge-primary">Admin</span>';
                     } else if ($row->user->role == 'Surveyor') {
                         return '<span class="badge badge-success">Surveyor</span>';
+                    } else if ($row->user->role == 'Institusi') {
+                        return '<span class="badge badge-info">Institusi/Universitas</span>';
+                    } else if ($row->user->role == 'Supervisor') {
+                        return '<span class="badge badge-secondary">Supervisor/DPL</span>';
                     }
                 })
                 ->addColumn('action', function ($row) {

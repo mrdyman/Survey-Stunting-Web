@@ -24,4 +24,9 @@ class AnggotaSupervisor extends Model
     {
         return $this->belongsTo(Profile::class, 'profile_dpl', 'id');
     }
+
+    public function lokasiSurveySupervisor()
+    {
+        return $this->belongsTo(LokasiSurveySupervisor::class, 'lokasi_survey_supervisor_id', 'id');
+    }
 }

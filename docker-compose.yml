@@ -3,7 +3,7 @@ version: '3'
 services:
     laravel.test:
         build:
-            context: ./vendor/laravel/sail/runtimes/8.1
+            context: ./docker/8.1
             dockerfile: Dockerfile
             args:
                 WWWGROUP: '${WWWGROUP}'
@@ -51,6 +51,7 @@ services:
             - 8686:80
         environment:
             MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
+            UPLOAD_LIMIT: 300M
         links:
             - "mysql:db"
         depends_on:
