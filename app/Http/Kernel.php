@@ -2,6 +2,9 @@
 
 namespace App\Http;
 
+use Fruitcake\Cors\HandleCors;
+use App\Http\Middleware\TrustHosts;
+use App\Http\Middleware\TrustProxies;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -56,6 +59,7 @@ class Kernel extends HttpKernel
     protected $routeMiddleware = [
         'admin' => \App\Http\Middleware\Admin::class,
         'surveyor' => \App\Http\Middleware\Surveyor::class,
+        'admin_institusi' => \App\Http\Middleware\Institusi::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,

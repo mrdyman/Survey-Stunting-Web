@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\AnggotaSupervisor;
 use App\Models\LokasiSurveySupervisor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
@@ -35,9 +36,14 @@ class AnggotaSupervisorController extends Controller
                     $actionBtn = '
                         <div class="row text-center justify-content-center">';
                     $actionBtn .= '
-                            <button id="btn-edit" class="btn btn-warning btn-sm mr-1 my-1" value="' . $row->id . '" ><i class="fas fa-edit"></i></button><button id="btn-delete" class="btn btn-danger btn-sm mr-1 my-1" value="' . $row->id . '" > <i class="fas fa-trash-alt"></i></button>
-                        </div>';
-                    return $actionBtn;
+                            <button id="btn-edit" class="btn btn-warning btn-sm mr-1 my-1" value="' . $row->id . '" ><i class="fas fa-edit"></i></button>';
+                    $actionBtn .= '<button id="btn-delete" class="btn btn-danger btn-sm mr-1 my-1" value="' . $row->id . '" > <i class="fas fa-trash-alt"></i></button>';
+                    $actionBtn .= '</div>';
+                    if (Auth::user()->role == 'Admin') {
+                        return $actionBtn;
+                    } else {
+                        return '-';
+                    }
                 })
                 ->rawColumns(['action', 'total'])
                 ->make(true);

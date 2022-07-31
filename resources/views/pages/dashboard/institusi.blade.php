@@ -70,7 +70,26 @@
                                     <div class="col-8 col-stats">
                                         <div class="numbers">
                                             <p class="card-category">Supervisor / DPL</p>
-                                            <h4 class="card-title">{{ $totalSurveyor }}</h4>
+                                            <h4 class="card-title">{{ $totalSupervisor }}</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card card-stats card-round">
+                            <div class="card-body ">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <div class="icon-big text-center">
+                                            <i class="fas fa-map-marked-alt text-warning"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-8 col-stats">
+                                        <div class="numbers">
+                                            <p class="card-category">Lokasi Survey</p>
+                                            <h4 class="card-title">{{ $totalLokasiSurvey }}</h4>
                                         </div>
                                     </div>
                                 </div>

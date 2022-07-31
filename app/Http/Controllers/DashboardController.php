@@ -15,6 +15,7 @@ use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Models\LokasiSurveySupervisor;
 use Illuminate\Support\Facades\Validator;
 
 class DashboardController extends Controller
@@ -60,26 +61,79 @@ class DashboardController extends Controller
                     })->count(),
                     'totalSurveyor' => Profile::with('user')->whereHas('user', function ($query) {
                         $query->where('role', 'Surveyor');
+                    })->where('institusi_id', Auth::user()->profile->institusi_id)->count(),
+                    'totalSupervisor' => Profile::with('user')->whereHas('user', function ($query) {
+                        $query->where('role', 'Supervisor');
+                    })->where('institusi_id', Auth::user()->profile->institusi_id)->count(),
+                    'totalLokasiSurvey' => LokasiSurveySupervisor::whereHas('profile', function ($query) {
+                        $query->where('institusi_id', Auth::user()->profile->institusi_id);
                     })->count(),
-                    'totalResponden' => Responden::count(),
-                    'riwayatSurveyHariIni' => Survey::with('responden', 'namaSurvey', 'profile')->where('is_selesai', 1)->whereDate('created_at', '=', date('Y-m-d'))->latest(),
-                    'riwayatSurveyMingguIni' => Survey::with('responden', 'namaSurvey', 'profile')->where('is_selesai', 1)
-                        ->where(function ($query) {
+                    'riwayatSurveyHariIni' => Survey::with('responden', 'namaSurvey', 'profile')->where('is_selesai', 1)->whereHas('profile', function ($query) {
+                        $query->where('institusi_id', Auth::user()->profile->institusi_id);
+                    })->whereDate('created_at', '=', date('Y-m-d'))->latest(),
+                    'riwayatSurveyMingguIni' => Survey::with('responden', 'namaSurvey', 'profile')->where('is_selesai', 1)->whereHas('profile', function ($query) {
+                        $query->where('institusi_id', Auth::user()->profile->institusi_id);
+                    })->where(function ($query) {
+                        $query->whereBetween('created_at', [date('Y-m-d', strtotime('-7 days')), date('Y-m-d')])
+                            ->orWhereDate('created_at', '=', date('Y-m-d'))->latest();
+                    })->latest(),
+                    'riwayatSurveyBulanIni' => Survey::with('responden', 'namaSurvey', 'profile')->where('is_selesai', 1)->whereHas('profile', function ($query) {
+                        $query->where('institusi_id', Auth::user()->profile->institusi_id);
+                    })->where(function ($query) {
+                        $query->whereBetween('created_at', [date('Y-m-d', strtotime('-30 days')), date('Y-m-d')])
+                            ->orWhereDate('created_at', '=', date('Y-m-d'));
+                    })->latest(),
+                ];
+
+                $dataSupervisor = [
+                    'totalSurvey' => Survey::with('profile')->where('is_selesai', 1)
+                        ->whereHas('profile', function ($query) {
+                            $query->whereHas('anggotaSupervisor', function ($query) {
+                                $query->where('profile_dpl', Auth::user()->profile->id);
+                            });
+                        })->count(),
+                    'totalSurveyor' => Profile::with('anggotaSupervisor')
+                        ->whereHas('anggotaSupervisor', function ($query) {
+                            $query->where('profile_dpl', Auth::user()->profile->id);
+                        })->count(),
+                    'totalLokasiSurvey' => LokasiSurveySupervisor::where('profile_id', Auth::user()->profile->id)->count(),
+                    'riwayatSurveyHariIni' => Survey::with('responden', 'namaSurvey', 'profile')
+                        ->where('is_selesai', 1)->whereHas('profile', function ($query) {
+                            $query->whereHas('anggotaSupervisor', function ($query) {
+                                $query->where('profile_dpl', Auth::user()->profile->id);
+                            });
+                        })->whereDate('created_at', '=', date('Y-m-d'))->latest(),
+                    'riwayatSurveyMingguIni' => Survey::with('responden', 'namaSurvey', 'profile')
+                        ->where('is_selesai', 1)->whereHas('profile', function ($query) {
+                            $query->whereHas('anggotaSupervisor', function ($query) {
+                                $query->where('profile_dpl', Auth::user()->profile->id);
+                            });
+                        })->where(function ($query) {
                             $query->whereBetween('created_at', [date('Y-m-d', strtotime('-7 days')), date('Y-m-d')])
                                 ->orWhereDate('created_at', '=', date('Y-m-d'))->latest();
                         })->latest(),
-                    'riwayatSurveyBulanIni' => Survey::with('responden', 'namaSurvey', 'profile')->where('is_selesai', 1)
-                        ->where(function ($query) {
+                    'riwayatSurveyBulanIni' => Survey::with('responden', 'namaSurvey', 'profile')
+                        ->where('is_selesai', 1)->whereHas('profile', function ($query) {
+                            $query->whereHas('anggotaSupervisor', function ($query) {
+                                $query->where('profile_dpl', Auth::user()->profile->id);
+                            });
+                        })->where(function ($query) {
                             $query->whereBetween('created_at', [date('Y-m-d', strtotime('-30 days')), date('Y-m-d')])
                                 ->orWhereDate('created_at', '=', date('Y-m-d'));
                         })->latest(),
-
-                    'daftarTahun' => Survey::select(DB::raw('YEAR(created_at) as tahun'))->groupBy('tahun')->latest()->get(),
                 ];
+                // $test = Survey::with('profile')->where('is_selesai', 1)
+                //     ->whereHas('profile', function ($query) {
+                //         $query->whereHas('anggotaSupervisor', function ($query) {
+                //             $query->where('profile_dpl', Auth::user()->profile->id);
+                //         });
+                //     })->count();
                 if (Auth::user()->role == 'Admin') {
                     return view('pages.dashboard.admin', $dataAdmin);
                 } else if (Auth::user()->role == 'Institusi') {
                     return view('pages.dashboard.institusi', $dataInstitusi);
+                } else if (Auth::user()->role == 'Supervisor') {
+                    return view('pages.dashboard.supervisor', $dataSupervisor);
                 }
             } else if (Auth::user()->role == 'Surveyor') {
                 // Jumlahnya masih mau diubah sesuai surveyor yang login

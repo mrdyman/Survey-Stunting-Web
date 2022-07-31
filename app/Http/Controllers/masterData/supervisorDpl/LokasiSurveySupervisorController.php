@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers\masterData\supervisorDpl;
 
-use App\Http\Controllers\Controller;
-use App\Models\AnggotaSupervisor;
-use App\Models\LokasiSurveySupervisor;
 use App\Models\Profile;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use App\Models\AnggotaSupervisor;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use App\Models\LokasiSurveySupervisor;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
 
 
 class LokasiSurveySupervisorController extends Controller
@@ -46,8 +47,12 @@ class LokasiSurveySupervisorController extends Controller
                     $actionBtn = '
                         <div class="row text-center justify-content-center">';
                     $actionBtn .= '
-                            <a id="btn-edit" class="btn btn-success btn-sm mr-1 my-1" href="' . url('/anggota-supervisor-dpl' . "/" . $row->id) . '"  onclick="edit(' . $row->id . ')"><i class="far fa-eye"></i></a><button id="btn-edit" class="btn btn-warning btn-sm mr-1 my-1" value="' . $row->id . '" ><i class="fas fa-edit"></i></button><button id="btn-delete" class="btn btn-danger btn-sm mr-1 my-1" value="' . $row->id . '" > <i class="fas fa-trash-alt"></i></button>
-                        </div>';
+                            <a id="btn-edit" class="btn btn-success btn-sm mr-1 my-1" href="' . url('/anggota-supervisor-dpl' . "/" . $row->id) . '"  onclick="edit(' . $row->id . ')"><i class="far fa-eye"></i></a>';
+                    if (Auth::user()->role == 'Admin') {
+                        $actionBtn .= '<button id="btn-edit" class="btn btn-warning btn-sm mr-1 my-1" value="' . $row->id . '" ><i class="fas fa-edit"></i></button>';
+                        $actionBtn .= ' <button id="btn-delete" class="btn btn-danger btn-sm mr-1 my-1" value="' . $row->id . '" > <i class="fas fa-trash-alt"></i></button>';
+                    }
+                    $actionBtn .= '</div>';
                     return $actionBtn;
                 })
                 ->rawColumns(['action', 'total'])

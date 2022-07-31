@@ -25,19 +25,21 @@
 @endpush
 
 @section('content')
-    <section>
-        <div class="row mb-4">
-            <div class="col">
-                @component('components.buttons.previous',
-                    [
-                        'id' => 'btn-tambah',
-                        'class' => 'float-right',
-                        'href' => url('institusi-supervisor-dpl'),
-                    ])
-                @endcomponent
+    @if (Auth::user()->role == 'Admin')
+        <section>
+            <div class="row mb-4">
+                <div class="col">
+                    @component('components.buttons.previous',
+                        [
+                            'id' => 'btn-tambah',
+                            'class' => 'float-right',
+                            'href' => url('institusi-supervisor-dpl'),
+                        ])
+                    @endcomponent
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    @endif
     <section>
         <div class="row">
             <div class="col">
