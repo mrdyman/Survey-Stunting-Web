@@ -26,7 +26,7 @@ class DashboardController extends Controller
             return redirect(route('lengkapiProfile'));
         } else {
             if (in_array(Auth::user()->role, array('Admin', 'Supervisor', 'Institusi'))) {
-                $data = [
+                $dataAdmin = [
                     'totalSurvey' => Survey::where('is_selesai', 1)->count(),
                     'totalSurveyPre' => Survey::with('namaSurvey')->whereHas('namaSurvey', function ($query) {
                         $query->where('tipe', 'Pre');
@@ -53,7 +53,34 @@ class DashboardController extends Controller
                     'daftarTahun' => Survey::select(DB::raw('YEAR(created_at) as tahun'))->groupBy('tahun')->latest()->get(),
                     // Jumlah perbulan di tahun ini
                 ];
-                return view('pages.dashboard.admin', $data);
+
+                $dataInstitusi = [
+                    'totalSurvey' => Survey::with('profile')->where('is_selesai', 1)->whereHas('profile', function ($query) {
+                        $query->where('institusi_id', Auth::user()->profile->institusi_id);
+                    })->count(),
+                    'totalSurveyor' => Profile::with('user')->whereHas('user', function ($query) {
+                        $query->where('role', 'Surveyor');
+                    })->count(),
+                    'totalResponden' => Responden::count(),
+                    'riwayatSurveyHariIni' => Survey::with('responden', 'namaSurvey', 'profile')->where('is_selesai', 1)->whereDate('created_at', '=', date('Y-m-d'))->latest(),
+                    'riwayatSurveyMingguIni' => Survey::with('responden', 'namaSurvey', 'profile')->where('is_selesai', 1)
+                        ->where(function ($query) {
+                            $query->whereBetween('created_at', [date('Y-m-d', strtotime('-7 days')), date('Y-m-d')])
+                                ->orWhereDate('created_at', '=', date('Y-m-d'))->latest();
+                        })->latest(),
+                    'riwayatSurveyBulanIni' => Survey::with('responden', 'namaSurvey', 'profile')->where('is_selesai', 1)
+                        ->where(function ($query) {
+                            $query->whereBetween('created_at', [date('Y-m-d', strtotime('-30 days')), date('Y-m-d')])
+                                ->orWhereDate('created_at', '=', date('Y-m-d'));
+                        })->latest(),
+
+                    'daftarTahun' => Survey::select(DB::raw('YEAR(created_at) as tahun'))->groupBy('tahun')->latest()->get(),
+                ];
+                if (Auth::user()->role == 'Admin') {
+                    return view('pages.dashboard.admin', $dataAdmin);
+                } else if (Auth::user()->role == 'Institusi') {
+                    return view('pages.dashboard.institusi', $dataInstitusi);
+                }
             } else if (Auth::user()->role == 'Surveyor') {
                 // Jumlahnya masih mau diubah sesuai surveyor yang login
                 $profile = Profile::where('user_id', Auth::user()->id)->first();
@@ -67,12 +94,7 @@ class DashboardController extends Controller
                     })->count(),
                 ];
                 return view('pages.dashboard.surveyor', $data);
-            } else if(Auth::user()->role == 'Supervisor'){
-                dd('berhasil supervisor / dpl');
-            } else if(Auth::user()->role == 'Institusi'){
-                dd('berhasil institusi / universitas');
             }
-            
         }
     }
 

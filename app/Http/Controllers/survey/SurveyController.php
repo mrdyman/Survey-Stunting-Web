@@ -108,6 +108,16 @@ class SurveyController extends Controller
                     }
                     return $daftarSupervisor;
                 })
+                ->addColumn('lokasi_survey', function ($row) {
+                    $lokasiSurvey = '';
+                    if ($row->profile->anggotaSupervisor) {
+                        $lokasiSurvey .= '<p class="mb-0 pb-0">' . $row->profile->anggotaSupervisor->lokasiSurveySupervisor->lokasiSurvey->nama_lokasi_survey . '</p>
+                                            <h6 class="fw-bold">' . $row->profile->anggotaSupervisor->lokasiSurveySupervisor->lokasiSurvey->desa_kelurahan->nama . '</h6>';
+                    } else {
+                        $lokasiSurvey .= '-';
+                    }
+                    return $lokasiSurvey;
+                })
                 ->addColumn('tipe', function ($row) {
                     if ($row->namaSurvey->tipe == "Pre") {
                         return '<span class="badge badge-primary">PRE</span>';
@@ -146,7 +156,7 @@ class SurveyController extends Controller
                     }
                     return $actionBtn;
                 })
-                ->rawColumns(['action', 'nama', 'supervisor', 'tipe', 'status'])
+                ->rawColumns(['action', 'nama', 'supervisor', 'tipe', 'status', 'lokasi_survey'])
                 ->make(true);
         }
         $institusi = Institusi::orderBy('nama', 'asc')->get();

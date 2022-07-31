@@ -49,7 +49,7 @@
                 {{-- Provinsi --}}
                 @component('components.formGroup.select',
                     [
-                        'label' => 'Filter Provinsi',
+                        'label' => 'Pilih Provinsi',
                         'name' => 'provinsi',
                         'id' => 'provinsi',
                         'class' => 'select2',
@@ -62,7 +62,7 @@
                 {{-- Kabupaten / Kota --}}
                 @component('components.formGroup.select',
                     [
-                        'label' => 'Filter Kabupaten / Kota',
+                        'label' => 'Pilih Kabupaten / Kota',
                         'name' => 'kabupaten_kota',
                         'id' => 'kabupaten-kota',
                         'class' => 'select2',
@@ -75,7 +75,7 @@
                 {{-- Kecamatan --}}
                 @component('components.formGroup.select',
                     [
-                        'label' => 'Filter Kecamatan',
+                        'label' => 'Pilih Kecamatan',
                         'name' => 'kecamatan',
                         'id' => 'kecamatan',
                         'class' => 'select2',
@@ -88,7 +88,7 @@
                 {{-- Desa / Kelurahan --}}
                 @component('components.formGroup.select',
                     [
-                        'label' => 'Filter Desa / Kelurahan',
+                        'label' => 'Pilih Desa / Kelurahan',
                         'name' => 'desa_kelurahan',
                         'id' => 'desa-kelurahan',
                         'class' => 'select2',

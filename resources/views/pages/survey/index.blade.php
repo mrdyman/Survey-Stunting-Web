@@ -133,6 +133,7 @@
                         <th>No</th>
                         <th>Nama</th>
                         <th>Supervisor / DPL</th>
+                        <th>Lokasi Survey</th>
                         <th>Tipe</th>
                         <th>Status</th>
                         <th>Tanggal</th>
@@ -241,6 +242,10 @@
                 {
                     data: 'supervisor',
                     name: 'supervisor'
+                },
+                {
+                    data: 'lokasi_survey',
+                    name: 'lokasi_survey'
                 },
                 {
                     data: 'tipe',
