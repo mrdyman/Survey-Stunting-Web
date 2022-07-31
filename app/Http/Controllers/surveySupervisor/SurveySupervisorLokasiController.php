@@ -16,7 +16,7 @@ class SurveySupervisorLokasiController extends Controller
         if ($request->ajax()) {
             $data = LokasiSurveySupervisor::orderBy('created_at', 'desc')
                 ->where('profile_id', Auth::user()->profile->id)
-                ->get();
+                ->latest()->get();
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('nama', function ($row) {
@@ -32,7 +32,7 @@ class SurveySupervisorLokasiController extends Controller
                     return Survey::with('anggotaSupervisor')->whereHas('anggotaSupervisor', function ($query) use ($row) {
                         $query->where('profile_dpl', Auth::user()->profile->id);
                         $query->where('lokasi_survey_supervisor_id', $row->id);
-                    })->count();
+                    })->where('is_selesai', 1)->count();
                 })
                 ->addColumn('action', function ($row) {
                     $actionBtn = '

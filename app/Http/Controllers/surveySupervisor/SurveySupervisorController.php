@@ -30,7 +30,8 @@ class SurveySupervisorController extends Controller
                         $query->where('nama_survey_id', $request->nama_survey_id);
                     }
                 })
-                ->where('is_selesai', 1)->latest()->get();
+                ->where('is_selesai', 1)->orderBy('updated_at', 'DESC')
+                ->get();
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('nama', function ($row) {

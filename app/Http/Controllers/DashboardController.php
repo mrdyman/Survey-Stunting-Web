@@ -39,19 +39,25 @@ class DashboardController extends Controller
                         $query->where('role', 'Surveyor');
                     })->count(),
                     'totalResponden' => Responden::count(),
-                    'riwayatSurveyHariIni' => Survey::with('responden', 'namaSurvey', 'profile')->where('is_selesai', 1)->whereDate('created_at', '=', date('Y-m-d'))->latest(),
-                    'riwayatSurveyMingguIni' => Survey::with('responden', 'namaSurvey', 'profile')->where('is_selesai', 1)
-                        ->where(function ($query) {
-                            $query->whereBetween('created_at', [date('Y-m-d', strtotime('-7 days')), date('Y-m-d')])
-                                ->orWhereDate('created_at', '=', date('Y-m-d'))->latest();
-                        })->latest(),
-                    'riwayatSurveyBulanIni' => Survey::with('responden', 'namaSurvey', 'profile')->where('is_selesai', 1)
-                        ->where(function ($query) {
-                            $query->whereBetween('created_at', [date('Y-m-d', strtotime('-30 days')), date('Y-m-d')])
-                                ->orWhereDate('created_at', '=', date('Y-m-d'));
-                        })->latest(),
 
-                    'daftarTahun' => Survey::select(DB::raw('YEAR(created_at) as tahun'))->groupBy('tahun')->latest()->get(),
+
+                    'riwayatSurveyHariIni' => Survey::where('is_selesai', 1)->whereDate('updated_at', '=', date('Y-m-d'))->orderBy('updated_at', 'DESC'),
+
+
+                    'riwayatSurveyMingguIni' => Survey::with('responden', 'namaSurvey', 'profile')
+                        ->where('is_selesai', 1)
+                        ->where(function ($query) {
+                            $query->whereBetween('updated_at', [date('Y-m-d', strtotime('-7 days')), date('Y-m-d')])
+                                ->orWhereDate('updated_at', '=', date('Y-m-d'))->latest();
+                        })->orderBy('updated_at', 'DESC'),
+                    'riwayatSurveyBulanIni' => Survey::with('responden', 'namaSurvey', 'profile')
+                        ->where('is_selesai', 1)
+                        ->where(function ($query) {
+                            $query->whereBetween('updated_at', [date('Y-m-d', strtotime('-30 days')), date('Y-m-d')])
+                                ->orWhereDate('updated_at', '=', date('Y-m-d'));
+                        })->orderBy('updated_at', 'DESC'),
+
+                    'daftarTahun' => Survey::select(DB::raw('YEAR(updated_at) as tahun'))->groupBy('tahun')->latest()->get(),
                     // Jumlah perbulan di tahun ini
                 ];
 
@@ -59,30 +65,35 @@ class DashboardController extends Controller
                     'totalSurvey' => Survey::with('profile')->where('is_selesai', 1)->whereHas('profile', function ($query) {
                         $query->where('institusi_id', Auth::user()->profile->institusi_id);
                     })->count(),
-                    'totalSurveyor' => Profile::with('user')->whereHas('user', function ($query) {
-                        $query->where('role', 'Surveyor');
-                    })->where('institusi_id', Auth::user()->profile->institusi_id)->count(),
-                    'totalSupervisor' => Profile::with('user')->whereHas('user', function ($query) {
-                        $query->where('role', 'Supervisor');
-                    })->where('institusi_id', Auth::user()->profile->institusi_id)->count(),
+                    'totalSurveyor' => Profile::with('user')
+                        ->whereHas('user', function ($query) {
+                            $query->where('role', 'Surveyor');
+                        })->where('institusi_id', Auth::user()->profile->institusi_id)->count(),
+                    'totalSupervisor' => Profile::with('user')
+                        ->whereHas('user', function ($query) {
+                            $query->where('role', 'Supervisor');
+                        })->where('institusi_id', Auth::user()->profile->institusi_id)->count(),
                     'totalLokasiSurvey' => LokasiSurveySupervisor::whereHas('profile', function ($query) {
                         $query->where('institusi_id', Auth::user()->profile->institusi_id);
                     })->count(),
-                    'riwayatSurveyHariIni' => Survey::with('responden', 'namaSurvey', 'profile')->where('is_selesai', 1)->whereHas('profile', function ($query) {
-                        $query->where('institusi_id', Auth::user()->profile->institusi_id);
-                    })->whereDate('created_at', '=', date('Y-m-d'))->latest(),
-                    'riwayatSurveyMingguIni' => Survey::with('responden', 'namaSurvey', 'profile')->where('is_selesai', 1)->whereHas('profile', function ($query) {
-                        $query->where('institusi_id', Auth::user()->profile->institusi_id);
-                    })->where(function ($query) {
-                        $query->whereBetween('created_at', [date('Y-m-d', strtotime('-7 days')), date('Y-m-d')])
-                            ->orWhereDate('created_at', '=', date('Y-m-d'))->latest();
-                    })->latest(),
-                    'riwayatSurveyBulanIni' => Survey::with('responden', 'namaSurvey', 'profile')->where('is_selesai', 1)->whereHas('profile', function ($query) {
-                        $query->where('institusi_id', Auth::user()->profile->institusi_id);
-                    })->where(function ($query) {
-                        $query->whereBetween('created_at', [date('Y-m-d', strtotime('-30 days')), date('Y-m-d')])
-                            ->orWhereDate('created_at', '=', date('Y-m-d'));
-                    })->latest(),
+                    'riwayatSurveyHariIni' => Survey::with('responden', 'namaSurvey', 'profile')
+                        ->where('is_selesai', 1)->whereHas('profile', function ($query) {
+                            $query->where('institusi_id', Auth::user()->profile->institusi_id);
+                        })->whereDate('updated_at', '=', date('Y-m-d'))->orderBy('updated_at', 'DESC'),
+                    'riwayatSurveyMingguIni' => Survey::with('responden', 'namaSurvey', 'profile')
+                        ->where('is_selesai', 1)->whereHas('profile', function ($query) {
+                            $query->where('institusi_id', Auth::user()->profile->institusi_id);
+                        })->where(function ($query) {
+                            $query->whereBetween('updated_at', [date('Y-m-d', strtotime('-7 days')), date('Y-m-d')])
+                                ->orWhereDate('updated_at', '=', date('Y-m-d'))->latest();
+                        })->orderBy('updated_at', 'DESC'),
+                    'riwayatSurveyBulanIni' => Survey::with('responden', 'namaSurvey', 'profile')
+                        ->where('is_selesai', 1)->whereHas('profile', function ($query) {
+                            $query->where('institusi_id', Auth::user()->profile->institusi_id);
+                        })->where(function ($query) {
+                            $query->whereBetween('updated_at', [date('Y-m-d', strtotime('-30 days')), date('Y-m-d')])
+                                ->orWhereDate('updated_at', '=', date('Y-m-d'));
+                        })->orderBy('updated_at', 'DESC'),
                 ];
 
                 $dataSupervisor = [
@@ -102,32 +113,26 @@ class DashboardController extends Controller
                             $query->whereHas('anggotaSupervisor', function ($query) {
                                 $query->where('profile_dpl', Auth::user()->profile->id);
                             });
-                        })->whereDate('created_at', '=', date('Y-m-d'))->latest(),
+                        })->whereDate('updated_at', '=', date('Y-m-d'))->orderBy('updated_at', 'DESC'),
                     'riwayatSurveyMingguIni' => Survey::with('responden', 'namaSurvey', 'profile')
                         ->where('is_selesai', 1)->whereHas('profile', function ($query) {
                             $query->whereHas('anggotaSupervisor', function ($query) {
                                 $query->where('profile_dpl', Auth::user()->profile->id);
                             });
                         })->where(function ($query) {
-                            $query->whereBetween('created_at', [date('Y-m-d', strtotime('-7 days')), date('Y-m-d')])
-                                ->orWhereDate('created_at', '=', date('Y-m-d'))->latest();
-                        })->latest(),
+                            $query->whereBetween('updated_at', [date('Y-m-d', strtotime('-7 days')), date('Y-m-d')])
+                                ->orWhereDate('updated_at', '=', date('Y-m-d'))->latest();
+                        })->orderBy('updated_at', 'DESC'),
                     'riwayatSurveyBulanIni' => Survey::with('responden', 'namaSurvey', 'profile')
                         ->where('is_selesai', 1)->whereHas('profile', function ($query) {
                             $query->whereHas('anggotaSupervisor', function ($query) {
                                 $query->where('profile_dpl', Auth::user()->profile->id);
                             });
                         })->where(function ($query) {
-                            $query->whereBetween('created_at', [date('Y-m-d', strtotime('-30 days')), date('Y-m-d')])
-                                ->orWhereDate('created_at', '=', date('Y-m-d'));
-                        })->latest(),
+                            $query->whereBetween('updated_at', [date('Y-m-d', strtotime('-30 days')), date('Y-m-d')])
+                                ->orWhereDate('updated_at', '=', date('Y-m-d'));
+                        })->orderBy('updated_at', 'DESC'),
                 ];
-                // $test = Survey::with('profile')->where('is_selesai', 1)
-                //     ->whereHas('profile', function ($query) {
-                //         $query->whereHas('anggotaSupervisor', function ($query) {
-                //             $query->where('profile_dpl', Auth::user()->profile->id);
-                //         });
-                //     })->count();
                 if (Auth::user()->role == 'Admin') {
                     return view('pages.dashboard.admin', $dataAdmin);
                 } else if (Auth::user()->role == 'Institusi') {

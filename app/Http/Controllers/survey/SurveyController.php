@@ -84,7 +84,7 @@ class SurveyController extends Controller
                             $query->where('nama_lengkap', 'like', '%' . $search . '%');
                         });
                     }
-                })->latest()->get();
+                })->orderBy('updated_at', 'DESC');
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('nama', function ($row) {

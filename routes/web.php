@@ -132,6 +132,11 @@ Route::group(['middleware' => ['admin_institusi']], function () {
     ]);
 });
 
+// supervisor DPL
+Route::group(['middleware' => ['supervisor']], function () {
+    Route::get('/survey-supervisor/lokasi-survey', [SurveySupervisorLokasiController::class, 'index']);
+    Route::get('/survey-supervisor/survey/{lokasiSurveySupervisor}', [SurveySupervisorController::class, 'index']);
+});
 
 
 // Role Surveyor
@@ -142,8 +147,7 @@ Route::group(['middleware' => ['surveyor']], function () {
     Route::post('/survey/cek-jawaban/{survey}', [SurveyController::class, 'cekJawabanSurvey']);
 });
 
-Route::get('/survey-supervisor/lokasi-survey', [SurveySupervisorLokasiController::class, 'index']);
-Route::get('/survey-supervisor/survey/{lokasiSurveySupervisor}', [SurveySupervisorController::class, 'index']);
+
 
 // Wilayah Indonesia
 Route::get('/provinsi', [ListController::class, 'listProvinsi'])->name('listProvinsi');
