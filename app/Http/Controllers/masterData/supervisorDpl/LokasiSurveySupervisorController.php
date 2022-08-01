@@ -83,11 +83,13 @@ class LokasiSurveySupervisorController extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'lokasi_survey_id' => ['required', Rule::unique('lokasi_survey_supervisor')
-                    ->where(function ($query) use ($dpl) {
-                        return $query->where('profile_id', $dpl);
-                    })
-                    ->withoutTrashed()],
+                'lokasi_survey_id' => [
+                    'required', Rule::unique('lokasi_survey_supervisor')
+                        ->where(function ($query) use ($dpl) {
+                            return $query->where('profile_id', $dpl);
+                        })
+                        ->withoutTrashed(),
+                ],
             ],
             [
                 'lokasi_survey_id.required' => 'Lokasi survey / posko tidak boleh kosong',
@@ -97,6 +99,25 @@ class LokasiSurveySupervisorController extends Controller
 
         if ($validator->fails()) {
             return response()->json(['error' => $validator->errors()]);
+        }
+
+        $profileDpl = Profile::where('id', $dpl)->first();
+        $lokasiSurveyDpl = LokasiSurveySupervisor::where('lokasi_survey_id', $request->lokasi_survey_id)
+            ->whereHas('profile', function ($query) use ($profileDpl) {
+                $query->where('institusi_id', $profileDpl->institusi_id);
+            })
+            ->first();
+
+        if ($lokasiSurveyDpl) {
+            return response()->json(
+                [
+                    'error' => [
+                        'lokasi_survey_id' => [
+                            'Lokasi survey / posko sudah ada di Supervisor / DPL lain'
+                        ]
+                    ]
+                ]
+            );
         }
 
         $lokasiSurvey = new LokasiSurveySupervisor();
@@ -159,6 +180,26 @@ class LokasiSurveySupervisorController extends Controller
 
         if ($validator->fails()) {
             return response()->json(['error' => $validator->errors()]);
+        }
+
+        $profileDpl = Profile::where('id', $dpl)->first();
+        $lokasiSurveyDpl = LokasiSurveySupervisor::where('lokasi_survey_id', $request->lokasi_survey_id)
+            ->where('id', '!=', $lokasiSurveySupervisor)
+            ->whereHas('profile', function ($query) use ($profileDpl) {
+                $query->where('institusi_id', $profileDpl->institusi_id);
+            })
+            ->first();
+
+        if ($lokasiSurveyDpl) {
+            return response()->json(
+                [
+                    'error' => [
+                        'lokasi_survey_id' => [
+                            'Lokasi survey / posko sudah ada di Supervisor / DPL lain'
+                        ]
+                    ]
+                ]
+            );
         }
 
         $lokasiSurvey = LokasiSurveySupervisor::where('id', $lokasiSurveySupervisor)->first();

@@ -24,6 +24,17 @@ class SupervisorDplController extends Controller
                 ->addColumn('total', function ($row) {
                     return $row->lokasiSurveySupervisor->count();
                 })
+                ->addColumn('lokasi_survey', function ($row) {
+                    if ($row->lokasiSurveySupervisor) {
+                        $daftarLokasi = '';
+                        foreach ($row->lokasiSurveySupervisor as $lokasi) {
+                            $daftarLokasi .= '<p class="my-0">-' . $lokasi->lokasiSurvey->nama_lokasi_survey . ', <span class="fw-bold">' . $lokasi->lokasiSurvey->desa_kelurahan->nama . '</span></p>';
+                        }
+                    } else {
+                        $daftarLokasi = '-';
+                    }
+                    return $daftarLokasi;
+                })
                 ->addColumn('action', function ($row) {
                     $actionBtn = '
                         <div class="row text-center justify-content-center">';
@@ -32,7 +43,7 @@ class SupervisorDplController extends Controller
                         </div>';
                     return $actionBtn;
                 })
-                ->rawColumns(['action', 'total'])
+                ->rawColumns(['action', 'total', 'lokasi_survey'])
                 ->make(true);
         }
         return view('pages.masterData.supervisorDpl.supervisorDpl.index', compact(['institusi']));
