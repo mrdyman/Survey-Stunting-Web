@@ -277,7 +277,7 @@
                                 $('#profile_surveyor').append('<option value="' + response[i].id + '">' +
                                     response[
                                         i]
-                                    .nama_lengkap +
+                                    .nama_lengkap + " (" + response[i].user.username + ")" +
                                     '</option>');
                             }
                         }
@@ -299,7 +299,7 @@
                                 $('#profile_surveyor').append('<option value="' + response[i].id + '">' +
                                     response[
                                         i]
-                                    .nama_lengkap +
+                                    .nama_lengkap + " (" + response[i].user.username + ")" +
                                     '</option>');
                             }
                         }

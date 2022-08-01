@@ -78,12 +78,15 @@ class ListController extends Controller
     {
         $dpl = Profile::where('id', $request->idSupervisor)->first();
         $idProfileSurveyor = $request->idProfileSurveyor;
-        $surveyor = Profile::where('institusi_id', $dpl->institusi_id)->whereHas('user', function ($query) {
-            $query->where('role', '=', 'Surveyor');
-        })->get();
+        $surveyor = Profile::with('user')->where('institusi_id', $dpl->institusi_id)
+            ->whereHas('user', function ($query) {
+                $query->where('role', '=', 'Surveyor');
+            })
+            ->orderBy('nama_lengkap', 'asc')
+            ->get();
 
         if ($idProfileSurveyor) {
-            $surveyorHapus = Profile::where('institusi_id', $dpl->institusi_id)->where('id', $idProfileSurveyor)->whereHas('user', function ($query) {
+            $surveyorHapus = Profile::with('user')->where('institusi_id', $dpl->institusi_id)->where('id', $idProfileSurveyor)->whereHas('user', function ($query) {
                 $query->where('role', '=', 'Surveyor');
             })->withTrashed()->first();
             if ($surveyorHapus->trashed()) {

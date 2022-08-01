@@ -50,6 +50,7 @@
                                 <th>No.</th>
                                 <th>Nama</th>
                                 <th>Total Lokasi Survey / Posko</th>
+                                <th>Lokasi Survey / Posko</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -88,6 +89,10 @@
                         data: 'total',
                         name: 'total',
                         className: 'text-center'
+                    },
+                    {
+                        data: 'lokasi_survey',
+                        name: 'lokasi_survey',
                     },
                     {
                         data: 'action',
