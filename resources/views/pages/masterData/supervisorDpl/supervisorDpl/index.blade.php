@@ -28,13 +28,15 @@
     <section>
         <div class="row mb-4">
             <div class="col">
-                @component('components.buttons.previous',
-                    [
-                        'id' => 'btn-tambah',
-                        'class' => 'float-right',
-                        'href' => url('institusi-supervisor-dpl'),
-                    ])
-                @endcomponent
+                @if (in_array(Auth::user()->role, ['Admin', 'Sub Admin']))
+                    @component('components.buttons.previous',
+                        [
+                            'id' => 'btn-tambah',
+                            'class' => 'float-right',
+                            'href' => url('institusi-supervisor-dpl'),
+                        ])
+                    @endcomponent
+                @endif
             </div>
         </div>
     </section>
