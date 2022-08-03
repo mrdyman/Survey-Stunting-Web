@@ -48,6 +48,15 @@
                 @endif
                 @component('components.formGroup.radio',
                     [
+                        'label' => 'Sub Admin',
+                        'id' => 'sub-admin',
+                        'name' => 'role',
+                        'value' => 'Sub Admin',
+                        'checked' => $user->role ?? null,
+                    ])
+                @endcomponent
+                @component('components.formGroup.radio',
+                    [
                         'label' => 'Institusi/Universitas',
                         'id' => 'institusi',
                         'name' => 'role',
