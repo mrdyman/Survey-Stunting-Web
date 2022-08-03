@@ -7,6 +7,7 @@ use App\Models\LokasiSurvey;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Validator;
 
@@ -36,12 +37,17 @@ class LokasiSurveyController extends Controller
                     return $row->desa_kelurahan->kecamatan->kabupatenKota->provinsi->nama;
                 })
                 ->addColumn('action', function ($row) {
-                    $actionBtn = '
+                    if (Auth::user()->role == "Admin") {
+                        $actionBtn = '
                 <div class="row text-center justify-content-center">';
-                    $actionBtn .= '
+                        $actionBtn .= '
                     <a href="' . route('lokasi-survey.edit', $row->id) . '" id="btn-edit" class="btn btn-warning btn-sm mr-1 my-1" data-toggle="tooltip" data-placement="top" title="Ubah"><i class="fas fa-edit"></i></a>
                     <button id="btn-delete" class="btn btn-danger btn-sm mr-1 my-1 btn-delete" value="' . $row->id . '" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fas fa-trash"></i></button>
                 </div>';
+                    } else {
+                        $actionBtn = '-';
+                    }
+
                     return $actionBtn;
                 })
                 ->filter(function ($query) use ($request) {
@@ -100,7 +106,7 @@ class LokasiSurveyController extends Controller
      */
     public function create()
     {
-        return view('pages.masterData.lokasiSurvey.create');        
+        return view('pages.masterData.lokasiSurvey.create');
     }
 
     /**
@@ -136,7 +142,7 @@ class LokasiSurveyController extends Controller
         }
 
         $data = [
-            'nama_lokasi_survey' => $request->nama_lokasi_survey,  
+            'nama_lokasi_survey' => $request->nama_lokasi_survey,
             'desa_kelurahan_id' => $request->desa_kelurahan,
         ];
 
@@ -165,7 +171,6 @@ class LokasiSurveyController extends Controller
     public function edit(LokasiSurvey $lokasiSurvey)
     {
         return view('pages.masterData.lokasiSurvey.edit', compact('lokasiSurvey'));
-        
     }
 
     /**
@@ -202,7 +207,7 @@ class LokasiSurveyController extends Controller
         }
 
         $data = [
-            'nama_lokasi_survey' => $request->nama_lokasi_survey,  
+            'nama_lokasi_survey' => $request->nama_lokasi_survey,
             'desa_kelurahan_id' => $request->desa_kelurahan,
         ];
 

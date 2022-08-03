@@ -27,13 +27,15 @@
                 </li>
             @endif
 
-            @if (Auth::user()->role == 'Admin')
-                <li class="nav-item menu">
-                    <a class="nav-link" href="{{ url('/namaSurvey') }}">
-                        <i class="link-icon icon-note text-danger"></i>
-                        <span class="menu-title">Soal Survey</span>
-                    </a>
-                </li>
+            @if (in_array(Auth::user()->role, ['Admin', 'Sub Admin']))
+                @if (Auth::user()->role == 'Admin')
+                    <li class="nav-item menu">
+                        <a class="nav-link" href="{{ url('/namaSurvey') }}">
+                            <i class="link-icon icon-note text-danger"></i>
+                            <span class="menu-title">Soal Survey</span>
+                        </a>
+                    </li>
+                @endif
                 <li class="nav-item submenu" id="nav-master">
                     <a class="nav-link" href="#">
                         <i class="link-icon icon-grid text-danger"></i>
@@ -47,15 +49,17 @@
                             <li>
                                 <a href="{{ url('institusi') }}">Institusi</a>
                             </li>
-                            <li>
-                                <a href="{{ url('profile') }}">Profil</a>
-                            </li>
-                            <li>
-                                <a href="{{ url('user') }}">Akun</a>
-                            </li>
-                            <li>
-                                <a href="{{ url('wilayah-provinsi') }}">Wilayah</a>
-                            </li>
+                            @if (Auth::user()->role == 'Admin')
+                                <li>
+                                    <a href="{{ url('profile') }}">Profil</a>
+                                </li>
+                                <li>
+                                    <a href="{{ url('user') }}">Akun</a>
+                                </li>
+                                <li>
+                                    <a href="{{ url('wilayah-provinsi') }}">Wilayah</a>
+                                </li>
+                            @endif
                             <li>
                                 <a href="{{ url('lokasi-survey') }}">Lokasi Survey</a>
                             </li>
@@ -81,7 +85,7 @@
                 </li>
             @endif
 
-            @if (!in_array(Auth::user()->role, ['Institusi', 'Supervisor']))
+            @if (!in_array(Auth::user()->role, ['Institusi', 'Supervisor', 'Sub Admin']))
                 <li class="nav-item menu">
                     <a class="nav-link" href="{{ url('/importSurvey') }}">
                         <i class="link-icon icon-cloud-upload text-danger"></i>

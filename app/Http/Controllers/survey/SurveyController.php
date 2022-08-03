@@ -36,7 +36,7 @@ class SurveyController extends Controller
                     }
                 })
                 ->whereHas('profile', function ($query) use ($institusiId) {
-                    if (Auth::user()->role == "Admin") {
+                    if (in_array(Auth::user()->role, ["Admin", 'Sub Admin'])) {
                         if ($institusiId != 'semua' && $institusiId != null) {
                             $query->where('institusi_id', $institusiId);
                         }
@@ -45,7 +45,7 @@ class SurveyController extends Controller
                     }
                 })
                 ->where(function ($query) use ($supervisorId) {
-                    if (in_array(Auth::user()->role, ["Admin", 'Institusi'])) {
+                    if (in_array(Auth::user()->role, ["Admin", 'Institusi', 'Sub Admin'])) {
                         if ($supervisorId != 'semua' && $supervisorId != null) {
                             $query->whereHas('supervisor', function ($query) use ($supervisorId) {
                                 $query->where('profile_dpl', $supervisorId);
@@ -88,7 +88,7 @@ class SurveyController extends Controller
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('nama', function ($row) {
-                    if (in_array(Auth::user()->role, ['Admin', 'Institusi'])) {
+                    if (in_array(Auth::user()->role, ['Admin', 'Institusi', 'Sub Admin'])) {
                         return '<h6 class="text-uppercase mb-1 mt-4">Surveyor: ' . $row->profile->nama_lengkap . '</h6>
                                     <h6 class="text-uppercase fw-bold mb-0">Responden: ' . $row->responden->kartu_keluarga . ' (' . $row->responden->nama_kepala_keluarga . ')</h6>
                                     <span class="text-muted mb-4">Judul:  ' . $row->namaSurvey->nama . '</span>
@@ -152,7 +152,7 @@ class SurveyController extends Controller
                              <a href="' . url('/survey/pertanyaan-survey') . "/" . $row->kode_unik . "/" . $kategori->id . '" class="btn btn-warning btn-sm mr-1 my-1" title="Ubah" ><i class="fas fa-edit"></i> Ubah</a>';
                         }
 
-                        if (Auth::user()->role != "Institusi") {
+                        if (!in_array(Auth::user()->role, ["Institusi", 'Sub Admin'])) {
                             $actionBtn .= '<button id="btn-delete" onclick="hapus(' . $row->kode_unik . ')" class="btn btn-danger btn-sm mr-1 my-1" value="' . $row->kode_unik . '" title="Hapus"><i class="fas fa-trash"></i> Hapus</button></div>';
                         }
                     }

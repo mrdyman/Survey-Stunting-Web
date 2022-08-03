@@ -53,8 +53,8 @@
                     @endslot
                 @endcomponent
             </div>
-            @if (in_array(Auth::user()->role, ['Admin', 'Institusi']))
-                @if (Auth::user()->role == 'Admin')
+            @if (in_array(Auth::user()->role, ['Admin', 'Sub Admin', 'Institusi']))
+                @if (in_array(Auth::user()->role, ['Admin', 'Sub Admin']))
                     <div class="col-lg">
                         @component('components.formGroup.select',
                             [
@@ -273,7 +273,7 @@
         });
 
         $('#institusi_id').change(function() {
-            if ("{{ Auth::user()->role }}" == "Admin") {
+            if ("{{ Auth::user()->role }}" == "Admin" || "{{ Auth::user()->role }}" == "Sub Admin") {
                 var idInstitusi = $(this).val();
             }
             getSupervisor(idInstitusi);

@@ -25,19 +25,21 @@
 @endpush
 
 @section('content')
-    <section>
-        <div class="row mb-3">
-            <div class="col">
-                @component('components.buttons.add')
-                    @slot('href')
-                        {{ route('lokasi-survey.create') }}
-                    @endslot
-                    @slot('onClick')
-                    @endslot
-                @endcomponent
+    @if (Auth::user()->role == 'Admin')
+        <section>
+            <div class="row mb-3">
+                <div class="col">
+                    @component('components.buttons.add')
+                        @slot('href')
+                            {{ route('lokasi-survey.create') }}
+                        @endslot
+                        @slot('onClick')
+                        @endslot
+                    @endcomponent
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    @endif
     <section>
         <div class="row mb-4">
             <div class="col-lg-6 col-md-6">
