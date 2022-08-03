@@ -37,12 +37,14 @@
                         ])
                     @endcomponent
                 @endif
-                @component('components.buttons.previous',
-                    [
-                        'class' => 'float-right',
-                        'href' => url('supervisor-dpl/' . $profile->institusi_id),
-                    ])
-                @endcomponent
+                @if (Auth::user()->role != 'Supervisor')
+                    @component('components.buttons.previous',
+                        [
+                            'class' => 'float-right',
+                            'href' => url('supervisor-dpl/' . $profile->institusi_id),
+                        ])
+                    @endcomponent
+                @endif
             </div>
         </div>
     </section>
