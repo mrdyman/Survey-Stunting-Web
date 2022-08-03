@@ -124,11 +124,14 @@ Route::group(['middleware' => ['role:Admin|Sub Admin']], function () {
 
 Route::group(['middleware' => ['role:Admin|Sub Admin|Institusi']], function () {
     Route::get('/supervisor-dpl/{institusi}', [SupervisorDplController::class, 'index']);
-    Route::resource('/lokasi-survey-supervisor-dpl/{dpl}', LokasiSurveySupervisorController::class)->parameters([
-        '{dpl}' => 'lokasiSurvey'
-    ]);
+});
+
+Route::group(['middleware' => ['role:Admin|Sub Admin|Institusi|Supervisor']], function () {
     Route::resource('/anggota-supervisor-dpl/{lokasiSurveySupervisor}', AnggotaSupervisorController::class)->parameters([
         '{lokasiSurveySupervisor}' => 'anggotaSupervisor'
+    ]);
+    Route::resource('/lokasi-survey-supervisor-dpl/{dpl}', LokasiSurveySupervisorController::class)->parameters([
+        '{dpl}' => 'lokasiSurvey'
     ]);
 });
 

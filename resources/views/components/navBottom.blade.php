@@ -70,6 +70,15 @@
                     </div>
                 </li>
             @endif
+
+            @if (Auth::user()->role == 'Supervisor')
+                <li class="nav-item menu">
+                    <a class="nav-link" href="{{ url('/lokasi-survey-supervisor-dpl/' . Auth::user()->profile->id) }}">
+                        <i class="icon-people text-danger mr-1"> </i>
+                        <span class="menu-title"> Surveyor / Mahasiswa</span>
+                    </a>
+                </li>
+            @endif
             <li class="nav-item menu">
                 <a class="nav-link" href="{{ url('/exportSurvey') }}">
                     <i class="link-icon icon-cloud-download text-danger"></i>
