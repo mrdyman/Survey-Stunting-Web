@@ -80,7 +80,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 
 // Role Admin
-Route::group(['middleware' => ['admin']], function () {
+Route::group(['middleware' => ['role:Admin|Sub Admin']], function () {
     Route::resource('/wilayah-provinsi', ProvinsiController::class);
     Route::put('/status-provinsi/{wilayah_provinsi}', [ProvinsiController::class, 'status']);
     Route::resource('/wilayah-kabupaten/{wilayah_provinsi}', KabupatenKotaController::class)->parameters([
@@ -122,7 +122,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/institusi-supervisor-dpl', [InstitusiSupervisorDplController::class, 'index']);
 });
 
-Route::group(['middleware' => ['admin_institusi']], function () {
+Route::group(['middleware' => ['role:Admin|Sub Admin|Institusi']], function () {
     Route::get('/supervisor-dpl/{institusi}', [SupervisorDplController::class, 'index']);
     Route::resource('/lokasi-survey-supervisor-dpl/{dpl}', LokasiSurveySupervisorController::class)->parameters([
         '{dpl}' => 'lokasiSurvey'

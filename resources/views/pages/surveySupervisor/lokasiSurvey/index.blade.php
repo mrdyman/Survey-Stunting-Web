@@ -92,7 +92,7 @@
             ajax: {
                 url: "{{ url('/survey-supervisor/lokasi-survey') }}",
                 data: function(d) {
-                    d.search = $('input[type="search"]').val();
+                    // d.search = $('input[type="search"]').val();
                 }
             },
             columns: [{

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ListController;
+use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Validator;
 
@@ -36,21 +37,30 @@ class RespondenController extends Controller
                     return $row->desa_kelurahan->nama;
                 })
                 ->addColumn('action', function ($row) {
-                    $actionBtn = '
+                    if (Auth::user()->role == "Admin") {
+                        $actionBtn = '
                 <div class="row text-center justify-content-center">';
-                    $actionBtn .= '
+                        $actionBtn .= '
                     <a href="' . route('responden.show', $row->id) . '" class="btn btn-info btn-sm mr-1 my-1" data-toggle="tooltip" data-placement="top" title="Lihat"><i class="fas fa-eye"></i></a>
                     <a href="' . route('responden.edit', $row->id) . '" id="btn-edit" class="btn btn-warning btn-sm mr-1 my-1" data-toggle="tooltip" data-placement="top" title="Ubah"><i class="fas fa-edit"></i></a>
                     <button id="btn-delete" onclick="hapus(' . $row->id . ')" class="btn btn-danger btn-sm mr-1 my-1" value="' . $row->id . '" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fas fa-trash"></i></button>
                 </div>';
+                    } else {
+                        $actionBtn = '
+                <div class="row text-center justify-content-center">';
+                        $actionBtn .= '
+                    <a href="' . route('responden.show', $row->id) . '" class="btn btn-info btn-sm mr-1 my-1" data-toggle="tooltip" data-placement="top" title="Lihat"><i class="fas fa-eye"></i></a>
+                </div>';
+                    }
+
                     return $actionBtn;
                 })
                 ->filter(function ($query) use ($request) {
                     if ($request->search != '') {
                         $query->where(function ($query) use ($request) {
                             $query->where("nama_kepala_keluarga", "LIKE", "%$request->search%");
-                                
-                            $query->orWhere("kartu_keluarga", "LIKE", "%$request->search%");                        
+
+                            $query->orWhere("kartu_keluarga", "LIKE", "%$request->search%");
                         });
                     }
 

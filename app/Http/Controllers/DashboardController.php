@@ -26,7 +26,7 @@ class DashboardController extends Controller
         if ($profile == null) {
             return redirect(route('lengkapiProfile'));
         } else {
-            if (in_array(Auth::user()->role, array('Admin', 'Supervisor', 'Institusi'))) {
+            if (in_array(Auth::user()->role, array('Admin', 'Sub Admin', 'Supervisor', 'Institusi'))) {
                 $dataAdmin = [
                     'totalSurvey' => Survey::where('is_selesai', 1)->count(),
                     'totalSurveyPre' => Survey::with('namaSurvey')->whereHas('namaSurvey', function ($query) {
@@ -133,7 +133,7 @@ class DashboardController extends Controller
                                 ->orWhereDate('updated_at', '=', date('Y-m-d'));
                         })->orderBy('updated_at', 'DESC'),
                 ];
-                if (Auth::user()->role == 'Admin') {
+                if (in_array(Auth::user()->role, ['Admin', 'Sub Admin'])) {
                     return view('pages.dashboard.admin', $dataAdmin);
                 } else if (Auth::user()->role == 'Institusi') {
                     return view('pages.dashboard.institusi', $dataInstitusi);

@@ -115,7 +115,7 @@
                     d.nama_surveyor_id = $('#nama_surveyor_id').val();
                     d.nama_survey_id = $('#nama_survey_id').val();
                     d.status = $('#status').val();
-                    d.search = $('input[type="search"]').val();
+                    // d.search = $('input[type="search"]').val();
                 }
             },
             columns: [{

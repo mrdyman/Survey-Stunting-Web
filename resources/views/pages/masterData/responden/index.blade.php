@@ -28,13 +28,15 @@
     <section>
         <div class="row mb-3">
             <div class="col">
-                @component('components.buttons.add')
-                    @slot('href')
-                        {{ route('responden.create') }}
-                    @endslot
-                    @slot('onClick')
-                    @endslot
-                @endcomponent
+                @if (Auth::user()->role == 'Admin')
+                    @component('components.buttons.add')
+                        @slot('href')
+                            {{ route('responden.create') }}
+                        @endslot
+                        @slot('onClick')
+                        @endslot
+                    @endcomponent
+                @endif
                 @if (Auth::user()->role == 'Admin')
                     <button type="button" class="ml-2 btn btn-warning" id="import-responden"><i
                             class="link-icon icon-cloud-upload"></i> Import

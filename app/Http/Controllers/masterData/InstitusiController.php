@@ -9,6 +9,7 @@ use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\StoreInstitusiRequest;
 use App\Http\Requests\UpdateInstitusiRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request as FacadesRequest;
 
 class InstitusiController extends Controller
@@ -25,12 +26,16 @@ class InstitusiController extends Controller
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
-                    $actionBtn = '
+                    if (Auth::user()->role == "Admin") {
+                        $actionBtn = '
                         <div class="row text-center justify-content-center">';
-                    $actionBtn .= '
+                        $actionBtn .= '
                             <button id="btn-edit" class="btn btn-warning btn-sm mr-1 my-1"  onclick="edit(' . $row->id . ')"><i class="fas fa-edit"></i></button>
                             <button id="btn-delete" onclick="hapus(' . $row->id . ')" class="btn btn-danger btn-sm mr-1 my-1" value="' . $row->id . '" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fas fa-trash"></i></button>
                         </div>';
+                    } else {
+                        $actionBtn = '-';
+                    }
                     return $actionBtn;
                 })
                 ->rawColumns(['action'])

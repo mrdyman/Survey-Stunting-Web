@@ -25,18 +25,20 @@
 @endpush
 
 @section('content')
-    <section>
-        <div class="row mb-3">
-            <div class="col">
-                @component('components.buttons.add',
-                    [
-                        'href' => 'javascript:void(0);',
-                        'onClick' => 'tambah()',
-                    ])
-                @endcomponent
+    @if (Auth::user()->role == 'Admin')
+        <section>
+            <div class="row mb-3">
+                <div class="col">
+                    @component('components.buttons.add',
+                        [
+                            'href' => 'javascript:void(0);',
+                            'onClick' => 'tambah()',
+                        ])
+                    @endcomponent
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    @endif
     <section>
         <div class="row">
             <div class="col">
