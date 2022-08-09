@@ -28,6 +28,11 @@
                 <th colspan="8">{{ $supervisor->nama_lengkap }}</th>
             </tr>
         @endif
+        <tr>
+            <th></th>
+            <th colspan="2">Halaman : </th>
+            <th colspan="8" align="left">{{ $halaman }}</th>
+        </tr>
 
     </table>
 
@@ -66,40 +71,47 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($daftarSurvey as $survey)
-                <tr>
-                    <td></td>
-                    <td align="center" style="vertical-align: center;border: 1px solid black;">
-                        {{ $loop->iteration }}</td>
-                    <td align="center" style="vertical-align: center;border: 1px solid black;">
-                        {{ \Carbon\Carbon::parse($survey->created_at)->translatedFormat('d F Y') }}</td>
-                    <td align="center" style="vertical-align: center;border: 1px solid black;">
-                        {{ $survey->responden->desa_kelurahan->nama }}</td>
-                    <td align="center" style="vertical-align: center;border: 1px solid black;">
-                        {{ $survey->responden->kecamatan->nama }}</td>
-                    <td align="center" style="vertical-align: center;border: 1px solid black;">
-                        {{ $survey->responden->kabupaten_kota->nama }}</td>
-                    <td align="center" style="vertical-align: center;border: 1px solid black;">
-                        {{ $survey->responden->kartu_keluarga }} &nbsp;</td>
-                    @foreach ($daftarKategori as $kategori)
-                        @foreach ($kategori->soal as $soal)
-                            @php
-                                $daftarJawaban = \App\Models\JawabanSurvey::with(['jawabanSoal'])
-                                    ->where('kode_unik_survey', "$survey->kode_unik")
-                                    ->where('kategori_soal_id', "$kategori->id")
-                                    ->where('soal_id', "$soal->id")
-                                    ->get();
-                            @endphp
-                            <th align="center" style="vertical-align: center;border: 1px solid black;">
-                                @foreach ($daftarJawaban as $jawaban)
-                                    <p>
-                                        {{ $jawaban->jawaban_soal_id == null || $jawaban->jawaban_soal_id == 0 ? $jawaban->jawaban_lainnya : $jawaban->jawabanSoal->jawaban }}
-                                    </p>
+            @php
+                $i = 1;
+            @endphp
+            @foreach ($daftarSurvey->chunk(5) as $rowSurvey)
+                @foreach ($rowSurvey as $survey)
+                    <tr>
+                        <td></td>
+                        <td align="center" style="vertical-align: center;border: 1px solid black;">
+                            {{ $i++ }}</td>
+                        <td align="center" style="vertical-align: center;border: 1px solid black;">
+                            {{ \Carbon\Carbon::parse($survey->created_at)->translatedFormat('d F Y') }}</td>
+                        <td align="center" style="vertical-align: center;border: 1px solid black;">
+                            {{ $survey->responden->desa_kelurahan->nama }}</td>
+                        <td align="center" style="vertical-align: center;border: 1px solid black;">
+                            {{ $survey->responden->kecamatan->nama }}</td>
+                        <td align="center" style="vertical-align: center;border: 1px solid black;">
+                            {{ $survey->responden->kabupaten_kota->nama }}</td>
+                        <td align="center" style="vertical-align: center;border: 1px solid black;">
+                            {{ $survey->responden->kartu_keluarga }} &nbsp;</td>
+                        @foreach ($daftarKategori as $kategori)
+                            @foreach ($kategori->soal->chunk(5) as $rowSoal)
+                                @foreach ($rowSoal as $soal)
+                                    @php
+                                        $daftarJawaban = \App\Models\JawabanSurvey::with(['jawabanSoal'])
+                                            ->where('kode_unik_survey', "$survey->kode_unik")
+                                            ->where('kategori_soal_id', "$kategori->id")
+                                            ->where('soal_id', "$soal->id")
+                                            ->get();
+                                    @endphp
+                                    <th align="center" style="vertical-align: center;border: 1px solid black;">
+                                        @foreach ($daftarJawaban as $jawaban)
+                                            <p>
+                                                {{ $jawaban->jawaban_soal_id == null || $jawaban->jawaban_soal_id == 0 ? $jawaban->jawaban_lainnya : $jawaban->jawabanSoal->jawaban }}
+                                            </p>
+                                        @endforeach
+                                    </th>
                                 @endforeach
-                            </th>
+                            @endforeach
                         @endforeach
-                    @endforeach
-                </tr>
+                    </tr>
+                @endforeach
             @endforeach
         </tbody>
     </table>

@@ -33,8 +33,8 @@
 @endpush
 
 @section('content')
-    <form action="{{ url('/exportSurvey/exportExcel') }}" method="POST">
-        @csrf
+    <form action="" method="GET">
+        {{-- @csrf --}}
         <div class="row">
             <div class="col-lg">
                 @component('components.formGroup.select',
@@ -53,8 +53,8 @@
                     @endslot
                 @endcomponent
             </div>
-            @if (in_array(Auth::user()->role, ['Admin', 'Institusi']))
-                @if (Auth::user()->role == 'Admin')
+            @if (in_array(Auth::user()->role, ['Admin', 'Institusi', 'Sub Admin']))
+                @if (in_array(Auth::user()->role, ['Admin', 'Sub Admin']))
                     <div class="col-lg">
                         @component('components.formGroup.select',
                             [
@@ -122,96 +122,111 @@
                 @endif
             </div>
             <div class="col-lg-12 mt-3 d-flex justify-content-end">
-                @component('components.buttons.next',
-                    [
-                        'label' => 'Export',
-                        'class' => '',
-                    ])
-                @endcomponent
+                <button type="submit" class="btn btn-primary mr-3" name="cari">Cari</button>
+                <button type="submit" class="btn btn-success" formaction="{{ url('/exportSurvey/exportExcel') }}"
+                    name="page" value="{{ $_GET['page'] ?? '' }}">Export</button>
             </div>
         </div>
 
 
     </form>
 
-    <div class="row mt-4">
-        <div class="table-responsive">
-            <table class="table table-bordered yajra-datatable">
-                <thead>
-                    <tr class="text-center  ">
-                        <th>No</th>
-                        <th>Nama</th>
-                        <th>Institusi</th>
-                        <th>Supervisor / DPL</th>
-                        <th>Tipe</th>
-                        <th>Tanggal</th>
+    <div class="row">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Nama</th>
+                    <th scope="col">Institusi</th>
+                    <th scope="col">Supervisor / DPL</th>
+                    <th scope="col">Tipe</th>
+                    <th scope="col">Tanggal</th>
+                </tr>
+            </thead>
+            <tbody>
+                @php
+                    $i = 1;
+                    $skipped = $data->currentPage() * $data->perPage() - $data->perPage();
+                @endphp
+                @forelse ($data as $row)
+                    <tr>
+                        <td>{{ $skipped + $i }}
+                            @php
+                                $i++;
+                            @endphp</td>
+                        <td>
+                            <h6 class="text-uppercase mb-1 mt-4">Surveyor: {{ $row->profile->nama_lengkap }}</h6>
+                            <h6 class="text-uppercase fw-bold mb-0">Responden: {{ $row->responden->kartu_keluarga }}</h6>
+                            <span class="text-muted mb-4">Judul: {{ $row->namaSurvey->nama }} </span>
+                        </td>
+                        <td>{{ $row->profile->institusi->nama }}</td>
+                        <td>
+                            @php
+                                if (count($row->supervisor)) {
+                                    $daftarSupervisor = '';
+                                    foreach ($row->supervisor as $supervisor) {
+                                        $daftarSupervisor .= '<p> - ' . $supervisor->profileSupervisor->nama_lengkap . '</p>';
+                                    }
+                                } else {
+                                    $daftarSupervisor = '-';
+                                }
+                                echo $daftarSupervisor;
+                            @endphp
+                        </td>
+                        <td>
+                            @php
+                                if ($row->namaSurvey->tipe == 'Pre') {
+                                    echo '<span class="badge badge-primary">PRE</span>';
+                                } else {
+                                    echo '<span class="badge badge-success">POST</span>';
+                                }
+                            @endphp
+                        </td>
+                        <td>
+                            {{ Carbon\Carbon::parse($row->updated_at)->translatedFormat('d F Y') }}
+                        </td>
                     </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
+                @empty
+                    <tr>
+                        <td colspan="6" class="text-center">
+                            Data Tidak Ada
+                        </td>
+                    </tr>
+                @endforelse
+            </tbody>
+        </table>
+
+        <div class="d-flex justify-content-center col-12">
+            {{ $data->links() }}
         </div>
     </div>
 @endsection
 
 @push('script')
     <script>
-        var idInstitusi = "{{ Auth::user()->profile->institusi_id }}";
-        getSupervisor(idInstitusi);
-        var table = $('.yajra-datatable').DataTable({
-            processing: true,
-            searching: false,
-            serverSide: true,
-            responsive: true,
-            ajax: {
-                url: "{{ url('/exportSurvey') }}",
-                data: function(d) {
-                    d.surveyor_id = $('#surveyor_id').val();
-                    d.supervisor_id = $('#supervisor_id').val();
-                    d.nama_survey_id = $('#nama_survey_id').val();
-                    d.institusi_id = $('#institusi_id').val();
-                    d.search = $('input[type="search"]').val();
-                }
-            },
-            columns: [{
-                    data: 'DT_RowIndex',
-                    name: 'DT_RowIndex',
-                    className: 'text-center',
-                    orderable: false,
-                    searchable: false
-                },
-                {
-                    data: 'nama',
-                    name: 'nama'
-                },
-                {
-                    data: 'institusi',
-                    name: 'institusi',
-                    className: 'text-center',
-                },
-                {
-                    data: 'supervisor',
-                    name: 'supervisor',
-                },
-                {
-                    data: 'tipe',
-                    name: 'tipe',
-                    className: 'text-center',
-                },
-                {
-                    data: 'tanggal',
-                    name: 'tanggal',
-                    className: 'text-center',
-                },
-            ],
-        });
+        var idInstitusi = '';
 
-        $('.filter').change(function() {
-            table.draw();
-        })
+        $('#nama_survey_id').val("{{ $_GET['nama_survey_id'] ?? '' }}").trigger('change');
+
+        $('#surveyor_id').val("{{ $_GET['surveyor_id'] ?? '' }}").trigger('change');
+
+        if ("{{ Auth::user()->role }}" == "Admin" || "{{ Auth::user()->role }}" == "Sub Admin") {
+            $('#institusi_id').val("{{ $_GET['institusi_id'] ?? '' }}").trigger('change');
+        }
+
+        if ("{{ Auth::user()->role }}" == "Admin" || "{{ Auth::user()->role }}" == "Sub Admin") {
+            idInstitusi = $('#institusi_id').val();
+        } else {
+            idInstitusi = "{{ Auth::user()->profile->institusi_id }}";
+        }
+
+        setTimeout(
+            function() {
+                getSupervisor(idInstitusi);
+            }, 1000);
 
         $('#institusi_id').change(function() {
-            if ("{{ Auth::user()->role }}" == "Admin") {
+            if ("{{ Auth::user()->role }}" == "Admin" || "{{ Auth::user()->role }}" == "Sub Admin") {
                 var idInstitusi = $(this).val();
             }
             getSupervisor(idInstitusi);
@@ -241,6 +256,11 @@
                 }
             })
         }
+
+        setTimeout(
+            function() {
+                $('#supervisor_id').val("{{ $_GET['supervisor_id'] ?? '' }}").trigger('change');
+            }, 2000);
 
         $('.select2').change(function() {
             $('.error-text').text('');
