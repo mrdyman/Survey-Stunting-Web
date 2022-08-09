@@ -81,7 +81,7 @@ class ExportSurveyController extends Controller
                     $query->where('institusi_id', $institusi_id);
                 }
             })
-            ->where('nama_survey_id', $nama_survey_id)->orderBy('updated_at', 'DESC')->paginate(15)->withQueryString();
+            ->where('nama_survey_id', $nama_survey_id)->orderBy('updated_at', 'DESC')->paginate(10)->withQueryString();
 
         return view('pages.survey.exportSurvey.index', compact('namaSurvey', 'surveyor', 'institusi', 'data', 'halaman'));
     }
@@ -133,7 +133,7 @@ class ExportSurveyController extends Controller
                 }
             })
             ->where('nama_survey_id', $request->nama_survey_id)->orderBy('updated_at', 'DESC')
-            ->paginate(15);
+            ->paginate(10);
 
         // dd($survey);
 
