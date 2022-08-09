@@ -67,7 +67,7 @@ Route::group(['middleware' => ['auth']], function () {
     })->name('lengkapiProfile');
 
     Route::get('/exportSurvey', [ExportSurveyController::class, 'index']);
-    Route::post('/exportSurvey/exportExcel', [ExportSurveyController::class, 'exportSurvey']);
+    Route::get('/exportSurvey/exportExcel', [ExportSurveyController::class, 'exportSurvey']);
     Route::get('/importSurvey', [ImportSurveyController::class, 'index']);
     Route::post('/importSurvey/store', [ImportSurveyController::class, 'store']);
     Route::get('/survey/lihat-survey/{survey}', [SurveyController::class, 'lihatSurvey']);
