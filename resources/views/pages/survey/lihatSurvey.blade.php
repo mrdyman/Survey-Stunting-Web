@@ -43,7 +43,7 @@
                         {!! $survey->namaSurvey->tipe == 'Pre'
                             ? ' <span class="badge badge-primary">PRE</span>'
                             : ' <span
-                                                                                                                                                class="badge badge-success">POST</span>' !!}
+                                                                                                                                                                                                                                                                        class="badge badge-success">POST</span>' !!}
 
                     </div>
                     <div class="card-body ">
@@ -68,9 +68,11 @@
                             @foreach ($kategori->soal as $soal)
                                 @php
                                     $daftarJawaban = \App\Models\JawabanSurvey::with(['jawabanSoal'])
+                                        ->groupBy('soal_id', 'kode_unik_survey', 'kategori_soal_id', 'jawaban_soal_id', 'jawaban_lainnya')
                                         ->where('kode_unik_survey', $kodeUnik)
                                         ->where('kategori_soal_id', $kategori->id)
                                         ->where('soal_id', $soal->id)
+                                        ->having(DB::raw('count(*)'), '>=', '1')
                                         ->get();
                                 @endphp
                                 <p class="{{ $loop->first ? '' : 'mt-4' }}">{{ $loop->iteration }} . {{ $soal->soal }}
@@ -88,7 +90,7 @@
                                             <p><i class="{{ $tipe }}"></i> {{ $jawaban->jawabanSoal->jawaban }}
                                             </p>
                                         @else
-                                            <p><i class="{{ $tipe }}"></i> {{ $jawaban->jawabanSoal->jawaban }}
+                                            <p><i class="{{ $tipe }}"></i> {{ $jawaban->jawaban_lainnya }}
                                             </p>
                                         @endif
                                     @endforeach
