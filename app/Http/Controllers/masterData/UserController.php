@@ -8,9 +8,11 @@ use App\Models\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
+use App\Imports\AkunImport;
 use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Validator;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
 {
@@ -72,9 +74,8 @@ class UserController extends Controller
                         $query->where(function ($query) use ($request) {
                             $query->whereHas('profile', function ($query) use ($request) {
                                 $query->where("profiles.nama_lengkap", "LIKE", "%$request->search%");
-                                    
                             });
-                            $query->orWhere("users.username", "LIKE", "%$request->search%");                        
+                            $query->orWhere("users.username", "LIKE", "%$request->search%");
                         });
                     }
 
