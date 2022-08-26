@@ -37,12 +37,48 @@
                                         <span class="text-danger error-text file_akun-error"></span>
                                     </div>
                                 </div>
+                                <div class="col-lg col-md">
+                                    @component('components.formGroup.select',
+                                        [
+                                            'label' => 'Role',
+                                            'name' => 'role',
+                                            'id' => 'role',
+                                            'class' => 'select2',
+                                        ])
+                                        @slot('options')
+                                            <option value="Admin">Admin</option>
+                                            <option value="Sub Admin">Sub Admin</option>
+                                            <option value="Institusi">Institusi / Universitas</option>
+                                            <option value="Supervisor">Supervisor / DPL</option>
+                                            <option value="Surveyor">Surveyor / Mahasiswa</option>
+                                        @endslot
+                                    @endcomponent
+                                </div>
+                                <div class="col-lg col-md">
+                                    @component('components.formGroup.select',
+                                        [
+                                            'label' => 'Institusi',
+                                            'name' => 'institusi_id',
+                                            'id' => 'institusi_id',
+                                            'class' => 'select2',
+                                        ])
+                                        @slot('options')
+                                            @foreach ($daftarInstitusi as $institusi)
+                                                <option value="{{ $institusi->id }}">{{ $institusi->nama }}</option>
+                                            @endforeach
+                                        @endslot
+                                    @endcomponent
+                                </div>
                             </div>
                             <div class="form-row mt-2">
+                                <div class="form-group mr-auto">
+                                    <a href="{{ asset('assets') }}/formatImport.xlsx" class="btn btn-primary"><i
+                                            class="fas fa-file-download"></i>
+                                        Format Import</a>
+                                </div>
                                 <div class="form-group ml-auto">
                                     <button type="submit" class="btn btn-success"><i class="fas fa-cloud-upload-alt"></i>
                                         Import</button>
-
                                 </div>
                             </div>
                         </form>
@@ -76,7 +112,6 @@
                 processData: false,
                 contentType: false,
                 success: function(data) {
-                    console.log(data);
                     $("#overlay").fadeOut(100);
                     if ($.isEmptyObject(data.error)) {
                         swal({
@@ -87,7 +122,7 @@
                         })
                         setTimeout(
                             function() {
-                                window.location.href = "{{ url('dashboard') }}";
+                                window.location.href = "{{ url('user') }}";
                             }, 2000);
 
                     } else {
