@@ -74,7 +74,7 @@
             @php
                 $i = 1;
             @endphp
-            @foreach ($daftarSurvey->chunk(5) as $rowSurvey)
+            @foreach ($daftarSurvey->chunk(25) as $rowSurvey)
                 @foreach ($rowSurvey as $survey)
                     <tr>
                         <td></td>
