@@ -104,6 +104,7 @@ Route::group(['middleware' => ['role:Admin|Sub Admin']], function () {
     Route::resource('/user', UserController::class);
     Route::resource('/profile', ProfileController::class);
     Route::resource('/institusi', InstitusiController::class);
+    Route::post('responden/export', [RespondenController::class, 'export']);
     Route::resource('/responden', RespondenController::class)->parameters([
         'responden' => 'responden'
     ]);
