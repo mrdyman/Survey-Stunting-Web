@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers\masterData;
 
+use App\Exports\RespondenExport;
 use App\Models\Responden;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ListController;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Validator;
+use Maatwebsite\Excel\Facades\Excel;
 
 class RespondenController extends Controller
 {
@@ -308,5 +311,43 @@ class RespondenController extends Controller
         } while (Responden::where("kode_unik", "=", $code)->first());
 
         return $code;
+    }
+
+    public function export(Request $request)
+    {
+        $provinsi = $request->provinsi;
+        $kabupaten_kota = $request->kabupaten_kota;
+        $kecamatan = $request->kecamatan;
+        $desa_kelurahan = $request->desa_kelurahan;
+
+        $responden = Responden::with('provinsi', 'kabupaten_kota', 'kecamatan', 'desa_kelurahan')->orderBy('created_at', 'DESC')->where(function ($query) use ($provinsi, $kabupaten_kota, $kecamatan, $desa_kelurahan) {
+            if (!empty($provinsi)) {
+                $query->whereHas('provinsi', function ($query) use ($provinsi) {
+                    $query->where('id', $provinsi);
+                });
+            }
+
+            if (!empty($kabupaten_kota)) {
+                $query->whereHas('kabupaten_kota', function ($query) use ($kabupaten_kota) {
+                    $query->where('id', $kabupaten_kota);
+                });
+            }
+
+            if (!empty($kecamatan)) {
+                $query->whereHas('kecamatan', function ($query) use ($kecamatan) {
+                    $query->where('id', $kecamatan);
+                });
+            }
+
+            if (!empty($desa_kelurahan)) {
+                $query->whereHas('desa_kelurahan', function ($query) use ($desa_kelurahan) {
+                    $query->where('id', $desa_kelurahan);
+                });
+            }
+        })->get();
+
+        $tanggal = Carbon::parse(Carbon::now())->translatedFormat('d F Y');
+
+        return Excel::download(new RespondenExport($responden), 'Data Responden-' . $tanggal . '.xlsx');
     }
 }

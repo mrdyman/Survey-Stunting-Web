@@ -42,64 +42,74 @@
                             class="link-icon icon-cloud-upload"></i> Import
                         Responden</button>
                 @endif
+                <button class="btn btn-primary ml-2" id="btn-export">
+                    <i class="fas fa-file-download"></i>
+                    Export Responden
+                </button>
             </div>
         </div>
     </section>
     <section>
-        <div class="row mb-4">
-            <div class="col-lg-6 col-md-6">
-                {{-- Provinsi --}}
-                @component('components.formGroup.select',
-                    [
-                        'label' => 'Pilih Provinsi',
-                        'name' => 'provinsi',
-                        'id' => 'provinsi',
-                        'class' => 'select2',
-                        'class_fg' => 'px-0',
-                        'options' => '',
-                    ])
-                @endcomponent
+        <form action="{{ url('responden/export') }}" method="POST" id="form-export">
+            @csrf
+            <div class="row mb-4">
+                <div class="col-lg-6 col-md-6">
+                    {{-- Provinsi --}}
+                    @component('components.formGroup.select',
+                        [
+                            'label' => 'Pilih Provinsi',
+                            'name' => 'provinsi',
+                            'id' => 'provinsi',
+                            'class' => 'select2',
+                            'class_fg' => 'px-0',
+                            'options' => '',
+                        ])
+                    @endcomponent
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    {{-- Kabupaten / Kota --}}
+                    @component('components.formGroup.select',
+                        [
+                            'label' => 'Pilih Kabupaten / Kota',
+                            'name' => 'kabupaten_kota',
+                            'id' => 'kabupaten-kota',
+                            'class' => 'select2',
+                            'class_fg' => 'px-0',
+                            'options' => '',
+                        ])
+                    @endcomponent
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    {{-- Kecamatan --}}
+                    @component('components.formGroup.select',
+                        [
+                            'label' => 'Pilih Kecamatan',
+                            'name' => 'kecamatan',
+                            'id' => 'kecamatan',
+                            'class' => 'select2',
+                            'class_fg' => 'px-0',
+                            'options' => '',
+                        ])
+                    @endcomponent
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    {{-- Desa / Kelurahan --}}
+                    @component('components.formGroup.select',
+                        [
+                            'label' => 'Pilih Desa / Kelurahan',
+                            'name' => 'desa_kelurahan',
+                            'id' => 'desa-kelurahan',
+                            'class' => 'select2',
+                            'class_fg' => 'px-0',
+                            'options' => '',
+                        ])
+                    @endcomponent
+                </div>
+                {{-- <div class="col-12">
+                    <button class="btn btn-primary d-none" type="submit" id="btn-export-form">Export Responden</button>
+                </div> --}}
             </div>
-            <div class="col-lg-6 col-md-6">
-                {{-- Kabupaten / Kota --}}
-                @component('components.formGroup.select',
-                    [
-                        'label' => 'Pilih Kabupaten / Kota',
-                        'name' => 'kabupaten_kota',
-                        'id' => 'kabupaten-kota',
-                        'class' => 'select2',
-                        'class_fg' => 'px-0',
-                        'options' => '',
-                    ])
-                @endcomponent
-            </div>
-            <div class="col-lg-6 col-md-6">
-                {{-- Kecamatan --}}
-                @component('components.formGroup.select',
-                    [
-                        'label' => 'Pilih Kecamatan',
-                        'name' => 'kecamatan',
-                        'id' => 'kecamatan',
-                        'class' => 'select2',
-                        'class_fg' => 'px-0',
-                        'options' => '',
-                    ])
-                @endcomponent
-            </div>
-            <div class="col-lg-6 col-md-6">
-                {{-- Desa / Kelurahan --}}
-                @component('components.formGroup.select',
-                    [
-                        'label' => 'Pilih Desa / Kelurahan',
-                        'name' => 'desa_kelurahan',
-                        'id' => 'desa-kelurahan',
-                        'class' => 'select2',
-                        'class_fg' => 'px-0',
-                        'options' => '',
-                    ])
-                @endcomponent
-            </div>
-        </div>
+        </form>
     </section>
     <section>
         <div class="row">
@@ -189,6 +199,10 @@
 
 @push('script')
     <script>
+        $('#btn-export').click(function() {
+            $('#form-export').submit();
+        });
+
         $(".custom-file-input").on("change", function() {
             var fileName = $(this).val().split("\\").pop();
             $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
