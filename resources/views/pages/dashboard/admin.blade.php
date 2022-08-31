@@ -37,44 +37,29 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg col-md-6">
-                <div class="card card-stats card-round">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-4">
-                                <div class="icon-big text-center">
-                                    <i class="fas fa-tasks text-warning"></i>
+            @foreach ($nama_survey as $item)
+                <div class="col-lg col-md-6">
+                    <div class="card card-stats card-round">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="icon-big text-center">
+                                        <i class="fas fa-tasks text-success"></i>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-8 col-stats">
-                                <div class="numbers">
-                                    <p class="card-category">Survey Tipe Pre</p>
-                                    <h4 class="card-title">{{ $totalSurveyPre }}</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg col-md-6">
-                <div class="card card-stats card-round">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-4">
-                                <div class="icon-big text-center">
-                                    <i class="fas fa-tasks text-success"></i>
-                                </div>
-                            </div>
-                            <div class="col-8 col-stats">
-                                <div class="numbers">
-                                    <p class="card-category">Survey Tipe Post</p>
-                                    <h4 class="card-title">{{ $totalSurveyPost }}</h4>
+                                <div class="col-8 col-stats">
+                                    <div class="numbers">
+                                        <p class="card-category">{{ $item->nama }}</p>
+                                        <h4 class="card-title">{{ $survey->where('nama_survey_id', $item->id)->count() }}
+                                        </h4>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            @endforeach
+
             <div class="col-lg col-md-6">
                 <div class="card card-stats card-round">
                     <div class="card-body ">
