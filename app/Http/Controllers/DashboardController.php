@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Models\LokasiSurveySupervisor;
+use App\Models\NamaSurvey;
 use Illuminate\Support\Facades\Validator;
 
 class DashboardController extends Controller
@@ -28,6 +29,8 @@ class DashboardController extends Controller
         } else {
             if (in_array(Auth::user()->role, array('Admin', 'Sub Admin', 'Supervisor', 'Institusi'))) {
                 $dataAdmin = [
+                    'survey' => Survey::where('is_selesai', 1)->get(),
+                    'nama_survey' => NamaSurvey::all(),
                     'totalSurvey' => Survey::where('is_selesai', 1)->count(),
                     'totalSurveyPre' => Survey::with('namaSurvey')->whereHas('namaSurvey', function ($query) {
                         $query->where('tipe', 'Pre');
@@ -39,11 +42,7 @@ class DashboardController extends Controller
                         $query->where('role', 'Surveyor');
                     })->count(),
                     'totalResponden' => Responden::count(),
-
-
                     'riwayatSurveyHariIni' => Survey::where('is_selesai', 1)->whereDate('updated_at', '=', date('Y-m-d'))->orderBy('updated_at', 'DESC'),
-
-
                     'riwayatSurveyMingguIni' => Survey::with('responden', 'namaSurvey', 'profile')
                         ->where('is_selesai', 1)
                         ->where(function ($query) {
@@ -62,6 +61,10 @@ class DashboardController extends Controller
                 ];
 
                 $dataInstitusi = [
+                    'survey' => Survey::with('profile')->where('is_selesai', 1)->whereHas('profile', function ($query) {
+                        $query->where('institusi_id', Auth::user()->profile->institusi_id);
+                    })->get(),
+                    'nama_survey' => NamaSurvey::all(),
                     'totalSurvey' => Survey::with('profile')->where('is_selesai', 1)->whereHas('profile', function ($query) {
                         $query->where('institusi_id', Auth::user()->profile->institusi_id);
                     })->count(),
@@ -97,6 +100,13 @@ class DashboardController extends Controller
                 ];
 
                 $dataSupervisor = [
+                    'survey' => Survey::with('profile')->where('is_selesai', 1)
+                        ->whereHas('profile', function ($query) {
+                            $query->whereHas('anggotaSupervisor', function ($query) {
+                                $query->where('profile_dpl', Auth::user()->profile->id);
+                            });
+                        })->get(),
+                    'nama_survey' => NamaSurvey::all(),
                     'totalSurvey' => Survey::with('profile')->where('is_selesai', 1)
                         ->whereHas('profile', function ($query) {
                             $query->whereHas('anggotaSupervisor', function ($query) {
