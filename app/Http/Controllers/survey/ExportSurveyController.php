@@ -92,17 +92,17 @@ class ExportSurveyController extends Controller
     public function exportSurvey(Request $request)
     {
         // dd($request->page);
-        $surveyor_id = $request->surveyor_id;
-        $institusi_id = $request->institusi_id;
-        $supervisorId = Auth::user()->role == "Supervisor" ? Auth::user()->profile->id : $request->supervisor_id;
+        $surveyor_id = $request->filter_surveyor;
+        $institusi_id = $request->filter_institusi;
+        $supervisorId = Auth::user()->role == "Supervisor" ? Auth::user()->profile->id : $request->filter_supervisor;
         $this->validate(
             $request,
             [
                 'surveyor_id' => 'nullable',
-                'nama_survey_id' => 'required'
+                'filter_nama_survey' => 'required'
             ],
             [
-                'nama_survey_id.required' => "Nama Survey Tidak Boleh Dikosongkan",
+                'filter_nama_survey.required' => "Nama Survey Tidak Boleh Dikosongkan",
             ]
         );
 
@@ -138,7 +138,7 @@ class ExportSurveyController extends Controller
                     });
                 }
             })
-            ->where('nama_survey_id', $request->nama_survey_id)->orderBy('updated_at', 'DESC')->paginate(50)->withQueryString();
+            ->where('nama_survey_id', $request->filter_nama_survey)->orderBy('updated_at', 'DESC')->paginate(50)->withQueryString();
 
         // dd($survey);
 
@@ -160,7 +160,7 @@ class ExportSurveyController extends Controller
             $surveyor = '';
         }
 
-        $kategori = KategoriSoal::with(['soal'])->where('nama_survey_id', $request->nama_survey_id)->get();
+        $kategori = KategoriSoal::with(['soal'])->where('nama_survey_id', $request->filter_nama_survey)->get();
 
         $tanggal = Carbon::parse(Carbon::now())->translatedFormat('d F Y');
 
