@@ -62,11 +62,19 @@ class ExportSurveyController extends Controller
                     }
                 }
             })
-            ->where(function ($query) {
+            ->where(function ($query) use ($supervisorId) {
                 if (Auth::user()->role == "Supervisor") {
                     $query->whereHas('anggotaSupervisor', function ($query) {
                         $query->where('profile_dpl', Auth::user()->profile->id);
                     });
+                }
+
+                if (in_array(Auth::user()->role, ['Admin', 'Sub Admin'])) {
+                    if ($supervisorId != 'semua' && $supervisorId != null) {
+                        $query->whereHas('anggotaSupervisor', function ($query) use ($supervisorId) {
+                            $query->where('profile_dpl', $supervisorId);
+                        });
+                    }
                 }
             })
             ->where(function ($query) use ($institusi_id) {
@@ -108,11 +116,19 @@ class ExportSurveyController extends Controller
                     }
                 }
             })
-            ->where(function ($query) {
+            ->where(function ($query) use ($supervisorId) {
                 if (Auth::user()->role == "Supervisor") {
                     $query->whereHas('anggotaSupervisor', function ($query) {
                         $query->where('profile_dpl', Auth::user()->profile->id);
                     });
+                }
+
+                if (in_array(Auth::user()->role, ['Admin', 'Sub Admin'])) {
+                    if ($supervisorId != 'semua' && $supervisorId != null) {
+                        $query->whereHas('anggotaSupervisor', function ($query) use ($supervisorId) {
+                            $query->where('profile_dpl', $supervisorId);
+                        });
+                    }
                 }
             })
             ->where(function ($query) use ($institusi_id) {
@@ -122,7 +138,7 @@ class ExportSurveyController extends Controller
                     });
                 }
             })
-            ->where('nama_survey_id', $request->nama_survey_id)->orderBy('updated_at', 'DESC')->paginate(50);
+            ->where('nama_survey_id', $request->nama_survey_id)->orderBy('updated_at', 'DESC')->paginate(50)->withQueryString();
 
         // dd($survey);
 
