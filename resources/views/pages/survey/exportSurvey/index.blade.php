@@ -123,11 +123,23 @@
             </div>
             <div class="col-lg-12 mt-3 d-flex justify-content-end">
                 <button type="submit" class="btn btn-primary mr-3" name="cari">Cari</button>
-                <button type="submit" class="btn btn-success" formaction="{{ url('/exportSurvey/exportExcel') }}"
-                    name="page" value="{{ $_GET['page'] ?? '' }}">Export</button>
+                <button type="button" class="btn btn-success" id="btn-export">Export</button>
             </div>
+
+
+
         </div>
 
+
+    </form>
+
+    <form action="{{ url('/exportSurvey/exportExcel') }}" method="GET" id="form-export" class="d-none">
+        {{-- @csrf --}}
+        <input type="text" name="filter_nama_survey" value="{{ $_GET['nama_survey_id'] ?? '' }}">
+        <input type="text" name="filter_institusi" value="{{ $_GET['institusi_id'] ?? '' }}">
+        <input type="text" name="filter_supervisor" value="{{ $_GET['supervisor_id'] ?? '' }}">
+        <input type="text" name="filter_surveyor" value="{{ $_GET['surveyor_id'] ?? '' }}">
+        <input type="text" name="page" value="{{ $_GET['page'] ?? '' }}">
 
     </form>
 
@@ -264,6 +276,10 @@
 
         $('.select2').change(function() {
             $('.error-text').text('');
+        })
+
+        $('#btn-export').click(function() {
+            $('#form-export').submit();
         })
     </script>
 @endpush
