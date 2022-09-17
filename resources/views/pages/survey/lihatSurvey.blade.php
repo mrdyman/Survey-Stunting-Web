@@ -43,7 +43,7 @@
                         {!! $survey->namaSurvey->tipe == 'Pre'
                             ? ' <span class="badge badge-primary">PRE</span>'
                             : ' <span
-                                                                                                                                                                                                                                                                        class="badge badge-success">POST</span>' !!}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                class="badge badge-success">POST</span>' !!}
 
                     </div>
                     <div class="card-body ">
@@ -58,6 +58,16 @@
 
     <section>
         @foreach ($daftarKategori as $kategori)
+            @php
+                $jawabanSurvey = \App\Models\JawabanSurvey::with(['jawabanSoal'])
+                    ->groupBy('soal_id', 'kode_unik_survey', 'kategori_soal_id', 'jawaban_soal_id', 'jawaban_lainnya')
+                    ->having(DB::raw('count(*)'), '>=', '1')
+                    ->where('kode_unik_survey', "$kodeUnik")
+                    ->where('kategori_soal_id', $kategori->id)
+                    ->get();
+                $arraySoalId = $jawabanSurvey->pluck('soal_id')->toArray();
+                $arrayJawabanSoalId = $jawabanSurvey->pluck('jawaban_soal_id')->toArray();
+            @endphp
             <div class="row mb-3 justify-content-center">
                 <div class="col-lg-6">
                     <div class="card">
@@ -66,15 +76,6 @@
                         </div>
                         <div class="card-body">
                             @foreach ($kategori->soal as $soal)
-                                @php
-                                    $daftarJawaban = \App\Models\JawabanSurvey::with(['jawabanSoal'])
-                                        ->groupBy('soal_id', 'kode_unik_survey', 'kategori_soal_id', 'jawaban_soal_id', 'jawaban_lainnya')
-                                        ->where('kode_unik_survey', $kodeUnik)
-                                        ->where('kategori_soal_id', $kategori->id)
-                                        ->where('soal_id', $soal->id)
-                                        ->having(DB::raw('count(*)'), '>=', '1')
-                                        ->get();
-                                @endphp
                                 <p class="{{ $loop->first ? '' : 'mt-4' }}">{{ $loop->iteration }} . {{ $soal->soal }}
                                 </p>
                                 @if ($soal->tipe_jawaban != 'Jawaban Singkat')
@@ -85,17 +86,52 @@
                                             $tipe = 'far fa-check-square';
                                         }
                                     @endphp
-                                    @foreach ($daftarJawaban as $jawaban)
-                                        @if ($jawaban->jawaban_soal_id != null)
-                                            <p><i class="{{ $tipe }}"></i> {{ $jawaban->jawabanSoal->jawaban }}
-                                            </p>
+                                    @foreach ($soal->jawabanSoal as $jawaban)
+                                        @if ($jawaban->jawaban != 'Lainnya')
+                                            @php
+                                                $selected = '';
+                                                $cekJawaban = array_search($jawaban->id, $arrayJawabanSoalId);
+                                            @endphp
+                                            @if (count($arrayJawabanSoalId) > 0)
+                                                @if ($cekJawaban !== false)
+                                                    <p><i class="{{ $tipe }}"></i>
+                                                        {{ $jawaban->jawaban }}
+                                                    </p>
+                                                @endif
+                                            @endif
                                         @else
-                                            <p><i class="{{ $tipe }}"></i> {{ $jawaban->jawaban_lainnya }}
-                                            </p>
+                                            @php
+                                                $selected = '';
+                                                $value = '';
+                                                $cekJawaban = array_search($soal->id, $arraySoalId);
+                                                if (count($arraySoalId) > 0) {
+                                                    if ($cekJawaban !== 'false') {
+                                                        $isiJawaban = $jawabanSurvey[$cekJawaban];
+                                                        if ($isiJawaban->jawaban_lainnya) {
+                                                            $selected = 'checked';
+                                                            $value = $isiJawaban->jawaban_lainnya;
+                                                        }
+                                                    }
+                                                }
+                                            @endphp
+                                            @if ($value)
+                                                <p><i class="{{ $tipe }}"></i> {{ $value }}</p>
+                                            @endif
                                         @endif
                                     @endforeach
                                 @else
-                                    <p>{{ $daftarJawaban[0]->jawaban_lainnya }}</p>
+                                    @php
+                                        $selected = '';
+                                        $value = '';
+                                        $cekJawaban = array_search($soal->id, $arraySoalId);
+                                        if (count($arraySoalId) > 0) {
+                                            if ($cekJawaban !== 'false') {
+                                                $selected = 'checked';
+                                                $value = $jawabanSurvey[$cekJawaban]->jawaban_lainnya;
+                                            }
+                                        }
+                                    @endphp
+                                    <p>{{ $value }}</p>
                                 @endif
                             @endforeach
                         </div>

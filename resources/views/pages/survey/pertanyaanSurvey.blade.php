@@ -29,7 +29,6 @@
             opacity: 1 !important;
             border: 0px solid black;
         }
-
     </style>
 @endpush
 
@@ -50,11 +49,31 @@
                         <div class="card-header">
                             <span> Nama Survey :
                                 {{ $survey->namaSurvey->nama }}
-                                {!! $survey->namaSurvey->tipe == 'Pre' ? ' <span class="badge badge-primary">PRE</span>' : ' <span class="badge badge-success">POST</span>' !!} </span>
+                                {!! $survey->namaSurvey->tipe == 'Pre'
+                                    ? ' <span class="badge badge-primary">PRE</span>'
+                                    : ' <span class="badge badge-success">POST</span>' !!} </span>
                             <p class="mt-2 mb-0">Kategori Soal : {{ $kategori->nama }}</p>
                         </div>
                         <div class="card-body">
                             <input type="text" value="{{ $kategori->id }}" name="kategori_soal_id" hidden readonly>
+                            @php
+                                $idSoal = '';
+                                $jawabanSurvey = \App\Models\JawabanSurvey::with(['jawabanSoal'])
+                                    ->groupBy('soal_id', 'kode_unik_survey', 'kategori_soal_id', 'jawaban_soal_id', 'jawaban_lainnya')
+                                    ->having(DB::raw('count(*)'), '>=', '1')
+                                    ->where('kode_unik_survey', "$kodeUnik")
+                                    ->where('kategori_soal_id', $kategori->id)
+                                    ->get();
+                                $arraySoalId = $jawabanSurvey->pluck('soal_id')->toArray();
+                                $arrayJawabanSoalId = $jawabanSurvey->pluck('jawaban_soal_id')->toArray();
+
+                                // $jawabanSurvey = \App\Models\JawabanSurvey::with(['jawabanSoal'])
+                                //     ->where('kode_unik_survey', $kodeUnik)
+                                //     ->where('jawaban_soal_id', $jawaban->id)
+                                //     ->where('soal_id', $soal->id)
+                                //     ->first();
+
+                            @endphp
                             @foreach ($kategori->soal as $soal)
                                 @php
                                     $index = $loop->iteration;
@@ -77,14 +96,13 @@
                                         @if ($jawaban->jawaban != 'Lainnya')
                                             @php
                                                 $selected = '';
-                                                $jawabanSurvey = \App\Models\JawabanSurvey::with(['jawabanSoal'])
-                                                    ->where('kode_unik_survey', $kodeUnik)
-                                                    ->where('jawaban_soal_id', $jawaban->id)
-                                                    ->where('soal_id', $soal->id)
-                                                    ->first();
-                                                if ($jawabanSurvey) {
-                                                    $selected = 'checked';
+                                                $cekJawaban = array_search($jawaban->id, $arrayJawabanSoalId);
+                                                if (count($arrayJawabanSoalId) > 0) {
+                                                    if ($cekJawaban !== false) {
+                                                        $selected = 'checked';
+                                                    }
                                                 }
+
                                             @endphp
                                             <div class='input-group my-2'>
                                                 <div class='input-group-text'><input class='form-check-input mt-0'
@@ -101,14 +119,15 @@
                                             @php
                                                 $selected = '';
                                                 $value = '';
-                                                $jawabanSurvey = \App\Models\JawabanSurvey::with(['jawabanSoal'])
-                                                    ->where('kode_unik_survey', $kodeUnik)
-                                                    ->where('soal_id', $soal->id)
-                                                    ->where('jawaban_soal_id', null)
-                                                    ->first();
-                                                if ($jawabanSurvey) {
-                                                    $selected = 'checked';
-                                                    $value = $jawabanSurvey->jawaban_lainnya;
+                                                $cekJawaban = array_search($soal->id, $arraySoalId);
+                                                if (count($arraySoalId) > 0) {
+                                                    if ($cekJawaban !== 'false') {
+                                                        $isiJawaban = $jawabanSurvey[$cekJawaban];
+                                                        if ($isiJawaban->jawaban_lainnya) {
+                                                            $selected = 'checked';
+                                                            $value = $isiJawaban->jawaban_lainnya;
+                                                        }
+                                                    }
                                                 }
                                             @endphp
                                             <div class='input-group'>
@@ -128,14 +147,12 @@
                                     @php
                                         $selected = '';
                                         $value = '';
-                                        $jawabanSurvey = \App\Models\JawabanSurvey::with(['jawabanSoal'])
-                                            ->where('kode_unik_survey', $kodeUnik)
-                                            ->where('soal_id', $soal->id)
-                                            ->where('jawaban_soal_id', null)
-                                            ->first();
-                                        if ($jawabanSurvey) {
-                                            $selected = 'checked';
-                                            $value = $jawabanSurvey->jawaban_lainnya;
+                                        $cekJawaban = array_search($soal->id, $arraySoalId);
+                                        if (count($arraySoalId) > 0) {
+                                            if ($cekJawaban !== 'false') {
+                                                $selected = 'checked';
+                                                $value = $jawabanSurvey[$cekJawaban]->jawaban_lainnya;
+                                            }
                                         }
                                     @endphp
                                     <input type='text'
@@ -149,20 +166,22 @@
                             <div class="mt-4">
                                 @if ($tombolSebelumnya != '')
                                     <div class="float-left">
-                                        @component('components.buttons.previous', [
-                                            'label' => 'Sebelumnya',
-                                            'href' => $urlSebelumnya,
-                                            'onClick' => '',
-                                            'class' => '',
+                                        @component('components.buttons.previous',
+                                            [
+                                                'label' => 'Sebelumnya',
+                                                'href' => $urlSebelumnya,
+                                                'onClick' => '',
+                                                'class' => '',
                                             ])
                                         @endcomponent
                                     </div>
                                 @endif
 
                                 <div class="float-right">
-                                    @component('components.buttons.next', [
-                                        'label' => $tombolSelanjutnya,
-                                        'class' => '',
+                                    @component('components.buttons.next',
+                                        [
+                                            'label' => $tombolSelanjutnya,
+                                            'class' => '',
                                         ])
                                     @endcomponent
                                 </div>
