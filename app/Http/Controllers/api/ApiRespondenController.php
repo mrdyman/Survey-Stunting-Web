@@ -17,11 +17,11 @@ class ApiRespondenController extends Controller
     {
         $withTrashed = $request->withTrashed;
         if(!$withTrashed){
-            $responden = Responden::orderBy('id', 'desc')->get();
+            $responden = Responden::orderBy('id', 'desc')->whereYear('created_at', '2023')->get();
         }else {
-            $responden = Responden::withTrashed()->orderBy('id', 'desc')->get();
+            $responden = Responden::withTrashed()->orderBy('id', 'desc')->whereYear('created_at', '2023')->get();
         }
-        if($responden){
+        if(count($responden) > 1){
             return response([
                 'message' => 'OK',
                 'data' => $responden
