@@ -37,44 +37,29 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg col-md-6">
-                <div class="card card-stats card-round">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-4">
-                                <div class="icon-big text-center">
-                                    <i class="fas fa-tasks text-warning"></i>
+            @foreach ($nama_survey as $item)
+                <div class="col-lg col-md-6">
+                    <div class="card card-stats card-round">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="icon-big text-center">
+                                        <i class="fas fa-tasks text-success"></i>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-8 col-stats">
-                                <div class="numbers">
-                                    <p class="card-category">Survey Tipe Pre</p>
-                                    <h4 class="card-title">{{ $totalSurveyPre }}</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg col-md-6">
-                <div class="card card-stats card-round">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-4">
-                                <div class="icon-big text-center">
-                                    <i class="fas fa-tasks text-success"></i>
-                                </div>
-                            </div>
-                            <div class="col-8 col-stats">
-                                <div class="numbers">
-                                    <p class="card-category">Survey Tipe Post</p>
-                                    <h4 class="card-title">{{ $totalSurveyPost }}</h4>
+                                <div class="col-8 col-stats">
+                                    <div class="numbers">
+                                        <p class="card-category">{{ $item->nama }}</p>
+                                        <h4 class="card-title">{{ $survey->where('nama_survey_id', $item->id)->count() }}
+                                        </h4>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            @endforeach
+
             <div class="col-lg col-md-6">
                 <div class="card card-stats card-round">
                     <div class="card-body ">
@@ -155,7 +140,8 @@
                                     role="tablist">
                                     <li class="nav-item" style="float: right">
                                         <a href="#v-pills-today" class="nav-link active show" id="pills-today"
-                                            data-toggle="pill" href="#pills-today" role="tab" aria-selected="true">Hari Ini
+                                            data-toggle="pill" href="#pills-today" role="tab" aria-selected="true">Hari
+                                            Ini
                                             ({{ $riwayatSurveyHariIni->count() }}) </a>
                                     </li>
                                     <li class="nav-item" style="float: right">
@@ -182,7 +168,7 @@
                                             <h6 class="text-uppercase mb-1">Surveyor: {{ $item->profile->nama_lengkap }}
                                             </h6>
                                             <h6 class="text-uppercase fw-bold mb-0">Responden:
-                                                {{ $item->responden->kartu_keluarga }}
+                                                {{ $item->responden->kartu_keluarga ?? '-' }}
                                                 @if ($item->namaSurvey->tipe == 'Pre')
                                                     <span class="badge badge-danger ml-3">Pre</span>
                                                 @else
@@ -192,8 +178,7 @@
                                                 </span>
                                         </div>
                                         <div class="float-right pt-1">
-                                            <small
-                                                class="text-muted">{{ $item->created_at->diffForHumans() }}</small>
+                                            <small class="text-muted">{{ $item->created_at->diffForHumans() }}</small>
                                             <div>
                                                 <a href="{{ url('/survey/lihat-survey/') }}/{{ $item->kode_unik }}"
                                                     class="badge badge-primary mt-1 float-right text-white"
@@ -215,7 +200,7 @@
                                             <h6 class="text-uppercase mb-1">Surveyor: {{ $item->profile->nama_lengkap }}
                                             </h6>
                                             <h6 class="text-uppercase fw-bold mb-0">Responden:
-                                                {{ $item->responden->kartu_keluarga }}
+                                                {{ $item->responden->kartu_keluarga ?? '-' }}
                                                 @if ($item->namaSurvey->tipe == 'Pre')
                                                     <span class="badge badge-danger ml-3">Pre</span>
                                                 @else
@@ -225,8 +210,7 @@
                                                 </span>
                                         </div>
                                         <div class="float-right pt-1">
-                                            <small
-                                                class="text-muted">{{ $item->created_at->format('d/m/Y') }}</small>
+                                            <small class="text-muted">{{ $item->created_at->format('d/m/Y') }}</small>
                                             <div>
                                                 <a href="{{ url('/survey/lihat-survey/') }}/{{ $item->kode_unik }}"
                                                     class="badge badge-primary mt-1 float-right text-white"
@@ -247,7 +231,7 @@
                                             <h6 class="text-uppercase mb-1">Surveyor: {{ $item->profile->nama_lengkap }}
                                             </h6>
                                             <h6 class="text-uppercase fw-bold mb-0">Responden:
-                                                {{ $item->responden->kartu_keluarga }}
+                                                {{ $item->responden->kartu_keluarga ?? '-' }}
                                                 @if ($item->namaSurvey->tipe == 'Pre')
                                                     <span class="badge badge-danger ml-3">Pre</span>
                                                 @else
@@ -257,8 +241,7 @@
                                                 </span>
                                         </div>
                                         <div class="float-right pt-1">
-                                            <small
-                                                class="text-muted">{{ $item->created_at->format('d/m/Y') }}</small>
+                                            <small class="text-muted">{{ $item->created_at->format('d/m/Y') }}</small>
                                             <div>
                                                 <a href="{{ url('/survey/lihat-survey/') }}/{{ $item->kode_unik }}"
                                                     class="badge badge-primary mt-1 float-right text-white"
@@ -393,24 +376,24 @@
                             }
                         }]
                     },
-                    // legendCallback: function(chart) { 
-                    //     // clear 
+                    // legendCallback: function(chart) {
+                    //     // clear
                     //     // $('#statisticsChart').html('')
                     //     $('#statisticsChart').remove();
 
 
-                    //     var text = []; 
-                    //     text.push('<ul class="' + chart.id + '-legend html-legend">'); 
-                    //     for (var i = 0; i < chart.data.datasets.length; i++) { 
-                    //         text.push('<li><span style="background-color:' + chart.data.datasets[i].legendColor + '"></span>'); 
-                    //         if (chart.data.datasets[i].label) { 
-                    //             text.push(chart.data.datasets[i].label); 
-                    //         } 
-                    //         text.push('</li>'); 
-                    //     } 
-                    //     text.push('</ul>'); 
-                    //     return text.join(''); 
-                    // }  
+                    //     var text = [];
+                    //     text.push('<ul class="' + chart.id + '-legend html-legend">');
+                    //     for (var i = 0; i < chart.data.datasets.length; i++) {
+                    //         text.push('<li><span style="background-color:' + chart.data.datasets[i].legendColor + '"></span>');
+                    //         if (chart.data.datasets[i].label) {
+                    //             text.push(chart.data.datasets[i].label);
+                    //         }
+                    //         text.push('</li>');
+                    //     }
+                    //     text.push('</ul>');
+                    //     return text.join('');
+                    // }
                 }
             });
         }

@@ -103,7 +103,14 @@
                 </li>
             @endif
 
-
+            @if (Auth::user()->role == 'Admin')
+                <li class="nav-item menu">
+                    <a class="nav-link" href="{{ url('/importAkun') }}">
+                        <i class="link-icon icon-cloud-upload text-danger"></i>
+                        <span class="menu-title"> Import Akun</span>
+                    </a>
+                </li>
+            @endif
         </ul>
     </div>
 </div>

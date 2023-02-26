@@ -156,12 +156,12 @@
                 <div class="card-body px-3">
                     <div class="row">
                         <div class="col-12">
-                            <h5 class="mx-2"><span class="fw-bold">Isi Sesuai KTP</span> (<span
+                            <h5 class="mx-2"><span class="fw-bold">Isi Sesuai Domisili</span> (<span
                                     style="font-style: italic">Isi
                                     alamat di bawah
                                     ini
-                                    sesuai alamat di
-                                    <span class="fw-bold">KTP</span>
+                                    sesuai alamat
+                                    <span class="fw-bold">domisili</span>
                                     anda</span>)</h5>
                             {{-- alamat --}}
                             @component('components.formGroup.textArea',

@@ -62,26 +62,29 @@ class ExportSurveyController extends Controller
                     }
                 }
             })
-            ->whereHas('supervisor', function ($query) use ($supervisorId) {
-                if (in_array(Auth::user()->role, ["Admin", 'Institusi'])) {
-                    if ($supervisorId != 'semua' && $supervisorId != null) {
-                        $query->where('profile_dpl', $supervisorId);
-                    }
-                }
-            })
-            ->where(function ($query) {
+            ->where(function ($query) use ($supervisorId) {
                 if (Auth::user()->role == "Supervisor") {
                     $query->whereHas('anggotaSupervisor', function ($query) {
                         $query->where('profile_dpl', Auth::user()->profile->id);
                     });
                 }
-            })
-            ->whereHas('profile', function ($query) use ($institusi_id) {
-                if (Auth::user()->role != "Surveyor" && $institusi_id != 'semua' && $institusi_id != null) {
-                    $query->where('institusi_id', $institusi_id);
+
+                if (in_array(Auth::user()->role, ['Admin', 'Sub Admin'])) {
+                    if ($supervisorId != 'semua' && $supervisorId != null) {
+                        $query->whereHas('anggotaSupervisor', function ($query) use ($supervisorId) {
+                            $query->where('profile_dpl', $supervisorId);
+                        });
+                    }
                 }
             })
-            ->where('nama_survey_id', $nama_survey_id)->orderBy('updated_at', 'DESC')->paginate(10)->withQueryString();
+            ->where(function ($query) use ($institusi_id) {
+                if (Auth::user()->role != "Surveyor" && $institusi_id != 'semua' && $institusi_id != null) {
+                    $query->whereHas('profile', function ($query) use ($institusi_id) {
+                        $query->where('institusi_id', $institusi_id);
+                    });
+                }
+            })
+            ->where('nama_survey_id', $nama_survey_id)->orderBy('updated_at', 'DESC')->paginate(50)->withQueryString();
 
         return view('pages.survey.exportSurvey.index', compact('namaSurvey', 'surveyor', 'institusi', 'data', 'halaman'));
     }
@@ -89,17 +92,17 @@ class ExportSurveyController extends Controller
     public function exportSurvey(Request $request)
     {
         // dd($request->page);
-        $surveyor_id = $request->surveyor_id;
-        $institusi_id = $request->institusi_id;
-        $supervisorId = Auth::user()->role == "Supervisor" ? Auth::user()->profile->id : $request->supervisor_id;
+        $surveyor_id = $request->filter_surveyor;
+        $institusi_id = $request->filter_institusi;
+        $supervisorId = Auth::user()->role == "Supervisor" ? Auth::user()->profile->id : $request->filter_supervisor;
         $this->validate(
             $request,
             [
                 'surveyor_id' => 'nullable',
-                'nama_survey_id' => 'required'
+                'filter_nama_survey' => 'required'
             ],
             [
-                'nama_survey_id.required' => "Nama Survey Tidak Boleh Dikosongkan",
+                'filter_nama_survey.required' => "Nama Survey Tidak Boleh Dikosongkan",
             ]
         );
 
@@ -113,27 +116,29 @@ class ExportSurveyController extends Controller
                     }
                 }
             })
-            ->whereHas('supervisor', function ($query) use ($supervisorId) {
-                if (in_array(Auth::user()->role, ["Admin", 'Institusi'])) {
-                    if ($supervisorId != 'semua' && $supervisorId != null) {
-                        $query->where('profile_dpl', $supervisorId);
-                    }
-                }
-            })
-            ->where(function ($query) {
+            ->where(function ($query) use ($supervisorId) {
                 if (Auth::user()->role == "Supervisor") {
                     $query->whereHas('anggotaSupervisor', function ($query) {
                         $query->where('profile_dpl', Auth::user()->profile->id);
                     });
                 }
-            })
-            ->whereHas('profile', function ($query) use ($institusi_id) {
-                if (Auth::user()->role != "Surveyor" && $institusi_id != 'semua' && $institusi_id != null) {
-                    $query->where('institusi_id', $institusi_id);
+
+                if (in_array(Auth::user()->role, ['Admin', 'Sub Admin'])) {
+                    if ($supervisorId != 'semua' && $supervisorId != null) {
+                        $query->whereHas('anggotaSupervisor', function ($query) use ($supervisorId) {
+                            $query->where('profile_dpl', $supervisorId);
+                        });
+                    }
                 }
             })
-            ->where('nama_survey_id', $request->nama_survey_id)->orderBy('updated_at', 'DESC')
-            ->paginate(10);
+            ->where(function ($query) use ($institusi_id) {
+                if (Auth::user()->role != "Surveyor" && $institusi_id != 'semua' && $institusi_id != null) {
+                    $query->whereHas('profile', function ($query) use ($institusi_id) {
+                        $query->where('institusi_id', $institusi_id);
+                    });
+                }
+            })
+            ->where('nama_survey_id', $request->filter_nama_survey)->orderBy('updated_at', 'DESC')->paginate(50)->withQueryString();
 
         // dd($survey);
 
@@ -155,7 +160,7 @@ class ExportSurveyController extends Controller
             $surveyor = '';
         }
 
-        $kategori = KategoriSoal::with(['soal'])->where('nama_survey_id', $request->nama_survey_id)->get();
+        $kategori = KategoriSoal::with(['soal'])->where('nama_survey_id', $request->filter_nama_survey)->get();
 
         $tanggal = Carbon::parse(Carbon::now())->translatedFormat('d F Y');
 

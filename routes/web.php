@@ -7,6 +7,7 @@ use App\Http\Controllers\ListController;
 use App\Http\Controllers\ImportController;
 use App\Http\Controllers\SurveyorController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\masterData\ImportAkunController;
 use App\Http\Controllers\survey\SurveyController;
 use App\Http\Controllers\masterData\UserController;
 use App\Http\Controllers\masterSoal\SoalController;
@@ -98,9 +99,12 @@ Route::group(['middleware' => ['role:Admin|Sub Admin']], function () {
 
 
 
+    Route::get('importAkun', [ImportAkunController::class, 'index']);
+    Route::post('importAkun', [ImportAkunController::class, 'importData']);
     Route::resource('/user', UserController::class);
     Route::resource('/profile', ProfileController::class);
     Route::resource('/institusi', InstitusiController::class);
+    Route::post('responden/export', [RespondenController::class, 'export']);
     Route::resource('/responden', RespondenController::class)->parameters([
         'responden' => 'responden'
     ]);

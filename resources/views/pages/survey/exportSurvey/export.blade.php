@@ -74,7 +74,7 @@
             @php
                 $i = 1;
             @endphp
-            @foreach ($daftarSurvey->chunk(5) as $rowSurvey)
+            @foreach ($daftarSurvey->chunk(25) as $rowSurvey)
                 @foreach ($rowSurvey as $survey)
                     <tr>
                         <td></td>
@@ -90,25 +90,28 @@
                             {{ $survey->responden->kabupaten_kota->nama }}</td>
                         <td align="center" style="vertical-align: center;border: 1px solid black;">
                             {{ $survey->responden->kartu_keluarga }} &nbsp;</td>
-                        @foreach ($daftarKategori as $kategori)
-                            @foreach ($kategori->soal->chunk(5) as $rowSoal)
-                                @foreach ($rowSoal as $soal)
+                        @php
+                            $idSoal = '';
+                            $daftarJawaban = \App\Models\JawabanSurvey::with(['jawabanSoal'])
+                                ->groupBy('soal_id', 'kode_unik_survey', 'kategori_soal_id', 'jawaban_soal_id', 'jawaban_lainnya')
+                                ->having(DB::raw('count(*)'), '>=', '1')
+                                ->where('kode_unik_survey', "$survey->kode_unik")
+                                ->get();
+                        @endphp
+                        @foreach ($daftarJawaban as $jawaban)
+                            @if ($idSoal != $jawaban->soal_id)
+                                <th align="center" style="vertical-align: center;border: 1px solid black;">
                                     @php
-                                        $daftarJawaban = \App\Models\JawabanSurvey::with(['jawabanSoal'])
-                                            ->where('kode_unik_survey', "$survey->kode_unik")
-                                            ->where('kategori_soal_id', "$kategori->id")
-                                            ->where('soal_id', "$soal->id")
-                                            ->get();
+                                        $idSoal = $jawaban->soal_id;
                                     @endphp
-                                    <th align="center" style="vertical-align: center;border: 1px solid black;">
-                                        @foreach ($daftarJawaban as $jawaban)
-                                            <p>
-                                                {{ $jawaban->jawaban_soal_id == null || $jawaban->jawaban_soal_id == 0 ? $jawaban->jawaban_lainnya : $jawaban->jawabanSoal->jawaban }}
-                                            </p>
-                                        @endforeach
-                                    </th>
-                                @endforeach
-                            @endforeach
+                            @endif
+                            <p>
+                                {{ $jawaban->jawaban_soal_id == null || $jawaban->jawaban_soal_id == 0 ? $jawaban->jawaban_lainnya : $jawaban->jawabanSoal->jawaban }}
+                            </p>
+
+                            @if ($idSoal != $jawaban->soal_id)
+                                </th>
+                            @endif
                         @endforeach
                     </tr>
                 @endforeach
