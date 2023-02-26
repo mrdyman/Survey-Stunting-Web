@@ -22,7 +22,7 @@ class JawabanSurvey extends Model
     {
         return $this->belongsTo(JawabanSoal::class);
     }
-    
+
     /**
      * Prepare a date for array / JSON serialization.
      *

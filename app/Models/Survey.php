@@ -39,6 +39,11 @@ class Survey extends Model
         return $this->hasMany(AnggotaSupervisor::class, 'profile_surveyor', 'profile_id')->groupBy('profile_dpl');
     }
 
+    public function jawabanSurvey()
+    {
+        return $this->hasMany(JawabanSurvey::class, 'kode_unik_survey', 'kode_unik')->groupBy('soal_id');
+    }
+
     /**
      * Prepare a date for array / JSON serialization.
      *
